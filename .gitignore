@@ -1,0 +1,10 @@
+/diploma/dip.odt
+/diploma/src/latex/*.aux
+/diploma/src/latex/*.bbl
+/diploma/src/latex/*.blg
+/diploma/src/latex/*.dvi
+/diploma/src/latex/*.pdf
+/diploma/src/latex/*.ps
+/diploma/src/latex/*.toc
+*.log
+*.pdf
