@@ -1,0 +1,122 @@
+\documentclass[a4paper,12pt]{report} %размер бумаги устанавливаем А4, шрифт 12пунктов
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}%включаем свою кодировку: koi8-r или utf8 в UNIX, cp1251 в Windows
+\usepackage[english,russian]{babel}%используем русский и английский языки с переносами
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float} %подключаем нужные пакеты расширений
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage[pdftex]{graphicx} %хотим вставлять в диплом рисунки?
+\graphicspath{{images/}}%путь к рисункам
+
+\makeatletter
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\@biblabel}[1]{#1.} % Заменяем библиографию с квадратных скобок на точку:
+\makeatother
+
+\usepackage{geometry} % Меняем поля страницы
+\geometry{left=2cm}% левое поле
+\geometry{right=1.5cm}% правое поле
+\geometry{top=1cm}% верхнее поле
+\geometry{bottom=2cm}% нижнее поле
+
+\renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumii}{.\arabic{enumii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
+
+\begin{document}
+\input{DiplomaProject-Title}% это титульный лист
+\tableofcontents % это оглавление, которое генерируется автоматически
+\begin{figure}[h]
+\center{\includegraphics[width=1\linewidth]{Penguins}}
+\caption{Тестовая тупая картинка.}
+\label{img:image}
+\end{figure}
+\begin{figure}[h]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.5\linewidth]{Lighthouse} \\ а)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.5\linewidth]{Penguins} \\ б)}
+\end{minipage}
+\caption{Замок а) и Пингвины б).}
+\label{img:castle_penguins}
+\end{figure}
+Как вы можете видеть, вот тут у нас замок \ref{img:castle_penguins}, а тут — пингвины \ref{img:castle_penguins}.
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}[h]{0.4\linewidth}
+\includegraphics[width=1\linewidth]{Lighthouse}
+\caption{Исходное изображение.} %% подпись к рисунку
+\label{img:lighthouse} %% метка рисунка для ссылки на него
+\end{minipage}
+\hfill 
+\begin{minipage}[h]{0.4\linewidth}
+\includegraphics[width=1\linewidth]{Penguins}
+\caption{Закодированное изображение.}
+\label{img:penguins}
+\end{minipage}
+\end{center}
+\end{figure}
+Вот тут у нас замок на рис. \ref{img:lighthouse} и пингвины на рис. \ref{img:penguins}.
+\begin{figure}[ht!]
+\vspace{-4ex}
+\centering
+\subfigure[]{
+\includegraphics[width=0.25\linewidth]{Lighthouse}
+\label{img:lig}
+}
+\hspace{4ex}
+\subfigure[]{
+\includegraphics[width=0.25\linewidth]{Penguins}
+\label{img:pen1}
+}
+\hspace{4ex}
+\subfigure[]{
+\includegraphics[width=0.24\linewidth]{Penguins}
+\label{img:pen2}
+}
+\caption{Coupling cases for the DM models: 
+\subref{img:lig} Lighthouse
+\subref{img:pen1} Penguins 1 ; 
+\subref{img:pen2}} Penguins 2.
+\label{fig:threeDMcases}
+\end{figure}
+Замок \ref{img:lig}, пингвины 1 \ref{img:pen1}, пингвины 2 \ref{img:pen2}.
+\begin{figure}[H]
+\begin{minipage}[h]{0.32\linewidth}
+\center{\includegraphics[width=0.8\linewidth]{image}}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.32\linewidth}
+\center{\includegraphics[width=0.4\linewidth]{image}}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.32\linewidth}
+\center{\includegraphics[width=0.9\linewidth]{image}}
+\end{minipage}
+\begin{minipage}[h]{1\linewidth}
+\begin{tabular}{p{0.32\linewidth}p{0.32\linewidth}p{0.32\linewidth}}
+\centering а) & \centering б) & \centering в) \\
+\end{tabular}
+\end{minipage}
+\vspace*{-1cm}
+\caption{Процесс кодирования: а) оригинальное изображение, б) ФРТ киноформа, в) закодированное изображение.}
+\label{ris:correlationsignals}
+\end{figure}
+\begin{minipage}[h]{1\linewidth}
+\begin{tabular}{p{0.32\linewidth}p{0.32\linewidth}p{0.32\linewidth}}
+\centering а) & \centering б) & \centering в) \\
+\end{tabular}
+\end{minipage}
+Текст бла-бла-бла.
+\begin{wrapfigure}[16]{r}{0.5\linewidth} 
+\vspace{-5ex}
+\includegraphics[width=\linewidth]{image}
+\caption{Some caption}
+\label{fig:somelabel}
+\end{wrapfigure}
+\end{document}
