@@ -7,3 +7,4 @@
 *.ps
 *.toc
 *.log
+/latex_test/images/*

@@ -5,6 +5,7 @@
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float} %подключаем нужные пакеты расширений
 \usepackage{subfigure}
 \usepackage{wrapfig}
+\usepackage{longtable}
 \usepackage[pdftex]{graphicx} %хотим вставлять в диплом рисунки?
 \graphicspath{{images/}}%путь к рисункам
 
@@ -119,4 +120,113 @@
 \caption{Some caption}
 \label{fig:somelabel}
 \end{wrapfigure}
+\pagebreak
+\begin{center}
+\begin{tabular}{ccc}
+Расширение краёв: & \textbf{1,0-1,4} & размер ФРТ \\
+Аподизация: & \textbf{0,25-0,30}& размер ФРТ \\
+Сглаживания краёв: & \textbf{0,25-0,50}& размер ФРТ \\
+\end{tabular}
+\begin{table}[H]
+\caption{Исправьте это на подпись к таблице}
+\label{tabular:timesandtenses}
+\begin{center}
+\begin{tabular}{ccc}
+Расширение краёв: & \textbf{1,0-1,4} & размер ФРТ \\
+Аподизация: & \textbf{0,25-0,30}& размер ФРТ \\
+Сглаживания краёв: & \textbf{0,25-0,50}& размер ФРТ \\
+\end{tabular}
+\end{center}
+\end{table}
+\end{center}
+\begin{table}[H]
+\caption{\label{tab:canonsummary}Измерительные характеристики цифровой камеры Canon EOS 400D.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Параметр & Значение \\
+\hline
+Разрешение & $3888 \times 2592$ \\
+Размер сенсора & $22.2 \times 14.8$ мм \\
+АЦП & 12~bit\\
+\hline
+\multicolumn{2}{|c|}{Результаты измерений} \\
+\hline
+Темновое смещение (BLO) & 256 \\
+Максимальный линейный сигнал & 3070~DN \\
+Значение насыщения & 3470~DN \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{longtable}[h]{lp{0.7\linewidth}}
+$A$ & area of the (geometrical) pixel [m\textsuperscript2] \\
+$c$ & Speed of light $\approx 3 \cdot 10^8$ m/s \\
+$DYN_{in}$ & Input dynamic range [1] \\
+$DYN_{out}$ & Output dynamic range~[1] \\
+$E$ & irradiance on the sensor surface~[W/m\textsuperscript2] \\
+$F$ & Non-whiteness coefficient \\ 
+$h$ & Planck's constant h $\approx6.63 \cdot 10^{-34} Js$ \\
+$K$ & overall system gain~[DN/e-] \\
+$k_d$ & Doubling temperature of the dark current~[$^\circ$C] \\
+$N_d$ & dark current~[e-/s] \\
+$N_{d30}$ & dark current for a housing temperature of $30^\circ C$~[e-/s]\textsuperscript2 \\
+$S_g^2$ & variance coefficient of the spatial gain noise~[\%] \\
+\end{longtable}
+\begin{table}[H]
+\caption{\label{tab:bolts} Нестандартные болты для левой резьбы.}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+& \multicolumn{2}{c|}{Диаметр} \\
+\cline{2-3}
+\raisebox{1.5ex}[0cm][0cm]{Нестандартные болты}
+& Норма & Разброс \\
+\hline
+Размеры & 10 мм & 1 мм \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\rotatebox{90}{ %это обеспечивает поворот любого объекта
+\begin{minipage}{1.5\linewidth}
+\begin{table}[H]
+\caption{Сравнение количественных данных по влиянию искажений на результат декодирования}
+\begin{center}
+\begin{tabular}{|p{5cm}c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Графические изображения}}\\
+\hline
+\textbf{Характеристика} & \textbf{8-битные} & \textbf{16-битные}\\
+\hline
+\multicolumn{3}{|c|}{Влияние шумов квантования}\\
+\hline
+Шумы квантования
+& $6.3 \div 22.6\%$
+& $0.2 \div 0.5\%$ \\
+\hline
+\multicolumn{3}{|c|}{Влияние шумов фотоприёмника}\\
+\hline
+Шумы фотоприёмника
+& $8.8 \div 87.5\%$
+& $7.1 \div 87.6\%$ \\
+\hline
+\multicolumn{3}{|c|}{Влияние особенностей ФРТ}\\
+\hline
+декодирование ФРТ той же реализацией шума
+& $6 \div 13\%$
+& $0.5 \div 15\%$ \\
+\hline
+декодирование ФРТ с другой реализацией шума
+& $6 \div 14\%$
+& $0.3 \div 12\%$ \\
+\hline
+декодирование идеальным ФРТ
+& $6 \div 6.5\%$
+& $0.2 \div 6.4\%$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{minipage}}
 \end{document}
