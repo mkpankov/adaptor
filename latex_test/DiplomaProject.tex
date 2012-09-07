@@ -2,11 +2,25 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}%включаем свою кодировку: koi8-r или utf8 в UNIX, cp1251 в Windows
 \usepackage[english,russian]{babel}%используем русский и английский языки с переносами
+
+\addto\captionsrussian{% Replace "english" with the language you use
+    \renewcommand{\contentsname}%
+    {Whatever}%
+}
+
+\makeatletter %%%%% <---- Starting chapter without a pagebreak
+    \renewcommand\chapter{\par%
+    \thispagestyle{plain}%
+    \global\@topnum\z@
+    \@afterindentfalse \secdef\@chapter\@schapter} 
+\makeatother %%%%% <---- Starting chapter without a pagebreak
+
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float} %подключаем нужные пакеты расширений
 \usepackage{subfigure}
 \usepackage{wrapfig}
 \usepackage{longtable}
 \usepackage{setspace} %для установки интервалов в стандартных элементах
+\usepackage{tocvsec2}
 \usepackage{graphicx} %хотим вставлять в диплом рисунки?
 \graphicspath{{images/}}%путь к рисункам
 
@@ -28,8 +42,9 @@
 \renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
 \onehalfspacing % Полуторный интервал между строками
-
+\setcounter{tocdepth}{3} %%where n is the level, starting with 0 (chapters only)
 \begin{document}
+    \settocdepth{section}
     \input{DiplomaProject-Title}% это титульный лист
     \begin{spacing}{0.9}
         \tableofcontents % это оглавление, которое генерируется автоматически
@@ -246,4 +261,17 @@
             $ \alpha \beta \gamma $
         \end{minipage}
     \end{center}
+    
+    \chapter*{Библиография}
+    \addcontentsline{toc}{chapter}{Библиография}
+    
+%    \addtocounter{counter}{value} увеличивает указанный счётчик counter на значение value.
+%    
+%    \newcounter{newcounter}[oldcounter] создаёт новый счётчик newcounter; опция нужна для связывания старого счётчика oldcounter и нового newcounter.
+%    
+%    \setcounter{counter}{value} устанавливает счётчик counter в заданное значение value.
+%    
+%    \value{counter} выдаёт значение счётчика counter и вообще полезная команда для разного рода арифметических операций со значениями счётчиков.
+%    
+%    \renewcommand{cmd}[args][opt]{def} общая команда для создания или переопределения новых команд.
 \end{document}
