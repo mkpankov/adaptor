@@ -8,12 +8,77 @@
     {Whatever}%
 }
 
-\makeatletter %%%%% <---- Starting chapter without a pagebreak
-    \renewcommand\chapter{\par%
-    \thispagestyle{plain}%
-    \global\@topnum\z@
-    \@afterindentfalse \secdef\@chapter\@schapter} 
-\makeatother %%%%% <---- Starting chapter without a pagebreak
+%\makeatletter %%%%% <---- Starting chapter without a pagebreak
+%    \renewcommand\chapter{\par%
+%    \thispagestyle{plain}%
+%    \global\@topnum\z@
+%    \@afterindentfalse \secdef\@chapter\@schapter} 
+%\makeatother %%%%% <---- Starting chapter without a pagebreak
+
+%\makeatletter % эта строка НЕОБХОДИМА!
+%\renewcommand{\@chapapp}{Глава} % необязательная строчка.
+%% определяет значение \@chapapp (используется ниже)
+%\renewcommand{\@makechapterhead}[1]{% Начало макроопределения
+%    \vspace*{50 pt}% Пустое место вверху страницы
+%    {\parindent=0pt
+%        \raggedright \normalfont\huge\bfseries
+%        \@chapapp{} % \@chapapp печатает слово "Glava" (см. выше)
+%        % вот эту строку
+%        % \thechapter \par % номер главы - в отдельной строке
+%        % и ещё вот эту я убрал, и у меня наступило ШЧАСТЬЕ
+%        % \thechapter -- печать счётчика глав; \par -- насильственно
+%        % закончить абзац
+%        \vspace{20 pt} % между словом "Glava" и ее заголовком
+%        % и ещё эту строчку я грохнул, ибо нефиг
+%        % \normalfont\Huge\bfseries #1\par % заголовок главы
+%        \nopagebreak % чтоб не оторвать заголовок от текста
+%        \vspace{40 pt} % между заголовком и текстом
+%    }% конец группы.
+%}% конец макроопределения
+%\makeatother % эта строка НЕОБХОДИМА!
+
+% Modified \part and \chapter from report.cls
+\makeatletter
+    \def\@part[#1]#2{%
+        \ifnum \c@secnumdepth >-2\relax
+        \refstepcounter{part}%
+        \addcontentsline{toc}{part}{#1}%
+        \else
+        \addcontentsline{toc}{part}{#1}%
+        \fi
+        \markboth{}{}%
+        {
+            \centering
+            \interlinepenalty \@M
+            \normalfont
+            \Huge \bfseries #2\par}%
+        \@endpart}
+    \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+        \refstepcounter{chapter}%
+        \typeout{\@chapapp\space\thechapter.}%
+        \addcontentsline{toc}{chapter}%
+        {#1}%
+        \else
+        \addcontentsline{toc}{chapter}{#1}%
+        \fi
+        \chaptermark{#1}%
+        \addtocontents{lof}{\protect\addvspace{10\p@}}%
+        \addtocontents{lot}{\protect\addvspace{10\p@}}%
+        \if@twocolumn
+        \@topnewpage[\@makechapterhead{#2}]%
+        \else
+        \@makechapterhead{#2}%
+        \@afterheading
+        \fi}\makeatother
+    \def\@makechapterhead#1{%
+        \vspace*{50\p@}%
+        {\parindent \z@ \raggedright \normalfont
+            \interlinepenalty\@M
+            \Huge \bfseries #1\par\nobreak
+            \vskip 40\p@
+    }}
+    \renewcommand{\thesection}{\arabic{section}}% Remove \thechapter from \thesection}
+\makeatother
 
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float} %подключаем нужные пакеты расширений
 \usepackage{subfigure}
@@ -44,16 +109,21 @@
 \onehalfspacing % Полуторный интервал между строками
 \setcounter{tocdepth}{3} %%where n is the level, starting with 0 (chapters only)
 \begin{document}
-    \settocdepth{section}
+    % \settocdepth{section} %% установка глубины оглавления
     \input{DiplomaProject-Title}% это титульный лист
     \begin{spacing}{0.9}
         \tableofcontents % это оглавление, которое генерируется автоматически
     \end{spacing}
+    \part{Часть Первая}
+    \chapter{Глава Раз}
+    \section{Раздел Один}
+    \subsection{Подраздел Х}
     \begin{figure}[h]
         \center{\includegraphics[width=1\linewidth]{Penguins}}
         \caption{Тестовая тупая картинка.}
         \label{img:image}
     \end{figure}
+    \subsection{Замки с Пингвинами}
     \begin{figure}[h]
         \begin{minipage}[h]{0.49\linewidth}
             \center{\includegraphics[width=0.5\linewidth]{Lighthouse} \\ а)}
@@ -261,6 +331,12 @@
             $ \alpha \beta \gamma $
         \end{minipage}
     \end{center}
+    
+    \begin{enumerate}
+        \item это первое,
+        \item а это второе,
+        \item и последнее.
+    \end{enumerate}
     
     \chapter*{Библиография}
     \addcontentsline{toc}{chapter}{Библиография}
