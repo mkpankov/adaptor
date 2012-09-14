@@ -91,6 +91,7 @@
 \usepackage{tocvsec2}
 \usepackage{graphicx} %хотим вставлять в диплом рисунки?
 \graphicspath{{images/}}%путь к рисункам
+\usepackage{cite}
 
 \makeatletter
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
@@ -103,6 +104,9 @@
 \geometry{top=2cm}% верхнее поле
 \geometry{bottom=2cm}% нижнее поле
 
+\bibliographystyle{unsrt}
+
+\renewcommand\bibname{Список использованных источников}
 \renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
 \renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
 \renewcommand{\theenumii}{.\arabic{enumii}}% Меняем везде перечисления на цифра.цифра
@@ -332,6 +336,7 @@
             20\% \No26.\\
             Б\'{о}льшие шумы. Больш\'{и}е шумы.\\
             $ \alpha \beta \gamma $
+            Ссылка на литературу \cite{catheydowskinewparadigm}
         \end{minipage}
     \end{center}
     
@@ -340,9 +345,6 @@
         \item а это второе,
         \item и последнее.
     \end{enumerate}
-    
-    \chapter*{Библиография}
-    \addcontentsline{toc}{chapter}{Библиография}
     
 %    \addtocounter{counter}{value} увеличивает указанный счётчик counter на значение value.
 %    
@@ -353,4 +355,6 @@
 %    \value{counter} выдаёт значение счётчика counter и вообще полезная команда для разного рода арифметических операций со значениями счётчиков.
 %    
 %    \renewcommand{cmd}[args][opt]{def} общая команда для создания или переопределения новых команд.
+
+    \bibliography{biblio/diploma}
 \end{document}
