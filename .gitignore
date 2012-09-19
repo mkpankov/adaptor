@@ -1,8 +1,12 @@
 /diploma/dip.odt
+.picasa.ini
+*.4tc
+*.4ct
 *.aux
 *.bbl
 *.blg
 *.dvi
+*.log
 *.pdf
 *.ps
 *.toc
