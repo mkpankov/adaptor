@@ -356,5 +356,41 @@
 %    
 %    \renewcommand{cmd}[args][opt]{def} общая команда для создания или переопределения новых команд.
 
+    \begin{center}
+        \begin{minipage}{1\textwidth}
+            $\alpha$, $\gamma$, $\delta$, $\approx$.\\*
+            Малозначительная формула $f(x) = a\cdot x + b$ например.
+            Что-что серьёзное вроде разложения в ряд Фурье:
+            \begin{equation}\label{eq:fourierrow}
+            f(x) =
+            \frac{A_0}{2}
+            +
+            \sum \limits_{n=1}^{\infty} A_n \cos \left( \frac{2 n \pi x}{\nu} - \alpha_n \right)
+            \end{equation}
+            Ссылка на формулу \ref{eq:fourierrow}.
+            \begin{equation}
+                f(x, y, \alpha, \beta) =
+                \frac{\sum \limits_{n=1}^{\infty} A_n \cos \Bigr(\left( \frac{2 n \pi x}{\nu} \right)\Bigl)}
+                {\prod \mathcal{F} \{g(x,y)\}}
+            \end{equation}
+            $\mathcal{A} = B + C$\\*
+            $\Gamma$\\*
+            \begin{eqnarray}
+                S_{text{вых}}(x_2, y_2) = \iint dx_0 dy_0 A_0 g(x_0, y_0) \cdot h(x_2-x_0, y_2-y_0) = \\
+                = A_0 \underbrace{\iint dx_0 dy_0 \; g(x_0, y_0) \cdot h(x_2-x_0, y_2-y_0)}_{\text{по определению это есть свёртка}} = A_0 g \otimes h
+            \end{eqnarray}
+            \begin{equation}
+                \begin{matrix} 
+                    \hat{\Phi}[k,l]  & =
+                    & \left\{
+                    \begin{matrix}
+                        0 & \mbox{if } k,l = 0 \\
+                        S_x[k,l]\cdot H_x[k,l] + S_y[k,l]\cdot H_y[k,l] & \mbox{otherwise }
+                    \end{matrix} \right. 
+                \end{matrix}
+            \end{equation}
+        \end{minipage}
+    \end{center}
+    
     \bibliography{biblio/diploma}
 \end{document}
