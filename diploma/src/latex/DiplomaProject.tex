@@ -24,6 +24,10 @@
 \usepackage{scrextend}
 % Размер по умолчанию — 14 пунктов, интервал полуторный (14*1.25)
 \changefontsizes[17.5pt]{14pt}
+% Отступ первой строки параграфа после начала раздела
+\usepackage{indentfirst}
+% Отступ начала параграфа
+\setlength{\parindent}{1cm}
 
 % Заменяем библиографию с квадратных скобок на точку
 \makeatletter
@@ -101,6 +105,7 @@
 % Оглавление
 \tableofcontents
 Проверка \cite{Fursin05apractical}.
+\input{DiplomaProject-Introduction}
 % Название библиографии
 \renewcommand\bibname{Список использованных источников}
 % Список использованных источников
