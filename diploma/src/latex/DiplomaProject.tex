@@ -45,11 +45,11 @@
 \geometry{bottom=2cm}
 
 % Меняем везде перечисления на цифра.цифра
-\renewcommand{\theenumi}{\arabic{enumi}}
-\renewcommand{\labelenumi}{\arabic{enumi}}
-\renewcommand{\theenumii}{.\arabic{enumii}}
+\renewcommand{\theenumi}{\arabic{enumi}.}
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\renewcommand{\theenumii}{.\arabic{enumii}.}
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\renewcommand{\theenumiii}{.\arabic{enumiii}}
+\renewcommand{\theenumiii}{.\arabic{enumiii}.}
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
 
 % Изменяем \part и \chapter из report.cls чтобы они не выводили нумерованные заголовки
@@ -112,6 +112,12 @@
 \input{DiplomaProject-Introduction}
 % Обзор области
 \input{DiplomaProject-Overview}
+% Основная часть
+% Мотивация, задачи, план
+\chapter{Основная часть}
+\input{DiplomaProject-Motivation}
+\input{DiplomaProject-Goal}
+\input{DiplomaProject-Tasks}
 % Название библиографии
 \renewcommand\bibname{Список использованных источников}
 % Список использованных источников
