@@ -96,6 +96,8 @@
     \renewcommand{\thesection}{\arabic{section}} % Удаляем \thechapter из \thesection
 \makeatother
 
+% Для веб-адресов в библиографии
+\usepackage{url}
 % Библиография в порядке упоминания в тексте
 \bibliographystyle{unsrt}
 
@@ -106,7 +108,10 @@
 \input{DiplomaProject-Annotation}
 % Оглавление
 \tableofcontents
+% Введение
 \input{DiplomaProject-Introduction}
+% Обзор области
+\input{DiplomaProject-Overview}
 % Название библиографии
 \renewcommand\bibname{Список использованных источников}
 % Список использованных источников
