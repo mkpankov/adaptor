@@ -31,7 +31,7 @@ def create_local_settings(settings):
     return local_settings
 
 
-def prepare_command_reference(settings):
+def prepare_command_build_reference(settings):
     command = tw.dedent("""
         {compiler} -O0 -I utilities -I {benchmark_source_dir} 
         utilities/polybench.c {benchmark_source_dir}/{program_source} 
@@ -41,7 +41,7 @@ def prepare_command_reference(settings):
     return command
 
 
-def prepare_command_timed(settings):
+def prepare_command_build_timed(settings):
     command = tw.dedent("""
         {compiler} {base_opt} -I utilities 
         -I {benchmark_source_dir} utilities/polybench.c 
@@ -49,6 +49,14 @@ def prepare_command_timed(settings):
         -o ./bin/{program_name}_time""").translate(None, '\n').format(
         **settings)
     return command
+
+
+def prepare_command_run_reference(settings):
+    pass
+
+
+def prepare_command_run_timed(settings):
+    pass
 
 
 def build_reference(settings):
@@ -64,7 +72,8 @@ def build_reference(settings):
 
 
 def run_reference(settings):
-    reference_command_run = './atax_ref 2>atax_ref.out'
+    command = "./bin/{program_name} 1>{program_name}.out 2>{program_name}.err"
+    sp.check_call(command.split())
 
 
 def build_timed(settings):
