@@ -19,22 +19,22 @@ class TestBuildCommandsPreparation(unittest.TestCase):
             benchmark_source_dir='linear-algebra/kernels/atax')
         self.local_settings = testee.create_local_settings(settings)
     
-    def test_prepare_command_reference(self):
-        command = testee.prepare_command_reference(self.local_settings)
-        command_reference = textwrap.dedent("""\
+    def test_prepare_command_valid(self):
+        command = testee.prepare_command_valid(self.local_settings)
+        command_valid = textwrap.dedent("""\
             gcc -O0 -I utilities -I linear-algebra/kernels/atax 
             utilities/polybench.c linear-algebra/kernels/atax/atax.c 
             -DPOLYBENCH_DUMP_ARRAYS -o ./bin/atax_ref""").translate(None, '\n')
-        self.assertEquals(command, command_reference)
+        self.assertEquals(command, command_valid)
 
 
     def test_prepare_command_timed(self):
         command = testee.prepare_command_timed(self.local_settings)
-        command_reference = textwrap.dedent("""\
+        command_valid = textwrap.dedent("""\
             gcc -O3 -I utilities -I linear-algebra/kernels/atax 
             utilities/polybench.c linear-algebra/kernels/atax/atax.c 
             -DPOLYBENCH_TIME -o ./bin/atax_time""").translate(None, '\n')
-        self.assertEquals(command, command_reference)
+        self.assertEquals(command, command_valid)
 
 
 if __name__ == '__main__':
