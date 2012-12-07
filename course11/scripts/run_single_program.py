@@ -9,7 +9,7 @@ import collections as cl
 
 
 def main():
-    """Invokes all necessary builds and experiments."""
+    """Invoke all necessary builds and experiments."""
     Settings = cl.namedtuple('Settings', 
         'compiler base_opt program_name '
         'benchmark_root_dir benchmark_source_dir')
@@ -32,6 +32,7 @@ def create_local_settings(settings):
 
 
 def prepare_command_build_reference(settings):
+    """Prepare command for building of reference version of benchmark."""
     command = tw.dedent("""
         {compiler} -O0 -I utilities -I {benchmark_source_dir} 
         utilities/polybench.c {benchmark_source_dir}/{program_source} 
@@ -42,6 +43,7 @@ def prepare_command_build_reference(settings):
 
 
 def prepare_command_build_timed(settings):
+    """Prepare command for building of timed version of benchmark."""
     command = tw.dedent("""
         {compiler} {base_opt} -I utilities 
         -I {benchmark_source_dir} utilities/polybench.c 
@@ -52,6 +54,7 @@ def prepare_command_build_timed(settings):
 
 
 def prepare_command_run_reference(settings):
+    """Prepare command for running the reference version of program."""
     command = tw.dedent("""
         ./bin/{program_name}_ref 1>./output/{program_name}_ref.out 
         2>./output/{program_name}_ref.err""").translate(None, '\n').format(
@@ -60,6 +63,7 @@ def prepare_command_run_reference(settings):
 
 
 def prepare_command_run_timed(settings):
+    """Prepare command for running the timed version of program."""
     command = tw.dedent("""
         ./bin/{program_name}_time 1>./output/{program_name}_time.out 
         2>./output/{program_name}_time.err""").translate(None, '\n').format(
@@ -80,11 +84,13 @@ def build_reference(settings):
 
 
 def run_reference(settings):
+    """Run the reference version of program."""
     command = prepare_command_reference(settings)
     sp.check_call(command.split())
 
 
 def run_timed(settings):
+    """Run the timed version of program."""
     command = prepare_command_timed(settings)
     sp.check_call(command.split())
 
