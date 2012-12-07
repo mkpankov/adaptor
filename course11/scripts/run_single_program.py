@@ -52,11 +52,19 @@ def prepare_command_build_timed(settings):
 
 
 def prepare_command_run_reference(settings):
-    pass
+    command = tw.dedent("""
+        ./bin/{program_name}_ref 1>./output/{program_name}_ref.out 
+        2>./output/{program_name}_ref.err""").translate(None, '\n').format(
+        **settings)
+    return command
 
 
 def prepare_command_run_timed(settings):
-    pass
+    command = tw.dedent("""
+        ./bin/{program_name}_time 1>./output/{program_name}_time.out 
+        2>./output/{program_name}_time.err""").translate(None, '\n').format(
+        **settings)
+    return command
 
 
 def build_reference(settings):
@@ -72,7 +80,12 @@ def build_reference(settings):
 
 
 def run_reference(settings):
-    command = "./bin/{program_name} 1>{program_name}.out 2>{program_name}.err"
+    command = prepare_command_reference(settings)
+    sp.check_call(command.split())
+
+
+def run_timed(settings):
+    command = prepare_command_timed(settings)
     sp.check_call(command.split())
 
 

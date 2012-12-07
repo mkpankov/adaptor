@@ -27,6 +27,12 @@ class TestCommandsPreparation(unittest.TestCase):
             -DPOLYBENCH_DUMP_ARRAYS -o ./bin/atax_ref""").translate(None, '\n')
         self.assertEquals(command, command_valid)
 
+    def test_prepare_command_run_reference(self):
+        command = testee.prepare_command_run_reference(self.local_settings)
+        command_valid = textwrap.dedent("""\
+            ./bin/atax_ref 1>./output/atax_ref.out 
+            2>./output/atax_ref.err""").translate(None, '\n')
+        self.assertEquals(command, command_valid)
 
     def test_prepare_command_build_timed(self):
         command = testee.prepare_command_build_timed(self.local_settings)
@@ -36,9 +42,13 @@ class TestCommandsPreparation(unittest.TestCase):
             -DPOLYBENCH_TIME -o ./bin/atax_time""").translate(None, '\n')
         self.assertEquals(command, command_valid)
 
-    def test_prepare_command_run_reference(self):
-        command = testee.prepare_command_run_reference(self.local_settings)
-        command_reference
+
+    def test_prepare_command_run_timed(self):
+        command = testee.prepare_command_run_timed(self.local_settings)
+        command_valid = textwrap.dedent("""\
+            ./bin/atax_time 1>./output/atax_time.out 
+            2>./output/atax_time.err""").translate(None, '\n')
+        self.assertEquals(command, command_valid)
 
 
 if __name__ == '__main__':
