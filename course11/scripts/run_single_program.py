@@ -8,11 +8,17 @@ import textwrap as tw
 import recordtype as rt
 
 
+Settings = rt.recordtype('Settings', 
+    'compiler base_opt program_name '
+    'benchmark_root_dir benchmark_source_dir')
+
+
+RunResult = rt.recordtype('RunResult',
+    'return_code stdout stderr')
+
+
 def main():
     """Invokes all necessary builds and experiments."""
-    Settings = rt.recordtype('Settings', 
-        'compiler base_opt program_name '
-        'benchmark_root_dir benchmark_source_dir')
     settings = Settings(compiler='gcc', base_opt='-O3', 
         program_name='atax', 
         benchmark_root_dir='../data/sources/polybench-c-3.2',
@@ -20,10 +26,10 @@ def main():
 
     update_settings_with_absolute_path(settings)
     build_reference(settings)
-    run_reference(settings)
+    result = run_reference(settings)
     reset_path(settings)
     build_timed(settings)
-    run_timed(settings)
+    result = run_timed(settings)
 
 
 def update_settings_with_absolute_path(settings):
@@ -105,12 +111,20 @@ def build_timed(settings):
 
 def run_reference(settings):
     command = prepare_command_run_reference(settings.todict())
-    sp.check_call(command.split())
+    proc = sp.Popen(command.split(), stdout=sp.PIPE, 
+                    stderr=sp.PIPE)
+    out, err = proc.communicate()
+    return_code = proc.returncode
+    return RunResult(stdout=out, stderr=err, return_code=return_code)
 
 
 def run_timed(settings):
     command = prepare_command_run_timed(settings.todict())
-    sp.check_call(command.split())
+    proc = sp.Popen(command.split(), stdout=sp.PIPE, 
+                    stderr=sp.PIPE)
+    out, err = proc.communicate()
+    return_code = proc.returncode
+    return RunResult(stdout=out, stderr=err, return_code=return_code)
 
 
 if __name__ == '__main__':
