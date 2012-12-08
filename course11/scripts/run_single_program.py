@@ -5,12 +5,12 @@
 import os
 import subprocess as sp
 import textwrap as tw
-import collections as cl
+import recordtype as rt
 
 
 def main():
     """Invokes all necessary builds and experiments."""
-    Settings = cl.namedtuple('Settings', 
+    Settings = rt.recordtype('Settings', 
         'compiler base_opt program_name '
         'benchmark_root_dir benchmark_source_dir')
     settings = Settings(compiler='gcc', base_opt='-O3', 
@@ -18,8 +18,20 @@ def main():
         benchmark_root_dir='../data/sources/polybench-c-3.2',
         benchmark_source_dir='linear-algebra/kernels/atax')
 
+    update_settings_with_absolute_path(settings)
     build_reference(settings)
+    run_reference(settings)
+    reset_path(settings)
     build_timed(settings)
+    run_timed(settings)
+
+
+def update_settings_with_absolute_path(settings):
+    settings.benchmark_root_dir = os.path.realpath(settings.benchmark_root_dir)
+
+
+def reset_path(settings):
+    os.chdir(settings.benchmark_root_dir)
 
 
 def create_local_settings(settings):
@@ -27,7 +39,7 @@ def create_local_settings(settings):
     local_settings = dict()
     local_settings['program_source'] = '{program_name}.c'.format(
         **{'program_name': settings.program_name})
-    local_settings.update(settings._asdict())
+    local_settings.update(settings.todict())
     return local_settings
 
 
@@ -70,7 +82,19 @@ def prepare_command_run_timed(settings):
 def build_reference(settings):
     """Build the reference version of the benchmark."""
     local_settings = create_local_settings(settings)
-    command = prepare_command_reference(local_settings)
+    command = prepare_command_build_reference(local_settings)
+    os.chdir(local_settings['benchmark_root_dir'])
+    print os.path.realpath(os.path.curdir)
+    print command
+    raw_input()
+    sp.call('mkdir bin'.split())
+    sp.check_call(command.split())
+
+
+def build_timed(settings):
+    """Build the timed version of the benchmark."""
+    local_settings = create_local_settings(settings)
+    command = prepare_command_build_timed(local_settings)
     os.chdir(local_settings['benchmark_root_dir'])
     print os.path.realpath(os.path.curdir)
     print command
@@ -80,24 +104,12 @@ def build_reference(settings):
 
 
 def run_reference(settings):
-    command = prepare_command_reference(settings)
+    command = prepare_command_run_reference(settings.todict())
     sp.check_call(command.split())
 
 
 def run_timed(settings):
-    command = prepare_command_timed(settings)
-    sp.check_call(command.split())
-
-
-def build_timed(settings):
-    """Build the timed version of the benchmark."""
-    local_settings = create_local_settings(settings)
-    command = prepare_command_timed(local_settings)
-    os.chdir(local_settings['benchmark_root_dir'])
-    print os.path.realpath(os.path.curdir)
-    print command
-    raw_input()
-    sp.call('mkdir bin'.split())
+    command = prepare_command_run_timed(settings.todict())
     sp.check_call(command.split())
 
 
