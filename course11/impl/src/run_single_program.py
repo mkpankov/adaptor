@@ -9,6 +9,7 @@ import datetime as dt
 import couchdbkit as ck
 from couchdbkit.designer import push
 import recordtype as rt
+import collections as cl
 
 
 class Experiment(ck.Document):
@@ -19,11 +20,20 @@ class Experiment(ck.Document):
     datetime = ck.DateTimeProperty()
 
 
+Input = cl.namedtuple('Input',
+    'benchmark_source_dir compiler base_opt')
+Settings = rt.recordtype('Settings', 
+    'program_name benchmark_root_dir framework_root_dir')
+BuildSettings = rt.recordtype('BuildSettings',
+    'compiler base_opt optimization_flags other_flags '
+    'benchmark_source_dir')
+RunSettings = rt.recordtype('RunSettings',
+    'benchmark_bin_dir '
+    'handler_stdout handler_stderr')
+
+
 def main():
     """Invoke all necessary builds and experiments."""
-    Settings = rt.recordtype('Settings', 
-        'compiler base_opt program_name '
-        'benchmark_root_dir benchmark_source_dir framework_root_dir')
     settings = Settings(compiler='gcc', base_opt='-O3', 
         program_name='atax', 
         benchmark_root_dir='../data/sources/polybench-c-3.2',
@@ -36,6 +46,16 @@ def main():
     perform_experiment()
 
     print_experiments(db)
+
+
+def convert_input_to_settings(input):
+    program_name, benchmark_root_dir = \
+        os.path.split(os.path.realpath(Input[benchmark_source_dir]))
+    framework_root_dir, _ = os.path.split(os.path.realpath(__file__))
+    settings = Settings(program_name=program_name,
+                        benchmark_root_dir=benchmark_root_dir,
+                        framework_root_dir=framework_root_dir)
+    return settings, build_settings, run_settings
 
 
 def perform_experiment(iterations=None):
@@ -60,7 +80,7 @@ def print_experiments(db):
 
 
 def setup_database(settings):
-    """Setup the database."""    
+    """Setup the database."""
     server = ck.Server()
     db = server.get_or_create_db('experiment')
     Experiment.set_db(db)
