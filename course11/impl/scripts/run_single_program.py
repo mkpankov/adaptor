@@ -5,8 +5,8 @@
 import os
 import subprocess as sp
 import textwrap as tw
-import couchdbkit as ck
 import datetime as dt
+import couchdbkit as ck
 from couchdbkit.designer import push
 import recordtype as rt
 
@@ -41,6 +41,8 @@ def main():
 def perform_experiment(iterations=None):
     """Perform experiment with given number of iterations."""
     iterations = 1 if iterations is None
+    build_reference(settings)
+    build_timed(settings)
 
     for i in range(iterations):
         run_reference(settings)
