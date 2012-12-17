@@ -34,6 +34,7 @@ RunSettings = rt.recordtype('RunSettings',
 
 def main():
     """Invoke all necessary builds and experiments."""
+
     settings = Settings(compiler='gcc', base_opt='-O3', 
         program_name='atax', 
         benchmark_root_dir='../data/sources/polybench-c-3.2',
@@ -60,6 +61,7 @@ def convert_input_to_settings(input):
 
 def perform_experiment(iterations=None):
     """Perform experiment with given number of iterations."""
+
     iterations = 1 if iterations is None
     build_reference(settings)
     build_timed(settings)
@@ -71,6 +73,7 @@ def perform_experiment(iterations=None):
 
 def print_experiments(db):
     """Print all the experiments."""
+
     experiments = db.view('experiment/all')
     for e in experiments.all():
         print 'Experiment:'
@@ -81,6 +84,7 @@ def print_experiments(db):
 
 def setup_database(settings):
     """Setup the database."""
+
     server = ck.Server()
     db = server.get_or_create_db('experiment')
     Experiment.set_db(db)
@@ -92,6 +96,7 @@ def setup_database(settings):
 
 def create_local_settings(settings):
     """Create local settings from global."""
+
     local_settings = dict()
     local_settings['program_source'] = '{program_name}.c'.format(
         **{'program_name': settings.program_name})
@@ -101,6 +106,7 @@ def create_local_settings(settings):
 
 def prepare_command_build_reference(settings):
     """Prepare command for building of reference version of benchmark."""
+
     command = tw.dedent("""
         {compiler} -O0 -I utilities -I {benchmark_source_dir} 
         utilities/polybench.c {benchmark_source_dir}/{program_source} 
@@ -112,6 +118,7 @@ def prepare_command_build_reference(settings):
 
 def prepare_command_build_timed(settings):
     """Prepare command for building of timed version of benchmark."""
+
     command = tw.dedent("""
         {compiler} {base_opt} -I utilities 
         -I {benchmark_source_dir} utilities/polybench.c 
@@ -123,6 +130,7 @@ def prepare_command_build_timed(settings):
 
 def prepare_command_run_reference(settings):
     """Prepare command for running the reference version of program."""
+
     command = tw.dedent("""
         ./bin/{program_name}_ref 1>./output/{program_name}_ref.out 
         2>./output/{program_name}_ref.err""").translate(None, '\n').format(
@@ -132,6 +140,7 @@ def prepare_command_run_reference(settings):
 
 def prepare_command_run_timed(settings):
     """Prepare command for running the timed version of program."""
+
     command = tw.dedent("""
         ./bin/{program_name}_time 1>./output/{program_name}_time.out 
         2>./output/{program_name}_time.err""").translate(None, '\n').format(
@@ -141,6 +150,7 @@ def prepare_command_run_timed(settings):
 
 def build_reference(settings):
     """Build the reference version of the benchmark."""
+
     local_settings = create_local_settings(settings)
     command = prepare_command_build_reference(local_settings)
     os.chdir(local_settings['benchmark_root_dir'])
@@ -152,6 +162,7 @@ def build_reference(settings):
 
 def build_timed(settings):
     """Build the timed version of the benchmark."""
+
     local_settings = create_local_settings(settings)
     command = prepare_command_build_timed(local_settings)
     os.chdir(local_settings['benchmark_root_dir'])
@@ -163,6 +174,7 @@ def build_timed(settings):
 
 def run_reference(settings):
     """Run the reference version of program."""
+
     command = prepare_command_run_reference(settings)
     print command
     proc = sp.Popen(command.split(), stdout=sp.PIPE, stderr=sp.PIPE)
@@ -178,6 +190,7 @@ def run_reference(settings):
 
 def run_timed(settings):
     """Run the timed version of program."""
+    
     command = prepare_command_run_timed(settings)
     print command
     proc = sp.Popen(command.split(), stdout=sp.PIPE, stderr=sp.PIPE)
