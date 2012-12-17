@@ -28,8 +28,7 @@ BuildSettings = rt.recordtype('BuildSettings',
     'compiler base_opt optimization_flags other_flags '
     'benchmark_source_dir')
 RunSettings = rt.recordtype('RunSettings',
-    'benchmark_bin_dir '
-    'handler_stdout handler_stderr')
+    'benchmark_bin_dir')
 
 
 def main():
@@ -50,13 +49,36 @@ def main():
 
 
 def convert_input_to_settings(input):
+    """Process user input (command line arguments) and return settings."""
+    
     program_name, benchmark_root_dir = \
         os.path.split(os.path.realpath(Input[benchmark_source_dir]))
     framework_root_dir, _ = os.path.split(os.path.realpath(__file__))
+
     settings = Settings(program_name=program_name,
-                        benchmark_root_dir=benchmark_root_dir,
-                        framework_root_dir=framework_root_dir)
+        benchmark_root_dir=benchmark_root_dir,
+        framework_root_dir=framework_root_dir)
+
+    build_settings = BuildSettings(compiler=Input[compiler],
+        base_opt=Input[base_opt],
+        benchmark_source_dir=Input[benchmark_source_dir])
+
+    benchmark_bin_dir = os.path.join(framework_root_dir, '/data/bin/')
+    run_settings = RunSettings(benchmark_bin_dir=benchmark_bin_dir)
+    
     return settings, build_settings, run_settings
+
+
+def handle_ref_timed_stdout(stdout):
+    """Process the stdout."""
+
+    pass
+
+
+def handle_ref_timed_stderr(stderr):
+    """Process the stderr."""
+
+    pass
 
 
 def perform_experiment(iterations=None):
