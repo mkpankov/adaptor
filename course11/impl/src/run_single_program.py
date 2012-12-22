@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 
-"""Run experiment with specified program with given compilers."""
+"""
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012.
+
+Run experiment with specified program with given compilers.
+"""
 
 import sys
 import os
@@ -15,25 +21,15 @@ import timeit
 import numpy as np
 
 
-class Experiment(ck.Document):
-    command_build = ck.StringProperty()
-    command_run = ck.StringProperty()
-    stdout = ck.StringProperty()
-    stderr = ck.StringProperty()
-    datetime = ck.DateTimeProperty()
+Settings = rt.recordtype('Settings', 
+    'program_name benchmark_root_dir framework_root_dir')
 
+BuildSettings = rt.recordtype('BuildSettings',
+    'compiler base_opt optimization_flags other_flags '
+    'benchmark_source_dir')
 
-class PrintableStructure():
-    def __str__(self):
-        c = self.__class__
-        print c
-        s = tw.dedent("""
-        {name}:
-        """).format(name=c.__name__)
-        for k, v in self._asdict().items():
-            s += '\t{field:20}:\t{value}\n'.format(field=k, value=v)
-
-        return s
+RunSettings = rt.recordtype('RunSettings',
+    'benchmark_bin_dir')
 
 
 Input = cl.namedtuple('Input',
@@ -54,15 +50,77 @@ class ValidationResult(PrintableStructure, ValidationResultBase):
     pass
 
 
-Settings = rt.recordtype('Settings', 
-    'program_name benchmark_root_dir framework_root_dir')
+# The documents below sometimes correspond to plain records used
+# to aggregate data during the work of framework 
+# (which are defined above).
+# However, they only save the information relevant to experiment
+# reproduction and meaningful to analytics.
 
-BuildSettings = rt.recordtype('BuildSettings',
-    'compiler base_opt optimization_flags other_flags '
-    'benchmark_source_dir')
+class ExperimentDocument(ck.Document):
+    """CouchDB document, describing the experiment."""
+    stdout = ck.StringProperty()
+    stderr = ck.StringProperty()
+    datetime = ck.DateTimeProperty()
+    calibration_result = ck.SchemaProperty()
+    validation_result = ck.SchemaProperty()
+    settings = ck.SchemaProperty()
 
-RunSettings = rt.recordtype('RunSettings',
-    'benchmark_bin_dir')
+
+class CalibrationResultDocument(ck.Document):
+    """CouchDB document, describing the result of multiple measurements."""
+    total_time = ck.FloatProperty()
+    time = ck.FloatProperty()
+    dispersion = ck.FloatProperty()
+    variance = ck.FloatProperty()
+    runs_number = ck.IntegerProperty()
+    times_list = ck.SchemaListProperty()
+
+
+class ValidationResultDocument(ck.Document):
+    """CouchDB document, describing the result of calibrations."""
+    real_time = ck.FloatProperty()
+    measured_time = ck.FloatProperty()
+    error = ck.FloatProperty()
+    relative_error = ck.FloatProperty()
+
+
+class SettingsDocument(ck.Document):
+    """CouchDB document, describing the global settings of framework."""
+    program = SchemaProperty()
+    build_settings = SchemaProperty()
+    run_settings = SchemaProperty()
+
+
+class BuildSettingsDocument(ck.Document):
+    """
+    CouchDB document, describing the settings with which 
+    the program was built.
+    """
+    compiler = SchemaProperty()
+    base_opt = StringProperty()
+    optimization_flags = StringProperty()
+    other_flags = StringProperty()
+
+
+class RunSettingsDocument(ck.Document):
+    """
+    CouchDB document, describing the settings with which 
+    the program was run.
+    """
+    pass
+
+class PrintableStructure():
+    """A class to allow easy pretty printing of namedtuple and recordtype."""
+    def __str__(self):
+        c = self.__class__
+        print c
+        s = tw.dedent("""
+        {name}:
+        """).format(name=c.__name__)
+        for k, v in self._asdict().items():
+            s += '\t{field:20}:\t{value}\n'.format(field=k, value=v)
+
+        return s
 
 
 class NonAbsolutePathError(RuntimeError):
@@ -85,6 +143,7 @@ def run():
 
 def main():
     """Invoke all necessary builds and experiments."""
+
     settings = Settings(program_name='atax', 
         framework_root_dir=os.path.join(os.path.dirname(__file__), '..')
         benchmark_root_dir=None,
