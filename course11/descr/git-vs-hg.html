@@ -1,0 +1,2484 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/support/wiki/DVCSAnalysis" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = "6IM57t_R6f_N5etdek3MJX1MmyU:1355778657094";
+ 
+ 
+ var CS_env = {"token":"6IM57t_R6f_N5etdek3MJX1MmyU:1355778657094","projectName":"support","domainName":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","loggedInUserEmail":"constantius9@gmail.com","profileUrl":"/u/115487035511310087953/","assetVersionPath":"http://www.gstatic.com/codesite/ph/7707091683928850954","projectHomeUrl":"/p/support","relativeBaseUrl":""};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ _gaq.push(
+ ['projectTracker._setAccount', 'UA-1869319-3'],
+ ['projectTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>DVCSAnalysis - 
+ support -
+ 
+ Analysis of Git and Mercurial - 
+ User support for Google Project Hosting - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/7707091683928850954/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/7707091683928850954/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/support/svnchanges/basic?path=/wiki/DVCSAnalysis.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/7707091683928850954/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ 
+ <a href="#" id="multilogin-dropdown" onclick="return false;"
+ ><u><b>constantius9@gmail.com</b></u> <small>&#9660;</small></a>
+ 
+ 
+ | <a href="/u/115487035511310087953/" id="projects-dropdown" onclick="return false;"
+ ><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="/u/115487035511310087953/" onclick="_CS_click('/gb/ph/profile');"
+ title="Profile, Updates, and Settings"
+ ><u>Profile</u></a>
+ | <a href="https://www.google.com/accounts/Logout?continue=http%3A%2F%2Fcode.google.com%2Fp%2Fsupport%2Fwiki%2FDVCSAnalysis" 
+ onclick="_CS_click('/gb/ph/signout');"
+ ><u>Sign out</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/support">
+ <a href="/p/support/">
+ 
+ 
+ <img src="/p/support/logo?cct=1355592874"
+ alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/support/"><span itemprop="name">support</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/support/"><span itemprop="description">User support for Google Project Hosting</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/support/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/support/wiki/GettingStarted?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/support/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/support/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/support/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="5" >&nbsp;My starred pages</option>
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/support/wiki/WhatsNew">Whats New?</a> </li><li><a href="/p/support/wiki/GettingStarted">Getting Started</a> </li><li><a href="/p/support/wiki/HowToJoinAProject">Join a project</a> </li><li><a href="/p/support/wiki/FAQ">Project Hosting FAQ</a> </li><li><a href="/p/support/wiki/MakingHostingBetter">Making hosting better</a> </li><li>Wiki </li><ul><li><a href="/p/support/wiki/WikiFAQ">Wiki FAQ</a> </li><li><a href="/p/support/wiki/WikiSyntax">Wiki Syntax</a> </li><li><a href="/p/support/wiki/WorkingWithGoogleGadgets">Google Gadgets</a> </li><ul><li><a href="/p/support/wiki/InterestingDeveloperGadgets">Interesting Gadgets</a> </li></ul></ul><li>Issues  </li><ul><li><a href="/p/support/wiki/IssueTrackerFAQ">Issue Tracker FAQ</a> </li><li><a href="/p/support/wiki/IssueTracker">Issue Tracker</a> </li><li>Issue Tracker Data API (<a href="/p/support/wiki/IssueTrackerAPITerms">Terms</a>) </li><ul><li><a href="/p/support/wiki/IssueTrackerAPI">Issue Tracker API</a> </li><li><a href="/p/support/wiki/IssueTrackerAPIJava">Issue Tracker API Java</a> </li><li><a href="/p/support/wiki/IssueTrackerAPIPython">Issue Tracker API Python</a> </li><li><a href="/p/support/wiki/IssueTrackerAPIReference">Issue Tracker API Reference</a> </li></ul></ul><li>Downloads </li><ul><li><a href="/p/support/wiki/DownloadsFAQ">Downloads FAQ</a> </li><li><a href="/p/support/wiki/ScriptedUploads">Scripted Uploads</a> </li></ul><li>Source </li><ul><li><a href="/p/support/wiki/CodeReviews">CodeReviews</a> </li><li><a href="/p/support/wiki/ChoosingAVersionControlSystem">Choosing a VCS</a> </li><li><a href="/p/support/wiki/PostCommitWebHooks">PostCommitWebHooks</a> </li><li>Mercurial </li><ul><li><a href="/p/support/wiki/MercurialFAQ">Mercurial FAQ</a> </li><li><a href="/p/support/wiki/ConvertingSvnToHg">SVN Conversion</a> </li></ul><li>Git </li><ul><li><a href="/p/support/wiki/GitFAQ">Git FAQ</a> </li><li><a href="/p/support/wiki/ConvertingSvnToGit">SVN Conversion</a> </li></ul><li>Subversion </li><ul><li><a href="/p/support/wiki/SubversionFAQ">Subversion FAQ</a> </li><li><a href="/p/support/wiki/ExportingToGit">Exporting to Git</a> </li><li><a href="/p/support/wiki/ImportingFromGit">Importing from Git</a> </li></ul></ul><li>Administer </li><ul><li><a href="/p/support/wiki/InboundEmail">Inbound Email</a> </li><li><a href="/p/support/wiki/UserGroups">User Groups</a> </li><li><a href="/p/support/wiki/Permissions">Permissions</a> </li></ul></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <img width="15" height="15" id="star_img"
+ src="http://www.gstatic.com/codesite/ph/images/star_off.gif"
+ style="cursor:pointer"
+ onclick="_CS_toggleStar(this,
+ {'scope': 'wiki',
+ 'user': '_CURRENT_USER',
+ 'item': 'support:DVCSAnalysis'
+ });"/>
+ 
+ <span style="font-size:120%;font-weight:bold">DVCSAnalysis</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Analysis of Git and Mercurial</i>
+ 
+ 
+ <br/>
+ 
+ <a class="label" style="padding-top: 2px"
+ href="/p/support/w/list?q=label:Mercurial"
+ title=""
+ >Mercurial</a>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Thu Feb  4 12:01:48 2010">
+ Feb 4, 2010</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/116323900511240181455/">jrobb...@gmail.com</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Analysis_of_Git_and_Mercurial"></a>Analysis of Git and Mercurial<a href="#Analysis_of_Git_and_Mercurial" class="section_anchor"></a></h1><p><i>Note: this analysis was done in summer 2008, when we first began scoping work for DVCS support in Google Code.</i> </p><h2><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h2><p>This document summarizes the initial research for adding distributed version control as an option for Google Code. Based on popularity, two distributed version control systems were considered: Git and Mercurial. This document describes the features of the two systems, and provides an overview of the work required to integrate them with Google Code. </p><h2><a name="Distributed_Version_Control"></a>Distributed Version Control<a href="#Distributed_Version_Control" class="section_anchor"></a></h2><p>In traditional version control systems, there is a central repository that maintains all history. Clients must interact with this repository to examine file history, look at other branches, or commit changes. Typically, clients have a local copy of the versions of files they are working on, but no local storage of previous versions or alternate branches. </p><p>Distributed Version Control Systems (DVCS) use a different structure. With DVCS, every user has their own local repository, complete with project history, branches, etc. Switching to an alternate branch, examining file history, and even committing changes are all local operations. Individual repositories can then exchange information via push and pull operations. A push transfers some local information to a remote repository, and a pull copies remote information to the local repository. Note that neither repository is necessarily &quot;authoritative&quot; with respect to the other. Both repositories may have some local history that the other does not have yet. One key feature of any DVCS system is to make it easy for repositories to unambiguously describe the history they have (and the history they are requesting). Both Git and Mercurial do this by using SHA1 hashes to identify data (files, trees, changesets, etc). </p><p>DVCS&#x27;s provide a lot of flexibility in developer workflows. They can be used in a manner similar to traditional VCS&#x27;s, with a central &quot;authoritative&quot; repository with which each developer synchronizes. For larger projects, it is also possible to have a hierarchy of server repositories, with maintainers for each repository accepting changes from downstream developers and then forwarding them upstream. DVCS&#x27;s also allow developers to share work with each other directly. For example, two developers working on a new feature could work on a common branch and share work with each other independent of an &quot;authoritative&quot; server. Once their work was stable, it could then be pushed to a public repository for a larger audience. </p><p>Because there is no central repository, the terms client and server don&#x27;t necessarily apply. When talking about two repositories, they are typically referred to as local and remote rather than client and server. However, in the context of implementing a DVCS for Google Code, the repository hosted at Google will be considered the server, and a user&#x27;s repository will be called the client. </p><h2><a name="Feature_Comparison"></a>Feature Comparison<a href="#Feature_Comparison" class="section_anchor"></a></h2><p>There is actually a great deal of similarity between Git and Mercurial. Instead of providing a long list of features that are equivalently supported in both system, this section attempts to highlight areas of significant difference between the systems. </p><h3><a name="Git_Advantages"></a>Git Advantages<a href="#Git_Advantages" class="section_anchor"></a></h3><ul><li>Client Storage Management. Both Mercurial and Git allow users to selectively pull branches from other repositories. This provides an upfront mechanism for narrowing the amount of history stored locally. In addition, Git allows previously pulled branches to be discarded. Git also allows old revision data to be pruned from the local repository (while still keeping recent revision data on those branches). With Mercurial, if a branch is in the local repository, then all of its revisions (back to the very initial commit) must also be present, and there is no way to prune branches other than by creating a new repository and selectively pulling branches into it. There has been some work addressing this in Mercurial, but nothing official yet. </li></ul><ul><li>Number of Parents. Git supports an unlimited number of parent revisions during a merge. Mercurial only allows two parents. In order to achieve an N-way merge in Mercurial, the user will have to perform N-1 two-way merges. Although in many cases this is also the preferred way to merge N parents regardless of DVCS, with Git the user can perform an N-way merge in one step if so desired. </li></ul><ul><li>Rebasing. Git has a rebase command which allows you to take a local branch and change its branch point to a more recent revision. For example, if one is working on a new feature for a product, a local branch may have been started from the 1.0 release. If while still working on the feature the main product line has been updated to 1.1, it may be desirable to pull in the 1.0-&gt;1.1 changes onto the local feature branch and treat it as a branch from 1.1 instead of 1.0. In most other systems, this is done by merging the 1.1 changes onto the branch. Merging is the right thing to do from an SCM perspective, where the focus is on &#x27;reproducibility of past states&#x27;. However, when the focus is &#x27;authoring a clean software revision history&#x27;, rebasing is sometimes a superior method. git-rebase allows you to make a previously non-linear history linear, keeping the history cleaner. To be fair, the same deltas are produced by simply merging every commit from the 1.0 version to the 1.1 version individually, and committing them individually. Rebasing is about safely doing this and then deleting the old 1.0 based versions so they don&#x27;t clutter the tree.  </li></ul><p><i>Note: Mercurial has added <a href="http://www.selenic.com/mercurial/wiki/index.cgi/RebaseProject" rel="nofollow">rebase support</a> since this analysis was conducted.</i> </p><h3><a name="Mercurial_Advantages"></a>Mercurial Advantages<a href="#Mercurial_Advantages" class="section_anchor"></a></h3><ul><li>Learning Curve. Git has a steeper learning curve than Mercurial due to a number of factors. Git has more commands and options, the volume of which can be intimidating to new users. Mercurial&#x27;s documentation tends to be more complete and easier for novices to read. Mercurial&#x27;s terminology and commands are also a closer to Subversion and CVS, making it familiar to people migrating from those systems. </li></ul><ul><li>Windows Support. Git has a strong Linux heritage, and the official way to run it under Windows is to use cygwin, which is far from ideal from the perspective of a Windows user. A MinGw based port of Git is gaining popularity, but Windows still remains a &quot;second class citizen&quot; in the world of Git. Based on limited testing, the MinGW port appeared to be completely functional, but a little sluggish. Operations that normally felt instantaneous on Linux or Mac OS X took several tenths of a second on Windows. Mercurial is Python based, and the official distribution runs cleanly under Windows (as well as Linux, Mac OS X, etc). </li></ul><ul><li>Maintenance. Git requires periodic maintenance of repositories (i.e. git-gc), Mercurial does not require such maintenance. Note, however, that Mercurial is also a lot less sophisticated with respect to managing the clients disk space (see Client Storage Management above). </li></ul><ul><li>History is Sacred. Git is extremely powerful, and will do almost anything you ask it to. Unfortunately, this also means that Git is perfectly happy to lose history. For example, git-push --force can result in revisions becoming lost in the remote repository. Mercurial&#x27;s repository is structured more as an ever-growing collection of immutable objects. Although in some cases (such as rebase), rewriting history can be an advantage, it can also be dangerous and lead to unexpected results. It should be noted, however, that a custom Git server could be written to disallow the loss of data, so this advantage is minimal. </li></ul><h3><a name="Other_Differences"></a>Other Differences<a href="#Other_Differences" class="section_anchor"></a></h3><ul><li>Rename/Copy Tracking. Git does not explicitly track file renaming or copying. Instead, commands such as git-log look for cases where an identical file appears earlier in the repository history and infers the rename or copy. Mercurial takes the more familiar approach of providing explicit rename and copy commands and storing this as part of the history of a file. Each approach has both advantages and disadvantages, and it isn&#x27;t clear that either approach is universally &quot;better&quot; than the other. </li></ul><ul><li>Architecture. Git was originally a large number of shell scripts and unix commands implemented in C. Over time, a common library that shared between commands has been developed, and many of the commands have been built into the main git executable. Mercurial is implemented mostly in Python (with a small amount of C), with an extension API that allows third parties to enhance Mercurial via custom Python modules. </li></ul><ul><li>Private History. In Git, the default mode of operation is for developers to have their own local (and private) tags/branches/revisions, and exercise a lot of control over what becomes public. With Mercurial the emphasis is the other way around - default push/pull behavior shares all information and extra steps need to be taken to share a subset. This is not listed as an advantage for either system, because both systems are generally capable of supporting either kind of operation. </li></ul><ul><li>Branch Namespace. In Git, each repository has its own branch namespace, and users set up a mapping between local branchnames and remote ones. With Mercurial, there is a single branch namespace shared by all repositories. </li></ul><h2><a name="Implementation"></a>Implementation<a href="#Implementation" class="section_anchor"></a></h2><h3><a name="Data_Storage"></a>Data Storage<a href="#Data_Storage" class="section_anchor"></a></h3><p>Both Git and Mercurial internally work with very similar data: revisions of files along with a small amount of meta information (parents, author, etc). They both have objects that represent a project-wide commit, and these are also versioned. They both have objects that associate a commit with a set of file versions. In Git, this is a tree object (a tree structure with tree objects for directories and references to file revisions as the leaves). In Mercurial, there is a manifest (a flat list mapping pathnames to file revision objects). Aside from the manifest/tree difference, both are very similar in terms of how objects are searched and walked. </p><p>Git uses a combination of storing objects directly in the file system (indexed by SHA1 hash) and packing multiple objects into larger compressed files, while Mercurial uses a revlog structure (basically a concatenation of revision diffs with periodic snapshots of a complete revision). In both cases, the native storage will not be used and the objects will be stored in <a href="http://labs.google.com/papers/bigtable-osdi06.pdf" rel="nofollow">Bigtable</a> instead. Due to the similarity of the basic Git and Mercurial data objects, the effort to solve such problems should be the same regardless of which DVCS is being used. </p><p>The only major difference for the data storage layer is the implementation language. If a significant amount of Git/Mercurial code is to be reused, then a Git implementation would be in C, and a Mercurial one would be in Python (or perhaps C++ with SWIG bindings). </p><h3><a name="Mercurial_Integration"></a>Mercurial Integration<a href="#Mercurial_Integration" class="section_anchor"></a></h3><p>Mercurial has very good support for HTTP based stateless pushing and pulling of remote repositories. A reasonable amount of effort has been made to reduce the number of round trips between client and server in determining what data needs to be exchanged, and once this determination has been made all of the relevant information is bundled into a single large transfer. This is a good match for Google&#x27;s infrastructure, so no modifications will be required on the client side. </p><h3><a name="Git_Integration"></a>Git Integration<a href="#Git_Integration" class="section_anchor"></a></h3><p>Git includes support for HTTP pulls (and <tt>WebDAV</tt> pushes), but the implementation assumes that the server knows nothing about Git. It is designed such that you can have a Apache simply serve the Git repository as static content. This method requires numerous synchronous round trip requests, and is unsuitable for use in Google Code <sup><b>(1)</b></sup>.  </p><p>Git also has a custom stateful protocol that supports much faster exchanges of information, but this is not a good match for Google infrastructure. Specifically, it is very desirable to use a stateless HTTP protocol since there is already significant infrastructure in place to make such transactions reliable and performant.  </p><p><i>Note: There has been some <a href="http://kerneltrap.org/mailarchive/git/2008/8/3/2795094/thread" rel="nofollow">discussion</a> about improving HTTP support in the Git community since this analysis was done.</i> </p><h2><a name="Summary"></a>Summary<a href="#Summary" class="section_anchor"></a></h2><p>In terms of implementation effort, Mercurial has a clear advantage due to its efficient HTTP transport protocol. </p><p>In terms of features, Git is more powerful, but this tends to be offset by it being more complicated to use.  </p><hr/><p><sup><b>1</b></sup> As a benchmark, Git and Mercurial repositories were seeded with approximately 1500 files totaling 35 M of data. The servers were running in Chicago and the clients in Mountain View (51 ms ping time). The operation of cloning the remote repository (similar to a initial checkout in traditional version control systems) averaged 8.1 seconds for Mercurial and 178 seconds for Git (22 times slower). A single file in the repository was then changed 50 times and the clients pulled the updates. In this case, Mercurial took 1.5 seconds and Git required 18 seconds (12 times slower). When the Git protocol was used instead of HTTP, Git&#x27;s performance was similar to Mercurial (8.7 seconds for cloning, 2.8 seconds for the pull). </p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/carl.j.meyer/">carl.j.meyer</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 12:07:10 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Very reasonable analysis.  Can I ask the obvious: why was Bazaar not even considered? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105947835054723986586/">cue...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 12:33:44 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>The benchmark sounds better for Mercurial in terms of HTTP transmission an performance, but the adventaje of using a DVCS is exactly the oposite: to do less commits to the &quot;central&quot; repository, and work offline most of the time, I think that it would be a good idea to post similar tests but on local operations (branching, reverting patchs, etc). </p><p>The big adventaje, and the one I think makes Mercurial a better choice, is the support in platforms as Windows using GUI tools like Tortoise Hg. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/101015351349521835932/">kmcfad...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 14:24:31 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>@carl, I don&#x27;t know about reasonable analysis, but I can&#x27;t argue with the result.   </p><p>Git is far easier than SVN or CVS, especially when creating repositories. How hard is push, pull, merge, branch, checkout, and clone?  I would also say that namespacing is a huge win for Git.  I&#x27;ve always disliked SVN defaulting to putting all projects into one repository.  It just seems dirty. </p><p>The issue with Windows support is valid.  I&#x27;m not happy with either Cygwin or Msysgit&#x27;s reliability. </p><p>Regardless, Hg is a perfectly acceptable choice and doesn&#x27;t really need justification.  Google is primarily a Java/Python company.  Hg is Python. Ergo, Hg is the proper DVCS for Google. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116379704699399917396/">jasonpau...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 15:54:58 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>This misses the point. None of the technical differences appear to be blockers, despite any particular wrinkles of google&#x27;s infrastructure. </p><p>The question that matters is: </p><p><tt>potential new customers * lifetime customer value &gt; implementation cost</tt> </p><p>Github&#x27;s explosive growth makes it clear it would likely show a return. I suspect hg and bzr would both as well. Darcs likely not. </p><p>It&#x27;s too easy for us technical folks to focus on a technical winner while forgetting that the technical differences only set costs in a larger proposition. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/115832765023995051916/">antonin....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 17:04:27 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>During last months I&#x27;ve moved all my projects from Google Code to GitHub<a href="/p/support/w/edit/GitHub">?</a>.  I&#x27;m quite happy GC picked Hg, because it will make Git community more concentrated on GitHub<a href="/p/support/w/edit/GitHub">?</a>. </p><p>Google is a Python company and it should obviously go with Hg. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111140297830441430065/">diogo...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 17:09:31 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>I am with carl.j.meyer. </p><p>It would be nice to have the same analysis with bazaar. </p><p>One could obviously say that would not be feasible to talk about every DVSC out there, but bazaar/mercurial/git are the nowadays show makers. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/114648031866532752413/">casey.mc...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 17:31:27 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Unfortunately there was no mention of Git index and &#x27;add -i&#x27;? Does Hg have a comparable feature? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/118182257218511373171/">ngri...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 17:57:04 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>We can guess Google didn&#x27;t consider Bazaar because a project hosting service already exists with Bazaar support: it&#x27;s Launchpad. Personally, I&#x27;m really happy with Mercurial, and it&#x27;s a good news that Google Code now supports a DVCS. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111140297830441430065/">diogo...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 18:03:59 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Using this line of thinking, hosting a svn hosting service would also not be necessary as we have Sourceforge - which, by the way, now supports cvs/subversion/bazaar/git/mercurial. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116555700534165995493/">maxosm...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 18:36:15 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>yet for some reason we have sourceforge, github, and bitbucket </p><p>why cant we all share code in a central repository... hahaha! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/107730751594325026529/">ches.mar...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 19:28:55 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>@casey.mcginty - It&#x27;s a bit off topic for this article, but Hg does not have a &#x27;staging area&#x27; concept analogous to Git&#x27;s index. To start tracking a new file, you need to <tt>hg add</tt> it. If you modify a tracked file, it will be part of the next commit if you aren&#x27;t explicit about omitting it. It&#x27;s an easy transition from SVN in this way, <i>but</i> hg is generally a little more flexible when you want it to be. </p><p>For functionality like <tt>git add --interactive</tt>, see the Darcs-inspired <a href="http://www.selenic.com/mercurial/wiki/index.cgi/RecordExtension" rel="nofollow">Record extension</a> for hg, which is included in the official distribution, but needs to be enabled in config. I do wish you could split hunks with it like <tt>git add -i</tt> can, but it&#x27;s still pretty nice. Of course there are also graphical tools that allow you to select changes to commit. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116374684262875049275/">sbron...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 20:36:52 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>The fourth Mercurial advantage is completely wrong. </p><p>&quot;Unfortunately, this also means that Git is perfectly happy to lose history.&quot; </p><p>No, git goes to great lengths to not lose history.  Check out the reflog.  Even when you intentionally rewrite some revision history (very rare but incredibly useful when you need it), all the old history remains in the repo and you can always switch back to it. </p><p>&quot;Mercurial&#x27;s repository is structured more as an ever-growing collection of immutable objects.&quot; </p><p>So is Git&#x27;s.  Their repository formats are amazingly similar. </p><p>&quot;git-push --force can result in revisions becoming lost in the remote repository&quot;. </p><p>Er, that&#x27;s why you need to force it?  As with just about everything else in life, if you&#x27;re forcing something, you&#x27;re probably doing it wrong. </p><p>&quot;a custom Git server could be written to disallow the loss of data, so this advantage is minimal&quot; </p><p>Dude, removing the --force option from git push should be a three-line patch.  Go for it.  While you&#x27;re at it, you might want to remove the --force command from rm also; it can potentially result in irrevocable data loss too. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/rwparris2/">rwparris2</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 24 20:58:55 2009">Apr 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>I&#x27;m also curious why bazaar wasn&#x27;t considered.  It has one great feature that AFAIK neither Hg nor Git has -- you can limit users to a specific directory. </p><p>Obviously that isn&#x27;t useful for everyone, but I&#x27;ve found it very convenient for a number of projects I&#x27;ve been involved in. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104138996454432672332/">Lenz.Gri...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 00:26:42 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Insightful analysis. Too bad that Bazaar was not included, it would have certainly rated high in the given criterias. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109477032772881861017/">memor...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 01:39:25 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>A couple of corrections to the discussion of git from a longtime user (on a largish project with multiple users using a central repos, which I administer): </p><p>Re. &#x27;git push&#x27; and deletion of data from the remote repos: there is no need for a &#x27;custom server&#x27;; git has a built-in repository option to disable this (even with &#x27;push --force&#x27;): set config property receive.denyNonFastforwards to false on the repos being pushed to; this is actually set by default on bare repositories (the usual setup for central shared ones). There is also a hook script in the git distribution to disallow other kinds of deletes by pushing: the &#x27;update&#x27; hook; you can set hooks.allowdeletebranch, hooks.allowdeletetag, etc. </p><p>Re. maintenance / git-gc: it is not usually necessary to run this manually on a local repository just for performance: various commands will do it automatically for you as needed. You only need to run &#x27;gc --prune&#x27; if you want to delete data that is no longer reachable, e.g. old versions of rebased or deleted branches. This ties in with the &#x27;losing data&#x27; point: it will never do a &#x27;prune&#x27; unless you explicitly tell it to. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/118389976258030408744/">jeng...@inai.de</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 08:31:04 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>In relpy to comment by sbronson: </p><p>&gt;Dude, removing the --force option from git push should be a three-line patch. </p><p>Even so, one could still force an update (by deleting and repushing the branch, though that&#x27;s not quite atomic). Also, sourceforge&#x27;s git repos are, by default, configured to reject --forced pushes, so that is also a way to harden history loss. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/115609618223925128756/">sitar...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 09:44:12 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>in reply to jeng...@medozas.de&#x27;s reply to sbronson </p><p>don&#x27;t want to allow deleting a branch?  Just say &quot;git config receive.denyDeletes true&quot;.  As simple as receive.denyNonFastForwards. </p><p>the original article&#x27;s statement that &quot;custom git server could be written...&quot; made it seem like you&#x27;d at least have to <strong>compile</strong> something :-)  Which is very far from the truth </p><p>Sitaram </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/101789879276082425961/">dyq...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 10:00:09 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>What are the main criterias for using either DVCS for google code? </p><p>The article listed some adv/disadv of each DVCS, and some of their implementation differences, but are the challenges for using either for google code? i.e., Are you trying to find which is more useful to the user? (popularity vs. feature set vs. speed) or  Easier to implement on google&#x27;s end? (support vs algorithm speed vs install challenges) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/108104100963752075222/">maskl...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 10:18:58 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<blockquote>I think that it would be a good idea to post similar tests but on local operations 
+</blockquote><p>There isn&#x27;t that big a difference there, and an order of magnitude difference on the initial clone is painful. </p><blockquote>Does Hg have a comparable feature?  
+</blockquote><p>Of course it does. Do you think the git guys invented interactive commits? </p><blockquote>Hg does not have a &#x27;staging area&#x27; concept analogous to Git&#x27;s index. 
+</blockquote><p>No it doesn&#x27;t. </p><blockquote>I&#x27;m also curious why bazaar wasn&#x27;t considered. 
+</blockquote><p>It&#x27;s slow, it has less marketshare than either git or mercurial and it doesn&#x27;t have any advantage on either? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/115106563169083118943/">rupert.t...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 13:23:16 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>is mercurial queue similar to a git staging area? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/115760161147507726167/">phr...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Apr 25 14:56:53 2009">Apr 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Useless and <strong></strong>EXTREMELY<strong></strong> old report. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/101377063020971314139/">m.gebe...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Apr 26 07:07:11 2009">Apr 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>HGs static-http is as slow as git&#x27;s cloning from http because git has a dump webserver on the other end. HG uses hg over a cgi to pipe their custom transport. </p><p>BUT... have you ever used hg for a longer timer? </p><p>We had e.g the problem, that older mercurials can&#x27;t clone a new repo (over http) as the internal serilization changes (addition of branches). So old mercurials just exit with a backtrace, <i>but</i> this incompatibility was not documented nor fixed. </p><p>HG has changed their ondisk layout on every release which requries a local reclone (with --pull) of all local repositories to update. </p><p>The biggest problem with mercurial is their unuseable branch support and their unwillingness to fix long standing design errors.   <blockquote>- One repo per branch brings a quite high administration overhead not to mention the ressource wastage. 
+</blockquote>  <blockquote>- Branch lookup in mercurial is pain slow per design, they tried to cure it with a branchcache, but a cache is not the same as O(1) lookup as in git. 
+</blockquote></p><blockquote>- Tag handling is horrible. Mercurial save their tags in the file .hgtags in the repository root. 
+</blockquote><p>To locate a tag mercurial checks out <i>all</i> heads of all branches, to get their .hgtags file and merges them internally to just print the tags. <blockquote>Another problem is, that it&#x27;s impossible to cleanly remove a wrong tag from a repository. 
+</blockquote>  <blockquote>- There are not only branches, but every branch can have multiple heads (unnamed branches) which is a pain to mess with. 
+</blockquote>  <blockquote>- Automatic creation of heads seems as a quite safe feature in the beginning. But new users tend to lose changes in unnamed heads and for advanced users the destinction of heads and branches is just annoying. 
+</blockquote></p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104233402839318371088/">sna...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Apr 26 13:08:34 2009">Apr 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Whenever people start talking about how mercurial is easier to use on Windows than git, autocrlf conversion comes to my mind. I admit that last time I checked it was maybe half a year ago, but compared to git&#x27;s it was almost non-existant (seriously, checking for nul character is enough to tell if file is binary or not?!), and buggy, as those conversions didn&#x27;t always fire and I&#x27;d be looking at a diff as if my entire file has changed (and things like that). In git I didn&#x27;t experience such problems, and git has excellent .gitattributes file, where I can specify which files are what, exactly. </p><p>Again, a half or a whole year is a long time for things to have changed, but somehow I doubt crlf situation is any better these days... </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/rocallahan@gmail.com/">rocallahan@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Apr 26 17:13:40 2009">Apr 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>&gt; HG has changed their ondisk layout on every release which requries a local &gt; reclone (with --pull) of all local repositories to update. </p><p>Not true, this certainly did not happen with the upgrade from 1.0 to 1.1. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/101377063020971314139/">m.gebe...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Apr 26 17:45:43 2009">Apr 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>my mercurial experience is a good match to this DVCSAnalysis as it is equally old (we switched to git about a year ago) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113026112281068709060/">smen...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 27 01:18:17 2009">Apr 27, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>I got the sense that the reviewer&#x27;s biased towards Mercurial.  I have no preference either way -- I&#x27;ve used both, but don&#x27;t have enough experience to judge.  I certainly hope Google will support both, however. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/117325581536154103083/">stephen...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 27 06:20:14 2009">Apr 27, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Surely you are going to support Git eventually though, aren&#x27;t you? I mean, there are far more projects using it than Mercurial. In fact, lack of Git support is the main reason that I stopped using Google Code...  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100392035126391105950/">peter_ko...@hotmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 27 14:06:29 2009">Apr 27, 2009</span>
+ <div>
+<div class="commentcontent">
+<p><i>- One repo per branch brings a quite high administration overhead not to mention the ressource wastage.</i> </p><p>not sure why it&#x27;s hard to administrate multiple folders. clones are implemented as hard links, so no resource is wasted (and that is what it makes cloning fast). </p><p><i>- Branch lookup in mercurial is pain slow per design, they tried to cure it with a branchcache, but a cache is not the same as O(1) lookup as in git.</i>  </p><p>the mercurial way of doing things is one branch per repo plus using bookmarks/hgtasks/localbranches extensions for local branches. if you want to work on long lived branches and you can not or do not want to clone on the remote server, just share your long lived branches with others directly using hg serve. </p><p><i>- Tag handling is horrible. Mercurial save their tags in the file .hgtags in the repository root. To locate a tag mercurial checks out all heads of all branches, to get their .hgtags file and merges them internally to just print the tags.</i> </p><p>it is fast enough, I have never experienced any issues with tags&#x27; performance. </p><p><i>-    Another problem is, that it&#x27;s impossible to cleanly remove a wrong tag from a repository.</i> </p><p>That&#x27;s because in mercurial history is sacred. I am not sure whether it&#x27;s objectively a wart though. </p><p><i>- There are not only branches, but every branch can have multiple heads (unnamed branches) which is a pain to mess with.</i> </p><p>that&#x27;s annoying, I agree with that, however, most people do not use branches or multiple heads for long lived branches, so in reality this issue does not really come up. </p><p>  </p><p><i>- Automatic creation of heads seems as a quite safe feature in the beginning. But new users tend to lose changes in unnamed heads and for advanced users the destinction of heads and branches is just annoying.</i> </p><p>please see above. </p><p>I guess the  main point is that mercurial is not git and vica versa. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100392035126391105950/">peter_ko...@hotmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 27 14:09:29 2009">Apr 27, 2009</span>
+ <div>
+<div class="commentcontent">
+<p><i>HGs static-http is as slow as git&#x27;s cloning from http because git has a dump webserver on the other end. HG uses hg over a cgi to pipe their custom transport.</i> </p><p>the recommended way of serving hg over http is via mod_wsgi </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100392035126391105950/">peter_ko...@hotmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 27 14:17:31 2009">Apr 27, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>(Also, in many situations even &quot;hg serve&quot; is overkill, you can just share your work with others using mq, which is a patch queue. Worth noting that patches can be checked into the repository) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/antiso/">antiso</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 27 23:10:15 2009">Apr 27, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>There is some disadvantage of Mercurial. It requires whole repository to be cloned.  There is an activity for implementing <a href="http://www.selenic.com/mercurial/wiki/index.cgi/PartialClone" rel="nofollow">PartialClone</a> but it&#x27;s still not official. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100811479816115526877/">snmp1612...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Apr 28 02:04:00 2009">Apr 28, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>one to educate the masses and the writer of this analysis: with the ping utility you don&#x27;t measure &quot;ping time&quot; but Round Trip Time (RTT). </p><p><a href="http://en.wikipedia.org/wiki/Ping" rel="nofollow">http://en.wikipedia.org/wiki/Ping</a> <a href="http://en.wikipedia.org/wiki/Round-trip_delay_time" rel="nofollow">http://en.wikipedia.org/wiki/Round-trip_delay_time</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/trejkaz/">trejkaz</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Apr 28 16:57:42 2009">Apr 28, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;We must support either Git or Mercurial&quot; is actually a <a href="http://en.wikipedia.org/wiki/False_dilemma" rel="nofollow">false dilemma</a>, as it would be possible to support both.  This is proven by Google Code already supporting subversion, which shows that they did not plan to support only one SCM system in the first place. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116483476578768620079/">kia...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri May  1 20:48:26 2009">May 1, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Just a note, I&#x27;ve translated this article into Traditional Chinese: <a href="http://blog.twpug.org/416" rel="nofollow">http://blog.twpug.org/416</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/115858381570392496652/">garen.pa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat May  2 02:54:36 2009">May 2, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>SVN has a SCC/VSIP provider. For those of us who use Visual Studio, and correspondingly don&#x27;t use the crummy command-prompt in Windows, it&#x27;d be really nice if someone were to implement one for Mercurial. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/108542306993475035178/">yanc...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri May  8 03:04:00 2009">May 8, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>There&#x27;s a complete comparison for bzr/hg/git </p><p><a href="http://www.python.org/dev/peps/pep-0374/" rel="nofollow">http://www.python.org/dev/peps/pep-0374/</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/101584398959324340100/">jna...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun May 10 12:04:15 2009">May 10, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>What was the badwidth of link used in clone/pull benchmark? DVCS might save bandwidth by sending only difference (only update) at the cost of extra exchange about what client have (versus what server have). </p><p>How were benchmarking done: are the times given in footnote wall time, or user+sys time? Are there more detailed results of this benchmark? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/yarkot1/">yarkot1</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue May 26 20:00:52 2009">May 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>I am happy to see this analysis, and decision.  I am not surprised that it pushes a few &quot;dvcs wars&quot; buttons (everyone has a favorite; eveyrone has their uses; all things change - heck, I remember when RCS was hot!;-) </p><p>I&#x27;m glad to see the migration, and see it incrementally (some have point out &quot;why not all of them?&quot; - sure, just not all at once, plese ;-). </p><p>As for private use, Google Android developers use (nay, develop!) git - so don&#x27;t think that Google is somehow &quot;favoring&quot; one over another. The point here is, for public deployment and use, what is a better bet. </p><p>Even though the use cases are different, you might find the discussion on the same choices being made in the Python repositories at <a href="http://www.python.org/dev/peps/pep-0374/" rel="nofollow">http://www.python.org/dev/peps/pep-0374/</a> and the decision for the Python repository to move to hg at pep-0385. </p><p>I for one use all 3.   For open source projects, I am curious when hg will be available on code.google.com, as starting people on &quot;remote sprinting&quot; will be useful, and ANY DVCS will help.  NOTE (for those moving or mirroring from SVN to hg) SVN and bzr version empty<a href="/p/support/w/edit/empty">?</a> directories; hg and git (and cvs) do not. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102481683602882093915/">chrisinc...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Jun  2 18:37:31 2009">Jun 2, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>We live in a world of convention over configuration. Everybody knows that <strong>insert favourite dvcs here</strong> can be configured to any of the things that attracted Google to Mercurial. But at the end of the day Mercurials standard conventions were closest to what Google was looking for. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109878537450187766113/">vietor....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Jul 12 18:23:05 2009">Jul 12, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>I hope googlecode support git.  Why?  &quot;git on windows&quot; is no problem, cygwin/msysgit+tortoisegit. More? easy,popular,powerful. googlecode+github is bad idea. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100881551099991079424/">werner.p...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Jul 24 23:20:22 2009">Jul 24, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Actually I have been using git for quite a while and I agree here with googles choice for other reasons. </p><p>Some things I git are outright dangerous and even users who have been using git for some time might fall over it. </p><p>Here is an example, everyone and even the semi official git book on the net says that reverting like in SVN should be done with git reset --hard, while this is somewhat true but the git reset operation alters history which is a bigger problem once you have pushed your changes (and the next user pulling your data in or you yourself having to fight with the revlog if you have done an accidental reset will agree)! </p><p>Better checkout, but then if you checkout the wrong way (by forgetting a file or directory directive) you will automatically get a floating head and users suddenly will start to hack into the floating head. Git simply makes assumptions without telling you and the only way to find out is by rechecking out the master or finding the line in the man page describing it! </p><p>As for now I dont see any reasons to switch from git, but for a joined team development effort I would think twice of introducing it. First the cygwin port is simply not up to par to the other versions neither is msysgit which also just is a cygwin like layer which does not help the stability nor the performance (I cannot understand why everyone raves about msys which is as native as cygwin). </p><p>Secondly git provides a lot of flexibility but all this comes with a price. Now the average development team has several good experienced people a higher number of mediocre ones and a small number of bad ones, how do you deal with the dangerous operations git provides without any limitation to their access or warnings? You have to resolve that on project level while hg pushes you onto tracks. </p><p>As I said I am used to git, and will not change since hg does not really provide anthing worth switching over to me(and face it git-svn while having bugs is a huge plus especially if you are stuck with svn servers and want to sync them into your local repo), but I dont think it is that easy and painless to use like some videos on the net seem to indicate ;-) What you really have to to is to limit yourself to behavior which definitely does not alter anything in the history, so to say the subset of commands and behaviors hg enforces and you have to enforce that in your project, but on the other hand then you could use hg which does the enforcement for you. On the other hand the lack of lightweight branches in the core of hg is annoying as hell, sure there is a plugin, but this feature needs to be in the core :-( </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109878537450187766113/">vietor....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Jul 25 01:18:42 2009">Jul 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>To werner.punz: </p><a name=""></a><p>everyone and even the semi official git book on the net says that reverting like in SVN should be done with git reset --hard, while this is somewhat true but the git reset operation alters history which is a bigger problem once you have pushed your changes (and the next user pulling your data in or you yourself having to fight with the revlog if you have done an accidental reset will agree)! </p><p>why don&#x27;t you know &#x27;git revert&#x27;? why don&#x27;t you create develop branch and working in it? </p><p>git is not god! wrong way to used it, and say &quot;bad tool&quot;. :-) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109878537450187766113/">vietor....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Jul 25 01:22:09 2009">Jul 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>To werner.punz: </p><p>Better checkout, but then if you checkout the wrong way (by forgetting a file or directory directive) you will automatically get a floating head and users suddenly will start to hack into the floating head. Git simply makes assumptions without telling you and the only way to find out is by rechecking out the master or finding the line in the man page describing it! </p><p>&#x27;wrong way&#x27; :-) create develop branch and working in it. if you wrong, merge the master. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109878537450187766113/">vietor....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Jul 25 01:34:06 2009">Jul 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>To werner.punz:  </p><p>.... </p><p>1. Thinking that, &#x27;why linux kernel used it&#x27;. 2. To design a workflow for team. 3. If you true, the git is a bad tool, not used it. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100881551099991079424/">werner.p...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Jul 25 04:59:34 2009">Jul 25, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>&gt; why don&#x27;t you know &#x27;git revert&#x27;? why don&#x27;t you create develop branch and working in it? </p><p>Git revert is not the same as svn revert, git revert kills the last checkin or the checkin you give it as parameter. If you do that you definitely do not get a revert but instead you have killed your last commit as well! </p><p>This is one of the biggest mistakes people make coming from svn assuming git revert is the same as svn revert while it is not! </p><p>The main problem I have with the documentation is that git reset hard should resemble svn revert while it clearly does not and introduces a dangerous operation. Git checkout -f HEAD . clearly is the equivalent and does not fiddle around with the history, this is funnily also the same how HG handles reverts in a save manner. There was a time when reset --hard HEAD was the recommended way until people started to shoot themselves into the foot with it, literally. </p><p>&gt;1. Thinking that, &#x27;why linux kernel used it&#x27;. 2. To design a workflow for team. 3. If you true, the git is a bad tool, not used it. </p><p>That is the main problem with git, git is very centered around the workflow of the linux people and basically evolved from a mess of low level tools into something which can be used (with pitfalls) while mercurial tries to enforce certain rails which prevent desaster. It still is a mess with a recommended way, and that is the reason why I currently would not use it within a team centric environment and why I have less problem with mercurial. On the other hand I can see its power and I have learned it so I have no problem to use it myself and prefer it over HG for personal use. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100881551099991079424/">werner.p...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Jul 26 06:37:04 2009">Jul 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Actually user interface the problems are known, to the git people, no need to contact the mailinglist. I btw. found another git porcellain project which cleans up most if not all of the problems <a href="http://www.gnome.org/~newren/eg/" rel="nofollow">http://www.gnome.org/~newren/eg/</a> so far from what I have seen I like, it is how the commands from git should be. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113482072668574683727/">sbel...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Sep 11 21:06:05 2009">Sep 11, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>I just started to work for a company and I have been asked to make a recommendation about the version control system to use. The company consists in a currently small team of developers, ~16; and uses Microsoft Visual Studio 2008 to develop.  </p><p>The company currently has a small SVN repository, which will need to be migrated to a new central repository, and local repositories.  </p><p>At first I thought of going with Git, since I had heard good stuff about it. But, as I read more and more on the web, Git seems to be complicated and dangerous to use, so I am leaning more and more towards Mercurial.  </p><p>The analysis of Google and the comments of &#x27;werner.punz&#x27; confirm this.  </p><p>Now, if you who is reading this and is well learned about Git and Mercurial, has anything useful to say, it is welcomed, and would be appreciated. </p><p>Thanks a lot! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/106917733435005800362/">lmalvert...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Feb 16 05:52:05 2010">Feb 16, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Is Google&#x27;s implementation of Mercurial backed with BigTable<a href="/p/support/w/edit/BigTable">?</a> available somewhere? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/110814750770494386619/">suss...@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Mar 12 07:57:18 2010">Mar 12, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>No, because Bigtable isn&#x27;t public.  So our hg implementation on bigtable would be useless if released.  :-) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/118304143217532674207/">sangohan...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Mar 29 00:14:12 2010">Mar 29, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>perhaps if the &#x27;BigTable<a href="/p/support/w/edit/BigTable">?</a>&#x27; backend implementation can be pluggable, so that Hadoop tables can be hacked in as well, that would be great :) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/100581899135018182067/">sinasa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Jun  9 10:01:33 2010">Jun 9, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Great article but i also don&#x27;t know why Bazaar hasn&#x27;t bin included. I&#x27;m researching about all three for quite some time now. And Bazaar is the best in many areas. Guess we should wait authors would say? Here is my article <a href="http://sina.salek.ws/content/comparing-popular-version-control-systems" rel="nofollow">http://sina.salek.ws/content/comparing-popular-version-control-systems</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/ipatrol6010/">ipatrol6010</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Sep 27 18:42:16 2010">Sep 27, 2010</span>
+ <div>
+<div class="commentcontent">
+<p><i>No, because Bigtable isn&#x27;t public. So our hg implementation on bigtable would be useless if released. :-) </i> </p><p>Well, that sounds like something to change! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103100131821772328838/">niyazipe...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Nov  3 02:30:54 2010">Nov 3, 2010</span>
+ <div>
+<div class="commentcontent">
+<p><a href="http://labs.google.com/papers/bigtable-osdi06.pdf" rel="nofollow">http://labs.google.com/papers/bigtable-osdi06.pdf</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103909193116973988531/">ramk8...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Nov 29 22:33:47 2010">Nov 29, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>If the repository is located in my machine and similarly for every user how secure is my code? It is accessible by anyone isn&#x27;t it an disadvantage? Is it possible to protect it? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109286027645426654287/">aleksej....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Dec  9 16:49:06 2010">Dec 9, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Bazaar hasn&#x27;t bin included... Look at the time article was written - summer 2008. Bazaar was released only a few months ago. He did not have as many features, in order to compete with well-known Mercurial and Git. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116398052136722116740/">alex.ble...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Jul 15 12:45:41 2011">Jul 15, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Note that Google Code now supports Git @alblue <a href="http://www.infoq.com/news/2011/07/google-git" rel="nofollow">http://www.infoq.com/news/2011/07/google-git</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/110805585319616280762/">vinnie.f...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Mar 13 22:47:31 2012">Mar 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>The point is moot now. Looking back, while this dialog of the merits of Git is long on technological details, its short on the human factor. Google Code is losing market share, and Github is climbing FAST! There is a wasteland of Google Code projects that have been abandoned for Github. I should know - I have several of them. </p><p>Forget about stateful HTTP or whatever. Fact is, Github has a large user base and features that make it easy to collaborate either with friends, or people you don&#x27;t know. Google don&#x27;t. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <div id="commentform">
+ <form action="../w/detail.do" method="post">
+ <table>
+ <tr><td class="vt">
+ <input type="hidden" name="pagename" value="DVCSAnalysis" >
+ <input type="hidden" name="token" value="6IM57t_R6f_N5etdek3MJX1MmyU:1355778657094" >
+ <div class="graytext" style="float: right;">
+ Hint: You can use <a href="http://code.google.com/p/support/wiki/WikiSyntax">Wiki Syntax.</a>
+ </div>
+ <div>Enter a comment:</div>
+ <textarea name="content" rows="6" cols="100"></textarea><br><br>
+ <input type="submit" name="submit" value="Submit" >
+ </td>
+ </table>
+ </form>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="DVCSAnalysis" >
+ <input type="hidden" name="token" value="6IM57t_R6f_N5etdek3MJX1MmyU:1355778657094" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/7707091683928850954/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/7707091683928850954/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/7707091683928850954/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/7707091683928850954/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+

@@ -62,8 +62,7 @@ BuildSettings = rt.recordtype('BuildSettings',
     'benchmark_source_dir')
 
 RunSettings = rt.recordtype('RunSettings',
-    'benchmark_bin_dir '
-    'handler_stdout handler_stderr')
+    'benchmark_bin_dir')
 
 
 class NonAbsolutePathError(RuntimeError):
@@ -262,13 +261,36 @@ def calibrate(command):
 
 
 def convert_input_to_settings(input):
+    """Process user input (command line arguments) and return settings."""
+    
     program_name, benchmark_root_dir = \
         os.path.split(os.path.realpath(Input[benchmark_source_dir]))
     framework_root_dir, _ = os.path.split(os.path.realpath(__file__))
+
     settings = Settings(program_name=program_name,
-                        benchmark_root_dir=benchmark_root_dir,
-                        framework_root_dir=framework_root_dir)
+        benchmark_root_dir=benchmark_root_dir,
+        framework_root_dir=framework_root_dir)
+
+    build_settings = BuildSettings(compiler=Input[compiler],
+        base_opt=Input[base_opt],
+        benchmark_source_dir=Input[benchmark_source_dir])
+
+    benchmark_bin_dir = os.path.join(framework_root_dir, '/data/bin/')
+    run_settings = RunSettings(benchmark_bin_dir=benchmark_bin_dir)
+    
     return settings, build_settings, run_settings
+
+
+def handle_ref_timed_stdout(stdout):
+    """Process the stdout."""
+
+    pass
+
+
+def handle_ref_timed_stderr(stderr):
+    """Process the stderr."""
+
+    pass
 
 
 def perform_experiment(iterations=None):
@@ -286,6 +308,7 @@ def perform_experiment(iterations=None):
 
 def print_experiments(db):
     """Print all the experiments."""
+
     experiments = db.view('experiment/all')
     for e in experiments.all():
         print 'Experiment:'
@@ -296,6 +319,7 @@ def print_experiments(db):
 
 def setup_database(settings):
     """Setup the database."""
+
     server = ck.Server()
     db = server.get_or_create_db('experiment')
     Experiment.set_db(db)
@@ -307,6 +331,7 @@ def setup_database(settings):
 
 def create_local_settings(settings):
     """Create local settings from global."""
+
     local_settings = dict()
     local_settings['program_source'] = '{program_name}.c'.format(
         **{'program_name': settings.program_name})
@@ -316,6 +341,7 @@ def create_local_settings(settings):
 
 def prepare_command_build_reference(settings):
     """Prepare command for building of reference version of benchmark."""
+
     command = tw.dedent("""
         {compiler} -O0 -I utilities -I {benchmark_source_dir} 
         utilities/polybench.c {benchmark_source_dir}/{program_source} 
@@ -327,6 +353,7 @@ def prepare_command_build_reference(settings):
 
 def prepare_command_build_timed(settings):
     """Prepare command for building of timed version of benchmark."""
+
     command = tw.dedent("""
         {compiler} {base_opt} -I utilities 
         -I {benchmark_source_dir} utilities/polybench.c 
@@ -338,6 +365,7 @@ def prepare_command_build_timed(settings):
 
 def prepare_command_run_reference(settings):
     """Prepare command for running the reference version of program."""
+
     command = tw.dedent("""
         ./bin/{program_name}_ref 1>./output/{program_name}_ref.out 
         2>./output/{program_name}_ref.err""").translate(None, '\n').format(
@@ -347,6 +375,7 @@ def prepare_command_run_reference(settings):
 
 def prepare_command_run_timed(settings):
     """Prepare command for running the timed version of program."""
+
     command = tw.dedent("""
         ./bin/{program_name}_time 1>./output/{program_name}_time.out 
         2>./output/{program_name}_time.err""").translate(None, '\n').format(
@@ -356,6 +385,7 @@ def prepare_command_run_timed(settings):
 
 def build_reference(settings):
     """Build the reference version of the benchmark."""
+
     local_settings = create_local_settings(settings)
     command = prepare_command_build_reference(local_settings)
     bin_dir = os.path.join(local_settings['framework_root_dir'], '/data/')
@@ -368,6 +398,7 @@ def build_reference(settings):
 
 def build_timed(settings):
     """Build the timed version of the benchmark."""
+
     local_settings = create_local_settings(settings)
     command = prepare_command_build_timed(local_settings)
     bin_dir = os.path.join(local_settings['framework_root_dir'], '/data/')
@@ -380,6 +411,7 @@ def build_timed(settings):
 
 def run_reference(settings):
     """Run the reference version of program."""
+
     command = prepare_command_run_reference(settings)
     print command
     proc = sp.Popen(command.split(), stdout=sp.PIPE, stderr=sp.PIPE)
@@ -395,6 +427,7 @@ def run_reference(settings):
 
 def run_timed(settings):
     """Run the timed version of program."""
+    
     command = prepare_command_run_timed(settings)
     print command
     proc = sp.Popen(command.split(), stdout=sp.PIPE, stderr=sp.PIPE)
