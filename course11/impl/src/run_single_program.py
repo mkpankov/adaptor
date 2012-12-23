@@ -22,18 +22,33 @@ import numpy as np
 
 
 Settings = rt.recordtype('Settings', 
-    'program_name benchmark_root_dir framework_root_dir')
+    'program_name benchmark_root_dir framework_root_dir '
+    'paths_stack build_settings run_settings benchmark_bin_dir')
 
 BuildSettings = rt.recordtype('BuildSettings',
     'compiler base_opt optimization_flags other_flags '
-    'benchmark_source_dir')
+    'benchmark_source_dir program_source')
 
 RunSettings = rt.recordtype('RunSettings',
-    'benchmark_bin_dir')
+    '')
 
 
 Input = cl.namedtuple('Input',
     'benchmark_source_dir compiler base_opt')
+
+
+class PrintableStructure():
+    """A class to allow easy pretty printing of namedtuple and recordtype."""
+    def __str__(self):
+        c = self.__class__
+        print c
+        s = tw.dedent("""
+        {name}:
+        """).format(name=c.__name__)
+        for k, v in self._asdict().items():
+            s += '\t{field:20}:\t{value}\n'.format(field=k, value=v)
+
+        return s
 
 
 CalibrationResultBase = cl.namedtuple('CalibrationResult',
@@ -56,16 +71,6 @@ class ValidationResult(PrintableStructure, ValidationResultBase):
 # However, they only save the information relevant to experiment
 # reproduction and meaningful to analytics.
 
-class ExperimentDocument(ck.Document):
-    """CouchDB document, describing the experiment."""
-    stdout = ck.StringProperty()
-    stderr = ck.StringProperty()
-    datetime = ck.DateTimeProperty()
-    calibration_result = ck.SchemaProperty()
-    validation_result = ck.SchemaProperty()
-    settings = ck.SchemaProperty()
-
-
 class CalibrationResultDocument(ck.Document):
     """CouchDB document, describing the result of multiple measurements."""
     total_time = ck.FloatProperty()
@@ -73,7 +78,7 @@ class CalibrationResultDocument(ck.Document):
     dispersion = ck.FloatProperty()
     variance = ck.FloatProperty()
     runs_number = ck.IntegerProperty()
-    times_list = ck.SchemaListProperty()
+    times_list = ck.ListProperty()
 
 
 class ValidationResultDocument(ck.Document):
@@ -84,22 +89,15 @@ class ValidationResultDocument(ck.Document):
     relative_error = ck.FloatProperty()
 
 
-class SettingsDocument(ck.Document):
-    """CouchDB document, describing the global settings of framework."""
-    program = SchemaProperty()
-    build_settings = SchemaProperty()
-    run_settings = SchemaProperty()
-
-
 class BuildSettingsDocument(ck.Document):
     """
     CouchDB document, describing the settings with which 
     the program was built.
     """
-    compiler = SchemaProperty()
-    base_opt = StringProperty()
-    optimization_flags = StringProperty()
-    other_flags = StringProperty()
+    compiler = ck.StringProperty()
+    base_opt = ck.StringProperty()
+    optimization_flags = ck.StringProperty()
+    other_flags = ck.StringProperty()
 
 
 class RunSettingsDocument(ck.Document):
@@ -109,18 +107,22 @@ class RunSettingsDocument(ck.Document):
     """
     pass
 
-class PrintableStructure():
-    """A class to allow easy pretty printing of namedtuple and recordtype."""
-    def __str__(self):
-        c = self.__class__
-        print c
-        s = tw.dedent("""
-        {name}:
-        """).format(name=c.__name__)
-        for k, v in self._asdict().items():
-            s += '\t{field:20}:\t{value}\n'.format(field=k, value=v)
 
-        return s
+class SettingsDocument(ck.Document):
+    """CouchDB document, describing the global settings of framework."""
+    program = ck.StringProperty()
+    build_settings = ck.SchemaProperty(BuildSettingsDocument)
+    run_settings = ck.SchemaProperty(RunSettingsDocument)
+
+
+class ExperimentDocument(ck.Document):
+    """CouchDB document, describing the experiment."""
+    stdout = ck.StringProperty()
+    stderr = ck.StringProperty()
+    datetime = ck.DateTimeProperty()
+    calibration_result = ck.SchemaProperty(CalibrationResultDocument)
+    validation_result = ck.SchemaProperty(ValidationResultDocument)
+    settings = ck.SchemaProperty(SettingsDocument)
 
 
 class NonAbsolutePathError(RuntimeError):
@@ -145,22 +147,86 @@ def main():
     """Invoke all necessary builds and experiments."""
 
     settings = Settings(program_name='atax', 
-        framework_root_dir=os.path.join(os.path.dirname(__file__), '..')
+        framework_root_dir=os.path.realpath(
+            os.path.join(os.path.dirname(__file__), '..')),
         benchmark_root_dir=None,
-        benchmark_bin_dir=None)
+        benchmark_bin_dir=None,
+        paths_stack=[],
+        build_settings=None,
+        run_settings=None)
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, '/data/sources/polybench-c-3.2/'))
+        settings.framework_root_dir, '/data/sources/'))
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, '/data/bin/'))
-    settings.paths_stack = []
+    print settings
+
+    define_build_settings(settings, '/polybench-c-3.2/')
+    b = settings.build_settings
+    b.compiler = 'gcc'
+    b.base_opt = '-O2'
+    print settings.build_settings
+
+    define_run_settings(settings)
+    print settings.run_settings
+
+    raw_input()
+
     nest_path_absolute(settings, settings.framework_root_dir)
 
     server, db = setup_database(settings)
 
-    perform_experiment()
+    vs = validate_default(settings)
+    for v in vs:
+        store_validation_document(v)
+    # perform_experiment()
 
     unnest_path(settings)
     assert len(settings.paths_stack) == 0
+
+    # print_experiments(db)
+    # print calibrate('echo')
+    # print calibrate('../data/bin/do_nothing')
+    # print calibrate('../data/bin/usleep_1')
+    # print calibrate('../data/bin/usleep_10')
+    # print calibrate('../data/bin/usleep_100')
+    # print calibrate('../data/bin/usleep_1000')
+    # print calibrate('../data/bin/usleep_10000')
+    # print calibrate('../data/bin/usleep_100000')
+    # print calibrate('../data/bin/usleep_1000000')
+    # validate()
+    # result_minimal = calibrate('../data/bin/do_nothing')
+    # print result_minimal
+    # result = calibrate('../data/bin/atax_time')
+    # print result
+
+
+def define_build_settings(s, sources_path):
+    s.build_settings = BuildSettings(
+        benchmark_source_dir=os.path.join(
+            s.benchmark_root_dir, '/sources/' + sources_path),
+        program_source="{0}.c".format(s.program_name),
+        compiler=None,
+        base_opt=None,
+        optimization_flags=None,
+        other_flags=None)
+
+
+def define_run_settings(s):
+    pass
+
+
+def store_validation_document(v):
+    v_doc = make_validation_document(v)
+    v_doc.save()
+
+
+def make_validation_document(v):
+    v_doc = ValidationResultDocument(
+        real_time=v.real_time,
+        measured_time=v.measured_time,
+        error=v.error,
+        relative_error=v.relative_error)
+    return v_doc
 
 
 def push_path(settings, path):
@@ -257,10 +323,10 @@ def validate(settings):
     nest_path_from_root(settings, '/data/bin/')
 
     real_time_us = 0
-    overhead_time = validate_single('do_nothing', real_time_us, 0)
+    overhead_time = validate_command('do_nothing', real_time_us, 0)
 
     real_time_us = 500000
-    validate_single('atax_base', real_time_us, overhead_time)
+    validate_command('atax_base', real_time_us, overhead_time)
     unnest_path(settings)
 
 
@@ -269,21 +335,27 @@ def validate_default(settings):
     Perform validation on set of time-measurement programs and report errors.
     """
     nest_path_from_root(settings, '/data/bin/')
-    
+    vs = []
+
     for i in range(7):
         real_time_us = 10**i
         s = 'usleep_{0}'.format(real_time_us)
-        validate_single(s, real_time_us / 10**6, overhead_time)
+        v = validate_command(s, real_time_us / 10**6, overhead_time)
+        vs.append(v)
     unnest_path(settings)
+    return vs
 
 
-def validate_single(s, real_time, overhead_time):
-    result = calibrate(s)
+def validate_command(command, real_time, overhead_time):
+    """
+    Validate calibration of single command.
+    """
+    result = calibrate(command)
     measured_time = result.time - overhead_time
     error = abs(measured_time - real_time)
     relative_error = error / measured_time
-    print ValidationResult(real_time, measured_time, error, relative_error)
-    return real_time
+    v = ValidationResult(real_time, measured_time, error, relative_error)
+    return v
 
 
 def make_running_function(command):
@@ -381,21 +453,17 @@ def setup_database(settings):
 
     server = ck.Server()
     db = server.get_or_create_db('experiment')
-    Experiment.set_db(db)
-    path_db = settings.framework_root_dir + \
-              '/couch'
+
+    ExperimentDocument.set_db(db)
+    SettingsDocument.set_db(db)
+    BuildSettingsDocument.set_db(db)
+    RunSettingsDocument.set_db(db)
+    CalibrationResultDocument.set_db(db)
+    ValidationResultDocument.set_db(db)
+
+    path_db = os.path.join(settings.framework_root_dir, '/couch/')
     push(path_db, db)
     return server, db
-
-
-def create_local_settings(settings):
-    """Create local settings from global."""
-
-    local_settings = dict()
-    local_settings['program_source'] = '{program_name}.c'.format(
-        **{'program_name': settings.program_name})
-    local_settings.update(settings._asdict())
-    return local_settings
 
 
 def prepare_command_build_reference(settings):
@@ -445,8 +513,7 @@ def prepare_command_run_timed(settings):
 def build_reference(settings):
     """Build the reference version of the benchmark."""
 
-    local_settings = create_local_settings(settings)
-    command = prepare_command_build_reference(local_settings)
+    command = prepare_command_build_reference(settings)
     bin_dir = os.path.join(local_settings['framework_root_dir'], '/data/')
     os.chdir(bin_dir)
     print os.path.realpath(os.path.curdir)
@@ -458,8 +525,7 @@ def build_reference(settings):
 def build_timed(settings):
     """Build the timed version of the benchmark."""
 
-    local_settings = create_local_settings(settings)
-    command = prepare_command_build_timed(local_settings)
+    command = prepare_command_build_timed(settings)
     bin_dir = os.path.join(local_settings['framework_root_dir'], '/data/')
     os.chdir(bin_dir)
     print os.path.realpath(os.path.curdir)
