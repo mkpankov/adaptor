@@ -187,8 +187,6 @@ def main():
     define_run_settings(settings)
     print settings.run_settings
 
-    raw_input()
-
     nest_path_absolute(context, settings.framework_root_dir)
 
     server, db = setup_database(settings)
@@ -280,7 +278,7 @@ def ensure_path(context):
     Get the correct current path from stack in context and 
     change current directory to there.
     """
-    os.path.chdir(get_path(context))
+    os.chdir(get_path(context))
 
 
 def nest_path_absolute(context, path):
