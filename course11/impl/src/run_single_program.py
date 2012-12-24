@@ -23,7 +23,7 @@ import numpy as np
 import couchdbkit as ck
 from couchdbkit.designer import push
 
-import pdb
+import ipdb
 
 
 Context = rt.recordtype('Context',
@@ -168,6 +168,7 @@ def main():
         settings.framework_root_dir, '/data/bin/'))
     print settings
 
+    ipdb.set_trace()
     define_build_settings(settings, '/polybench-c-3.2/')
     b = settings.build_settings
     b.compiler = 'gcc'
