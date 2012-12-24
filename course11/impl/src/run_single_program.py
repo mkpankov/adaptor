@@ -21,9 +21,12 @@ import timeit
 import numpy as np
 
 
+Context = rt.recordtype('Context',
+    'paths_stack')
+
 Settings = rt.recordtype('Settings', 
     'program_name benchmark_root_dir framework_root_dir '
-    'paths_stack build_settings run_settings benchmark_bin_dir')
+    'build_settings run_settings benchmark_bin_dir')
 
 BuildSettings = rt.recordtype('BuildSettings',
     'compiler base_opt optimization_flags other_flags '
@@ -151,9 +154,9 @@ def main():
             os.path.join(os.path.dirname(__file__), '..')),
         benchmark_root_dir=None,
         benchmark_bin_dir=None,
-        paths_stack=[],
         build_settings=None,
         run_settings=None)
+    context = Context(paths_stack=[])
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, '/data/sources/'))
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
@@ -171,7 +174,7 @@ def main():
 
     raw_input()
 
-    nest_path_absolute(settings, settings.framework_root_dir)
+    nest_path_absolute(context, settings.framework_root_dir)
 
     server, db = setup_database(settings)
 
@@ -180,7 +183,7 @@ def main():
         store_validation_document(v)
     # perform_experiment()
 
-    unnest_path(settings)
+    unnest_path(context)
     assert len(settings.paths_stack) == 0
 
     # print_experiments(db)
@@ -229,45 +232,45 @@ def make_validation_document(v):
     return v_doc
 
 
-def push_path(settings, path):
+def push_path(context, path):
     """
-    Push path to stack in settings.
+    Push path to stack in context.
 
     Path must be absolute.
     """
     if os.path.isabs(path):
-        settings.paths_stack.append(path)
+        context.paths_stack.append(path)
     else:
         raise NonAbsolutePathError
 
 
-def pop_path(settings):
+def pop_path(context):
     """
-    Pop path from stack in settings.
+    Pop path from stack in context.
 
     Path is absolute.
     """
-    return settings.paths_stack.pop()
+    return context.paths_stack.pop()
 
 
-def get_path(settings):
+def get_path(context):
     """
-    Return the path on top of stack in settings.
+    Return the path on top of stack in context.
     """
-    return settings.paths_stack[-1]
+    return context.paths_stack[-1]
 
 
-def ensure_path(settings):
+def ensure_path(context):
     """
-    Get the correct current path from stack in settings and 
+    Get the correct current path from stack in context and 
     change current directory to there.
     """
-    os.path.chdir(get_path(settings))
+    os.path.chdir(get_path(context))
 
 
-def nest_path_absolute(settings, path):
+def nest_path_absolute(context, path):
     """
-    Receive path, push the real path of it to stack in settings and 
+    Receive path, push the real path of it to stack in context and 
     change current directory to there.
     """
     try:
@@ -275,44 +278,44 @@ def nest_path_absolute(settings, path):
     except:
         raise NoSuchNestedPathError
 
-    push_path(settings, path)
-    ensure_path(settings)
+    push_path(context, path)
+    ensure_path(context)
 
 
-def nest_path_from_root(settings, path):
+def nest_path_from_root(context, path):
     """
     Receive path, relative to the root of framework, 
-    push it to stack in settings and change current directory to there.
+    push it to stack in context and change current directory to there.
     """
-    new_path = os.path.join(settings.framework_root_dir, path)
-    nest_path_absolute(settings, new_path)
+    new_path = os.path.join(context.framework_root_dir, path)
+    nest_path_absolute(context, new_path)
 
 
-def nest_path_from_benchmark_root(settings, path):
+def nest_path_from_benchmark_root(context, path):
     """
     Receive path, relative to the root of benchmark directory, 
-    push it to stack in settings and change current directory to there.
+    push it to stack in context and change current directory to there.
     """
-    new_path = os.path.join(settings.benchmark_root_dir, path)
-    nest_path_absolute(settings, new_path)
+    new_path = os.path.join(context.benchmark_root_dir, path)
+    nest_path_absolute(context, new_path)
 
 
-def nest_path(settings, path):
+def nest_path(context, path):
     """
-    Receive relative path, push the real path of it to stack in settings and 
+    Receive relative path, push the real path of it to stack in context and 
     change current directory to there.
     """
-    new_path = os.path.join(get_path(settings), path)
-    nest_path_absolute(settings, new_path)
+    new_path = os.path.join(get_path(context), path)
+    nest_path_absolute(context, new_path)
 
 
-def unnest_path(settings):
+def unnest_path(context):
     """
-    Pop the path from stack in settings and
+    Pop the path from stack in context and
     change current directory to current top path of stack.
     """
-    pop_path(settings)
-    ensure_path(settings)
+    pop_path(context)
+    ensure_path(context)
 
 
 def validate(settings):
