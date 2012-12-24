@@ -40,7 +40,7 @@ class PrintableStructure():
 
 
 Context = rt.recordtype('Context',
-    'paths_stack')
+    'paths_stack settings')
 
 SettingsBase = rt.recordtype('Settings', 
     'program_name benchmark_root_dir framework_root_dir '
@@ -171,7 +171,8 @@ def main():
         benchmark_bin_dir=None,
         build_settings=None,
         run_settings=None)
-    context = Context(paths_stack=[])
+    context = Context(paths_stack=[],
+        settings=settings)
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, 'data/'))
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
@@ -189,15 +190,15 @@ def main():
 
     nest_path_absolute(context, settings.framework_root_dir)
 
-    server, db = setup_database(settings)
+    server, db = setup_database(settings, context)
 
-    vs = validate_default(settings)
+    vs = validate_default(context)
     for v in vs:
         store_validation_document(v)
     # perform_experiment()
 
     unnest_path(context)
-    assert len(settings.paths_stack) == 0
+    assert len(context.paths_stack) == 0
 
     # print_experiments(db)
     # print calibrate('echo')
@@ -238,10 +239,10 @@ def store_validation_document(v):
 
 def make_validation_document(v):
     v_doc = ValidationResultDocument(
-        real_time=v.real_time,
-        measured_time=v.measured_time,
-        error=v.error,
-        relative_error=v.relative_error)
+        real_time=float(v.real_time),
+        measured_time=float(v.measured_time),
+        error=float(v.error),
+        relative_error=float(v.relative_error))
     return v_doc
 
 
@@ -300,7 +301,7 @@ def nest_path_from_root(context, path):
     Receive path, relative to the root of framework, 
     push it to stack in context and change current directory to there.
     """
-    new_path = os.path.join(context.framework_root_dir, path)
+    new_path = os.path.join(context.settings.framework_root_dir, path)
     nest_path_absolute(context, new_path)
 
 
@@ -309,7 +310,7 @@ def nest_path_from_benchmark_root(context, path):
     Receive path, relative to the root of benchmark directory, 
     push it to stack in context and change current directory to there.
     """
-    new_path = os.path.join(context.benchmark_root_dir, path)
+    new_path = os.path.join(context.settings.benchmark_root_dir, path)
     nest_path_absolute(context, new_path)
 
 
@@ -331,42 +332,44 @@ def unnest_path(context):
     ensure_path(context)
 
 
-def validate(settings):
+def validate(context):
     """
     Perform a calibrated measurement of execution time and 
     calculate the error.
     """
-    nest_path_from_root(settings, 'data/bin/')
+    nest_path_from_root(context, 'data/bin/')
 
     real_time_us = 0
     overhead_time = validate_command('do_nothing', real_time_us, 0)
 
     real_time_us = 500000
     validate_command('atax_base', real_time_us, overhead_time)
-    unnest_path(settings)
+    unnest_path(context)
 
 
-def validate_default(settings):
+def validate_default(context):
     """
     Perform validation on set of time-measurement programs and report errors.
     """
-    nest_path_from_root(settings, 'data/bin/')
+    nest_path_from_root(context, 'data/bin/')
     vs = []
+    v = validate_command(context, 'do_nothing', 0, 0)
+    overhead_time = v.real_time
 
     for i in range(7):
         real_time_us = 10**i
         s = 'usleep_{0}'.format(real_time_us)
-        v = validate_command(s, real_time_us / 10**6, overhead_time)
+        v = validate_command(context, s, real_time_us / 10**6, overhead_time)
         vs.append(v)
-    unnest_path(settings)
+    unnest_path(context)
     return vs
 
 
-def validate_command(command, real_time, overhead_time):
+def validate_command(context, command, real_time, overhead_time):
     """
     Validate calibration of single command.
     """
-    result = calibrate(command)
+    result = calibrate(context, command)
     measured_time = result.time - overhead_time
     error = abs(measured_time - real_time)
     relative_error = error / measured_time
@@ -384,7 +387,7 @@ def make_running_function(command):
     return run
 
 
-def calibrate(command):
+def calibrate(context, command):
     """Calibrate execution of command until measurement is accurate enough."""
     n = 0
     t = 0
@@ -394,15 +397,15 @@ def calibrate(command):
         sys.stderr.write('.')
         n += 1
         number = 10**(n)
+        command = os.path.join(get_path(context), command)
         result = timeit.repeat(stmt='run()', 
-                               setup=definition.format(command=command), 
+                               setup=definition.format(
+                                   command=command), 
                                number=number,
                                repeat=3)
-        # t = np.average(np.array(result))
         t = min(result)
         d = np.std(np.array(result))
         d_rel = d / t
-        # print t, t / number, d, d_rel, n, result
     sys.stderr.write('\n')
     return CalibrationResult(t, t / number, d, d_rel, number, result)
 
@@ -464,11 +467,11 @@ def print_experiments(db):
         print 'Date & time:', e['value']['datetime']
 
 
-def setup_database(settings):
+def setup_database(settings, context):
     """Setup the database."""
 
     server = ck.Server()
-    db = server.get_or_create_db('experiment')
+    db = server.get_or_create_db('adaptor')
 
     ExperimentDocument.set_db(db)
     SettingsDocument.set_db(db)
@@ -477,8 +480,12 @@ def setup_database(settings):
     CalibrationResultDocument.set_db(db)
     ValidationResultDocument.set_db(db)
 
-    path_db = os.path.join(settings.framework_root_dir, 'couch/')
-    push(path_db, db)
+    nest_path_from_root(context, 'couch/adaptor')
+    # We are stupid so we suppose the CouchApp is managed
+    # to be stable version and we just re-publish it on launch.
+    sp.check_call('couchapp push . http://localhost:5984/adaptor'.split())
+    unnest_path(context)
+
     return server, db
 
 
