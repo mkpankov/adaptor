@@ -14,6 +14,7 @@ import os
 import subprocess as sp
 import textwrap as tw
 import timeit
+import datetime as dt
 
 import recordtype as rt
 import collections as cl
@@ -135,8 +136,6 @@ class SettingsDocument(ck.Document):
 
 class ExperimentDocument(ck.Document):
     """CouchDB document, describing the experiment."""
-    stdout = ck.StringProperty()
-    stderr = ck.StringProperty()
     datetime = ck.DateTimeProperty()
     calibration_result = ck.SchemaProperty(CalibrationResultDocument)
     validation_result = ck.SchemaProperty(ValidationResultDocument)
@@ -174,12 +173,14 @@ def main():
     context = Context(paths_stack=[],
         settings=settings)
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/'))
+        settings.framework_root_dir, 'data/sources/polybench-c-3.2/'))
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, 'data/bin/'))
     print settings
 
-    define_build_settings(settings, 'polybench-c-3.2/')
+    define_build_settings(settings, 
+        'linear-algebra/kernels/atax/',
+        '-I utilities -I linear-algebra/kernels/atax utilities/polybench.c')
     b = settings.build_settings
     b.compiler = 'gcc'
     b.base_opt = '-O2'
@@ -192,24 +193,26 @@ def main():
 
     server, db = setup_database(settings, context)
 
-    cs, vs = validate_default(context)
-    for c, v in zip(cs, vs):
-        create_experiment(c, v)
-        store_experiment(e)
+    perform_experiment(context)
+
+    # cs, vs = validate_default(context)
+    # for c, v in zip(cs, vs):
+    #     create_experiment(c, v)
+    #     store_experiment(e)
 
     unnest_path(context)
     assert len(context.paths_stack) == 0
 
 
-def define_build_settings(s, sources_path):
+def define_build_settings(s, sources_path, other_flags):
     s.build_settings = BuildSettings(
         benchmark_source_dir=os.path.join(
-            s.benchmark_root_dir, 'sources/', sources_path),
+            s.benchmark_root_dir, '', sources_path),
         program_source="{0}.c".format(s.program_name),
         compiler=None,
         base_opt=None,
         optimization_flags=None,
-        other_flags=None)
+        other_flags=other_flags)
 
 
 def define_run_settings(s):
@@ -313,7 +316,11 @@ def unnest_path(context):
     change current directory to current top path of stack.
     """
     pop_path(context)
-    ensure_path(context)
+    try:
+        ensure_path(context)
+    except:
+        # Fails when stack is empty after popping
+        pass
 
 
 def validate(context):
@@ -414,10 +421,35 @@ def perform_experiment(context):
     """Perform experiment."""
 
     build(context)
-    run(context)
+    c = run(context)
 
-    experiment = Experiment(
-        settings=context.settings,
+    c_d = CalibrationResultDocument(
+        total_time=c.total_time,
+        time=c.time,
+        dispersion=c.dispersion,
+        variance=c.variance,
+        runs_number=c.runs_number,
+        times_list=c.times_list)
+
+    b = context.settings.build_settings
+
+    b_d = BuildSettingsDocument(
+        compiler=b.compiler,
+        base_opt=b.base_opt,
+        optimization_flags=b.optimization_flags,
+        other_flags=b.other_flags)
+
+    r_d = RunSettingsDocument()
+
+    s_d = SettingsDocument(
+        program=context.settings.program_name,
+        build_settings=b_d,
+        run_settings=r_d)
+
+    experiment = ExperimentDocument(
+        settings=s_d,
+        calibration_result=c_d,
+        validation_result=None,
         datetime=dt.datetime.utcnow())
     experiment.save()
 
@@ -458,31 +490,39 @@ def setup_database(settings, context):
 def prepare_command_build(settings):
     """Prepare command for building of generic program."""
 
+    full_path_source = os.path.join(
+        "{build_settings.benchmark_source_dir}".format(**settings._asdict()),
+        "{build_settings.program_source}".format(**settings._asdict()))
+    full_path_binary = os.path.join(
+        "{benchmark_bin_dir}".format(**settings._asdict()),
+        "{program_name}".format(**settings._asdict()))
     command = tw.dedent("""
-        {compiler} {base_opt} 
-        {benchmark_source_dir}/{program_source} 
-        -o ./bin/{program_name}""").translate(None, '\n').format(
-        **settings._asdict())
+        {build_settings.compiler} {build_settings.base_opt} 
+        {build_settings.other_flags} {0} 
+        -o {1}""").translate(None, '\n').format(
+        full_path_source, full_path_binary, **settings._asdict())
     return command
 
 
-def build(settings):
+def build(context):
     """Build the generic version of the program."""
 
-    command = prepare_command_build(settings)
-    bin_dir = os.path.join(local_settings['framework_root_dir'], 'data/')
-    os.chdir(bin_dir)
+    command = prepare_command_build(context.settings)
+    nest_path_from_benchmark_root(context, '')
     print os.path.realpath(os.path.curdir)
     print command
+    nest_path_from_benchmark_root(context, '')
     sp.call('mkdir bin'.split())
+    unnest_path(context)
     sp.check_call(command.split())
+    unnest_path(context)
 
 
 def prepare_command_run(settings):
     """Prepare command for running the program."""
 
     command = tw.dedent("""
-        ./bin/{program_name}""").translate(None, '\n').format(
+        ./{program_name}""").translate(None, '\n').format(
         **settings._asdict())
     return command
 
@@ -490,8 +530,11 @@ def prepare_command_run(settings):
 def run(context):
     """Run the generic version of program."""
     
-    command = prepare_command_run(settings)
-    return calibrate(context, command)
+    command = prepare_command_run(context.settings)
+    nest_path_from_root(context, 'data/bin')
+    r = calibrate(context, command)
+    unnest_path(context)
+    return r
 
 
 if __name__ == '__main__':
