@@ -26,30 +26,10 @@ from couchdbkit.designer import push
 import ipdb
 
 
-Context = rt.recordtype('Context',
-    'paths_stack')
-
-Settings = rt.recordtype('Settings', 
-    'program_name benchmark_root_dir framework_root_dir '
-    'build_settings run_settings benchmark_bin_dir')
-
-BuildSettings = rt.recordtype('BuildSettings',
-    'compiler base_opt optimization_flags other_flags '
-    'benchmark_source_dir program_source')
-
-RunSettings = rt.recordtype('RunSettings',
-    '')
-
-
-Input = cl.namedtuple('Input',
-    'benchmark_source_dir compiler base_opt')
-
-
 class PrintableStructure():
     """A class to allow easy pretty printing of namedtuple and recordtype."""
     def __str__(self):
         c = self.__class__
-        print c
         s = tw.dedent("""
         {name}:
         """).format(name=c.__name__)
@@ -57,6 +37,36 @@ class PrintableStructure():
             s += '\t{field:20}:\t{value}\n'.format(field=k, value=v)
 
         return s
+
+
+Context = rt.recordtype('Context',
+    'paths_stack')
+
+SettingsBase = rt.recordtype('Settings', 
+    'program_name benchmark_root_dir framework_root_dir '
+    'build_settings run_settings benchmark_bin_dir')
+
+class Settings(PrintableStructure, SettingsBase):
+    pass
+
+
+BuildSettingsBase = rt.recordtype('BuildSettings',
+    'compiler base_opt optimization_flags other_flags '
+    'benchmark_source_dir program_source')
+
+class BuildSettings(PrintableStructure, BuildSettingsBase):
+    pass
+
+
+RunSettingsBase = rt.recordtype('RunSettings',
+    '')
+
+class RunSettings(PrintableStructure, RunSettingsBase):
+    pass
+
+
+Input = cl.namedtuple('Input',
+    'benchmark_source_dir compiler base_opt')
 
 
 CalibrationResultBase = cl.namedtuple('CalibrationResult',
@@ -163,13 +173,12 @@ def main():
         run_settings=None)
     context = Context(paths_stack=[])
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, '/data/sources/'))
+        settings.framework_root_dir, 'data/'))
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, '/data/bin/'))
+        settings.framework_root_dir, 'data/bin/'))
     print settings
 
-    ipdb.set_trace()
-    define_build_settings(settings, '/polybench-c-3.2/')
+    define_build_settings(settings, 'polybench-c-3.2/')
     b = settings.build_settings
     b.compiler = 'gcc'
     b.base_opt = '-O2'
@@ -212,7 +221,7 @@ def main():
 def define_build_settings(s, sources_path):
     s.build_settings = BuildSettings(
         benchmark_source_dir=os.path.join(
-            s.benchmark_root_dir, '/sources/', sources_path),
+            s.benchmark_root_dir, 'sources/', sources_path),
         program_source="{0}.c".format(s.program_name),
         compiler=None,
         base_opt=None,
@@ -221,7 +230,7 @@ def define_build_settings(s, sources_path):
 
 
 def define_run_settings(s):
-    pass
+    s.run_settings = RunSettings()
 
 
 def store_validation_document(v):
@@ -329,7 +338,7 @@ def validate(settings):
     Perform a calibrated measurement of execution time and 
     calculate the error.
     """
-    nest_path_from_root(settings, '/data/bin/')
+    nest_path_from_root(settings, 'data/bin/')
 
     real_time_us = 0
     overhead_time = validate_command('do_nothing', real_time_us, 0)
@@ -343,7 +352,7 @@ def validate_default(settings):
     """
     Perform validation on set of time-measurement programs and report errors.
     """
-    nest_path_from_root(settings, '/data/bin/')
+    nest_path_from_root(settings, 'data/bin/')
     vs = []
 
     for i in range(7):
@@ -415,7 +424,7 @@ def convert_input_to_settings(input):
         base_opt=Input[base_opt],
         benchmark_source_dir=Input[benchmark_source_dir])
 
-    benchmark_bin_dir = os.path.join(framework_root_dir, '/data/bin/')
+    benchmark_bin_dir = os.path.join(framework_root_dir, 'data/bin/')
     run_settings = RunSettings(benchmark_bin_dir=benchmark_bin_dir)
     
     return settings, build_settings, run_settings
@@ -470,7 +479,7 @@ def setup_database(settings):
     CalibrationResultDocument.set_db(db)
     ValidationResultDocument.set_db(db)
 
-    path_db = os.path.join(settings.framework_root_dir, '/couch/')
+    path_db = os.path.join(settings.framework_root_dir, 'couch/')
     push(path_db, db)
     return server, db
 
@@ -523,7 +532,7 @@ def build_reference(settings):
     """Build the reference version of the benchmark."""
 
     command = prepare_command_build_reference(settings)
-    bin_dir = os.path.join(local_settings['framework_root_dir'], '/data/')
+    bin_dir = os.path.join(local_settings['framework_root_dir'], 'data/')
     os.chdir(bin_dir)
     print os.path.realpath(os.path.curdir)
     print command
@@ -535,7 +544,7 @@ def build_timed(settings):
     """Build the timed version of the benchmark."""
 
     command = prepare_command_build_timed(settings)
-    bin_dir = os.path.join(local_settings['framework_root_dir'], '/data/')
+    bin_dir = os.path.join(local_settings['framework_root_dir'], 'data/')
     os.chdir(bin_dir)
     print os.path.realpath(os.path.curdir)
     print command
