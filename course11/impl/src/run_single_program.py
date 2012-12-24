@@ -192,29 +192,13 @@ def main():
 
     server, db = setup_database(settings, context)
 
-    vs = validate_default(context)
-    for v in vs:
-        store_validation_document(v)
-    # perform_experiment()
+    cs, vs = validate_default(context)
+    for c, v in zip(cs, vs):
+        create_experiment(c, v)
+        store_experiment(e)
 
     unnest_path(context)
     assert len(context.paths_stack) == 0
-
-    # print_experiments(db)
-    # print calibrate('echo')
-    # print calibrate('../data/bin/do_nothing')
-    # print calibrate('../data/bin/usleep_1')
-    # print calibrate('../data/bin/usleep_10')
-    # print calibrate('../data/bin/usleep_100')
-    # print calibrate('../data/bin/usleep_1000')
-    # print calibrate('../data/bin/usleep_10000')
-    # print calibrate('../data/bin/usleep_100000')
-    # print calibrate('../data/bin/usleep_1000000')
-    # validate()
-    # result_minimal = calibrate('../data/bin/do_nothing')
-    # print result_minimal
-    # result = calibrate('../data/bin/atax_time')
-    # print result
 
 
 def define_build_settings(s, sources_path):
@@ -353,38 +337,33 @@ def validate_default(context):
     """
     nest_path_from_root(context, 'data/bin/')
     vs = []
-    v = validate_command(context, 'do_nothing', 0, 0)
+    cs = []
+    c, v = validate_command(context, 'do_nothing', 0, 0)
+    cs.append(c)
+    vs.append(v)
     overhead_time = v.real_time
 
+    assert False
     for i in range(7):
         real_time_us = 10**i
         s = 'usleep_{0}'.format(real_time_us)
-        v = validate_command(context, s, real_time_us / 10**6, overhead_time)
+        c, v = validate_command(context, s, real_time_us / 10**6, overhead_time)
+        cs.append(c)
         vs.append(v)
     unnest_path(context)
-    return vs
+    return cs, vs
 
 
 def validate_command(context, command, real_time, overhead_time):
     """
     Validate calibration of single command.
     """
-    result = calibrate(context, command)
-    measured_time = result.time - overhead_time
+    c = calibrate(context, command)
+    measured_time = c.time - overhead_time
     error = abs(measured_time - real_time)
     relative_error = error / measured_time
     v = ValidationResult(real_time, measured_time, error, relative_error)
-    return v
-
-
-def make_running_function(command):
-    """Make a function which runs the specified command."""
-    def run():
-        p = sp.Popen(command.split(), 
-                     stdout=sp.PIPE, 
-                     stderr=sp.PIPE)
-        return p.communicate()
-    return run
+    return c, v
 
 
 def calibrate(context, command):
@@ -431,29 +410,16 @@ def convert_input_to_settings(input):
     return settings, build_settings, run_settings
 
 
-def handle_ref_timed_stdout(stdout):
-    """Process the stdout."""
+def perform_experiment(context):
+    """Perform experiment."""
 
-    pass
+    build(context)
+    run(context)
 
-
-def handle_ref_timed_stderr(stderr):
-    """Process the stderr."""
-
-    pass
-
-
-def perform_experiment(iterations=None):
-    """Perform experiment with given number of iterations."""
-    if iterations is None:
-        iterations = 1
-
-    build_reference(settings)
-    build_timed(settings)
-
-    for i in range(iterations):
-        run_reference(settings)
-        run_timed(settings)
+    experiment = Experiment(
+        settings=context.settings,
+        datetime=dt.datetime.utcnow())
+    experiment.save()
 
 
 def print_experiments(db):
@@ -489,54 +455,21 @@ def setup_database(settings, context):
     return server, db
 
 
-def prepare_command_build_reference(settings):
-    """Prepare command for building of reference version of benchmark."""
+def prepare_command_build(settings):
+    """Prepare command for building of generic program."""
 
     command = tw.dedent("""
-        {compiler} -O0 -I utilities -I {benchmark_source_dir} 
-        utilities/polybench.c {benchmark_source_dir}/{program_source} 
-        -DPOLYBENCH_DUMP_ARRAYS 
-        -o ./bin/{program_name}_ref""").translate(None, '\n').format(
-        **settings)
-    return command
-
-
-def prepare_command_build_timed(settings):
-    """Prepare command for building of timed version of benchmark."""
-
-    command = tw.dedent("""
-        {compiler} {base_opt} -I utilities 
-        -I {benchmark_source_dir} utilities/polybench.c 
-        {benchmark_source_dir}/{program_source} -DPOLYBENCH_TIME 
-        -o ./bin/{program_name}_time""").translate(None, '\n').format(
-        **settings)
-    return command
-
-
-def prepare_command_run_reference(settings):
-    """Prepare command for running the reference version of program."""
-
-    command = tw.dedent("""
-        ./bin/{program_name}_ref 1>./output/{program_name}_ref.out 
-        2>./output/{program_name}_ref.err""").translate(None, '\n').format(
+        {compiler} {base_opt} 
+        {benchmark_source_dir}/{program_source} 
+        -o ./bin/{program_name}""").translate(None, '\n').format(
         **settings._asdict())
     return command
 
 
-def prepare_command_run_timed(settings):
-    """Prepare command for running the timed version of program."""
+def build(settings):
+    """Build the generic version of the program."""
 
-    command = tw.dedent("""
-        ./bin/{program_name}_time 1>./output/{program_name}_time.out 
-        2>./output/{program_name}_time.err""").translate(None, '\n').format(
-        **settings._asdict())
-    return command
-
-
-def build_reference(settings):
-    """Build the reference version of the benchmark."""
-
-    command = prepare_command_build_reference(settings)
+    command = prepare_command_build(settings)
     bin_dir = os.path.join(local_settings['framework_root_dir'], 'data/')
     os.chdir(bin_dir)
     print os.path.realpath(os.path.curdir)
@@ -545,48 +478,20 @@ def build_reference(settings):
     sp.check_call(command.split())
 
 
-def build_timed(settings):
-    """Build the timed version of the benchmark."""
+def prepare_command_run(settings):
+    """Prepare command for running the program."""
 
-    command = prepare_command_build_timed(settings)
-    bin_dir = os.path.join(local_settings['framework_root_dir'], 'data/')
-    os.chdir(bin_dir)
-    print os.path.realpath(os.path.curdir)
-    print command
-    sp.call('mkdir bin'.split())
-    sp.check_call(command.split())
+    command = tw.dedent("""
+        ./bin/{program_name}""").translate(None, '\n').format(
+        **settings._asdict())
+    return command
 
 
-def run_reference(settings):
-    """Run the reference version of program."""
-
-    command = prepare_command_run_reference(settings)
-    print command
-    proc = sp.Popen(command.split(), stdout=sp.PIPE, stderr=sp.PIPE)
-    stdout, stderr = proc.communicate()
-    experiment = Experiment(
-        command_build=None,
-        command_run=command,
-        stderr=stderr,
-        stdout=stdout,
-        datetime=dt.datetime.utcnow())
-    experiment.save()
-
-
-def run_timed(settings):
-    """Run the timed version of program."""
+def run(context):
+    """Run the generic version of program."""
     
-    command = prepare_command_run_timed(settings)
-    print command
-    proc = sp.Popen(command.split(), stdout=sp.PIPE, stderr=sp.PIPE)
-    stdout, stderr = proc.communicate()
-    experiment = Experiment(
-        command_build=None,
-        command_run=command,
-        stderr=stderr,
-        stdout=stdout,
-        datetime=dt.datetime.utcnow())
-    experiment.save()
+    command = prepare_command_run(settings)
+    return calibrate(context, command)
 
 
 if __name__ == '__main__':
