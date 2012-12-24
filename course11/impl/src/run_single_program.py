@@ -163,7 +163,7 @@ def run():
 def main():
     """Invoke all necessary builds and experiments."""
 
-    settings = Settings(program_name='atax', 
+    settings = Settings(program_name=None, 
         framework_root_dir=os.path.realpath(
             os.path.join(os.path.dirname(__file__), '..')),
         benchmark_root_dir=None,
@@ -172,11 +172,21 @@ def main():
         run_settings=None)
     context = Context(paths_stack=[],
         settings=settings)
-    settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/sources/polybench-c-3.2/'))
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, 'data/bin/'))
-    print settings
+
+    server, db = setup_database(settings, context)
+
+    cs, vs = validate_default(context)
+    for c, v in zip(cs, vs):
+        e = create_experiment_document(context, c, v)
+        e.save()
+        
+    settings.program_name = 'atax'
+    settings.benchmark_root_dir = os.path.realpath(os.path.join(
+        settings.framework_root_dir, 'data/sources/polybench-c-3.2/'))
+    context = Context(paths_stack=[],
+        settings=settings)
 
     define_build_settings(settings, 
         'linear-algebra/kernels/atax/',
@@ -184,24 +194,36 @@ def main():
     b = settings.build_settings
     b.compiler = 'gcc'
     b.base_opt = '-O2'
-    print settings.build_settings
 
     define_run_settings(settings)
-    print settings.run_settings
 
     nest_path_absolute(context, settings.framework_root_dir)
 
-    server, db = setup_database(settings, context)
-
     perform_experiment(context)
-
-    # cs, vs = validate_default(context)
-    # for c, v in zip(cs, vs):
-    #     create_experiment(c, v)
-    #     store_experiment(e)
 
     unnest_path(context)
     assert len(context.paths_stack) == 0
+
+
+def calculate_overhead_time(context):
+    settings = context.settings
+    settings.program_name = 'do_nothing'
+    settings.benchmark_root_dir = os.path.realpath(os.path.join(
+        settings.framework_root_dir, 'data/sources/time-test'))
+
+    define_build_settings(settings, 
+        '',
+        '')
+    b = settings.build_settings
+    b.compiler = 'gcc'
+    b.base_opt = '-O0'
+
+    define_run_settings(settings)
+
+    build(context)
+    c = run(context)
+    overhead_time = c.time
+    return c, overhead_time
 
 
 def define_build_settings(s, sources_path, other_flags):
@@ -323,49 +345,35 @@ def unnest_path(context):
         pass
 
 
-def validate(context):
-    """
-    Perform a calibrated measurement of execution time and 
-    calculate the error.
-    """
-    nest_path_from_root(context, 'data/bin/')
-
-    real_time_us = 0
-    overhead_time = validate_command('do_nothing', real_time_us, 0)
-
-    real_time_us = 500000
-    validate_command('atax_base', real_time_us, overhead_time)
-    unnest_path(context)
-
-
 def validate_default(context):
     """
     Perform validation on set of time-measurement programs and report errors.
     """
-    nest_path_from_root(context, 'data/bin/')
+
+    nest_path_absolute(context, context.settings.framework_root_dir)
     vs = []
     cs = []
-    c, v = validate_command(context, 'do_nothing', 0, 0)
+    c, overhead_time = calculate_overhead_time(context)
     cs.append(c)
-    vs.append(v)
-    overhead_time = v.real_time
+    vs.append(None)
 
-    assert False
     for i in range(7):
         real_time_us = 10**i
         s = 'usleep_{0}'.format(real_time_us)
-        c, v = validate_command(context, s, real_time_us / 10**6, overhead_time)
+        context.settings.program_name = s
+        build(context)
+        c, v = validate(context, real_time_us / 10**6, overhead_time)
         cs.append(c)
         vs.append(v)
     unnest_path(context)
     return cs, vs
 
 
-def validate_command(context, command, real_time, overhead_time):
+def validate(context, real_time, overhead_time):
     """
     Validate calibration of single command.
     """
-    c = calibrate(context, command)
+    c = run(context)
     measured_time = c.time - overhead_time
     error = abs(measured_time - real_time)
     relative_error = error / measured_time
@@ -423,6 +431,11 @@ def perform_experiment(context):
     build(context)
     c = run(context)
 
+    experiment = create_experiment_document(context, c, None)
+    experiment.save()
+
+
+def create_experiment_document(context, c, v):
     c_d = CalibrationResultDocument(
         total_time=c.total_time,
         time=c.time,
@@ -430,6 +443,15 @@ def perform_experiment(context):
         variance=c.variance,
         runs_number=c.runs_number,
         times_list=c.times_list)
+
+    try:
+        v_d = ValidationResultDocument(
+            real_time=v.real_time,
+            measured_time=v.measured_time,
+            error=v.error,
+            relative_error=v.relative_error)
+    except:
+        v_d = None
 
     b = context.settings.build_settings
 
@@ -449,9 +471,10 @@ def perform_experiment(context):
     experiment = ExperimentDocument(
         settings=s_d,
         calibration_result=c_d,
-        validation_result=None,
+        validation_result=v_d,
         datetime=dt.datetime.utcnow())
-    experiment.save()
+
+    return experiment
 
 
 def print_experiments(db):
