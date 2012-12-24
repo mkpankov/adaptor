@@ -10,15 +10,20 @@ Run experiment with specified program with given compilers.
 
 import sys
 import os
+
 import subprocess as sp
 import textwrap as tw
-import datetime as dt
-import couchdbkit as ck
-from couchdbkit.designer import push
+import timeit
+
 import recordtype as rt
 import collections as cl
-import timeit
+
 import numpy as np
+
+import couchdbkit as ck
+from couchdbkit.designer import push
+
+import pdb
 
 
 Context = rt.recordtype('Context',
