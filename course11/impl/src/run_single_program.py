@@ -212,7 +212,7 @@ def main():
 def define_build_settings(s, sources_path):
     s.build_settings = BuildSettings(
         benchmark_source_dir=os.path.join(
-            s.benchmark_root_dir, '/sources/' + sources_path),
+            s.benchmark_root_dir, '/sources/', sources_path),
         program_source="{0}.c".format(s.program_name),
         compiler=None,
         base_opt=None,
