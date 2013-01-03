@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding: utf-8
 
 """
 Part of 'Adaptor' framework.
@@ -20,9 +21,12 @@ import recordtype as rt
 import collections as cl
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 import couchdbkit as ck
 from couchdbkit.designer import push
+
+import copy
 
 import ipdb
 
@@ -53,7 +57,7 @@ class Settings(PrintableStructure, SettingsBase):
 
 BuildSettingsBase = rt.recordtype('BuildSettings',
     'compiler base_opt optimization_flags other_flags '
-    'benchmark_source_dir program_source')
+    'benchmark_source_dir program_source linker_options')
 
 class BuildSettings(PrintableStructure, BuildSettingsBase):
     pass
@@ -177,39 +181,130 @@ def main():
 
     server, db = setup_database(settings, context)
 
-    cs, vs = validate_default(context)
-    for c, v in zip(cs, vs):
-        e = create_experiment_document(context, c, v)
-        e.save()
-        
-    settings.program_name = 'atax'
+    # plot_error()
+    # plot_vs()
+    settings.benchmark_root_dir = os.path.realpath(os.path.join(
+        settings.framework_root_dir, 'data/sources/time-test/'))
+
+    # for c, v in zip(cs, vs):       
+    #     e = create_experiment_document(context, c, v)
+    #     e.save()
+
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, 'data/sources/polybench-c-3.2/'))
-    context = Context(paths_stack=[],
-        settings=settings)
+    nest_path_from_benchmark_root(context, '.')
 
-    define_build_settings(settings, 
-        'linear-algebra/kernels/atax/',
-        '-I utilities -I linear-algebra/kernels/atax utilities/polybench.c')
-    b = settings.build_settings
-    b.compiler = 'gcc'
-    b.base_opt = '-O2'
+    es = []
+    n = 0
+    for path, dirs, files in os.walk('.'):
+        if files and not path.endswith('utilities') and not path == '.':
+            n += 1
+            settings.program_name = os.path.basename(path)
+            context.settings = settings
 
-    define_run_settings(settings)
+            define_build_settings(settings, 
+                path,
+                '-I utilities -I {0} utilities/polybench.c'.format(path))
+            b = settings.build_settings
+            b.compiler = 'gcc'
+            b.base_opt = '-O2'
+    
+            define_run_settings(settings)
 
-    nest_path_absolute(context, settings.framework_root_dir)
+            nest_path_absolute(context, settings.framework_root_dir)
 
-    perform_experiment(context)
+            e = perform_experiment(context)
+            es.append(e)
+
+            unnest_path(context)
+
+    y = map(lambda e: e.calibration_result.time, es)
+    yerr = map(lambda e: e.calibration_result.dispersion, es)
+    x = range(len(y))
+    plt.figure()
+    plt.scatter(x, y)
+    plt.errorbar(x, y, yerr=yerr, fmt=None)
+    plt.show()
 
     unnest_path(context)
     assert len(context.paths_stack) == 0
 
 
-def calculate_overhead_time(context):
-    settings = context.settings
+def plot_error():
+    nest_path_from_benchmark_root(context, '.')
     settings.program_name = 'do_nothing'
-    settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/sources/time-test'))
+    define_build_settings(settings,
+        '',
+        '')
+    b = settings.build_settings
+    b.compiler = 'gcc'
+    b.base_opt = '-O0'
+    define_run_settings(settings)
+    cs, vs = validate_default(context)
+    y1 = map(lambda v: v.real_time, vs)
+    y2 = map(lambda v: v.measured_time, vs)
+    x = range(len(y1))
+    plt.figure()
+    plt.axes().set_yscale('log')
+    plt2 = plt.scatter(x, y2, marker='+', s=160, c='r', label=u'измеренное время')
+    plt1 = plt.scatter(x, y1, label=u'реальное время')
+    plt.axes().set_xticks(range(len(y1)))
+    default_xticklabels = ['usleep_{0}'.format(10**i) for i in range(7)]
+    plt.axes().set_xticklabels(default_xticklabels)
+    plt.setp(plt.axes().get_xticklabels(), rotation=90)
+    plt.axes().set_xlabel(u'программа')
+    plt.axes().set_ylabel(u'время выполнения, с')
+    plt.axes().grid(axis='both')
+    p1 = plt.Rectangle((0, 0), 1, 1, fc='b')
+    p2 = plt.Rectangle((0, 0), 1, 1, fc='r')
+    plt.axes().legend((p1, p2), (plt1.get_label(), plt2.get_label()), loc='best')
+    plt.title(u'Математическое ожидание времени исполнения калибровочных программ и реальное время их исполнения')
+    plt.show()
+    unnest_path(context)
+
+def plot_vs():
+    v = ExperimentDocument.view('adaptor/experiment-all')
+    l = []
+    for doc in v:
+        if doc.datetime > dt.datetime(2012,12,30,22,01,00):
+            l.append((doc.settings.build_settings.compiler, 
+                      doc.settings.program, 
+                      doc.calibration_result.time))
+    clang_es = filter(lambda e: e[0] == u'gcc', l)
+    gcc_es = filter(lambda e: e[0] == u'gcc', l)
+    clang_x_ticklabels = map(lambda e: e[1], clang_es)
+    gcc_x_ticklabels = map(lambda e: e[1], gcc_es)
+    clang_scurve = sorted(clang_es, key=lambda e: e[2])
+    clang_y = [e[2] for e in clang_scurve]
+    indices = map(lambda e: e[1], clang_scurve)
+    gcc_scurve = sorted(gcc_es, key=lambda e: indices.index(e[1]))
+    gcc_y = [e[2] for e in gcc_scurve]
+    points_clang = plt.scatter(range(len(clang_y)), clang_y, label='gcc')
+    points_gcc = plt.scatter(range(len(gcc_y)), gcc_y, c='r', label='gcc')
+    f = plt.gcf()
+    plt.axes().set_yscale('log')
+    plt.axes().set_xticks(range(len(clang_y)))
+    plt.axes().set_xticklabels(clang_x_ticklabels)
+    plt.setp(plt.axes().get_xticklabels(), rotation=90)
+    plt.axes().set_xlabel(u'программа')
+    plt.axes().set_ylabel(u'время выполнения, с')
+    plt.axes().grid(axis='both')
+    p1 = plt.Rectangle((0, 0), 1, 1, fc='b')
+    p2 = plt.Rectangle((0, 0), 1, 1, fc='r')
+    plt.axes().legend((p1, p2), (points_clang.get_label(), points_gcc.get_label()), loc='best')
+    plt.title(u"Время исполнения программ, скомпилированных двумя компиляторами на уровне оптимизации '-O2'")
+    plt.show()
+    ipdb.set_trace()
+
+
+def calculate_overhead_time(context):
+    context = copy.deepcopy(context)
+    settings = context.settings
+    nest_path_from_root(context, 'data/sources/time-test')
+    saved_name = settings.program_name 
+    settings.program_name = 'do_nothing'
+    saved_path = settings.benchmark_root_dir
+    settings.benchmark_root_dir = get_path(context)
 
     define_build_settings(settings, 
         '',
@@ -223,6 +318,10 @@ def calculate_overhead_time(context):
     build(context)
     c = run(context)
     overhead_time = c.time
+
+    unnest_path(context)
+    settings.benchmark_root_dir = saved_path
+    settings.program_name = saved_name
     return c, overhead_time
 
 
@@ -234,7 +333,8 @@ def define_build_settings(s, sources_path, other_flags):
         compiler=None,
         base_opt=None,
         optimization_flags=None,
-        other_flags=other_flags)
+        other_flags=other_flags,
+        linker_options='-lm')
 
 
 def define_run_settings(s):
@@ -354,15 +454,18 @@ def validate_default(context):
     vs = []
     cs = []
     c, overhead_time = calculate_overhead_time(context)
-    cs.append(c)
-    vs.append(None)
 
     for i in range(7):
         real_time_us = 10**i
         s = 'usleep_{0}'.format(real_time_us)
         context.settings.program_name = s
+        define_build_settings(context.settings,
+            '',
+            '')
+        context.settings.build_settings.compiler = 'gcc'
+        context.settings.build_settings.base_opt = '-O0'
         build(context)
-        c, v = validate(context, real_time_us / 10**6, overhead_time)
+        c, v = validate(context, real_time_us / 10.**6, overhead_time)
         cs.append(c)
         vs.append(v)
     unnest_path(context)
@@ -374,9 +477,15 @@ def validate(context, real_time, overhead_time):
     Validate calibration of single command.
     """
     c = run(context)
-    measured_time = c.time - overhead_time
-    error = abs(measured_time - real_time)
-    relative_error = error / measured_time
+
+    measured_time = c.time# - overhead_time*c.runs_number
+    try:
+        error = abs(measured_time - real_time)
+        relative_error = error / real_time
+    except:
+        error = None
+        relative_error = None
+
     v = ValidationResult(real_time, measured_time, error, relative_error)
     return c, v
 
@@ -387,11 +496,23 @@ def calibrate(context, command):
     t = 0
     d_rel = 1
     print "Begin"
+    command = os.path.join(get_path(context), command)
+    result = timeit.timeit(stmt='run()',
+                           setup=definition.format(
+                               command=command),
+                           number=1)
+    print "\nTime of single run:", result,
+    if result > 1:
+        # When incremented in the loop, it'll become zero
+        n = -1
+        print ", pruning"
+    else:
+        print ''
+
     while (t < 1) and (d_rel > 0.05):
         sys.stderr.write('.')
         n += 1
         number = 10**(n)
-        command = os.path.join(get_path(context), command)
         result = timeit.repeat(stmt='run()', 
                                setup=definition.format(
                                    command=command), 
@@ -429,10 +550,13 @@ def perform_experiment(context):
     """Perform experiment."""
 
     build(context)
-    c = run(context)
+    _, o_t = calculate_overhead_time(context)
+    c, v = validate(context, None, o_t)
 
-    experiment = create_experiment_document(context, c, None)
+    experiment = create_experiment_document(context, c, v)
+    print "Saving experiment now"
     experiment.save()
+    return experiment
 
 
 def create_experiment_document(context, c, v):
@@ -522,7 +646,7 @@ def prepare_command_build(settings):
     command = tw.dedent("""
         {build_settings.compiler} {build_settings.base_opt} 
         {build_settings.other_flags} {0} 
-        -o {1}""").translate(None, '\n').format(
+        -o {1} {build_settings.linker_options}""").translate(None, '\n').format(
         full_path_source, full_path_binary, **settings._asdict())
     return command
 
@@ -555,6 +679,7 @@ def run(context):
     
     command = prepare_command_run(context.settings)
     nest_path_from_root(context, 'data/bin')
+    print command
     r = calibrate(context, command)
     unnest_path(context)
     return r
