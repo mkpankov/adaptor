@@ -96,6 +96,15 @@
     \renewcommand{\thesection}{\arabic{section}} % Удаляем \thechapter из \thesection
 \makeatother
 
+% Отступы слева для списков
+% Первый уровень выровнен на отступ нового абзаца, 
+% остальные -- на начало элемента более высокого уровня.
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=1.5cm}
+\setlist[enumerate,1]{leftmargin=1.5cm}
+\setlist[itemize,2,3]{leftmargin=*}
+\setlist[enumerate,2,3]{leftmargin=*}
+
 % Для веб-адресов в библиографии
 \usepackage{url}
 % Библиография в алфавитном порядке с сокращёнными метками
@@ -106,6 +115,7 @@
 \input{CourseReport-Title}
 % Учебное задание
 \input{CourseReport-Task}
+\pagebreak
 % Содержание
 \tableofcontents
 \pagebreak
