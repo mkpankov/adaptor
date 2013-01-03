@@ -98,12 +98,17 @@
 
 % Для веб-адресов в библиографии
 \usepackage{url}
-% Библиография в порядке упоминания в тексте
-\bibliographystyle{unsrt}
+% Библиография в алфавитном порядке с сокращёнными метками
+\bibliographystyle{abbrv}
 
 \begin{document}
 % Титульный лист
 \input{CourseReport-Title}
+% Учебное задание
+\input{CourseReport-Task}
+% Содержание
+\tableofcontents
+\pagebreak
 % Введение
 \input{CourseReport-Introduction}
 % Инструментарий коллективной оптимизации
@@ -111,5 +116,5 @@
 % Название библиографии
 \renewcommand\bibname{Список использованных источников}
 % Список использованных источников
-\bibliography{biblio/ref}
+\bibliography{biblio/course}
 \end{document}
