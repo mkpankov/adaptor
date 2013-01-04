@@ -45,12 +45,12 @@
 \geometry{bottom=2cm}
 
 % Меняем везде перечисления на цифра.цифра
-\renewcommand{\theenumi}{\arabic{enumi}.}
-\renewcommand{\labelenumi}{\arabic{enumi}.}
-\renewcommand{\theenumii}{\arabic{enumii}.}
-\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\renewcommand{\theenumiii}{\arabic{enumiii}.}
-\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
+\renewcommand{\theenumi}{\arabic{enumi})}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\theenumii}{\arabic{enumii})}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii})}
+\renewcommand{\theenumiii}{\arabic{enumiii})}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii})}
 
 % Изменяем \part и \chapter из report.cls чтобы они не выводили нумерованные заголовки
 % Рецепт отсюда: http://tex.stackexchange.com/questions/70621/part-and-chapter-commands-output-both-numbered-and-named-headings/70624
@@ -96,20 +96,59 @@
     \renewcommand{\thesection}{\arabic{section}} % Удаляем \thechapter из \thesection
 \makeatother
 
+% Отступы слева для списков
+% Первый уровень выровнен на отступ нового абзаца, 
+% остальные -- на начало элемента более высокого уровня.
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=1.55cm, label=---}
+\setlist[enumerate,1]{leftmargin=1.55cm}
+\setlist[itemize,2,3]{leftmargin=*, label=---}
+\setlist[enumerate,2,3]{leftmargin=*}
+
+% Нумерация подразделов
+\setcounter{secnumdepth}{3}
+% Включение подразделов в оглавление
+\setcounter{tocdepth}{3}
 % Для веб-адресов в библиографии
 \usepackage{url}
-% Библиография в порядке упоминания в тексте
-\bibliographystyle{unsrt}
+% Библиография в алфавитном порядке с цифровой нумерацией
+\bibliographystyle{ugost2008}
+% Определяем названия месяцев вручную
+\def\bbljan{Январь}
+\def\bblfeb{Февраль}
+\def\bblmar{Март}
+\def\bblapr{Апрель}
+\def\bblmay{Май}
+\def\bbljun{Июнь}
+\def\bbljul{Июль}
+\def\bblaug{Август}
+\def\bblsep{Сентябрь}
+\def\bbloct{Октябрь}
+\def\bblnov{Ноябрь}
+\def\bbldec{Декабрь}
 
 \begin{document}
 % Титульный лист
 \input{CourseReport-Title}
+% Учебное задание
+\input{CourseReport-Task}
+\pagebreak
+% Содержание
+\tableofcontents
+% Не хотим строки, которые влезают на поля
+\sloppy
+\pagebreak
 % Введение
 \input{CourseReport-Introduction}
+\pagebreak
 % Инструментарий коллективной оптимизации
 \input{CourseReport-Adaptor}
+% Эксперименты
+\input{CourseReport-Experiment}
+% Дальнейшая работа
+\input{CourseReport-FurtherWork}
 % Название библиографии
 \renewcommand\bibname{Список использованных источников}
 % Список использованных источников
-\bibliography{biblio/ref}
+\bibliography{biblio/course}
 \end{document}
