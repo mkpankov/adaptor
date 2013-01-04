@@ -181,11 +181,11 @@ def main():
 
     server, db = setup_database(settings, context)
 
-    # plot_error()
-    # plot_vs()
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, 'data/sources/time-test/'))
 
+    plot_error(context)
+    # plot_vs()
     # for c, v in zip(cs, vs):       
     #     e = create_experiment_document(context, c, v)
     #     e.save()
@@ -230,8 +230,9 @@ def main():
     assert len(context.paths_stack) == 0
 
 
-def plot_error():
+def plot_error(context):
     nest_path_from_benchmark_root(context, '.')
+    settings = context.settings
     settings.program_name = 'do_nothing'
     define_build_settings(settings,
         '',
@@ -243,6 +244,16 @@ def plot_error():
     cs, vs = validate_default(context)
     y1 = map(lambda v: v.real_time, vs)
     y2 = map(lambda v: v.measured_time, vs)
+    err = map(lambda v: v.relative_error, vs)
+    for p1, p2, e in zip(y1, y2, err):
+        print tw.dedent(
+            """\
+            Experiment performed:
+                Real time: {0:.6f}
+                Measured time: {1:.6f}
+                Relative error: {2:.2f}
+            """.format(p1, p2, e))
+    raw_input()
     x = range(len(y1))
     plt.figure()
     plt.axes().set_yscale('log')
@@ -316,7 +327,7 @@ def calculate_overhead_time(context):
     define_run_settings(settings)
 
     build(context)
-    c = run(context)
+    c = run_empty(context)
     overhead_time = c.time
 
     unnest_path(context)
@@ -478,7 +489,7 @@ def validate(context, real_time, overhead_time):
     """
     c = run(context)
 
-    measured_time = c.time# - overhead_time*c.runs_number
+    measured_time = c.time - overhead_time
     try:
         error = abs(measured_time - real_time)
         relative_error = error / real_time
@@ -488,6 +499,41 @@ def validate(context, real_time, overhead_time):
 
     v = ValidationResult(real_time, measured_time, error, relative_error)
     return c, v
+
+
+def calibrate_empty(context, command):
+    """Calibrate execution of command until measurement is accurate enough."""
+    n = 0
+    t = 0
+    d_rel = 1
+    print "Begin"
+    command = os.path.join(get_path(context), command)
+    result = timeit.timeit(stmt='run()',
+                           setup=definition.format(
+                               command=command),
+                           number=1)
+    print "\nTime of single run:", result,
+    if result > 1:
+        # When incremented in the loop, it'll become zero
+        n = -1
+        print ", pruning"
+    else:
+        print ''
+
+    while (t < 1) and (d_rel > 0.02):
+        sys.stderr.write('.')
+        n += 1
+        number = 10**(n)
+        result = timeit.repeat(stmt='run()', 
+                               setup=definition.format(
+                                   command=command), 
+                               number=number,
+                               repeat=3)
+        t = min(result)
+        d = np.std(np.array(result))
+        d_rel = d / t
+    sys.stderr.write('\n')
+    return CalibrationResult(t, t / number, d, d_rel, number, result)
 
 
 def calibrate(context, command):
@@ -681,6 +727,17 @@ def run(context):
     nest_path_from_root(context, 'data/bin')
     print command
     r = calibrate(context, command)
+    unnest_path(context)
+    return r
+
+
+def run_empty(context):
+    """Run the generic version of program."""
+    
+    command = prepare_command_run(context.settings)
+    nest_path_from_root(context, 'data/bin')
+    print command
+    r = calibrate_empty(context, command)
     unnest_path(context)
     return r
 
