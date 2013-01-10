@@ -135,8 +135,12 @@
 \input{RefReport-Introduction}
 % Валидация трансляции
 \input{RefReport-TranslationValidation}
-% Название библиографии
-\renewcommand\bibname{Список использованных источников}
 % Список использованных источников
-\bibliography{biblio/ref}
+\clearpage
+% Удалён стандатный заголовок и вставлен вручную заголовок нужного типа
+{\def\chapter*#1{}
+    \section*{Список использованных источников}
+    \bibliography{biblio/ref}
+}
+
 \end{document}
