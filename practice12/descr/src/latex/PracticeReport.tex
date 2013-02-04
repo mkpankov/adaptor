@@ -1,0 +1,115 @@
+% Размер бумаги А4, шрифт 12 пунктов
+\documentclass[a4paper,12pt]{report}
+% Перекодировка шрифтов
+\usepackage[T2A]{fontenc}
+% Кодировка: utf8
+\usepackage[utf8]{inputenc}
+% Используем русский и английский языки с переносами
+\usepackage[english,russian]{babel}
+% Подключаем нужные пакеты расширений
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+
+% Вставка рисунков
+\usepackage{graphicx}
+% Путь к рисункам
+\graphicspath{{../pictures/}}
+
+% Рыба
+\usepackage{lipsum}
+% Подсчёт объектов
+\usepackage{totcount}
+\regtotcounter{page}
+\regtotcounter{figure}
+\regtotcounter{table}
+
+% Изменение размеров шрифтов
+\usepackage{scrextend}
+% Размер по умолчанию — 14 пунктов, интервал полуторный (14*1.25)
+\changefontsizes[17.5pt]{14pt}
+% Отступ первой строки параграфа после начала раздела
+\usepackage{indentfirst}
+% Отступ начала параграфа
+\setlength{\parindent}{1cm}
+
+% Заменяем библиографию с квадратных скобок на точку
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+
+% Геометрия страницы
+\usepackage{geometry}
+% Поля
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumi}{\arabic{enumi}.}
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\renewcommand{\theenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
+\renewcommand{\theenumiii}{\arabic{enumiii}.}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
+
+% Изменяем \part и \chapter из report.cls чтобы они не выводили нумерованные заголовки
+% Рецепт отсюда: http://tex.stackexchange.com/questions/70621/part-and-chapter-commands-output-both-numbered-and-named-headings/70624
+\makeatletter
+    \def\@part[#1]#2{%
+        \ifnum \c@secnumdepth >-2\relax
+        \refstepcounter{part}%
+        \addcontentsline{toc}{part}{#1}%
+        \else
+        \addcontentsline{toc}{part}{#1}%
+        \fi
+        \markboth{}{}%
+        {
+            \centering
+            \interlinepenalty \@M
+            \normalfont
+            \Huge \bfseries #2\par}%
+        \@endpart}
+    \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+        \refstepcounter{chapter}%
+        \typeout{\@chapapp\space\thechapter.}%
+        \addcontentsline{toc}{chapter}%
+        {#1}%
+        \else
+        \addcontentsline{toc}{chapter}{#1}%
+        \fi
+        \chaptermark{#1}%
+        \addtocontents{lof}{\protect\addvspace{10\p@}}%
+        \addtocontents{lot}{\protect\addvspace{10\p@}}%
+        \if@twocolumn
+        \@topnewpage[\@makechapterhead{#2}]%
+        \else
+        \@makechapterhead{#2}%
+        \@afterheading
+        \fi}
+    \def\@makechapterhead#1{%
+        \vspace*{50\p@}%
+        {\parindent \z@ \raggedright \normalfont
+            \interlinepenalty\@M
+            \Huge \bfseries #1\par\nobreak
+            \vskip 40\p@
+    }}
+    \renewcommand{\thesection}{\arabic{section}} % Удаляем \thechapter из \thesection
+\makeatother
+
+% Для веб-адресов в библиографии
+\usepackage{url}
+% Библиография в порядке упоминания в тексте
+\bibliographystyle{unsrt}
+
+\begin{document}
+% Титульный лист
+\input{PracticeReport-Title}
+% Введение
+\input{PracticeReport-Introduction}
+% Инструментарий коллективной оптимизации
+\input{PracticeReport-Adaptor}
+% Название библиографии
+\renewcommand\bibname{Список использованных источников}
+% Список использованных источников
+\bibliography{biblio/ref}
+\end{document}
