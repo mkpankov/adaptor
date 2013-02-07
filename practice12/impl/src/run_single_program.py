@@ -658,11 +658,23 @@ def print_experiments(db):
         print 'Date & time:', e['value']['datetime']
 
 
-def setup_database(settings, context):
+def read_password():
+    with open('password') as f:
+        password = f.read()
+    return password.strip('\n')
+
+
+def setup_database(settings, context, local=True):
     """Setup the database."""
 
-    server = ck.Server()
-    db = server.get_or_create_db('adaptor')
+    if local:
+        server = ck.Server()
+    else:
+        password = read_password()
+        server = ck.Server(
+            'https://constantius:{0}@constantius.cloudant.com'.format(
+                password))
+    db = server.get_db('adaptor')
 
     ExperimentDocument.set_db(db)
     SettingsDocument.set_db(db)
