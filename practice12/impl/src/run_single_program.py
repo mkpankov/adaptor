@@ -30,6 +30,8 @@ import copy
 
 import ipdb
 
+import probe
+
 
 class PrintableStructure():
     """A class to allow easy pretty printing of namedtuple and recordtype."""
@@ -52,6 +54,13 @@ SettingsBase = rt.recordtype('Settings',
     'build_settings run_settings benchmark_bin_dir')
 
 class Settings(PrintableStructure, SettingsBase):
+    pass
+
+
+HardwareInfoBase = rt.recordtype('HardwareInfo',
+    'cpu_mhz cache_size flags')
+
+class HardwareInfo(PrintableStructure, HardwareInfoBase):
     pass
 
 
@@ -138,12 +147,25 @@ class SettingsDocument(ck.Document):
     run_settings = ck.SchemaProperty(RunSettingsDocument)
 
 
+class CPUInformationDocument(ck.Document):
+    """CouchDB document, storing the information about hardware platform."""
+    cpu_mhz = ck.FloatProperty()
+    cache_size = ck.IntegerProperty()
+    flags = ck.StringProperty()
+
+
+class HardwareInformationDocument(ck.Document):
+    """CouchDB document, storing the information about hardware platform."""
+    cpu = ck.SchemaProperty(CPUInformationDocument)
+
+
 class ExperimentDocument(ck.Document):
     """CouchDB document, describing the experiment."""
     datetime = ck.DateTimeProperty()
     calibration_result = ck.SchemaProperty(CalibrationResultDocument)
     validation_result = ck.SchemaProperty(ValidationResultDocument)
     settings = ck.SchemaProperty(SettingsDocument)
+    hardware = ck.SchemaProperty(HardwareInformationDocument)
 
 
 class NonAbsolutePathError(RuntimeError):
@@ -592,20 +614,37 @@ def convert_input_to_settings(input):
     return settings, build_settings, run_settings
 
 
+def gather_cpu_info():
+    """Gather information about CPU and return structure."""
+    p = probe.CPUProbe()
+    cpu_info = CPUInformation(cpu_mhz=p.cpu_mhz(),
+                              cache_size=p.cache_size(),
+                              flags=p.flags())
+    return cpu_info
+
+
+def gather_hardware_info():
+    """Gather hardware information and return structure."""
+    cpu_info = gather_cpu_info()
+    i = HardwareInfo(cpu_info=cpu_info)
+    return i
+
+
 def perform_experiment(context):
     """Perform experiment."""
 
     build(context)
     _, o_t = calculate_overhead_time(context)
     c, v = validate(context, None, o_t)
+    hardware_info = gather_hardware_info()
 
-    experiment = create_experiment_document(context, c, v)
+    experiment = create_experiment_document(context, c, v, hardware_info)
     print "Saving experiment now"
     experiment.save()
     return experiment
 
 
-def create_experiment_document(context, c, v):
+def create_experiment_document(context, c, v, hardware_info):
     c_d = CalibrationResultDocument(
         total_time=c.total_time,
         time=c.time,
@@ -639,6 +678,7 @@ def create_experiment_document(context, c, v):
         run_settings=r_d)
 
     experiment = ExperimentDocument(
+        hardware_info=hardware_info,
         settings=s_d,
         calibration_result=c_d,
         validation_result=v_d,
