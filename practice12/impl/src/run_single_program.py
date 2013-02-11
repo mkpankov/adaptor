@@ -175,6 +175,7 @@ class NoSuchNestedPathError(RuntimeError):
     pass
 
 
+# This template is for use in timing.
 definition = \
 """
 from subprocess import Popen, PIPE
@@ -186,34 +187,24 @@ def run():
 """
 
 
-def main():
-    """Invoke all necessary builds and experiments."""
-
-    settings = Settings(program_name=None, 
-        framework_root_dir=os.path.realpath(
-            os.path.join(os.path.dirname(__file__), '..')),
-        benchmark_root_dir=None,
-        benchmark_bin_dir=None,
-        build_settings=None,
-        run_settings=None)
-    context = Context(paths_stack=[],
-        settings=settings)
-    settings.benchmark_bin_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/bin/'))
-
-    server, db = setup_database(settings, context)
-
+def set_benchmark_root_nested(settings, path):
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/sources/time-test/'))
+        settings.framework_root_dir, path))    
 
-    plot_error(context)
-    # plot_vs()
-    # for c, v in zip(cs, vs):       
-    #     e = create_experiment_document(context, c, v)
-    #     e.save()
 
-    settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/sources/polybench-c-3.2/'))
+def perform_experiment1(settings, context):
+    set_benchmark_root_nested(settings, 'data/sources/time-test/')
+    perform_plot_error(context)
+
+
+def show_experiment2(settings, context):
+    set_benchmark_root_nested(settings, 'data/sources/time-test/')
+    plot_vs()
+
+
+def perform_experiment3(settings_context):
+    set_benchmark_root_nested(settings, 'data/sources/polybench-c-3.2/')
+
     nest_path_from_benchmark_root(context, '.')
 
     es = []
@@ -248,11 +239,33 @@ def main():
     plt.errorbar(x, y, yerr=yerr, fmt=None)
     plt.show()
 
-    unnest_path(context)
+    unnest_path(context)    
+
+
+def main():
+    """Invoke all necessary builds and experiments."""
+
+    settings = Settings(program_name=None, 
+        framework_root_dir=os.path.realpath(
+            os.path.join(os.path.dirname(__file__), '..')),
+        benchmark_root_dir=None,
+        benchmark_bin_dir=None,
+        build_settings=None,
+        run_settings=None)
+    context = Context(paths_stack=[],
+        settings=settings)
+    settings.benchmark_bin_dir = os.path.realpath(os.path.join(
+        settings.framework_root_dir, 'data/bin/'))
+
+    server, db = setup_database(settings, context)
+
+    perform_experiment1(settings, context)
+    show_experiment2(settings, context)
+
     assert len(context.paths_stack) == 0
 
 
-def plot_error(context):
+def perform_plot_error(context):
     nest_path_from_benchmark_root(context, '.')
     settings = context.settings
     settings.program_name = 'do_nothing'
