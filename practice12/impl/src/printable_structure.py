@@ -16,7 +16,7 @@ Please do not redistribute.
 import textwrap as tw
 
 class PrintableStructure():
-    """A class to allow easy pretty printing of namedtuple and recordtype."""
+    """Pretty printing of namedtuple and recordtype."""
     def __str__(self):
         c = self.__class__
         s = tw.dedent("""

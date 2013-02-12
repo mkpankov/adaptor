@@ -1,6 +1,16 @@
 #!/usr/bin/env python
 
-"""Test the script for running single experiment."""
+"""
+Test the script for running single experiment.
+
+Currently severely outdated.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
 
 import unittest
 import run_single_program as testee # This is like a 'callee' to a 'caller'

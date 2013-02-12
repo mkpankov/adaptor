@@ -19,7 +19,7 @@ def read_password():
     return password.strip('\n')
 
 
-def setup_database(settings, context, local=True):
+def setup_database(settings, paths_manager, local=True):
     """Setup the database."""
 
     if local:
@@ -38,13 +38,13 @@ def setup_database(settings, context, local=True):
     CalibrationResultDocument.set_db(db)
     ValidationResultDocument.set_db(db)
 
-    nest_path_from_root(context, 'couch/adaptor')
+    paths_manager.nest_path_from_root('couch/adaptor')
     # We are stupid so we suppose the CouchApp is managed
     # to be stable version and we just re-publish it on launch.
     sp.check_call('couchapp push . http://localhost:5984/adaptor'.split())
-    unnest_path(context)
+    paths_manager.unnest_path()
 
-    return server, db
+    return server
 
 
 def create_experiment_document(context, c, v, hardware_info):

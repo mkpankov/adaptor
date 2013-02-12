@@ -91,28 +91,7 @@ def perform_experiment3(settings_context):
     plt.errorbar(x, y, yerr=yerr, fmt=None)
     plt.show()
 
-    unnest_path(context)    
-
-
-def set_up():
-    """Initialize the system."""
-    settings = Settings(program_name=None, 
-        framework_root_dir=os.path.realpath(
-            os.path.join(os.path.dirname(__file__), '..')),
-        benchmark_root_dir=None,
-        benchmark_bin_dir=None,
-        build_settings=None,
-        run_settings=None)
-    settings.benchmark_bin_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, 'data/bin/'))
-
-    server, db = setup_database(settings, context)
-    
-    context = Context(paths_stack=[],
-        settings=settings,
-        server=server,
-        db=db)
-    return context
+    unnest_path(context)
 
 
 def tear_down(context):

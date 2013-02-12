@@ -10,17 +10,6 @@ Please do not redistribute.
 """
 
 
-Context = rt.recordtype('Context',
-    'paths_stack settings')
-
-SettingsBase = rt.recordtype('Settings', 
-    'program_name benchmark_root_dir framework_root_dir '
-    'build_settings run_settings benchmark_bin_dir')
-
-class Settings(PrintableStructure, SettingsBase):
-    pass
-
-
 HardwareInfoBase = rt.recordtype('HardwareInfo',
     'cpu_mhz cache_size flags')
 
