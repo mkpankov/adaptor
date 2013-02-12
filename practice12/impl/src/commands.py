@@ -1,4 +1,26 @@
-"""This module contains commands."""
+"""
+This module handles mid-level commands of framework.
+
+They are used internally mainly.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
+
+
+# This template is for use in timing.
+definition = \
+"""
+from subprocess import Popen, PIPE
+def run():
+    p = Popen("{command}".split(), 
+              stdout=PIPE, 
+              stderr=PIPE)
+    return p.communicate()
+"""
 
 
 def prepare_command_build(settings):

@@ -2,11 +2,13 @@
 # coding: utf-8
 
 """
+Integration module, handles most of high-level stuff.
+
 Part of 'Adaptor' framework.
 
-Author: Michael Pankov, 2012.
+Author: Michael Pankov, 2012-2013.
 
-Run experiment with specified program with given compilers.
+Please do not redistribute.
 """
 
 import sys
@@ -35,18 +37,6 @@ from paths import *
 from data_types import *
 from documents import *
 from commands import *
-
-
-# This template is for use in timing.
-definition = \
-"""
-from subprocess import Popen, PIPE
-def run():
-    p = Popen("{command}".split(), 
-              stdout=PIPE, 
-              stderr=PIPE)
-    return p.communicate()
-"""
 
 
 def set_benchmark_root_nested(settings, path):
@@ -104,9 +94,8 @@ def perform_experiment3(settings_context):
     unnest_path(context)    
 
 
-def main():
-    """Invoke all necessary builds and experiments."""
-
+def set_up():
+    """Initialize the system."""
     settings = Settings(program_name=None, 
         framework_root_dir=os.path.realpath(
             os.path.join(os.path.dirname(__file__), '..')),
@@ -114,17 +103,20 @@ def main():
         benchmark_bin_dir=None,
         build_settings=None,
         run_settings=None)
-    context = Context(paths_stack=[],
-        settings=settings)
     settings.benchmark_bin_dir = os.path.realpath(os.path.join(
         settings.framework_root_dir, 'data/bin/'))
 
     server, db = setup_database(settings, context)
+    
+    context = Context(paths_stack=[],
+        settings=settings,
+        server=server,
+        db=db)
+    return context
 
-    perform_experiment1(settings, context)
-    show_experiment2(settings, context)
-    perform_experiment3(settings, context)
 
+def tear_down(context):
+    """Finalize the system."""
     assert len(context.paths_stack) == 0
 
 

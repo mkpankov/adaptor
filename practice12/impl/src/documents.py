@@ -1,4 +1,12 @@
-"""This module contains classes of CouchDB Documents."""
+"""
+This module contains classes of CouchDB documents.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
 
 import couchdbkit as ck
 

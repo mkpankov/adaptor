@@ -1,4 +1,14 @@
-"""This module handles paths stack in context of the system."""
+"""
+This module handles paths stack in context of the system.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
+
+
 
 import os
 

@@ -1,3 +1,16 @@
+"""
+This module is printable structure.
+
+It's used as base class for namedtuples and recordtypes.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
+
+
 """This module is printable structure."""
 
 import textwrap as tw

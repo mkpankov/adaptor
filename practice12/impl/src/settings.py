@@ -1,4 +1,14 @@
-"""This module handles settings of system."""
+"""
+This module handles settings of system.
+
+Platform-dependent, currently works on Unix only (uses '/proc' filesystem).
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
 
 from data_types import *
 

@@ -1,3 +1,15 @@
+"""
+Module to retrieve the information on hardware platform.
+
+Platform-dependent, currently works on Unix only (uses '/proc' filesystem).
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
+
 import parse
 import os
 import re

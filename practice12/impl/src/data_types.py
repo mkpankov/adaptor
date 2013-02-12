@@ -1,6 +1,14 @@
-"""This module describes the data types (structures) used in rest of the 
-system.
 """
+This module describes the data types (structures) used in rest of the 
+system.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
+
 
 Context = rt.recordtype('Context',
     'paths_stack settings')

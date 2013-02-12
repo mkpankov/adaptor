@@ -1,4 +1,16 @@
-"""This module handles database."""
+"""
+This module handles database.
+
+Database is currently CouchDB. 
+In principle, it works on either local installation, or on CouchDB hosting,
+such as Cloudant. Still not tested.
+
+Part of 'Adaptor' framework.
+
+Author: Michael Pankov, 2012-2013.
+
+Please do not redistribute.
+"""
 
 
 def read_password():
