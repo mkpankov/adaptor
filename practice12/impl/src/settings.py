@@ -11,11 +11,17 @@ Please do not redistribute.
 """
 
 import os
+import recordtype as rt
 
 from data_types import *
 
 
-class Settings(PrintableStructure):
+SettingsBase = rt.recordtype('SettingsBase',
+    'program_name framework_root_dir benchmark_root_dir benchmark_bin_dir '
+    'build_settings run_settings')
+
+
+class Settings(PrintableStructure, SettingsBase):
     def __init__(self,
                  program_name,
                  benchmark_root_dir='../data/sources/polybench-c-3.2/',
