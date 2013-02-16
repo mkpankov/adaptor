@@ -10,6 +10,8 @@ Author: Michael Pankov, 2012-2013.
 Please do not redistribute.
 """
 
+import os
+
 from data_types import *
 
 
@@ -38,7 +40,7 @@ class Settings(PrintableStructure):
         self.build_settings = BuildSettings(
             benchmark_source_dir=os.path.join(
                 self.benchmark_root_dir, '', sources_path),
-            program_source="{0}.c".format(s.program_name),
+            program_source="{0}.c".format(self.program_name),
             compiler=None,
             base_opt=None,
             optimization_flags=None,

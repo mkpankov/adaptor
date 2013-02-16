@@ -12,6 +12,7 @@ Please do not redistribute.
 import recordtype as rt
 from printable_structure import *
 from database import *
+from paths import *
 
 
 class Context(PrintableStructure):

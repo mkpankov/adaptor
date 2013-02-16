@@ -22,15 +22,21 @@ Please do not redistribute.
 import ipdb
 from settings import *
 from context import *
-from system import perform_experiment
+from system import *
 
 def cpdh_run(context):
     """Run scenario cpdh (see module docstring for description)."""
-    ipdb.set_trace()
-    settings = Settings('2mm')
-    context = Context(settings)
     dataset_sizes = ["MINI_DATASET", "SMALL_DATASET", "STANDARD_DATASET",
                      "LARGE_DATASET", "EXTRALARGE_DATASET"]
+    settings = context.settings
     for size in dataset_sizes:
         settings.define_build_settings('src','-D{0}'.format(size))
         perform_experiment(context)
+
+
+def cpdh_main():
+    """Run initialization and scenario."""
+    ipdb.set_trace()
+    context = set_up('2mm')
+    cpdh_run(context)
+    tear_down(context)

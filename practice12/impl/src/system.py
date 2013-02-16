@@ -37,6 +37,8 @@ from paths import *
 from data_types import *
 from documents import *
 from commands import *
+from settings import *
+from context import *
 
 
 def set_benchmark_root_nested(settings, path):
@@ -92,6 +94,13 @@ def perform_experiment3(settings_context):
     plt.show()
 
     unnest_path(context)
+
+
+def set_up(program_name):
+    """Initialize the system."""
+    settings = Settings(program_name)
+    context = Context(settings)
+    return context
 
 
 def tear_down(context):

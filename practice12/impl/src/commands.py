@@ -10,6 +10,18 @@ Author: Michael Pankov, 2012-2013.
 Please do not redistribute.
 """
 
+import os
+import subprocess as sp
+import probe
+import timeit
+import sys
+import copy
+import textwrap as tw
+import numpy as np
+
+from data_types import *
+from database import *
+
 
 # This template is for use in timing.
 definition = \
@@ -44,14 +56,14 @@ def build(context):
     """Build the generic version of the program."""
 
     command = prepare_command_build(context.settings)
-    nest_path_from_benchmark_root(context, '')
+    context.paths_manager.nest_path_from_benchmark_root(context, '')
     print os.path.realpath(os.path.curdir)
     print command
-    nest_path_from_benchmark_root(context, '')
+    context.paths_manager.nest_path_from_benchmark_root(context, '')
     sp.call('mkdir bin'.split())
-    unnest_path(context)
+    context.paths_manager.unnest_path(context)
     sp.check_call(command.split())
-    unnest_path(context)
+    context.paths_manager.unnest_path(context)
 
 
 def prepare_command_run(settings):
@@ -67,10 +79,10 @@ def run(context):
     """Run the generic version of program."""
     
     command = prepare_command_run(context.settings)
-    nest_path_from_root(context, 'data/bin')
+    context.paths_manager.nest_path_from_root(context, 'data/bin')
     print command
     r = calibrate(context, command)
-    unnest_path(context)
+    context.paths_manager.unnest_path(context)
     return r
 
 
@@ -78,19 +90,19 @@ def run_empty(context):
     """Run the generic version of program."""
     
     command = prepare_command_run(context.settings)
-    nest_path_from_root(context, 'data/bin')
+    context.paths_manager.nest_path_from_root(context, 'data/bin')
     print command
     r = calibrate_empty(context, command)
-    unnest_path(context)
+    context.paths_manager.unnest_path(context)
     return r
 
 
 def gather_cpu_info():
     """Gather information about CPU and return structure."""
     p = probe.CPUProbe()
-    cpu_info = CPUInformation(cpu_mhz=p.cpu_mhz(),
-                              cache_size=p.cache_size(),
-                              flags=p.flags())
+    cpu_info = CPUInfo(cpu_mhz=p.cpu_mhz(),
+                       cache_size=p.cache_size(),
+                       flags=p.flags())
     return cpu_info
 
 
@@ -120,7 +132,7 @@ def validate_default(context):
     Perform validation on set of time-measurement programs and report errors.
     """
 
-    nest_path_absolute(context, context.settings.framework_root_dir)
+    context.paths_manager.nest_path_absolute(context, context.settings.framework_root_dir)
     vs = []
     cs = []
     c, overhead_time = calculate_overhead_time(context)
@@ -129,7 +141,7 @@ def validate_default(context):
         real_time_us = 10**i
         s = 'usleep_{0}'.format(real_time_us)
         context.settings.program_name = s
-        define_build_settings(context.settings,
+        context.settings.define_build_settings(context.settings,
             '',
             '')
         context.settings.build_settings.compiler = 'gcc'
@@ -138,7 +150,7 @@ def validate_default(context):
         c, v = validate(context, real_time_us / 10.**6, overhead_time)
         cs.append(c)
         vs.append(v)
-    unnest_path(context)
+    context.paths_manager.unnest_path(context)
     return cs, vs
 
 
@@ -166,7 +178,7 @@ def calibrate_empty(context, command):
     t = 0
     d_rel = 1
     print "Begin"
-    command = os.path.join(get_path(context), command)
+    command = os.path.join(context.paths_manager.get_path(), command)
     result = timeit.timeit(stmt='run()',
                            setup=definition.format(
                                command=command),
@@ -201,7 +213,7 @@ def calibrate(context, command):
     t = 0
     d_rel = 1
     print "Begin"
-    command = os.path.join(get_path(context), command)
+    command = os.path.join(context.paths_manager.get_path(), command)
     result = timeit.timeit(stmt='run()',
                            setup=definition.format(
                                command=command),
@@ -233,26 +245,24 @@ def calibrate(context, command):
 def calculate_overhead_time(context):
     context = copy.deepcopy(context)
     settings = context.settings
-    nest_path_from_root(context, 'data/sources/time-test')
+    context.paths_manager.nest_path_from_root(context, 'data/sources/time-test')
     saved_name = settings.program_name 
     settings.program_name = 'do_nothing'
     saved_path = settings.benchmark_root_dir
-    settings.benchmark_root_dir = get_path(context)
+    settings.benchmark_root_dir = context.paths_manager.get_path()
 
-    define_build_settings(settings, 
-        '',
-        '')
+    settings.define_build_settings('', '')
     b = settings.build_settings
     b.compiler = 'gcc'
     b.base_opt = '-O0'
 
-    define_run_settings(settings)
+    settings.define_run_settings()
 
     build(context)
     c = run_empty(context)
     overhead_time = c.time
 
-    unnest_path(context)
+    context.paths_manager.unnest_path(context)
     settings.benchmark_root_dir = saved_path
     settings.program_name = saved_name
     return c, overhead_time

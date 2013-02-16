@@ -12,6 +12,11 @@ Author: Michael Pankov, 2012-2013.
 Please do not redistribute.
 """
 
+import couchdbkit as ck
+import subprocess as sp
+
+from documents import *
+
 
 def read_password():
     with open('password') as f:

@@ -15,8 +15,15 @@ import collections as cl
 from printable_structure import PrintableStructure
 
 
-HardwareInfoBase = rt.recordtype('HardwareInfo',
+CPUInfoBase = rt.recordtype('CPUInfo',
     'cpu_mhz cache_size flags')
+
+class CPUInfo(PrintableStructure, CPUInfoBase):
+    pass
+
+
+HardwareInfoBase = rt.recordtype('HardwareInfo',
+    'cpu_info')
 
 class HardwareInfo(PrintableStructure, HardwareInfoBase):
     pass

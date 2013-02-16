@@ -60,7 +60,7 @@ class PathsManager():
         Get the correct current path from stack in self and 
         change current directory to there.
         """
-        os.chdir(get_path(self))
+        os.chdir(self.get_path())
 
     def nest_path_absolute(self, path):
         """
@@ -72,8 +72,8 @@ class PathsManager():
         except:
             raise NoSuchNestedPathError
 
-        push_path(self, path)
-        ensure_path(self)
+        self.push_path(path)
+        self.ensure_path()
 
     def nest_path_from_root(self, path):
         """
@@ -81,7 +81,7 @@ class PathsManager():
         push it to stack in self and change current directory to there.
         """
         new_path = os.path.join(self.framework_root_dir, path)
-        nest_path_absolute(self, new_path)
+        self.nest_path_absolute(new_path)
 
     def nest_path_from_benchmark_root(self, path):
         """
@@ -89,26 +89,24 @@ class PathsManager():
         push it to stack in self and change current directory to there.
         """
         new_path = os.path.join(self.benchmark_root_dir, path)
-        nest_path_absolute(self, new_path)
-
+        self.nest_path_absolute(new_path)
 
     def nest_path(self, path):
         """
         Receive relative path, push the real path of it to stack in self and 
         change current directory to there.
         """
-        new_path = os.path.join(get_path(self), path)
-        nest_path_absolute(self, new_path)
-
+        new_path = os.path.join(self.get_path(), path)
+        self.nest_path_absolute(new_path)
 
     def unnest_path(self):
         """
         Pop the path from stack in self and
         change current directory to current top path of stack.
         """
-        pop_path(self)
+        self.pop_path()
         try:
-            ensure_path(self)
+            self.ensure_path()
         except:
             # Fails when stack is empty after popping
             pass
