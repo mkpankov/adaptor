@@ -19,8 +19,14 @@ Author: Michael Pankov, 2012-2013.
 Please do not redistribute.
 """
 
+import ipdb
+from settings import *
+from context import *
+from system import perform_experiment
+
 def cpdh_run(context):
     """Run scenario cpdh (see module docstring for description)."""
+    ipdb.set_trace()
     settings = Settings('2mm')
     context = Context(settings)
     dataset_sizes = ["MINI_DATASET", "SMALL_DATASET", "STANDARD_DATASET",

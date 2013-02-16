@@ -16,7 +16,7 @@ from database import *
 
 class Context(PrintableStructure):
     """Context of the system."""
-	def __init__(self,
+    def __init__(self,
                  settings,
                  server=None):
 

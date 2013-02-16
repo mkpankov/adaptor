@@ -9,6 +9,11 @@ Author: Michael Pankov, 2012-2013.
 Please do not redistribute.
 """
 
+import recordtype as rt
+import collections as cl
+
+from printable_structure import PrintableStructure
+
 
 HardwareInfoBase = rt.recordtype('HardwareInfo',
     'cpu_mhz cache_size flags')

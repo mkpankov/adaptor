@@ -18,13 +18,13 @@ class Settings(PrintableStructure):
                  program_name,
                  benchmark_root_dir='../data/sources/polybench-c-3.2/',
                  benchmark_bin_dir='../data/bin/'):
-    """ Initialize framework settings and return Settings object.
+        """ Initialize framework settings and return Settings object.
 
         program_name is name of directory to be found in benchmark_root_dir.
         benchmark_root_dir is directory, containing all sources of given
             benchmark.
         benchmark_bin_dir is directory, where binaries will be put.
-    """
+        """
         self.program_name = program_name
         self.framework_root_dir = os.path.realpath(
             os.path.join(os.path.dirname(__file__), '..'))
@@ -44,7 +44,6 @@ class Settings(PrintableStructure):
             optimization_flags=None,
             other_flags=other_flags,
             linker_options='-lm')
-
 
     def define_run_settings(self):
         self.run_settings = RunSettings()
