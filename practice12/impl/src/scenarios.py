@@ -31,12 +31,13 @@ def cpdh_run(context):
     settings = context.settings
     for size in dataset_sizes:
         settings.define_build_settings('src','-D{0}'.format(size))
+        settings.build_settings.compiler = 'gcc'
+        settings.build_settings.base_opt = '-O2'
         perform_experiment(context)
 
 
 def cpdh_main():
     """Run initialization and scenario."""
-    ipdb.set_trace()
     context = set_up('2mm')
     cpdh_run(context)
     tear_down(context)

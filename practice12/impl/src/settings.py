@@ -24,8 +24,8 @@ SettingsBase = rt.recordtype('SettingsBase',
 class Settings(PrintableStructure, SettingsBase):
     def __init__(self,
                  program_name,
-                 benchmark_root_dir='../data/sources/polybench-c-3.2/',
-                 benchmark_bin_dir='../data/bin/'):
+                 benchmark_root_dir='data/sources/polybench-c-3.2/',
+                 benchmark_bin_dir='data/bin/'):
         """ Initialize framework settings and return Settings object.
 
         program_name is name of directory to be found in benchmark_root_dir.
@@ -41,6 +41,7 @@ class Settings(PrintableStructure, SettingsBase):
         self.benchmark_bin_dir = os.path.realpath(
             os.path.join(self.framework_root_dir, benchmark_bin_dir))
         self.define_build_settings('src', '')
+        self.define_run_settings()
 
     def define_build_settings(self, sources_path, other_flags):
         self.build_settings = BuildSettings(

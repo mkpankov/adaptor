@@ -22,6 +22,7 @@ import numpy as np
 from data_types import *
 from database import *
 
+import ipdb
 
 # This template is for use in timing.
 definition = \
@@ -44,6 +45,9 @@ def prepare_command_build(settings):
     full_path_binary = os.path.join(
         "{benchmark_bin_dir}".format(**settings._asdict()),
         "{program_name}".format(**settings._asdict()))
+
+    ipdb.set_trace()
+
     command = tw.dedent("""
         {build_settings.compiler} {build_settings.base_opt} 
         {build_settings.other_flags} {0} 
@@ -56,14 +60,14 @@ def build(context):
     """Build the generic version of the program."""
 
     command = prepare_command_build(context.settings)
-    context.paths_manager.nest_path_from_benchmark_root(context, '')
+    context.paths_manager.nest_path_from_benchmark_root('')
     print os.path.realpath(os.path.curdir)
     print command
-    context.paths_manager.nest_path_from_benchmark_root(context, '')
+    context.paths_manager.nest_path_from_benchmark_root('')
     sp.call('mkdir bin'.split())
-    context.paths_manager.unnest_path(context)
+    context.paths_manager.unnest_path()
     sp.check_call(command.split())
-    context.paths_manager.unnest_path(context)
+    context.paths_manager.unnest_path()
 
 
 def prepare_command_run(settings):
