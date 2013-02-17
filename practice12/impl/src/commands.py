@@ -120,6 +120,8 @@ def gather_hardware_info():
 def perform_experiment(context):
     """Perform experiment."""
 
+    find_program(context)
+    ipdb.set_trace()
     build(context)
     _, o_t = calculate_overhead_time(context)
     c, v = validate(context, None, o_t)
@@ -129,6 +131,20 @@ def perform_experiment(context):
     print "Saving experiment now"
     experiment.save()
     return experiment
+
+
+def find_program(context):
+    """Find the program source by name."""
+
+    program = context.settings.program_name
+
+    for path, filenames, dirnames in os.walk(
+        context.paths_manager.benchmark_root_dir):
+        if os.path.basename(path) == program:
+            program_path = path
+            break
+
+    context.settings.build_settings.benchmark_source_dir = program_path
 
 
 def validate_default(context):
