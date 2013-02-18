@@ -184,7 +184,6 @@ def plot_vs():
     plt.axes().legend((p1, p2), (points_clang.get_label(), points_gcc.get_label()), loc='best')
     plt.title(u"Время исполнения программ, скомпилированных двумя компиляторами на уровне оптимизации '-O2'")
     plt.show()
-    ipdb.set_trace()
 
 
 def convert_input_to_settings(input):

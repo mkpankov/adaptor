@@ -45,9 +45,6 @@ def prepare_command_build(settings):
     full_path_binary = os.path.join(
         "{benchmark_bin_dir}".format(**settings._asdict()),
         "{program_name}".format(**settings._asdict()))
-
-    ipdb.set_trace()
-
     command = tw.dedent("""
         {build_settings.compiler} {build_settings.base_opt} 
         {build_settings.other_flags} {0} 
@@ -83,21 +80,10 @@ def run(context):
     """Run the generic version of program."""
     
     command = prepare_command_run(context.settings)
-    context.paths_manager.nest_path_from_root(context, 'data/bin')
+    context.paths_manager.nest_path_from_root('data/bin')
     print command
     r = calibrate(context, command)
-    context.paths_manager.unnest_path(context)
-    return r
-
-
-def run_empty(context):
-    """Run the generic version of program."""
-    
-    command = prepare_command_run(context.settings)
-    context.paths_manager.nest_path_from_root(context, 'data/bin')
-    print command
-    r = calibrate_empty(context, command)
-    context.paths_manager.unnest_path(context)
+    context.paths_manager.unnest_path()
     return r
 
 
@@ -121,8 +107,8 @@ def perform_experiment(context):
     """Perform experiment."""
 
     find_program(context)
-    ipdb.set_trace()
     build(context)
+    ipdb.set_trace()
     _, o_t = calculate_overhead_time(context)
     c, v = validate(context, None, o_t)
     hardware_info = gather_hardware_info()
@@ -192,41 +178,6 @@ def validate(context, real_time, overhead_time):
     return c, v
 
 
-def calibrate_empty(context, command):
-    """Calibrate execution of command until measurement is accurate enough."""
-    n = 0
-    t = 0
-    d_rel = 1
-    print "Begin"
-    command = os.path.join(context.paths_manager.get_path(), command)
-    result = timeit.timeit(stmt='run()',
-                           setup=definition.format(
-                               command=command),
-                           number=1)
-    print "\nTime of single run:", result,
-    if result > 1:
-        # When incremented in the loop, it'll become zero
-        n = -1
-        print ", pruning"
-    else:
-        print ''
-
-    while (t < 1) and (d_rel > 0.02):
-        sys.stderr.write('.')
-        n += 1
-        number = 10**(n)
-        result = timeit.repeat(stmt='run()', 
-                               setup=definition.format(
-                                   command=command), 
-                               number=number,
-                               repeat=3)
-        t = min(result)
-        d = np.std(np.array(result))
-        d_rel = d / t
-    sys.stderr.write('\n')
-    return CalibrationResult(t, t / number, d, d_rel, number, result)
-
-
 def calibrate(context, command):
     """Calibrate execution of command until measurement is accurate enough."""
     n = 0
@@ -263,9 +214,12 @@ def calibrate(context, command):
 
 
 def calculate_overhead_time(context):
-    context = copy.deepcopy(context)
+    context = copy.copy(context)
+    context.settings = copy.deepcopy(context.settings)
+    context.paths_manager = copy.deepcopy(context.paths_manager)
+
     settings = context.settings
-    context.paths_manager.nest_path_from_root(context, 'data/sources/time-test')
+    context.paths_manager.nest_path_from_root('data/sources/time-test')
     saved_name = settings.program_name 
     settings.program_name = 'do_nothing'
     saved_path = settings.benchmark_root_dir
@@ -279,10 +233,10 @@ def calculate_overhead_time(context):
     settings.define_run_settings()
 
     build(context)
-    c = run_empty(context)
+    c = run(context)
     overhead_time = c.time
 
-    context.paths_manager.unnest_path(context)
+    context.paths_manager.unnest_path()
     settings.benchmark_root_dir = saved_path
     settings.program_name = saved_name
     return c, overhead_time

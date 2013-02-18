@@ -90,8 +90,6 @@ class PathsManager():
         Receive path, relative to the root of benchmark directory, 
         push it to stack in self and change current directory to there.
         """
-        ipdb.set_trace()
-
         new_path = os.path.join(self.benchmark_root_dir, path)
         self.nest_path_absolute(new_path)
 
