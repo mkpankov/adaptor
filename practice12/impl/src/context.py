@@ -19,6 +19,7 @@ class Context(PrintableStructure):
     """Context of the system."""
     def __init__(self,
                  settings,
+                 local=True,
                  server=None):
 
         self.paths_manager = PathsManager(settings.framework_root_dir,
@@ -27,6 +28,6 @@ class Context(PrintableStructure):
         self.settings = settings
 
         if server is None:
-            server = setup_database(settings, self.paths_manager)
+            server = setup_database(settings, self.paths_manager, local)
 
         self.server = server

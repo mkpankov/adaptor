@@ -96,10 +96,10 @@ def perform_experiment3(settings_context):
     unnest_path(context)
 
 
-def set_up(program_name):
+def set_up(program_name, local):
     """Initialize the system."""
     settings = Settings(program_name)
-    context = Context(settings)
+    context = Context(settings, local)
     return context
 
 
