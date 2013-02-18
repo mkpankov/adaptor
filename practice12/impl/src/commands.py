@@ -90,7 +90,8 @@ def run(context):
 def gather_cpu_info():
     """Gather information about CPU and return structure."""
     p = probe.CPUProbe()
-    cpu_info = CPUInfo(cpu_mhz=p.cpu_mhz(),
+    cpu_info = CPUInfo(cpu_name=p.cpu_name(),
+                       cpu_mhz=p.cpu_mhz(),
                        cache_size=p.cache_size(),
                        flags=p.flags())
     return cpu_info
@@ -108,7 +109,6 @@ def perform_experiment(context):
 
     find_program(context)
     build(context)
-    ipdb.set_trace()
     _, o_t = calculate_overhead_time(context)
     c, v = validate(context, None, o_t)
     hardware_info = gather_hardware_info()

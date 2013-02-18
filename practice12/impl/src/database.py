@@ -14,6 +14,7 @@ Please do not redistribute.
 
 import couchdbkit as ck
 import subprocess as sp
+import datetime as dt
 
 from documents import *
 
@@ -85,8 +86,17 @@ def create_experiment_document(context, c, v, hardware_info):
         build_settings=b_d,
         run_settings=r_d)
 
+    cpu_info_document = CPUInformationDocument(
+        cpu_name=hardware_info.cpu_info.cpu_name,
+        cpu_mhz=hardware_info.cpu_info.cpu_mhz,
+        flags=hardware_info.cpu_info.flags,
+        cache_size=hardware_info.cpu_info.cache_size)
+
+    h_info_document = HardwareInformationDocument(
+        cpu=cpu_info_document)
+
     experiment = ExperimentDocument(
-        hardware_info=hardware_info,
+        hardware_info=h_info_document,
         settings=s_d,
         calibration_result=c_d,
         validation_result=v_d,

@@ -24,6 +24,13 @@ class CPUProbe():
         f = open('/proc/cpuinfo')
         self.cpuinfo = f.read()
 
+    def cpu_name(self):
+        """Parse and return CPU model name."""
+        m = re.search('model name\t: [a-zA-Z0-9()@. ]*', self.cpuinfo)
+        g = m.group()
+        name = g.split('model name\t: ')[1]
+        return name
+
     def cpu_mhz(self):
         """Parse and return CPU clock speed."""
         mhz = parse.search('cpu MHz\t\t: {:f}', self.cpuinfo)[0]

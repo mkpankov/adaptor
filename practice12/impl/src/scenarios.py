@@ -35,7 +35,7 @@ def cpdh_run(context):
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I/home/constantius/diploma/'\
             'practice12/impl/data/sources/polybench-c-3.2/utilities '\
-            'utilities/polybench.c'
+            'utilities/polybench.c -D{0}'.format(size)
         perform_experiment(context)
 
 

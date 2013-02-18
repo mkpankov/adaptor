@@ -62,6 +62,7 @@ class SettingsDocument(ck.Document):
 
 class CPUInformationDocument(ck.Document):
     """CouchDB document, storing the information about hardware platform."""
+    cpu_name = ck.StringProperty()
     cpu_mhz = ck.FloatProperty()
     cache_size = ck.IntegerProperty()
     flags = ck.StringProperty()
@@ -78,4 +79,4 @@ class ExperimentDocument(ck.Document):
     calibration_result = ck.SchemaProperty(CalibrationResultDocument)
     validation_result = ck.SchemaProperty(ValidationResultDocument)
     settings = ck.SchemaProperty(SettingsDocument)
-    hardware = ck.SchemaProperty(HardwareInformationDocument)
+    hardware_info = ck.SchemaProperty(HardwareInformationDocument)

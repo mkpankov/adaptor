@@ -16,7 +16,7 @@ from printable_structure import PrintableStructure
 
 
 CPUInfoBase = rt.recordtype('CPUInfo',
-    'cpu_mhz cache_size flags')
+    'cpu_name cpu_mhz cache_size flags')
 
 class CPUInfo(PrintableStructure, CPUInfoBase):
     pass
