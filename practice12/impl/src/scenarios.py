@@ -41,6 +41,7 @@ def cpdh_run(context):
 
 def cpdh_main():
     """Run initialization and scenario."""
-    context = set_up('2mm', False)
+    ipdb.set_trace()
+    context = set_up('2mm', False, 'series1')
     cpdh_run(context)
     tear_down(context)

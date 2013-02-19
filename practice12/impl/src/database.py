@@ -53,7 +53,7 @@ def setup_database(settings, paths_manager, local=True):
     return server
 
 
-def create_experiment_document(context, c, v, hardware_info):
+def create_experiment_document(context, c, v, hardware_info, series):
     c_d = CalibrationResultDocument(
         total_time=c.total_time,
         time=c.time,
@@ -100,7 +100,8 @@ def create_experiment_document(context, c, v, hardware_info):
         settings=s_d,
         calibration_result=c_d,
         validation_result=v_d,
-        datetime=dt.datetime.utcnow())
+        datetime=dt.datetime.utcnow(),
+        series=series)
 
     return experiment
 

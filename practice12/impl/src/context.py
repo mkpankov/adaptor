@@ -19,6 +19,7 @@ class Context(PrintableStructure):
     """Context of the system."""
     def __init__(self,
                  settings,
+                 series,
                  local=True,
                  server=None):
 
@@ -31,3 +32,4 @@ class Context(PrintableStructure):
             server = setup_database(settings, self.paths_manager, local)
 
         self.server = server
+        self.series = series

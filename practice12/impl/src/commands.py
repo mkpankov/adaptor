@@ -113,7 +113,8 @@ def perform_experiment(context):
     c, v = validate(context, None, o_t)
     hardware_info = gather_hardware_info()
 
-    experiment = create_experiment_document(context, c, v, hardware_info)
+    experiment = create_experiment_document(
+        context, c, v, hardware_info, context.series)
     print "Saving experiment now"
     experiment.save()
     return experiment

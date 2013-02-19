@@ -80,3 +80,4 @@ class ExperimentDocument(ck.Document):
     validation_result = ck.SchemaProperty(ValidationResultDocument)
     settings = ck.SchemaProperty(SettingsDocument)
     hardware_info = ck.SchemaProperty(HardwareInformationDocument)
+    series = ck.StringProperty()
