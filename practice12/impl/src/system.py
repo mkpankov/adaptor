@@ -99,13 +99,13 @@ def perform_experiment3(settings_context):
 def set_up(program_name, local, series):
     """Initialize the system."""
     settings = Settings(program_name)
-    context = Context(settings, local, series)
+    context = Context(settings, series, local=local)
     return context
 
 
 def tear_down(context):
     """Finalize the system."""
-    assert len(context.paths_stack) == 0
+    assert len(context.paths_manager.paths_stack) == 0
 
 
 def perform_plot_error(context):
