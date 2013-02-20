@@ -26,8 +26,8 @@ from system import *
 
 def cpdh_run(context):
     """Run scenario cpdh (see module docstring for description)."""
-    dataset_sizes = ["MINI_DATASET", "SMALL_DATASET", "STANDARD_DATASET",
-                     "LARGE_DATASET", "EXTRALARGE_DATASET"]
+    dataset_sizes = [2**x for x in range(1,12)]
+
     settings = context.settings
     for size in dataset_sizes:
         settings.define_build_settings('src','-D{0}'.format(size))
@@ -35,13 +35,13 @@ def cpdh_run(context):
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I/home/constantius/diploma/'\
             'practice12/impl/data/sources/polybench-c-3.2/utilities '\
-            'utilities/polybench.c -D{0}'.format(size)
+            'utilities/polybench.c -DNI={0} -DNJ={0}'.format(size)
         perform_experiment(context)
 
 
 def cpdh_main():
     """Run initialization and scenario."""
     ipdb.set_trace()
-    context = set_up('2mm', False, 'series1')
+    context = set_up('symm', False, 'series2')
     cpdh_run(context)
     tear_down(context)
