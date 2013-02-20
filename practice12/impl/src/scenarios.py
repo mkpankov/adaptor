@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
 Scenario module. Implements some research scenarios in a relatively 
 high-level way.
@@ -45,3 +47,18 @@ def cpdh_main():
     context = set_up('symm', False, 'series2')
     cpdh_run(context)
     tear_down(context)
+
+
+def mpdh_main():
+    """Run initialization and scenario."""
+    context = set_up('symm', False, 'series2')
+    plot()
+    tear_down(context)
+
+
+def plot():
+    v = ExperimentDocument.view('adaptor/experiment-all')
+    l = []
+    for doc in v:
+        if doc.series == 'series2':
+            l.append(doc)
