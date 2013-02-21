@@ -19,6 +19,7 @@ Contains 'Adaptor' self-tuning computing framework.
 		* `[ ]` [mlpy](http://mlpy.sourceforge.net/). Seems to have what we need. Decent documentation.
 		* `[ ]` [PyML](http://pyml.sourceforge.net/). Seems to have what we need. Best documentation.
 		* `[•]` [Orange](http://orange.biolab.si/). Has graphical interface. Maybe has what we need. Average documentation.
+	* Scenario itself is trial to build regression model based on feature choice. Feature choice will be implemented to account for need of different models for different platforms, which is not obviously required per se.
 
 1. `[ ]` Perform 10 runs several times, each with different settings: some with one dataset size, some with other; some with one hardware, some with other. It's hard to get different hardware for me so I must think of emulation (i.e. setting of CPU frequency).
 	* Emulation proved to be not an option since VM doesn't effectively support hardware adjustment. I now aim for usage of laptop and PC as 2 different machines.
