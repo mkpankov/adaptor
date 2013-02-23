@@ -8,14 +8,14 @@
 \usepackage[english,russian]{babel}
 % Подключаем нужные пакеты расширений
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+% Для таблиц
+\usepackage{array}
 
 % Вставка рисунков
 \usepackage{graphicx}
 % Путь к рисункам
 \graphicspath{{../pictures/}}
 
-% Рыба
-\usepackage{lipsum}
 % Подсчёт объектов
 \usepackage{totcount}
 \regtotcounter{page}
@@ -31,6 +31,15 @@
 % Отступ начала параграфа
 \setlength{\parindent}{1cm}
 
+% Отступы слева для списков
+% Первый уровень выровнен на отступ нового абзаца, 
+% остальные -- на начало элемента более высокого уровня.
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=1.55cm, label=---}
+\setlist[enumerate,1]{leftmargin=1.55cm}
+\setlist[itemize,2,3]{leftmargin=*, label=---}
+\setlist[enumerate,2,3]{leftmargin=*}
+
 % Заменяем библиографию с квадратных скобок на точку
 \makeatletter
 \renewcommand{\@biblabel}[1]{#1.}
@@ -45,12 +54,12 @@
 \geometry{bottom=2cm}
 
 % Меняем везде перечисления на цифра.цифра
-\renewcommand{\theenumi}{\arabic{enumi}.}
-\renewcommand{\labelenumi}{\arabic{enumi}.}
-\renewcommand{\theenumii}{\arabic{enumii}.}
-\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\renewcommand{\theenumiii}{\arabic{enumiii}.}
-\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
+\renewcommand{\theenumi}{\arabic{enumi})}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\theenumii}{\arabic{enumii})}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii})}
+\renewcommand{\theenumiii}{\arabic{enumiii})}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii})}
 
 % Изменяем \part и \chapter из report.cls чтобы они не выводили нумерованные заголовки
 % Рецепт отсюда: http://tex.stackexchange.com/questions/70621/part-and-chapter-commands-output-both-numbered-and-named-headings/70624
@@ -99,17 +108,41 @@
 % Для веб-адресов в библиографии
 \usepackage{url}
 % Библиография в порядке упоминания в тексте
-\bibliographystyle{unsrt}
+\bibliographystyle{ugost2008}
+% Определяем названия месяцев вручную
+\def\bbljan{Январь}
+\def\bblfeb{Февраль}
+\def\bblmar{Март}
+\def\bblapr{Апрель}
+\def\bblmay{Май}
+\def\bbljun{Июнь}
+\def\bbljul{Июль}
+\def\bblaug{Август}
+\def\bblsep{Сентябрь}
+\def\bbloct{Октябрь}
+\def\bblnov{Ноябрь}
+\def\bbldec{Декабрь}
+
+% Выключаем переносы
+\makeatletter\chardef\l@nohyphenation=255 \makeatother
+\usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst}
+\sloppy
 
 \begin{document}
 % Титульный лист
 \input{RefReport-Title}
+% Сброс номера страницы
+\setcounter{page}{2}
 % Введение
 \input{RefReport-Introduction}
 % Валидация трансляции
 \input{RefReport-TranslationValidation}
-% Название библиографии
-\renewcommand\bibname{Список использованных источников}
 % Список использованных источников
-\bibliography{biblio/ref}
+\clearpage
+% Удалён стандатный заголовок и вставлен вручную заголовок нужного типа
+{\def\chapter*#1{}
+    \section*{Список использованных источников}
+    \bibliography{biblio/ref}
+}
+
 \end{document}
