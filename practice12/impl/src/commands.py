@@ -18,6 +18,7 @@ import sys
 import copy
 import textwrap as tw
 import numpy as np
+import hashlib
 
 from data_types import *
 from database import *
@@ -109,15 +110,27 @@ def perform_experiment(context):
 
     find_program(context)
     build(context)
+    h = get_executable_hash(context)
     _, o_t = calculate_overhead_time(context)
     c, v = validate(context, None, o_t)
     hardware_info = gather_hardware_info()
 
     experiment = create_experiment_document(
-        context, c, v, hardware_info, context.series)
+        context, c, v, hardware_info, context.series, h)
     print "Saving experiment now"
     experiment.save()
     return experiment
+
+
+def get_executable_hash(context):
+    """Find the executable and return its hash."""
+    program_name = context.settings.program_name
+    bin_dir = context.paths_manager.benchmark_bin_dir
+    full_path = os.path.join(bin_dir, program_name)
+    f = open(full_path, 'rb')
+    s = f.read()
+    h = hashlib.md5(s)
+    return h.hexdigest()
 
 
 def find_program(context):

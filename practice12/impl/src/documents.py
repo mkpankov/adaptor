@@ -56,6 +56,7 @@ class RunSettingsDocument(ck.Document):
 class SettingsDocument(ck.Document):
     """CouchDB document, describing the global settings of framework."""
     program = ck.StringProperty()
+    program_id = ck.StringProperty()
     build_settings = ck.SchemaProperty(BuildSettingsDocument)
     run_settings = ck.SchemaProperty(RunSettingsDocument)
 

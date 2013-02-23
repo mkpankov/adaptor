@@ -53,7 +53,7 @@ def setup_database(settings, paths_manager, local=True):
     return server
 
 
-def create_experiment_document(context, c, v, hardware_info, series):
+def create_experiment_document(context, c, v, hardware_info, series, h):
     c_d = CalibrationResultDocument(
         total_time=c.total_time,
         time=c.time,
@@ -83,6 +83,7 @@ def create_experiment_document(context, c, v, hardware_info, series):
 
     s_d = SettingsDocument(
         program=context.settings.program_name,
+        program_id=h,
         build_settings=b_d,
         run_settings=r_d)
 
