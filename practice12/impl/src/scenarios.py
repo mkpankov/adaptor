@@ -35,9 +35,10 @@ def cpdh_run(context):
         settings.define_build_settings('src','-D{0}'.format(size))
         settings.build_settings.compiler = 'gcc'
         settings.build_settings.base_opt = '-O2'
-        settings.build_settings.other_flags = '-I/home/constantius/diploma/'\
-            'practice12/impl/data/sources/polybench-c-3.2/utilities '\
-            'utilities/polybench.c -DNI={0} -DNJ={0}'.format(size)
+        settings.build_settings.other_flags = '-I{1}'\
+            '/data/sources/polybench-c-3.2/utilities '\
+            'utilities/polybench.c -DNI={0} -DNJ={0}'.format(
+                size, context.paths_manager.framework_root_dir)
         perform_experiment(context)
 
 
@@ -62,3 +63,4 @@ def plot():
     for doc in v:
         if doc.series == 'series2':
             l.append(doc)
+    print l
