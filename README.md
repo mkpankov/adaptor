@@ -17,7 +17,7 @@ Contains 'Adaptor' self-tuning computing framework.
 	* [This](http://wiki.sdakak.com/ml:getting-started-with-orange)
 1. `[×]` Complete the sklearn tutorial.
 1. `[×]` Put relative path to headers at scenarios.py:38.
-1. `[ ]` Add hashing of entire executable as part of Experiment.
+1. `[×]` Add hashing of entire executable as part of Experiment.
 1. `[ ]` Prepare extensive search scenario. Doing statistics on 5 samples is laughable. We have to have at least ~100 of them. We need to launch program multiple times with ~random dataset sizes.
 1. `[ ]` Launch extensive search.
 1. `[ ]` Prepare the experimental scenario of data analysis.

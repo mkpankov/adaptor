@@ -47,7 +47,18 @@ def setup_database(settings, paths_manager, local=True):
     paths_manager.nest_path_from_root('couch/adaptor')
     # We are stupid so we suppose the CouchApp is managed
     # to be stable version and we just re-publish it on launch.
-    sp.check_call('couchapp push . http://localhost:5984/adaptor'.split())
+    if local:
+        sp.check_call('couchapp push . http://localhost:5984/adaptor'.split())
+    else:
+        # We currently do not know how to properly push it to Iris,
+        # so we just intercept all of it's exceptions
+        try:
+            sp.check_call('couchapp push . '\
+                'https://constantius:{0}@constantius.cloudant.com'.format(
+                    password).split())
+        except CalledProcessError:
+            pass
+
     paths_manager.unnest_path()
 
     return server
