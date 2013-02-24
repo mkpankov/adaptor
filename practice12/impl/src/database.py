@@ -56,7 +56,7 @@ def setup_database(settings, paths_manager, local=True):
             sp.check_call('couchapp push . '\
                 'https://constantius:{0}@constantius.cloudant.com'.format(
                     password).split())
-        except CalledProcessError:
+        except sp.CalledProcessError:
             pass
 
     paths_manager.unnest_path()
