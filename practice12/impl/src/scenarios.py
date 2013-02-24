@@ -50,7 +50,7 @@ def cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024):
 
     for i in range(trials):
         size = random.randint(dataset_min, dataset_max)
-        settings.define_build_settings('src','-D{0}'.format(size))
+        settings.define_build_settings('src','')
         settings.build_settings.compiler = 'gcc'
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{1}'\
