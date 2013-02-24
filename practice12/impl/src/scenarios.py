@@ -22,6 +22,8 @@ Please do not redistribute.
 """
 
 import ipdb
+import random
+
 from settings import *
 from context import *
 from system import *
@@ -42,11 +44,26 @@ def cpdh_run(context):
         perform_experiment(context)
 
 
+def cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024):
+    """Run exploration scenario."""
+    settings = context.settings
+
+    for i in range(trials):
+        size = random.randint(dataset_min, dataset_max)
+        settings.define_build_settings('src','-D{0}'.format(size))
+        settings.build_settings.compiler = 'gcc'
+        settings.build_settings.base_opt = '-O2'
+        settings.build_settings.other_flags = '-I{1}'\
+            '/data/sources/polybench-c-3.2/utilities '\
+            'utilities/polybench.c -DNI={0} -DNJ={0}'.format(
+                size, context.paths_manager.framework_root_dir)
+        perform_experiment(context)
+
+
 def cpdh_main():
     """Run initialization and scenario."""
-    ipdb.set_trace()
     context = set_up('symm', False, 'series2')
-    cpdh_run(context)
+    cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024)
     tear_down(context)
 
 
