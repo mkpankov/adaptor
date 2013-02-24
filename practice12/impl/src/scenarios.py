@@ -60,10 +60,29 @@ def cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024):
         perform_experiment(context)
 
 
+def cpdh_explore_non_uniform(
+    context, trials=10, dataset_min=2, dataset_max=1024):
+    """Run exploration scenario with non-uniform sizes of dataset."""
+
+    settings = context.settings
+
+    for i in range(trials):
+        w = random.randint(dataset_min, dataset_max)
+        h = random.randint(dataset_min, dataset_max)
+        settings.define_build_settings('src','')
+        settings.build_settings.compiler = 'gcc'
+        settings.build_settings.base_opt = '-O2'
+        settings.build_settings.other_flags = '-I{0}'\
+            '/data/sources/polybench-c-3.2/utilities '\
+            'utilities/polybench.c -DNI={1} -DNJ={2}'.format(
+                context.paths_manager.framework_root_dir, w, h)
+        perform_experiment(context)
+
+
 def cpdh_main():
     """Run initialization and scenario."""
     context = set_up('symm', False, 'series2')
-    cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024)
+    cpdh_explore_non_uniform(context, trials=10, dataset_min=2, dataset_max=1024)
     tear_down(context)
 
 
