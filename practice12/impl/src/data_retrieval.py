@@ -45,6 +45,11 @@ def prepare(context, series):
     rr = map(lambda i: "\t".join(map(str, i)), ll)
     r = map(lambda i: i + '\n', rr)
 
+    headers = 'id\tdatetime\ttime\tprogram_name\tcompiler\t'\
+        'base_opt\toptimization_flags\twidth\theight\tcpu_name\t'\
+        'cpu_mhz\tcpu_flags\tcpu_cache\n'
+
     f = open(os.path.join(context.paths_manager.framework_root_dir, 
         'an/{0}.csv'.format(series)), 'w')
+    f.write(headers)
     f.writelines(r)
