@@ -19,9 +19,24 @@ Contains 'Adaptor' self-tuning computing framework.
 1. `[×]` Put relative path to headers at scenarios.py:38.
 1. `[×]` Add hashing of entire executable as part of Experiment.
 1. `[×]` Prepare extensive search scenario. Doing statistics on 5 samples is laughable. We have to have at least ~100 of them. We need to launch program multiple times with ~random dataset sizes.
+1. `[ ]` Make the system setup not change the current directory.
+1. `[ ]` Consider the multiple programs with source code features design.
+	* I currently think it's not necessary as it would duplicate the functionality. Better focus at model building.
+1. `[ ]` Think over the workflow. It is as follows.
+	1. `[ ]` Data is collected until certain number of experiments is performed.
+	1. `[ ]` Model is learned on these experiments. It's as simple as possible. Since source code features and optimization flags present very big amount of features, it will possibly lead to overfitting. To avoid that, we should consider the use of aggregated features (like level of optimizations instead of individual ones). The model is either of two.
+		* This model should take into account the hardware-software platform, dataset size and guess good compiler parameters to reach optimal performance.
+		* This model should take into account the hardware-software platform, dataset size and make a prediction of performance given some fixed compiler settings.
+	1. `[ ]` Search is directed using feature ranking — features ranked in top are explored first. However, the search existence itself should be reconsidered. Rather, just normal program launches should happen. Anyway, we then assume that some experiments were conducted the specified number of times. If we're lucky, we get new points in interesting area. System could tune settings automatically without notice to the user. It could piss him off, but it could be disabled at will. It would improve the search by searching in interesting area.
+	1. `[ ]` New model is learned. Basically it's loop of experimenting and learning.
+1. `[ ]` Split CPU flags feature into many binary features.
+	* `[ ]` Think about convinient representation of compound feature such as this.
+	* `[ ]` Refactor the feature representation taking considerations of the above into account.
+1. `[ ]` Introduce optimization flags parameters for compiler. 
+	* `[ ]` Split levels of optimization into separate options.
+	* `[ ]` Think about aggregative feature of optimization level.
 1. `[ ]` Automate the collected data preparation for analysis.
 1. `[ ]` Launch extensive search.
-1. `[ ]` Make the system setup not change the current directory.
 1. `[ ]` Prepare the experimental scenario of data analysis.
 	* Possible platforms:
 		* `[•]` [Scikit-learn](http://scikit-learn.org/stable/#). Seems to have that we need. Average documentation.
