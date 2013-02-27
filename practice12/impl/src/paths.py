@@ -49,7 +49,8 @@ class PathsManager():
 
         Path is absolute.
         """
-        return self.paths_stack.pop()
+        path = self.paths_stack.pop()
+        return path
 
     def get_path(self):
         """
@@ -57,12 +58,15 @@ class PathsManager():
         """
         return self.paths_stack[-1]
 
-    def ensure_path(self):
+    def ensure_path(self, path=None):
         """
         Get the correct current path from stack in self and 
         change current directory to there.
         """
-        os.chdir(self.get_path())
+        if path is None:
+            os.chdir(self.get_path())
+        else:
+            os.chdir(path)
 
     def nest_path_absolute(self, path):
         """
@@ -106,5 +110,5 @@ class PathsManager():
         Pop the path from stack in self and
         change current directory to current top path of stack.
         """
-        self.pop_path()
-        self.ensure_path()
+        top_path = self.pop_path()
+        self.ensure_path(top_path)

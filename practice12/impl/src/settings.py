@@ -34,8 +34,8 @@ class Settings(PrintableStructure, SettingsBase):
         benchmark_bin_dir is directory, where binaries will be put.
         """
         self.program_name = program_name
-        self.framework_root_dir = os.path.realpath(
-            os.path.join(os.path.dirname(__file__), '..'))
+        self.framework_root_dir = os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), '..')
         self.benchmark_root_dir = os.path.realpath(
             os.path.join(self.framework_root_dir, benchmark_root_dir))
         self.benchmark_bin_dir = os.path.realpath(
