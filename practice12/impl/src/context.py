@@ -26,6 +26,7 @@ class Context(PrintableStructure):
         self.paths_manager = PathsManager(settings.framework_root_dir,
                                           settings.benchmark_root_dir,
                                           settings.benchmark_bin_dir)
+        self.paths_manager.nest_path_absolute(settings.framework_root_dir)
         self.settings = settings
 
         if server is None:

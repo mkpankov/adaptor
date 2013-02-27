@@ -31,7 +31,9 @@ def setup_database(settings, paths_manager, local=True):
     if local:
         server = ck.Server()
     else:
+        paths_manager.nest_path_from_root('src')
         password = read_password()
+        paths_manager.unnest_path()
         server = ck.Server(
             'https://constantius:{0}@constantius.cloudant.com'.format(
                 password))

@@ -107,8 +107,4 @@ class PathsManager():
         change current directory to current top path of stack.
         """
         self.pop_path()
-        try:
-            self.ensure_path()
-        except:
-            # Fails when stack is empty after popping
-            pass
+        self.ensure_path()
