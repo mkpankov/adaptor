@@ -19,6 +19,7 @@ import copy
 import textwrap as tw
 import numpy as np
 import hashlib
+import recordtype as rt
 
 from data_types import *
 from database import *
@@ -86,6 +87,16 @@ def run(context):
     r = calibrate(context, command)
     context.paths_manager.unnest_path()
     return r
+
+
+def convert_flags_to_features(flags):
+    """Convert the string of CPU flags to set of processor features."""
+    flags = p.flags()
+    individual_flags = flags.split()
+    # All the flags we encountered are simply True.
+    # All others are False.
+    cpu_flags = {f for f in individual_flags}
+    return cpu_flags
 
 
 def gather_cpu_info():
