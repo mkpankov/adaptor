@@ -60,7 +60,7 @@ def build(context):
 
     command = prepare_command_build(context.settings)
     context.paths_manager.nest_path_from_benchmark_root('')
-    print os.path.realpath(os.path.curdir)
+    print context.paths_manager.get_path()
     print command
     context.paths_manager.nest_path_from_root('data')
     sp.call('mkdir bin'.split())

@@ -105,7 +105,8 @@ def set_up(program_name, local, series):
 
 def tear_down(context):
     """Finalize the system."""
-    assert len(context.paths_manager.paths_stack) == 0
+    assert len(context.paths_manager.paths_stack) == 2
+    del context
 
 
 def perform_plot_error(context):

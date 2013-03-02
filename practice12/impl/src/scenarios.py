@@ -39,7 +39,8 @@ def cpdh_run(context):
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{1}'\
             '/data/sources/polybench-c-3.2/utilities '\
-            'utilities/polybench.c -DNI={0} -DNJ={0}'.format(
+            '{1}/data/sources/polybench-c-3.2/utilities/polybench.c '\
+            '-DNI={0} -DNJ={0}'.format(
                 size, context.paths_manager.framework_root_dir)
         perform_experiment(context)
 
@@ -55,7 +56,8 @@ def cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024):
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{1}'\
             '/data/sources/polybench-c-3.2/utilities '\
-            'utilities/polybench.c -DNI={0} -DNJ={0}'.format(
+            '{1}/data/sources/polybench-c-3.2/utilities/polybench.c '\
+            '-DNI={0} -DNJ={0}'.format(
                 size, context.paths_manager.framework_root_dir)
         perform_experiment(context)
 
@@ -74,15 +76,16 @@ def cpdh_explore_non_uniform(
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{0}'\
             '/data/sources/polybench-c-3.2/utilities '\
-            'utilities/polybench.c -DNI={1} -DNJ={2}'.format(
+            '{0}/data/sources/polybench-c-3.2/utilities/polybench.c '\
+            '-DNI={1} -DNJ={2}'.format(
                 context.paths_manager.framework_root_dir, w, h)
         perform_experiment(context)
 
 
-def cpdh_main():
+def cpdh_main(trials, series):
     """Run initialization and scenario."""
-    context = set_up('symm', False, 'series2')
-    cpdh_explore_non_uniform(context, trials=10, dataset_min=2, dataset_max=1024)
+    context = set_up('symm', False, series)
+    cpdh_explore_non_uniform(context, trials=trials, dataset_min=2, dataset_max=1024)
     tear_down(context)
 
 
