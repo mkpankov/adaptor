@@ -40,14 +40,8 @@ def prepare(context, series):
     Extract all experiments of series and save their relevant data to csv.
     """
 
-    v = ExperimentDocument.view('adaptor/experiment-all')
-    l = []
-    for d in v.all():
-        try:
-            if d.series == series:
-                l.append(d)
-        except AttributeError:
-            pass
+    v = ExperimentDocument.view('adaptor/experiment-series')
+    l = v.all()
 
     flags_set = collect_flags(l)
     truthness_d = make_flags_truthness_dict(flags_set, l)
