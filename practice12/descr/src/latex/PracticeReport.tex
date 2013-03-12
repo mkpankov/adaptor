@@ -29,6 +29,15 @@
 % Отступ начала параграфа
 \setlength{\parindent}{1cm}
 
+% Отступы слева для списков
+% Первый уровень выровнен на отступ нового абзаца, 
+% остальные -- на начало элемента более высокого уровня.
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=1.55cm, label=---}
+\setlist[enumerate,1]{leftmargin=1.55cm}
+\setlist[itemize,2,3]{leftmargin=*, label=---}
+\setlist[enumerate,2,3]{leftmargin=*}
+
 % Заменяем библиографию с квадратных скобок на точку
 \makeatletter
 \renewcommand{\@biblabel}[1]{#1.}
@@ -125,6 +134,30 @@
 \def\bblnov{Ноябрь}
 \def\bbldec{Декабрь}
 
+% Для веб-адресов в библиографии
+\usepackage{url}
+% Библиография в порядке упоминания в тексте
+\bibliographystyle{ugost2008}
+% Определяем названия месяцев вручную
+\def\bbljan{Январь}
+\def\bblfeb{Февраль}
+\def\bblmar{Март}
+\def\bblapr{Апрель}
+\def\bblmay{Май}
+\def\bbljun{Июнь}
+\def\bbljul{Июль}
+\def\bblaug{Август}
+\def\bblsep{Сентябрь}
+\def\bbloct{Октябрь}
+\def\bblnov{Ноябрь}
+\def\bbldec{Декабрь}
+
+% Выключаем переносы
+\makeatletter\chardef\l@nohyphenation=255 \makeatother
+\usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst}
+% Не хотим строки, которые влезают на поля
+\sloppy
+
 % !TeX spellcheck = ru_RU
 \begin{document}
 % Титульный лист
@@ -135,12 +168,12 @@
 \pagebreak
 % Содержание
 \tableofcontents
-% Не хотим строки, которые влезают на поля
-\sloppy
 \pagebreak
 % Введение
 \input{PracticeReport-Introduction}
 \pagebreak
+% Теоретическая часть
+\input{PracticeReport-Theory}
 % Исследовательская часть
 \input{PracticeReport-Research}
 % Инструментарий коллективной оптимизации
