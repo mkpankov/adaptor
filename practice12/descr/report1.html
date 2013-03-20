@@ -1,0 +1,223 @@
+<html>
+<head>
+	<title>Orange viewer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+html, body, table {
+	font:normal 10px verdana;
+	margin:0px;
+	padding:0;
+	border:0 none;	
+}
+p {
+	margin:5px;
+}
+
+h1, h2 , h3, h4, h5 {
+   font-family: verdana;
+   width: 100%;
+   padding: 1px;
+   margin: 2px;
+   font-size:100%;
+}
+
+h1 {
+   color: white;
+   background-color: black;
+   padding-left: 2px;
+   margin-top: 12px;
+}
+
+h2 {
+   background-color: #fdffd5;
+   border-bottom: 1px solid black;
+   padding-left: 2px;
+}
+
+ul {
+   margin-left: 10px;
+}
+
+div.insideh1 {
+   padding-left: 4px;
+}
+
+.settings {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_wrench.png);
+}
+.nav {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_go.png);
+}
+
+span.timestamp {
+    position: absolute;
+	right: 40px;
+	color:#dddddd;
+}
+
+div.selected {
+	border: 1px solid black;
+	padding: 3px;
+	/* background-color: #FDFFA5; */
+	margin: 4px;
+}
+
+div.normal {
+	border: 0px;
+	padding: 3px;
+	/* background-color: #FDFFD5;*/
+	margin: 5px;
+}
+
+</style>
+
+<body><table width="100%"><tr><td valign="top"><p style="padding-top:25px;">Index</p><a href="#N001">File</a><br/><a href="#N002">Attribute Statistics [time]</a><br/><a href="#N003">Attribute Statistics [width]</a><br/><a href="#N004">Attribute Statistics [height]</a><br/><a href="#N005">Attribute Statistics [cpu_mhz]</a><br/><a href="#N006">Attribute Statistics [cpu_cache]</a><br/><a href="#N007">Select Attributes</a><br/><a href="#N008">Scatterplot [width - height]</a><br/><a href="#N009">Data Sampler</a><br/><a href="#N010">Rank (2)</a><br/><a href="#N011">Rank (3)</a></td><td><div id="N001" onClick="myself.changeItem(this.id);">    <a name="N001">    <h1>File<span class="timestamp">Sun Mar 17 13, 16:40:11</span></h1>    <div class="insideh1">        
+
+<h2>File</h2>
+
+    <ul><b>File name: </b>/home/constantius/diploma/practice12/impl/an/series10.csv<br/><b>Format: </b>unknown format<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>39 (time, program_name, compiler, base_opt, optimization_flags, width, height, cpu_name, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>vme<br/></ul>
+    </div></div>
+<div id="N002" onClick="myself.changeItem(this.id);">    <a name="N002">    <h1>Attribute Statistics [time]<span class="timestamp">Sun Mar 17 13, 16:40:21</span></h1>    <div class="insideh1">            <IMG src="report1_data/img000000.png"/>
+    </div></div>
+<div id="N003" onClick="myself.changeItem(this.id);">    <a name="N003">    <h1>Attribute Statistics [width]<span class="timestamp">Sun Mar 17 13, 16:40:25</span></h1>    <div class="insideh1">            <IMG src="report1_data/img000001.png"/>
+    </div></div>
+<div id="N004" onClick="myself.changeItem(this.id);">    <a name="N004">    <h1>Attribute Statistics [height]<span class="timestamp">Sun Mar 17 13, 16:40:29</span></h1>    <div class="insideh1">            <IMG src="report1_data/img000002.png"/>
+    </div></div>
+<div id="N005" onClick="myself.changeItem(this.id);">    <a name="N005">    <h1>Attribute Statistics [cpu_mhz]<span class="timestamp">Sun Mar 17 13, 16:40:32</span></h1>    <div class="insideh1">            <IMG src="report1_data/img000003.png"/>
+    </div></div>
+<div id="N006" onClick="myself.changeItem(this.id);">    <a name="N006">    <h1>Attribute Statistics [cpu_cache]<span class="timestamp">Sun Mar 17 13, 16:40:36</span></h1>    <div class="insideh1">            <IMG src="report1_data/img000004.png"/>
+    </div></div>
+<div id="N007" onClick="myself.changeItem(this.id);">    <a name="N007">    <h1>Select Attributes<span class="timestamp">Sun Mar 17 13, 16:40:48</span></h1>    <div class="insideh1">        
+
+<h2>Input data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>39 (time, program_name, compiler, base_opt, optimization_flags, width, height, cpu_name, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>vme<br/></ul>
+
+
+<h2>Output data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>34 (width, height, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse, pse36, rdtscp, sep, ss, sse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    <ul><b>Removed: </b>5 (compiler, program_name, cpu_name, base_opt, optimization_flags)<br/></ul>
+    </div></div>
+<div id="N008" onClick="myself.changeItem(this.id);">    <a name="N008">    <h1>Scatterplot [width - height]<span class="timestamp">Sun Mar 17 13, 16:41:00</span></h1>    <div class="insideh1">        
+
+<h2>Visualized attributes</h2>
+
+    <ul><b>X: </b>width<br/><b>Y: </b>height<br/><b>Color: </b>time<br/></ul>
+
+
+<h2>Settings</h2>
+
+    <ul><b>Symbol size: </b>8<br/><b>Transparency: </b>255<br/><b>Jittering: </b>5<br/><b>Jitter continuous attributes: </b>No<br/></ul>
+
+
+<h2>Graph</h2>
+
+    <IMG src="report1_data/img000005.png"/>
+    </div></div>
+<div id="N009" onClick="myself.changeItem(this.id);">    <a name="N009">    <h1>Data Sampler<span class="timestamp">Sun Mar 17 13, 16:42:50</span></h1>    <div class="insideh1">        
+
+<h2>Settings</h2>
+
+    <ul><b>Sampling type: </b>10-fold cross validation<br/><b>Stratification: </b>Yes<br/><b>Random seed: </b>auto<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Input: </b>3000 examples<br/><b>Sample: </b>300 examples<br/><b>Rest: </b>2700 examples<br/></ul>
+    </div></div>
+<div id="N010" onClick="myself.changeItem(this.id);">    <a name="N010">    <h1>Rank (2)<span class="timestamp">Sun Mar 17 13, 16:51:23</span></h1>    <div class="insideh1">        
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>300<br/><b>Attributes: </b>34 (width, height, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse, pse36, rdtscp, sep, ss, sse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Attribute</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">#</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">ReliefF</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">MSE</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Earth imp.</th></tr>
+<tr style="height: 2px"><th colspan="7"  style="border-bottom: thin solid black; height: 2px;"></th><tr><th>1</th><td style="; text-align: left">width</td><td style="; text-align: left">C</td><td style="; text-align: left">8.4053840637207</td><td style="; text-align: left">0.21186138689518</td><td style="; text-align: left">5.2</td></tr>
+<tr><th>2</th><td style="; text-align: left">height</td><td style="; text-align: left">C</td><td style="; text-align: left">15.1900749206543</td><td style="; text-align: left">0.0682036653161049</td><td style="; text-align: left">4.5</td></tr>
+<tr><th>3</th><td style="; text-align: left">cpu_mhz</td><td style="; text-align: left">C</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0341536588966846</td><td style="; text-align: left">1.2</td></tr>
+<tr><th>4</th><td style="; text-align: left">cpu_cache</td><td style="; text-align: left">C</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0585388652980328</td><td style="; text-align: left">0.2</td></tr>
+<tr><th>5</th><td style="; text-align: left">apic</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>6</th><td style="; text-align: left">dts</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>7</th><td style="; text-align: left">ht</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>8</th><td style="; text-align: left">lm</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0341536588966846</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>9</th><td style="; text-align: left">mca</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>10</th><td style="; text-align: left">mce</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>11</th><td style="; text-align: left">mtrr</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>12</th><td style="; text-align: left">pge</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>13</th><td style="; text-align: left">pse</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>14</th><td style="; text-align: left">pse36</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>15</th><td style="; text-align: left">rdtscp</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.00259591685608029</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>16</th><td style="; text-align: left">syscall</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>17</th><td style="; text-align: left">vme</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>18</th><td style="; text-align: left">clflush</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>19</th><td style="; text-align: left">cmov</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>20</th><td style="; text-align: left">constant</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>21</th><td style="; text-align: left">cx8</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>22</th><td style="; text-align: left">de</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>23</th><td style="; text-align: left">fpu</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>24</th><td style="; text-align: left">fxsr</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>25</th><td style="; text-align: left">mmx</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>26</th><td style="; text-align: left">msr</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>27</th><td style="; text-align: left">nx</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>28</th><td style="; text-align: left">pae</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>29</th><td style="; text-align: left">pat</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>30</th><td style="; text-align: left">sep</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>31</th><td style="; text-align: left">ss</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>32</th><td style="; text-align: left">sse</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>33</th><td style="; text-align: left">sse2</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>34</th><td style="; text-align: left">tsc</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+</table>
+    </div></div>
+<div id="N011" onClick="myself.changeItem(this.id);">    <a name="N011">    <h1>Rank (3)<span class="timestamp">Sun Mar 17 13, 16:52:48</span></h1>    <div class="insideh1">        
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>300<br/><b>Attributes: </b>34 (width, height, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse, pse36, rdtscp, sep, ss, sse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Attribute</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">#</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">ReliefF</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">MSE</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Earth imp.</th></tr>
+<tr style="height: 2px"><th colspan="7"  style="border-bottom: thin solid black; height: 2px;"></th><tr><th>1</th><td style="; text-align: left">width</td><td style="; text-align: left">C</td><td style="; text-align: left">8.4053840637207</td><td style="; text-align: left">0.21186138689518</td><td style="; text-align: left">5.2</td></tr>
+<tr><th>2</th><td style="; text-align: left">height</td><td style="; text-align: left">C</td><td style="; text-align: left">15.1900749206543</td><td style="; text-align: left">0.0682036653161049</td><td style="; text-align: left">4.5</td></tr>
+<tr><th>3</th><td style="; text-align: left">cpu_mhz</td><td style="; text-align: left">C</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0341536588966846</td><td style="; text-align: left">1.2</td></tr>
+<tr><th>4</th><td style="; text-align: left">cpu_cache</td><td style="; text-align: left">C</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0585388652980328</td><td style="; text-align: left">0.2</td></tr>
+<tr><th>5</th><td style="; text-align: left">apic</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>6</th><td style="; text-align: left">dts</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>7</th><td style="; text-align: left">ht</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>8</th><td style="; text-align: left">lm</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0341536588966846</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>9</th><td style="; text-align: left">mca</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>10</th><td style="; text-align: left">mce</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>11</th><td style="; text-align: left">mtrr</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>12</th><td style="; text-align: left">pge</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>13</th><td style="; text-align: left">pse</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>14</th><td style="; text-align: left">pse36</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>15</th><td style="; text-align: left">rdtscp</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.00259591685608029</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>16</th><td style="; text-align: left">syscall</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>17</th><td style="; text-align: left">vme</td><td style="; text-align: left">2</td><td style="; text-align: left">0</td><td style="; text-align: left">0.0515984818339348</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>18</th><td style="; text-align: left">clflush</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>19</th><td style="; text-align: left">cmov</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>20</th><td style="; text-align: left">constant</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>21</th><td style="; text-align: left">cx8</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>22</th><td style="; text-align: left">de</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>23</th><td style="; text-align: left">fpu</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>24</th><td style="; text-align: left">fxsr</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>25</th><td style="; text-align: left">mmx</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>26</th><td style="; text-align: left">msr</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>27</th><td style="; text-align: left">nx</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>28</th><td style="; text-align: left">pae</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>29</th><td style="; text-align: left">pat</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>30</th><td style="; text-align: left">sep</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>31</th><td style="; text-align: left">ss</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>32</th><td style="; text-align: left">sse</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>33</th><td style="; text-align: left">sse2</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+<tr><th>34</th><td style="; text-align: left">tsc</td><td style="; text-align: left">1</td><td style="; text-align: left">0</td><td style="; text-align: left">0</td><td style="; text-align: left"></td></tr>
+</table>
+    </div></div></td></tr></table>
+
+ </body>
+</html>
