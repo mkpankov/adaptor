@@ -22,8 +22,11 @@ import datetime as dt
 import recordtype as rt
 import collections as cl
 
+import csv
+
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 import couchdbkit as ck
 from couchdbkit.designer import push
@@ -185,6 +188,68 @@ def plot_vs():
     plt.axes().legend((p1, p2), (points_clang.get_label(), points_gcc.get_label()), loc='best')
     plt.title(u"Время исполнения программ, скомпилированных двумя компиляторами на уровне оптимизации '-O2'")
     plt.show()
+
+
+def plot_predictions(filename):
+    f = open(filename)
+    dr = csv.DictReader(f)
+    dicts = [d for d in dr]
+    dicts = sorted(dicts, key=lambda d: d['size'])
+    ws = [d['width'] for d in dr]
+    hs = [d['height'] for d in dr]
+    times = [d['c#time'] for d in dr]
+    preds = [d['Random Forest'] for d in dr]
+    fig = plt.figure()
+    ax3d = fig.add_subplot(111, projection='3d')
+    ax3d.scatter(hs, ws, times, label=u'Экспериментальные данные')
+    ax3d.scatter(hs, ws, preds, color='r', 
+        label=u'Значения, предсказанные моделью')
+    ax3d.xaxis.set_label_text(u'Число строк матрицы')
+    ax3d.yaxis.set_label_text(u'Число столбцов матрицы')
+    ax3d.zaxis.set_label_text(u'Время исполнения, с')
+    plt.show()
+
+
+def plot_predictions_distinct(filename):
+    f = open(filename)
+    dr = csv.DictReader(f)
+    dicts = [d for d in dr]
+    dicts.sort(key=lambda d: d['size'])
+    # Get list of CPU frequencies.
+    # For now we have to distinguish only by frequency or cache size,
+    # since they change simultaneously.
+    freqs = [d['cpu_mhz'] for d in dicts]
+    # Make list of uniques frequency values
+    freqs = list(set(freqs))
+    fig = plt.figure()
+    ax3d = fig.add_subplot(111, projection='3d')
+    cmaps = [plt.cm.Reds, plt.cm.Blues, plt.cm.Greens]
+    colors = [('red', 'orange'), ('blue', 'violet'), ('green', 'olive')]
+    for freq, cmap, cs in zip(freqs, cmaps, colors):
+        filter_func = lambda d: True if d['cpu_mhz'] == freq else False
+        ws_freq = [int(d['width']) for d in dicts if filter_func(d)]
+        hs_freq = [int(d['height']) for d in dicts if filter_func(d)]
+        times_freq = [float(d['c#time']) for d in dicts if filter_func(d)]
+        preds_freq = [float(d['Random Forest']) for d in dicts if filter_func(d)]
+        ax3d.scatter(hs_freq, ws_freq, times_freq, 
+            c=cs[0],
+            cmap=cmap)
+        ax3d.plot([], [], [], c=cs[0], 
+            label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq))
+
+        ax3d.scatter(hs_freq, ws_freq, preds_freq, 
+            label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
+            c=cs[1],
+            cmap=cmap)
+        ax3d.plot([], [], [], c=cs[1], 
+            label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq))
+
+    plt.legend()
+    plt.show()
+
+    ax3d.xaxis.set_label_text(u'Число строк матрицы')
+    ax3d.yaxis.set_label_text(u'Число столбцов матрицы')
+    ax3d.zaxis.set_label_text(u'Время исполнения, с')
 
 
 def convert_input_to_settings(input):
