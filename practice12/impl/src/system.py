@@ -221,35 +221,37 @@ def plot_predictions_distinct(filename):
     freqs = [d['cpu_mhz'] for d in dicts]
     # Make list of uniques frequency values
     freqs = list(set(freqs))
-    fig = plt.figure()
-    ax3d = fig.add_subplot(111, projection='3d')
     cmaps = [plt.cm.Reds, plt.cm.Blues, plt.cm.Greens]
-    colors = [('red', 'orange'), ('blue', 'violet'), ('green', 'olive')]
+    colors = [('black', 'black'), ('black', 'black'), ('black', 'black')]
+    
     for freq, cmap, cs in zip(freqs, cmaps, colors):
+        fig = plt.figure()
+        ax3d = fig.add_subplot(111, projection='3d')
         filter_func = lambda d: True if d['cpu_mhz'] == freq else False
         ws_freq = [int(d['width']) for d in dicts if filter_func(d)]
         hs_freq = [int(d['height']) for d in dicts if filter_func(d)]
         times_freq = [float(d['c#time']) for d in dicts if filter_func(d)]
         preds_freq = [float(d['Random Forest']) for d in dicts if filter_func(d)]
         ax3d.scatter(hs_freq, ws_freq, times_freq, 
-            c=cs[0],
+            c=cs[0], marker='o',
             cmap=cmap)
         ax3d.plot([], [], [], c=cs[0], 
             label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq))
 
         ax3d.scatter(hs_freq, ws_freq, preds_freq, 
             label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
-            c=cs[1],
+            c=cs[1], marker='x',
             cmap=cmap)
         ax3d.plot([], [], [], c=cs[1], 
             label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq))
 
-    plt.legend()
-    plt.show()
+        ax3d.xaxis.set_label_text(u'Число строк матрицы')
+        ax3d.yaxis.set_label_text(u'Число столбцов матрицы')
+        ax3d.zaxis.set_label_text(u'Время исполнения, с')
 
-    ax3d.xaxis.set_label_text(u'Число строк матрицы')
-    ax3d.yaxis.set_label_text(u'Число столбцов матрицы')
-    ax3d.zaxis.set_label_text(u'Время исполнения, с')
+        plt.legend()
+
+    plt.show()
 
 
 def convert_input_to_settings(input):
