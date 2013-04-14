@@ -268,7 +268,6 @@ def plot_predictions_all(basename):
         plot_predictions_distinct(filename, predictor[1])
 
 
-
 def convert_input_to_settings(input):
     """Process user input (command line arguments) and return settings."""
     
