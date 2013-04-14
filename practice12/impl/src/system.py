@@ -210,7 +210,7 @@ def plot_predictions(filename):
     plt.show()
 
 
-def plot_predictions_distinct(filename):
+def plot_predictions_distinct(filename, predictor):
     expname = os.path.splitext(filename)[0]
     f = open(filename)
     dr = csv.DictReader(f)
@@ -233,7 +233,7 @@ def plot_predictions_distinct(filename):
             ws_freq = [int(d['width']) for d in dicts if filter_func(d)]
             hs_freq = [int(d['height']) for d in dicts if filter_func(d)]
             times_freq = [float(d['c#time']) for d in dicts if filter_func(d)]
-            preds_freq = [float(d['Random Forest']) for d in dicts if filter_func(d)]
+            preds_freq = [float(d[predictor]) for d in dicts if filter_func(d)]
             if view is not None:
                 ax3d.view_init(*view)
             ax3d.scatter(hs_freq, ws_freq, times_freq, 
@@ -257,6 +257,13 @@ def plot_predictions_distinct(filename):
             
             fig.set_size_inches(15, 10)
             plt.savefig('../an/{2}-{0}-{1}.png'.format(freq, i, expname))
+
+
+def plot_predictions_all(basename):
+    for predictor in [
+     ('knn', 'm#kNN'), ('rf', 'm#Random Forest'), ('earth', 'm#Earth Learner')]:
+        filename = basename.format(predictor[0])
+        plot_predictions_distinct(filename, predictor[1])
 
 
 def convert_input_to_settings(input):
