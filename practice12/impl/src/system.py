@@ -228,6 +228,7 @@ def plot_predictions_distinct(filename, predictor):
     for freq, cmap, cs in zip(freqs, cmaps, colors):
         for i, view in enumerate((None, (10, 10), (10, 170))):
             fig = plt.figure()
+            fig.set_size_inches(15, 10)
             ax3d = fig.add_subplot(111, projection='3d')
             filter_func = lambda d: True if d['cpu_mhz'] == freq else False
             ws_freq = [int(d['width']) for d in dicts if filter_func(d)]
@@ -249,13 +250,14 @@ def plot_predictions_distinct(filename, predictor):
             ax3d.plot([], [], [], c=cs[1], marker='x',
                 label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq))
 
+            ax3d.set_zlim([0, 65])
+
             ax3d.xaxis.set_label_text(u'Число строк матрицы')
             ax3d.yaxis.set_label_text(u'Число столбцов матрицы')
             ax3d.zaxis.set_label_text(u'Время исполнения, с')
 
             plt.legend()
             
-            fig.set_size_inches(15, 10)
             plt.savefig('../an/{2}-{0}-{1}.png'.format(freq, i, expname))
 
 
