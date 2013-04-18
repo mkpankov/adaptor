@@ -28,12 +28,13 @@ from settings import *
 from context import *
 from system import *
 
-def cpdh_run(context):
+def cpdh_run(context, trials=10, power_min=1, power_max=12):
     """Run scenario cpdh (see module docstring for description)."""
-    dataset_sizes = [2**x for x in range(1,12)]
+    dataset_sizes = [2**x for x in range(power_min,power_max)]
 
     settings = context.settings
-    for size in dataset_sizes:
+    for i in range(trials):
+        size = dataset_sizes[random.randint(0, len(dataset_sizes) - 1)]
         settings.define_build_settings('src','-D{0}'.format(size))
         settings.build_settings.compiler = 'gcc'
         settings.build_settings.base_opt = '-O2'
