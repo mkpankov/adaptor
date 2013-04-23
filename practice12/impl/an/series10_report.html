@@ -1,0 +1,338 @@
+<html>
+<head>
+	<title>Orange viewer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+html, body, table {
+	font:normal 10px verdana;
+	margin:0px;
+	padding:0;
+	border:0 none;	
+}
+p {
+	margin:5px;
+}
+
+h1, h2 , h3, h4, h5 {
+   font-family: verdana;
+   width: 100%;
+   padding: 1px;
+   margin: 2px;
+   font-size:100%;
+}
+
+h1 {
+   color: white;
+   background-color: black;
+   padding-left: 2px;
+   margin-top: 12px;
+}
+
+h2 {
+   background-color: #fdffd5;
+   border-bottom: 1px solid black;
+   padding-left: 2px;
+}
+
+ul {
+   margin-left: 10px;
+}
+
+div.insideh1 {
+   padding-left: 4px;
+}
+
+.settings {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_wrench.png);
+}
+.nav {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_go.png);
+}
+
+span.timestamp {
+    position: absolute;
+	right: 40px;
+	color:#dddddd;
+}
+
+div.selected {
+	border: 1px solid black;
+	padding: 3px;
+	/* background-color: #FDFFA5; */
+	margin: 4px;
+}
+
+div.normal {
+	border: 0px;
+	padding: 3px;
+	/* background-color: #FDFFD5;*/
+	margin: 5px;
+}
+
+</style>
+
+<body><table width="100%"><tr><td valign="top"><p style="padding-top:25px;">Index</p><a href="#N001">File</a><br/><a href="#N002">Attribute Statistics [time]</a><br/><a href="#N003">Attribute Statistics [width]</a><br/><a href="#N004">Attribute Statistics [height]</a><br/><a href="#N005">Attribute Statistics [cpu_mhz]</a><br/><a href="#N006">Attribute Statistics [cpu_cache]</a><br/><a href="#N007">Select Attributes</a><br/><a href="#N008">Select Data</a><br/><a href="#N009">Rank (3)</a><br/><a href="#N010">Data Sampler</a><br/><a href="#N011">k Nearest Neighbours Regression (2)</a><br/><a href="#N012">Random forest regression</a><br/><a href="#N013">Earth</a><br/><a href="#N014">Test Learners</a><br/><a href="#N015">Rank (2)</a><br/><a href="#N016">Data Sampler (2)</a><br/><a href="#N017">Earth (2)</a><br/><a href="#N018">Random forest regression</a><br/><a href="#N019">k Nearest Neighbours Regression</a><br/><a href="#N020">Test Learners</a></td><td><div id="N001" onClick="myself.changeItem(this.id);">    <a name="N001">    <h1>File<span class="timestamp">Wed Apr 24 13, 00:11:09</span></h1>    <div class="insideh1">        
+
+<h2>File</h2>
+
+    <ul><b>File name: </b>/home/constantius/diploma/practice12/impl/an/series10.csv<br/><b>Format: </b>unknown format<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>39 (time, program_name, compiler, base_opt, optimization_flags, width, height, cpu_name, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>vme<br/></ul>
+    </div></div>
+<div id="N002" onClick="myself.changeItem(this.id);">    <a name="N002">    <h1>Attribute Statistics [time]<span class="timestamp">Wed Apr 24 13, 00:11:34</span></h1>    <div class="insideh1">            <IMG src="series10_report/img000000.png"/>
+    </div></div>
+<div id="N003" onClick="myself.changeItem(this.id);">    <a name="N003">    <h1>Attribute Statistics [width]<span class="timestamp">Wed Apr 24 13, 00:11:49</span></h1>    <div class="insideh1">            <IMG src="series10_report/img000001.png"/>
+    </div></div>
+<div id="N004" onClick="myself.changeItem(this.id);">    <a name="N004">    <h1>Attribute Statistics [height]<span class="timestamp">Wed Apr 24 13, 00:11:57</span></h1>    <div class="insideh1">            <IMG src="series10_report/img000002.png"/>
+    </div></div>
+<div id="N005" onClick="myself.changeItem(this.id);">    <a name="N005">    <h1>Attribute Statistics [cpu_mhz]<span class="timestamp">Wed Apr 24 13, 00:12:02</span></h1>    <div class="insideh1">            <IMG src="series10_report/img000003.png"/>
+    </div></div>
+<div id="N006" onClick="myself.changeItem(this.id);">    <a name="N006">    <h1>Attribute Statistics [cpu_cache]<span class="timestamp">Wed Apr 24 13, 00:12:08</span></h1>    <div class="insideh1">            <IMG src="series10_report/img000004.png"/>
+    </div></div>
+<div id="N007" onClick="myself.changeItem(this.id);">    <a name="N007">    <h1>Select Attributes<span class="timestamp">Wed Apr 24 13, 00:12:20</span></h1>    <div class="insideh1">        
+
+<h2>Input data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>39 (time, program_name, compiler, base_opt, optimization_flags, width, height, cpu_name, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>vme<br/></ul>
+
+
+<h2>Output data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>39 (width, height, cpu_mhz, cpu_cache, cpu_name, program_name, compiler, base_opt, optimization_flags, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N008" onClick="myself.changeItem(this.id);">    <a name="N008">    <h1>Select Data<span class="timestamp">Wed Apr 24 13, 00:12:45</span></h1>    <div class="insideh1">        
+
+<h2>Output</h2>
+
+    <ul><b>Remove unused values/attributes: </b>False<br/><b>Remove unused classes: </b>False<br/></ul>
+
+
+<h2>Conditions</h2>
+
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Active</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Condition</th></tr>
+<tr style="height: 2px"><th colspan="3"  style="border-bottom: thin solid black; height: 2px;"></th></table>
+    </div></div>
+<div id="N009" onClick="myself.changeItem(this.id);">    <a name="N009">    <h1>Rank (3)<span class="timestamp">Wed Apr 24 13, 00:13:21</span></h1>    <div class="insideh1">        
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>40 (width, height, cpu_mhz, cpu_cache, cpu_name, program_name, compiler, base_opt, optimization_flags, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Attribute</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">#</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Earth imp.</th></tr>
+<tr style="height: 2px"><th colspan="7"  style="border-bottom: thin solid black; height: 2px;"></th><tr><th>1</th><td style="; text-align: left">size</td><td style="; text-align: left">C</td><td style="; text-align: left">7.4</td></tr>
+<tr><th>2</th><td style="; text-align: left">width</td><td style="; text-align: left">C</td><td style="; text-align: left">6.1</td></tr>
+<tr><th>3</th><td style="; text-align: left">height</td><td style="; text-align: left">C</td><td style="; text-align: left">5.5</td></tr>
+<tr><th>4</th><td style="; text-align: left">cpu_mhz</td><td style="; text-align: left">C</td><td style="; text-align: left">3.7</td></tr>
+<tr><th>5</th><td style="; text-align: left">cpu_cache</td><td style="; text-align: left">C</td><td style="; text-align: left">1.4</td></tr>
+<tr><th>6</th><td style="; text-align: left">cpu_name</td><td style="; text-align: left">3</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>7</th><td style="; text-align: left">apic</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>8</th><td style="; text-align: left">dts</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>9</th><td style="; text-align: left">ht</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>10</th><td style="; text-align: left">lm</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>11</th><td style="; text-align: left">mca</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>12</th><td style="; text-align: left">mce</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>13</th><td style="; text-align: left">mtrr</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>14</th><td style="; text-align: left">pge</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>15</th><td style="; text-align: left">pse</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>16</th><td style="; text-align: left">pse36</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>17</th><td style="; text-align: left">rdtscp</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>18</th><td style="; text-align: left">syscall</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>19</th><td style="; text-align: left">vme</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>20</th><td style="; text-align: left">program_name</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>21</th><td style="; text-align: left">compiler</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>22</th><td style="; text-align: left">base_opt</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>23</th><td style="; text-align: left">optimization_flags</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>24</th><td style="; text-align: left">clflush</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>25</th><td style="; text-align: left">cmov</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>26</th><td style="; text-align: left">constant</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>27</th><td style="; text-align: left">cx8</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>28</th><td style="; text-align: left">de</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>29</th><td style="; text-align: left">fpu</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>30</th><td style="; text-align: left">fxsr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>31</th><td style="; text-align: left">mmx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>32</th><td style="; text-align: left">msr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>33</th><td style="; text-align: left">nx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>34</th><td style="; text-align: left">pae</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>35</th><td style="; text-align: left">pat</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>36</th><td style="; text-align: left">sep</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>37</th><td style="; text-align: left">ss</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>38</th><td style="; text-align: left">sse</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>39</th><td style="; text-align: left">sse2</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>40</th><td style="; text-align: left">tsc</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+</table>
+    </div></div>
+<div id="N010" onClick="myself.changeItem(this.id);">    <a name="N010">    <h1>Data Sampler<span class="timestamp">Wed Apr 24 13, 00:13:30</span></h1>    <div class="insideh1">        
+
+<h2>Settings</h2>
+
+    <ul><b>Sampling type: </b>Random sample with 70% instances<br/><b>Stratification: </b>Yes<br/><b>Random seed: </b>auto<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Input: </b>3000 examples<br/><b>Sample: </b>2100 examples<br/><b>Rest: </b>900 examples<br/></ul>
+    </div></div>
+<div id="N011" onClick="myself.changeItem(this.id);">    <a name="N011">    <h1>k Nearest Neighbours Regression (2)<span class="timestamp">Wed Apr 24 13, 00:13:40</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Metrics: </b>Euclidean<br/><b>Continuous attributes: </b>Normalized<br/><b>Unknown values ignored: </b>No<br/><b>Number of neighbours: </b>30<br/><b>Weighting: </b>By distances<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N012" onClick="myself.changeItem(this.id);">    <a name="N012">    <h1>Random forest regression<span class="timestamp">Wed Apr 24 13, 00:13:57</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Number of trees: </b>10<br/><b>Considered number of attributes at each split: </b>not set<br/><b>Seed for random generator: </b>0<br/><b>Maximal depth of individual trees: </b>not set<br/><b>Minimal number of instances in a leaf: </b>5<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N013" onClick="myself.changeItem(this.id);">    <a name="N013">    <h1>Earth<span class="timestamp">Wed Apr 24 13, 00:14:03</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Degree: </b>3<br/><b>Terms: </b>21<br/><b>Knot penalty: </b>2.00<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N014" onClick="myself.changeItem(this.id);">    <a name="N014">    <h1>Test Learners<span class="timestamp">Wed Apr 24 13, 00:14:23</span></h1>    <div class="insideh1">        
+
+<h2>Validation method</h2>
+
+    <ul><b>Method: </b>Test on test data<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+
+
+<h2>Results</h2>
+
+<table><tr><th></th><th><b>RMSE</b></th><th><b>RRSE</b></th><th><b>R2</b></th></tr><tr><th><b>kNN</b></th><td>5.5020</td><td>0.9023</td><td>0.1858</td></tr><tr><th><b>Random Forest</b></th><td>5.9208</td><td>0.9710</td><td>0.0571</td></tr><tr><th><b>Linear Regression</b></th><td>5.3382</td><td>0.8755</td><td>0.2336</td></tr><tr><th><b>Earth Learner</b></th></tr></table>    </div></div>
+<div id="N015" onClick="myself.changeItem(this.id);">    <a name="N015">    <h1>Rank (2)<span class="timestamp">Wed Apr 24 13, 00:14:30</span></h1>    <div class="insideh1">        
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>3000<br/><b>Attributes: </b>40 (width, height, cpu_mhz, cpu_cache, cpu_name, program_name, compiler, base_opt, optimization_flags, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Attribute</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">#</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Earth imp.</th></tr>
+<tr style="height: 2px"><th colspan="7"  style="border-bottom: thin solid black; height: 2px;"></th><tr><th>1</th><td style="; text-align: left">size</td><td style="; text-align: left">C</td><td style="; text-align: left">7.4</td></tr>
+<tr><th>2</th><td style="; text-align: left">width</td><td style="; text-align: left">C</td><td style="; text-align: left">6.1</td></tr>
+<tr><th>3</th><td style="; text-align: left">height</td><td style="; text-align: left">C</td><td style="; text-align: left">5.5</td></tr>
+<tr><th>4</th><td style="; text-align: left">cpu_mhz</td><td style="; text-align: left">C</td><td style="; text-align: left">3.7</td></tr>
+<tr><th>5</th><td style="; text-align: left">cpu_cache</td><td style="; text-align: left">C</td><td style="; text-align: left">1.4</td></tr>
+<tr><th>6</th><td style="; text-align: left">cpu_name</td><td style="; text-align: left">3</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>7</th><td style="; text-align: left">apic</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>8</th><td style="; text-align: left">dts</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>9</th><td style="; text-align: left">ht</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>10</th><td style="; text-align: left">lm</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>11</th><td style="; text-align: left">mca</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>12</th><td style="; text-align: left">mce</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>13</th><td style="; text-align: left">mtrr</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>14</th><td style="; text-align: left">pge</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>15</th><td style="; text-align: left">pse</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>16</th><td style="; text-align: left">pse36</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>17</th><td style="; text-align: left">rdtscp</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>18</th><td style="; text-align: left">syscall</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>19</th><td style="; text-align: left">vme</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>20</th><td style="; text-align: left">program_name</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>21</th><td style="; text-align: left">compiler</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>22</th><td style="; text-align: left">base_opt</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>23</th><td style="; text-align: left">optimization_flags</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>24</th><td style="; text-align: left">clflush</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>25</th><td style="; text-align: left">cmov</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>26</th><td style="; text-align: left">constant</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>27</th><td style="; text-align: left">cx8</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>28</th><td style="; text-align: left">de</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>29</th><td style="; text-align: left">fpu</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>30</th><td style="; text-align: left">fxsr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>31</th><td style="; text-align: left">mmx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>32</th><td style="; text-align: left">msr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>33</th><td style="; text-align: left">nx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>34</th><td style="; text-align: left">pae</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>35</th><td style="; text-align: left">pat</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>36</th><td style="; text-align: left">sep</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>37</th><td style="; text-align: left">ss</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>38</th><td style="; text-align: left">sse</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>39</th><td style="; text-align: left">sse2</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>40</th><td style="; text-align: left">tsc</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+</table>
+    </div></div>
+<div id="N016" onClick="myself.changeItem(this.id);">    <a name="N016">    <h1>Data Sampler (2)<span class="timestamp">Wed Apr 24 13, 00:14:41</span></h1>    <div class="insideh1">        
+
+<h2>Settings</h2>
+
+    <ul><b>Sampling type: </b>Random sample with 70% instances<br/><b>Stratification: </b>Yes<br/><b>Random seed: </b>auto<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Input: </b>3000 examples<br/><b>Sample: </b>2100 examples<br/><b>Rest: </b>900 examples<br/></ul>
+    </div></div>
+<div id="N017" onClick="myself.changeItem(this.id);">    <a name="N017">    <h1>Earth (2)<span class="timestamp">Wed Apr 24 13, 00:14:49</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Degree: </b>3<br/><b>Terms: </b>21<br/><b>Knot penalty: </b>2.00<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>5 (size, width, height, cpu_mhz, cpu_cache)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N018" onClick="myself.changeItem(this.id);">    <a name="N018">    <h1>Random forest regression<span class="timestamp">Wed Apr 24 13, 00:14:52</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Number of trees: </b>30<br/><b>Considered number of attributes at each split: </b>not set<br/><b>Seed for random generator: </b>0<br/><b>Maximal depth of individual trees: </b>not set<br/><b>Minimal number of instances in a leaf: </b>5<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>5 (size, width, height, cpu_mhz, cpu_cache)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N019" onClick="myself.changeItem(this.id);">    <a name="N019">    <h1>k Nearest Neighbours Regression<span class="timestamp">Wed Apr 24 13, 00:14:56</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Metrics: </b>Euclidean<br/><b>Continuous attributes: </b>Normalized<br/><b>Unknown values ignored: </b>No<br/><b>Number of neighbours: </b>30<br/><b>Weighting: </b>By distances<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>5 (size, width, height, cpu_mhz, cpu_cache)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N020" onClick="myself.changeItem(this.id);">    <a name="N020">    <h1>Test Learners<span class="timestamp">Wed Apr 24 13, 00:15:02</span></h1>    <div class="insideh1">        
+
+<h2>Validation method</h2>
+
+    <ul><b>Method: </b>Test on test data<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>2100<br/><b>Attributes: </b>5 (size, width, height, cpu_mhz, cpu_cache)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+
+
+<h2>Results</h2>
+
+<table><tr><th></th><th><b>RMSE</b></th><th><b>RRSE</b></th><th><b>R2</b></th></tr><tr><th><b>kNN</b></th><td>3.7951</td><td>0.6212</td><td>0.6141</td></tr><tr><th><b>Random Forest</b></th><td>3.9223</td><td>0.6420</td><td>0.5878</td></tr><tr><th><b>Earth Learner</b></th><td>4.1847</td><td>0.6850</td><td>0.5308</td></tr><tr><th><b>Linear Regression</b></th><td>5.0445</td><td>0.8257</td><td>0.3181</td></tr></table>    </div></div></td></tr></table>
+
+ </body>
+</html>
