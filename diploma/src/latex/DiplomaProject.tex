@@ -14,8 +14,6 @@
 % Путь к рисункам
 \graphicspath{{../pictures/}}
 
-% Рыба
-\usepackage{lipsum}
 % Подсчёт объектов
 \usepackage{totcount}
 \regtotcounter{page}
@@ -31,6 +29,15 @@
 % Отступ начала параграфа
 \setlength{\parindent}{1cm}
 
+% Отступы слева для списков
+% Первый уровень выровнен на отступ нового абзаца, 
+% остальные -- на начало элемента более высокого уровня.
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=1.55cm, label=---}
+\setlist[enumerate,1]{leftmargin=1.55cm}
+\setlist[itemize,2,3]{leftmargin=*, label=---}
+\setlist[enumerate,2,3]{leftmargin=*}
+
 % Заменяем библиографию с квадратных скобок на точку
 \makeatletter
 \renewcommand{\@biblabel}[1]{#1.}
@@ -45,12 +52,12 @@
 \geometry{bottom=2cm}
 
 % Меняем везде перечисления на цифра.цифра
-\renewcommand{\theenumi}{\arabic{enumi}.}
-\renewcommand{\labelenumi}{\arabic{enumi}.}
-\renewcommand{\theenumii}{.\arabic{enumii}.}
-\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\renewcommand{\theenumiii}{.\arabic{enumiii}.}
-\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
+\renewcommand{\theenumi}{\arabic{enumi})}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\theenumii}{\arabic{enumii})}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii})}
+\renewcommand{\theenumiii}{\arabic{enumiii})}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii})}
 
 % Изменяем \part и \chapter из report.cls чтобы они не выводили нумерованные заголовки
 % Рецепт отсюда: http://tex.stackexchange.com/questions/70621/part-and-chapter-commands-output-both-numbered-and-named-headings/70624
@@ -96,28 +103,55 @@
     \renewcommand{\thesection}{\arabic{section}} % Удаляем \thechapter из \thesection
 \makeatother
 
+% Нумерация подразделов
+\setcounter{secnumdepth}{3}
+% Включение подразделов в оглавление
+\setcounter{tocdepth}{3}
 % Для веб-адресов в библиографии
 \usepackage{url}
-% Библиография в порядке упоминания в тексте
-\bibliographystyle{unsrt}
+% Для подчёркиваний в полях библиографических записей
+\usepackage[strings]{underscore}
+% Библиография в алфавитном порядке с цифровой нумерацией
+\bibliographystyle{ugost2008}
+% Определяем названия месяцев вручную
+\def\bbljan{Январь}
+\def\bblfeb{Февраль}
+\def\bblmar{Март}
+\def\bblapr{Апрель}
+\def\bblmay{Май}
+\def\bbljun{Июнь}
+\def\bbljul{Июль}
+\def\bblaug{Август}
+\def\bblsep{Сентябрь}
+\def\bbloct{Октябрь}
+\def\bblnov{Ноябрь}
+\def\bbldec{Декабрь}
 
+% Выключаем переносы
+\makeatletter\chardef\l@nohyphenation=255 \makeatother
+\usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst}
+% Не хотим строки, которые влезают на поля
+\sloppy
+
+% !TeX spellcheck = ru_RU
 \begin{document}
 % Титульный лист
 \input{DiplomaProject-Title}
-% Аннотация
-\input{DiplomaProject-Annotation}
-% Оглавление
+% Учебное задание
+\setcounter{page}{2}
+% Содержание
 \tableofcontents
+\pagebreak
 % Введение
 \input{DiplomaProject-Introduction}
-% Обзор области
-\input{DiplomaProject-Overview}
-% Основная часть
 % Мотивация, задачи, план
-\chapter{Основная часть}
 \input{DiplomaProject-Motivation}
 \input{DiplomaProject-Goal}
 \input{DiplomaProject-Tasks}
+% Обзор области
+\input{DiplomaProject-Overview}
+% Основная часть
+\pagebreak
 % Название библиографии
 \renewcommand\bibname{Список использованных источников}
 % Список использованных источников
