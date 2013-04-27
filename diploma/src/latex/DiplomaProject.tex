@@ -9,6 +9,26 @@
 % Подключаем нужные пакеты расширений
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
 
+% Кириллица в математическом режиме{
+\DeclareSymbolFont{cyrillic}{T2A}{cmr}{m}{n}
+\def\makecyrsymbol#1#2{%
+    \begingroup\edef\temp{\endgroup
+        \noexpand\DeclareMathSymbol{\noexpand#1}
+        {\noexpand\mathalpha}{cyrillic}%
+        {\expandafter\expandafter\expandafter
+            \calccyr\expandafter\meaning\csname T2A\string#2\endcsname\end}}%
+    \temp}
+\expandafter\def\expandafter\calccyr\string\char#1\end{#1}
+
+\makecyrsymbol\ve\cyrv
+\makecyrsymbol\ze\cyrz
+\makecyrsymbol\pe\cyrp
+\makecyrsymbol\re\cyrr
+\makecyrsymbol\te\cyrt
+\makecyrsymbol\erev\cyrerev
+
+%}
+
 % Вставка рисунков
 \usepackage{graphicx}
 % Путь к рисункам
