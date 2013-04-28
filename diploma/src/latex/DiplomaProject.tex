@@ -31,15 +31,53 @@
 \makecyrsymbol\ka\cyrk
 \makecyrsymbol\ze\cyrz
 \makecyrsymbol\el\cyrl
+\makecyrsymbol\cm\cyrm
 \makecyrsymbol\en\cyrn
+\makecyrsymbol\co\cyro
 \makecyrsymbol\pe\cyrp
 \makecyrsymbol\re\cyrr
 \makecyrsymbol\es\cyrs
 \makecyrsymbol\te\cyrt
 \makecyrsymbol\erev\cyrerev
 \makecyrsymbol\che\cyrch
+\makecyrsymbol\cu\cyru
+\makecyrsymbol\ce\cyrc
+\makecyrsymbol\ef\cyrf
+\makecyrsymbol\sftsn\cyrsftsn
 \makecyrsymbol\ya\cyrya
 
+\makecyrsymbol\CA\CYRA
+\makecyrsymbol\BE\CYRB
+\makecyrsymbol\VE\CYRV
+\makecyrsymbol\GE\CYRG
+\makecyrsymbol\DE\CYRD
+\makecyrsymbol\E\CYRE
+\makecyrsymbol\CI\CYRI
+\makecyrsymbol\ISHRT\CYRISHRT
+\makecyrsymbol\KA\CYRK
+\makecyrsymbol\ZE\CYRZ
+\makecyrsymbol\EL\CYRL
+\makecyrsymbol\CM\CYRM
+\makecyrsymbol\EN\CYRN
+\makecyrsymbol\CO\CYRO
+\makecyrsymbol\PE\CYRP
+\makecyrsymbol\RE\CYRR
+\makecyrsymbol\ES\CYRS
+\makecyrsymbol\TE\CYRT
+\makecyrsymbol\EREV\CYREREV
+\makecyrsymbol\CHE\CYRCH
+\makecyrsymbol\CU\CYRU
+\makecyrsymbol\CE\CYRC
+\makecyrsymbol\EF\CYRF
+\makecyrsymbol\SFTSN\CYRSFTSN
+\makecyrsymbol\YA\CYRYA
+
+%}
+
+%{ Разрыв строки в таблице:
+% http://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
+\newcommand{\specialcell}[2][c]{%
+    \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 %}
 
 % Вставка рисунков
