@@ -103,15 +103,6 @@
     \renewcommand{\thesection}{\arabic{section}} % Удаляем \thechapter из \thesection
 \makeatother
 
-% Отступы слева для списков
-% Первый уровень выровнен на отступ нового абзаца, 
-% остальные -- на начало элемента более высокого уровня.
-\usepackage{enumitem}
-\setlist[itemize,1]{leftmargin=1.55cm, label=---}
-\setlist[enumerate,1]{leftmargin=1.55cm}
-\setlist[itemize,2,3]{leftmargin=*, label=---}
-\setlist[enumerate,2,3]{leftmargin=*}
-
 % Нумерация подразделов
 \setcounter{secnumdepth}{3}
 % Включение подразделов в оглавление
@@ -121,24 +112,6 @@
 % Для подчёркиваний в полях библиографических записей
 \usepackage[strings]{underscore}
 % Библиография в алфавитном порядке с цифровой нумерацией
-\bibliographystyle{ugost2008}
-% Определяем названия месяцев вручную
-\def\bbljan{Январь}
-\def\bblfeb{Февраль}
-\def\bblmar{Март}
-\def\bblapr{Апрель}
-\def\bblmay{Май}
-\def\bbljun{Июнь}
-\def\bbljul{Июль}
-\def\bblaug{Август}
-\def\bblsep{Сентябрь}
-\def\bbloct{Октябрь}
-\def\bblnov{Ноябрь}
-\def\bbldec{Декабрь}
-
-% Для веб-адресов в библиографии
-\usepackage{url}
-% Библиография в порядке упоминания в тексте
 \bibliographystyle{ugost2008}
 % Определяем названия месяцев вручную
 \def\bbljan{Январь}
