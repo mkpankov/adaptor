@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <schema>
 	<widgets>
-		<widget caption="1. File" widgetName="OWFile" xPos="90" yPos="190"/>
-		<widget caption="3. Select Attributes" widgetName="OWDataDomain" xPos="220" yPos="190"/>
-		<widget caption="4. Distributions" widgetName="OWDistributions" xPos="220" yPos="290"/>
-		<widget caption="2. Attribute Statistics" widgetName="OWAttributeStatistics" xPos="220" yPos="380"/>
-		<widget caption="5. Scatterplot" widgetName="OWScatterPlot" xPos="370" yPos="190"/>
+		<widget caption="1. File" widgetName="OWFile" xPos="60" yPos="-370"/>
+		<widget caption="3. Select Attributes" widgetName="OWDataDomain" xPos="190" yPos="-370"/>
+		<widget caption="4. Distributions" widgetName="OWDistributions" xPos="190" yPos="-270"/>
+		<widget caption="2. Attribute Statistics" widgetName="OWAttributeStatistics" xPos="190" yPos="-180"/>
+		<widget caption="5. Scatterplot" widgetName="OWScatterPlot" xPos="340" yPos="-370"/>
 		<widget caption="21. Rank (2)" widgetName="OWRank" xPos="260" yPos="20"/>
 		<widget caption="10. Linear Regression (1)" widgetName="OWLinearRegression" xPos="530" yPos="-50"/>
 		<widget caption="8. Rank (1)" widgetName="OWRank" xPos="260" yPos="-50"/>
@@ -16,7 +16,7 @@
 		<widget caption="22. Data Sampler (2)" widgetName="OWDataSampler" xPos="370" yPos="20"/>
 		<widget caption="12. Random Forest Regression (1)" widgetName="OWRandomForestRegression" xPos="530" yPos="-210"/>
 		<widget caption="25. Random Forest Regression (2)" widgetName="OWRandomForestRegression" xPos="530" yPos="200"/>
-		<widget caption="6. Feature Constructor" widgetName="OWFeatureConstructor" xPos="130" yPos="70"/>
+		<widget caption="6. Feature Constructor" widgetName="OWFeatureConstructor" xPos="340" yPos="-180"/>
 		<widget caption="7. Select Data" widgetName="OWSelectData" xPos="130" yPos="-30"/>
 		<widget caption="26. k Nearest Neighbours Regression (2)" widgetName="OWKNNRegression" xPos="530" yPos="290"/>
 		<widget caption="27. Test Learners (2)" widgetName="OWTestLearners" xPos="650" yPos="370"/>
