@@ -1,0 +1,382 @@
+<html>
+<head>
+	<title>Orange viewer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+html, body, table {
+	font:normal 10px verdana;
+	margin:0px;
+	padding:0;
+	border:0 none;	
+}
+p {
+	margin:5px;
+}
+
+h1, h2 , h3, h4, h5 {
+   font-family: verdana;
+   width: 100%;
+   padding: 1px;
+   margin: 2px;
+   font-size:100%;
+}
+
+h1 {
+   color: white;
+   background-color: black;
+   padding-left: 2px;
+   margin-top: 12px;
+}
+
+h2 {
+   background-color: #fdffd5;
+   border-bottom: 1px solid black;
+   padding-left: 2px;
+}
+
+ul {
+   margin-left: 10px;
+}
+
+div.insideh1 {
+   padding-left: 4px;
+}
+
+.settings {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_wrench.png);
+}
+.nav {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_go.png);
+}
+
+span.timestamp {
+    position: absolute;
+	right: 40px;
+	color:#dddddd;
+}
+
+div.selected {
+	border: 1px solid black;
+	padding: 3px;
+	/* background-color: #FDFFA5; */
+	margin: 4px;
+}
+
+div.normal {
+	border: 0px;
+	padding: 3px;
+	/* background-color: #FDFFD5;*/
+	margin: 5px;
+}
+
+</style>
+
+<body><table width="100%"><tr><td valign="top"><p style="padding-top:25px;">Index</p><a href="#N001">1. File</a><br/><a href="#N002">2. Attribute Statistics [time]</a><br/><a href="#N003">2. Attribute Statistics [width]</a><br/><a href="#N004">2. Attribute Statistics [height]</a><br/><a href="#N005">2. Attribute Statistics [cpu_mhz]</a><br/><a href="#N006">2. Attribute Statistics [cpu_cache]</a><br/><a href="#N007">3. Select Attributes</a><br/><a href="#N008">4. Distributions [width: None]</a><br/><a href="#N009">4. Distributions [height: None]</a><br/><a href="#N010">4. Distributions [cpu_mhz: None]</a><br/><a href="#N011">4. Distributions [cpu_cache: None]</a><br/><a href="#N012">5. Scatterplot [width - height]</a><br/><a href="#N013">7. Select Data</a><br/><a href="#N014">8. Rank (1)</a><br/><a href="#N015">9. Data Sampler (1)</a><br/><a href="#N016">11. Earth (1)</a><br/><a href="#N017">Random forest regression</a><br/><a href="#N018">13. k Nearest Neighbours Regression (1)</a><br/><a href="#N019">Test Learners</a><br/><a href="#N020">21. Rank (2)</a><br/><a href="#N021">22. Data Sampler (2)</a><br/><a href="#N022">24. Earth (2)</a><br/><a href="#N023">Random forest regression</a><br/><a href="#N024">26. k Nearest Neighbours Regression (2)</a><br/><a href="#N025">Test Learners</a></td><td><div id="N001" onClick="myself.changeItem(this.id);">    <a name="N001">    <h1>1. File<span class="timestamp">Mon May 06 13, 23:31:08</span></h1>    <div class="insideh1">        
+
+<h2>File</h2>
+
+    <ul><b>File name: </b>./series30.csv<br/><b>Format: </b>unknown format<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>611<br/><b>Attributes: </b>39 (time, program_name, compiler, base_opt, optimization_flags, width, height, cpu_name, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>vme<br/></ul>
+    </div></div>
+<div id="N002" onClick="myself.changeItem(this.id);">    <a name="N002">    <h1>2. Attribute Statistics [time]<span class="timestamp">Mon May 06 13, 23:31:22</span></h1>    <div class="insideh1">            <IMG src="series30_report_renamed/img000000.png"/>
+    </div></div>
+<div id="N003" onClick="myself.changeItem(this.id);">    <a name="N003">    <h1>2. Attribute Statistics [width]<span class="timestamp">Mon May 06 13, 23:31:26</span></h1>    <div class="insideh1">            <IMG src="series30_report_renamed/img000001.png"/>
+    </div></div>
+<div id="N004" onClick="myself.changeItem(this.id);">    <a name="N004">    <h1>2. Attribute Statistics [height]<span class="timestamp">Mon May 06 13, 23:31:29</span></h1>    <div class="insideh1">            <IMG src="series30_report_renamed/img000002.png"/>
+    </div></div>
+<div id="N005" onClick="myself.changeItem(this.id);">    <a name="N005">    <h1>2. Attribute Statistics [cpu_mhz]<span class="timestamp">Mon May 06 13, 23:31:31</span></h1>    <div class="insideh1">            <IMG src="series30_report_renamed/img000003.png"/>
+    </div></div>
+<div id="N006" onClick="myself.changeItem(this.id);">    <a name="N006">    <h1>2. Attribute Statistics [cpu_cache]<span class="timestamp">Mon May 06 13, 23:31:33</span></h1>    <div class="insideh1">            <IMG src="series30_report_renamed/img000004.png"/>
+    </div></div>
+<div id="N007" onClick="myself.changeItem(this.id);">    <a name="N007">    <h1>3. Select Attributes<span class="timestamp">Mon May 06 13, 23:31:47</span></h1>    <div class="insideh1">        
+
+<h2>Input data</h2>
+
+    <ul><b>Examples: </b>611<br/><b>Attributes: </b>39 (time, program_name, compiler, base_opt, optimization_flags, width, height, cpu_name, cpu_mhz, cpu_cache, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>vme<br/></ul>
+
+
+<h2>Output data</h2>
+
+    <ul><b>Examples: </b>611<br/><b>Attributes: </b>39 (width, height, cpu_mhz, cpu_cache, cpu_name, program_name, compiler, base_opt, optimization_flags, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N008" onClick="myself.changeItem(this.id);">    <a name="N008">    <h1>4. Distributions [width: None]<span class="timestamp">Mon May 06 13, 23:32:15</span></h1>    <div class="insideh1">        
+
+<h2>Visualized attribute</h2>
+
+    <ul><b>Attribute: </b>width<br/><b>Target class: </b>None<br/></ul>
+<br/>    <IMG src="series30_report_renamed/img000005.png"/>
+    </div></div>
+<div id="N009" onClick="myself.changeItem(this.id);">    <a name="N009">    <h1>4. Distributions [height: None]<span class="timestamp">Mon May 06 13, 23:33:30</span></h1>    <div class="insideh1">        
+
+<h2>Visualized attribute</h2>
+
+    <ul><b>Attribute: </b>height<br/><b>Target class: </b>None<br/></ul>
+<br/>    <IMG src="series30_report_renamed/img000006.png"/>
+    </div></div>
+<div id="N010" onClick="myself.changeItem(this.id);">    <a name="N010">    <h1>4. Distributions [cpu_mhz: None]<span class="timestamp">Mon May 06 13, 23:33:38</span></h1>    <div class="insideh1">        
+
+<h2>Visualized attribute</h2>
+
+    <ul><b>Attribute: </b>cpu_mhz<br/><b>Target class: </b>None<br/></ul>
+<br/>    <IMG src="series30_report_renamed/img000007.png"/>
+    </div></div>
+<div id="N011" onClick="myself.changeItem(this.id);">    <a name="N011">    <h1>4. Distributions [cpu_cache: None]<span class="timestamp">Mon May 06 13, 23:33:45</span></h1>    <div class="insideh1">        
+
+<h2>Visualized attribute</h2>
+
+    <ul><b>Attribute: </b>cpu_cache<br/><b>Target class: </b>None<br/></ul>
+<br/>    <IMG src="series30_report_renamed/img000008.png"/>
+    </div></div>
+<div id="N012" onClick="myself.changeItem(this.id);">    <a name="N012">    <h1>5. Scatterplot [width - height]<span class="timestamp">Mon May 06 13, 23:34:44</span></h1>    <div class="insideh1">        
+
+<h2>Visualized attributes</h2>
+
+    <ul><b>X: </b>width<br/><b>Y: </b>height<br/><b>Color: </b>time<br/><b>Size: </b>time<br/></ul>
+
+
+<h2>Settings</h2>
+
+    <ul><b>Symbol size: </b>8<br/><b>Transparency: </b>255<br/><b>Jittering: </b>5<br/><b>Jitter continuous attributes: </b>No<br/></ul>
+
+
+<h2>Graph</h2>
+
+    <IMG src="series30_report_renamed/img000009.png"/>
+    </div></div>
+<div id="N013" onClick="myself.changeItem(this.id);">    <a name="N013">    <h1>7. Select Data<span class="timestamp">Mon May 06 13, 23:34:55</span></h1>    <div class="insideh1">        
+
+<h2>Output</h2>
+
+    <ul><b>Remove unused values/attributes: </b>False<br/><b>Remove unused classes: </b>False<br/></ul>
+
+
+<h2>Conditions</h2>
+
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Active</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Condition</th></tr>
+<tr style="height: 2px"><th colspan="3"  style="border-bottom: thin solid black; height: 2px;"></th></table>
+    </div></div>
+<div id="N014" onClick="myself.changeItem(this.id);">    <a name="N014">    <h1>8. Rank (1)<span class="timestamp">Mon May 06 13, 23:35:02</span></h1>    <div class="insideh1">        
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>611<br/><b>Attributes: </b>40 (width, height, cpu_mhz, cpu_cache, cpu_name, program_name, compiler, base_opt, optimization_flags, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Attribute</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">#</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Earth imp.</th></tr>
+<tr style="height: 2px"><th colspan="7"  style="border-bottom: thin solid black; height: 2px;"></th><tr><th>1</th><td style="; text-align: left">size</td><td style="; text-align: left">C</td><td style="; text-align: left">4.9</td></tr>
+<tr><th>2</th><td style="; text-align: left">cpu_mhz</td><td style="; text-align: left">C</td><td style="; text-align: left">2.4</td></tr>
+<tr><th>3</th><td style="; text-align: left">cpu_cache</td><td style="; text-align: left">C</td><td style="; text-align: left">2.0</td></tr>
+<tr><th>4</th><td style="; text-align: left">width</td><td style="; text-align: left">C</td><td style="; text-align: left">0.7</td></tr>
+<tr><th>5</th><td style="; text-align: left">height</td><td style="; text-align: left">C</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>6</th><td style="; text-align: left">cpu_name</td><td style="; text-align: left">3</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>7</th><td style="; text-align: left">apic</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>8</th><td style="; text-align: left">dts</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>9</th><td style="; text-align: left">ht</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>10</th><td style="; text-align: left">lm</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>11</th><td style="; text-align: left">mca</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>12</th><td style="; text-align: left">mce</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>13</th><td style="; text-align: left">mtrr</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>14</th><td style="; text-align: left">pge</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>15</th><td style="; text-align: left">pse</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>16</th><td style="; text-align: left">pse36</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>17</th><td style="; text-align: left">rdtscp</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>18</th><td style="; text-align: left">syscall</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>19</th><td style="; text-align: left">vme</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>20</th><td style="; text-align: left">program_name</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>21</th><td style="; text-align: left">compiler</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>22</th><td style="; text-align: left">base_opt</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>23</th><td style="; text-align: left">optimization_flags</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>24</th><td style="; text-align: left">clflush</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>25</th><td style="; text-align: left">cmov</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>26</th><td style="; text-align: left">constant</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>27</th><td style="; text-align: left">cx8</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>28</th><td style="; text-align: left">de</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>29</th><td style="; text-align: left">fpu</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>30</th><td style="; text-align: left">fxsr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>31</th><td style="; text-align: left">mmx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>32</th><td style="; text-align: left">msr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>33</th><td style="; text-align: left">nx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>34</th><td style="; text-align: left">pae</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>35</th><td style="; text-align: left">pat</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>36</th><td style="; text-align: left">sep</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>37</th><td style="; text-align: left">ss</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>38</th><td style="; text-align: left">sse</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>39</th><td style="; text-align: left">sse2</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>40</th><td style="; text-align: left">tsc</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+</table>
+    </div></div>
+<div id="N015" onClick="myself.changeItem(this.id);">    <a name="N015">    <h1>9. Data Sampler (1)<span class="timestamp">Mon May 06 13, 23:35:06</span></h1>    <div class="insideh1">        
+
+<h2>Settings</h2>
+
+    <ul><b>Sampling type: </b>Random sample with 70% instances<br/><b>Stratification: </b>Yes<br/><b>Random seed: </b>auto<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Input: </b>611 examples<br/><b>Sample: </b>428 examples<br/><b>Rest: </b>183 examples<br/></ul>
+    </div></div>
+<div id="N016" onClick="myself.changeItem(this.id);">    <a name="N016">    <h1>11. Earth (1)<span class="timestamp">Mon May 06 13, 23:35:17</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Degree: </b>3<br/><b>Terms: </b>21<br/><b>Knot penalty: </b>2.00<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N017" onClick="myself.changeItem(this.id);">    <a name="N017">    <h1>Random forest regression<span class="timestamp">Mon May 06 13, 23:35:21</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Number of trees: </b>10<br/><b>Considered number of attributes at each split: </b>not set<br/><b>Seed for random generator: </b>0<br/><b>Maximal depth of individual trees: </b>not set<br/><b>Minimal number of instances in a leaf: </b>5<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N018" onClick="myself.changeItem(this.id);">    <a name="N018">    <h1>13. k Nearest Neighbours Regression (1)<span class="timestamp">Mon May 06 13, 23:35:25</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Metrics: </b>Euclidean<br/><b>Continuous attributes: </b>Normalized<br/><b>Unknown values ignored: </b>No<br/><b>Number of neighbours: </b>30<br/><b>Weighting: </b>By distances<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N019" onClick="myself.changeItem(this.id);">    <a name="N019">    <h1>Test Learners<span class="timestamp">Mon May 06 13, 23:35:31</span></h1>    <div class="insideh1">        
+
+<h2>Validation method</h2>
+
+    <ul><b>Method: </b>Test on test data<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>1 (size)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+
+
+<h2>Results</h2>
+
+<table><tr><th></th><th><b>RMSE</b></th><th><b>RRSE</b></th><th><b>R2</b></th></tr><tr><th><b>kNN</b></th><td>5.7612</td><td>0.0505</td><td>0.9974</td></tr><tr><th><b>Random Forest</b></th><td>5.9605</td><td>0.0523</td><td>0.9973</td></tr><tr><th><b>Linear Regression</b></th><td>15.8693</td><td>0.1391</td><td>0.9806</td></tr><tr><th><b>Earth Learner</b></th></tr></table>    </div></div>
+<div id="N020" onClick="myself.changeItem(this.id);">    <a name="N020">    <h1>21. Rank (2)<span class="timestamp">Mon May 06 13, 23:35:50</span></h1>    <div class="insideh1">        
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>611<br/><b>Attributes: </b>40 (width, height, cpu_mhz, cpu_cache, cpu_name, program_name, compiler, base_opt, optimization_flags, apic, clflush, cmov, constant, cx8, de, dts, fpu, fxsr, ht, lm, mca, mce, mmx, msr, mtrr, nx, pae, pat, pge, pse...)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+<table style="border-bottom: thin solid black">
+<tr><th></th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Attribute</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">#</th><th style="padding-left: 4px; padding-right: 4px;; text-align: left">Earth imp.</th></tr>
+<tr style="height: 2px"><th colspan="7"  style="border-bottom: thin solid black; height: 2px;"></th><tr><th>1</th><td style="; text-align: left">size</td><td style="; text-align: left">C</td><td style="; text-align: left">4.9</td></tr>
+<tr><th>2</th><td style="; text-align: left">cpu_mhz</td><td style="; text-align: left">C</td><td style="; text-align: left">2.4</td></tr>
+<tr><th>3</th><td style="; text-align: left">cpu_cache</td><td style="; text-align: left">C</td><td style="; text-align: left">2.0</td></tr>
+<tr><th>4</th><td style="; text-align: left">width</td><td style="; text-align: left">C</td><td style="; text-align: left">0.7</td></tr>
+<tr><th>5</th><td style="; text-align: left">height</td><td style="; text-align: left">C</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>6</th><td style="; text-align: left">cpu_name</td><td style="; text-align: left">3</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>7</th><td style="; text-align: left">apic</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>8</th><td style="; text-align: left">dts</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>9</th><td style="; text-align: left">ht</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>10</th><td style="; text-align: left">lm</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>11</th><td style="; text-align: left">mca</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>12</th><td style="; text-align: left">mce</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>13</th><td style="; text-align: left">mtrr</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>14</th><td style="; text-align: left">pge</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>15</th><td style="; text-align: left">pse</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>16</th><td style="; text-align: left">pse36</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>17</th><td style="; text-align: left">rdtscp</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>18</th><td style="; text-align: left">syscall</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>19</th><td style="; text-align: left">vme</td><td style="; text-align: left">2</td><td style="; text-align: left">0.0</td></tr>
+<tr><th>20</th><td style="; text-align: left">program_name</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>21</th><td style="; text-align: left">compiler</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>22</th><td style="; text-align: left">base_opt</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>23</th><td style="; text-align: left">optimization_flags</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>24</th><td style="; text-align: left">clflush</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>25</th><td style="; text-align: left">cmov</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>26</th><td style="; text-align: left">constant</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>27</th><td style="; text-align: left">cx8</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>28</th><td style="; text-align: left">de</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>29</th><td style="; text-align: left">fpu</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>30</th><td style="; text-align: left">fxsr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>31</th><td style="; text-align: left">mmx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>32</th><td style="; text-align: left">msr</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>33</th><td style="; text-align: left">nx</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>34</th><td style="; text-align: left">pae</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>35</th><td style="; text-align: left">pat</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>36</th><td style="; text-align: left">sep</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>37</th><td style="; text-align: left">ss</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>38</th><td style="; text-align: left">sse</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>39</th><td style="; text-align: left">sse2</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+<tr><th>40</th><td style="; text-align: left">tsc</td><td style="; text-align: left">1</td><td style="; text-align: left"></td></tr>
+</table>
+    </div></div>
+<div id="N021" onClick="myself.changeItem(this.id);">    <a name="N021">    <h1>22. Data Sampler (2)<span class="timestamp">Mon May 06 13, 23:35:56</span></h1>    <div class="insideh1">        
+
+<h2>Settings</h2>
+
+    <ul><b>Sampling type: </b>Random sample with 70% instances<br/><b>Stratification: </b>Yes<br/><b>Random seed: </b>auto<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Input: </b>611 examples<br/><b>Sample: </b>428 examples<br/><b>Rest: </b>183 examples<br/></ul>
+    </div></div>
+<div id="N022" onClick="myself.changeItem(this.id);">    <a name="N022">    <h1>24. Earth (2)<span class="timestamp">Mon May 06 13, 23:36:26</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Degree: </b>3<br/><b>Terms: </b>21<br/><b>Knot penalty: </b>2.00<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>4 (size, cpu_mhz, cpu_cache, width)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N023" onClick="myself.changeItem(this.id);">    <a name="N023">    <h1>Random forest regression<span class="timestamp">Mon May 06 13, 23:36:29</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Number of trees: </b>30<br/><b>Considered number of attributes at each split: </b>not set<br/><b>Seed for random generator: </b>0<br/><b>Maximal depth of individual trees: </b>not set<br/><b>Minimal number of instances in a leaf: </b>5<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>4 (size, cpu_mhz, cpu_cache, width)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N024" onClick="myself.changeItem(this.id);">    <a name="N024">    <h1>26. k Nearest Neighbours Regression (2)<span class="timestamp">Mon May 06 13, 23:36:32</span></h1>    <div class="insideh1">        
+
+<h2>Learning parameters</h2>
+
+    <ul><b>Metrics: </b>Euclidean<br/><b>Continuous attributes: </b>Normalized<br/><b>Unknown values ignored: </b>No<br/><b>Number of neighbours: </b>30<br/><b>Weighting: </b>By distances<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>4 (size, cpu_mhz, cpu_cache, width)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+    </div></div>
+<div id="N025" onClick="myself.changeItem(this.id);">    <a name="N025">    <h1>Test Learners<span class="timestamp">Mon May 06 13, 23:36:41</span></h1>    <div class="insideh1">        
+
+<h2>Validation method</h2>
+
+    <ul><b>Method: </b>Test on test data<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>428<br/><b>Attributes: </b>4 (size, cpu_mhz, cpu_cache, width)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+
+
+<h2>Results</h2>
+
+<table><tr><th></th><th><b>RMSE</b></th><th><b>RRSE</b></th><th><b>R2</b></th></tr><tr><th><b>kNN</b></th><td>27.1177</td><td>0.3261</td><td>0.8937</td></tr><tr><th><b>Random Forest</b></th><td>26.4878</td><td>0.3185</td><td>0.8985</td></tr><tr><th><b>Earth Learner</b></th><td>24.9044</td><td>0.2995</td><td>0.9103</td></tr><tr><th><b>Linear Regression</b></th><td>25.5529</td><td>0.3073</td><td>0.9056</td></tr></table>    </div></div></td></tr></table>
+
+ </body>
+</html>
