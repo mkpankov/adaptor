@@ -14,6 +14,13 @@
 \usepackage{longtable}
 % Поворот verbatim
 \usepackage[graphicx]{realboxes}
+% Изменение формата подрисуночной надписи
+\usepackage{savesym}
+\savesymbol{l@addto@macro}
+\RequirePackage{caption}
+\DeclareCaptionLabelSeparator{defffis}{ -- }
+\captionsetup{justification=centering,labelsep=defffis}
+\restoresymbol{CAPTION}{l@addto@macro}
 
 % Кириллица в математическом режиме{
 \DeclareSymbolFont{cyrillic}{T2A}{cmr}{m}{n}
