@@ -18,8 +18,8 @@
 \usepackage{savesym}
 \savesymbol{l@addto@macro}
 \RequirePackage{caption}
-\DeclareCaptionLabelSeparator{defffis}{ -- }
-\captionsetup{justification=centering,labelsep=defffis}
+\DeclareCaptionLabelFormat{plain}{Рисунок #2}
+\captionsetup{labelformat=plain,labelsep=endash}
 \restoresymbol{CAPTION}{l@addto@macro}
 
 % Кириллица в математическом режиме{
