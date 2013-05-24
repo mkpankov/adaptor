@@ -36,28 +36,31 @@ Contains 'Adaptor' self-tuning computing framework.
 		* It is just a set of strings.
 	* `[=]` Refactor the feature representation taking considerations of the above into account.
 		* No need, converted will be used when needed.
-1. `[-]` Introduce optimization flags parameters for compiler. 
+1. `[-]` Introduce optimization flags parameters for compiler.
 	* It's postponed since it would introduce too much complexity.
 	* `[ ]` Split levels of optimization into separate options.
 	* `[ ]` Think about aggregative feature of optimization level.
 1. `[×]` Automate the collected data preparation for analysis.
-1. `[ ]` Launch extensive search.
-1. `[ ]` Prepare the experimental scenario of data analysis.
+1. `[×]` Launch extensive search.
+1. `[×]` Prepare the experimental scenario of data analysis.
 	* Possible platforms:
 		* `[•]` [Scikit-learn](http://scikit-learn.org/stable/#). Seems to have that we need. Average documentation.
 			* Documentation turned out to be quite good (has explanation of models). Has many regression models, especially isotonic one, which is possibly what is useful for us. Has an Ubuntu package.
 			* Tutorial showed it's a decent package, although lacking easy visualization, which is present in Orange in many forms.
-		* `[ ]` [mlpy](http://mlpy.sourceforge.net/). Seems to have what we need. Best documentation.
+		* `[-]` [mlpy](http://mlpy.sourceforge.net/). Seems to have what we need. Best documentation.
 			* Has a lot of regression models and decent Python-style documentation with examples (!). Has Ubuntu package.
-		* `[ ]` [PyML](http://pyml.sourceforge.net/). Seems to have what we need. Somewhat documented.
-		* `[•]` [Orange](http://orange.biolab.si/). Has graphical interface. Maybe has what we need. Average documentation.
+		* `[-]` [PyML](http://pyml.sourceforge.net/). Seems to have what we need. Somewhat documented.
+		* `[×]` [Orange](http://orange.biolab.si/). Has graphical interface. Maybe has what we need. Average documentation.
 			* Orange turned out to be laggy and buggy (especially on Linux) and very poorly documented. Apart from that, it has a name which makes it impossible to Google for. It's graphical interactive version is barely usable. Maybe it's better for scripting however. We now will go with another option.
 	* Scenario itself is trial to build regression model based on feature choice. Feature choice will be implemented to account for need of different models for different platforms, which is not obviously required per se.
 	* Maybe doing an offline regression model building is not so useful. We should aim for online learning.
 		* In general, the system should behave as a cloud service.
 		* One thought is that we should periodically detect outliers for current model and re-learn it. When re-learning fails (as it will fail due to unexpected by current model observations), we add a new model, which is used with new examples. Outliers are removed from current model and new model is learn on them. The approach is flawed in detection of what outliers are actually unpredictable data, and what are just noise.
-1. `[ ]` Add automatic building of dummy program.
-1. `[ ]` Add dependency checking: numpy, recordtype, couchdb, couchdbkit, couchapp.
+1. `[-]` Add automatic building of dummy program.
+1. `[-]` Add dependency checking: numpy, recordtype, couchdb, couchdbkit, couchapp.
+1. `[ ]` Add support of Windows.
+1. `[ ]` Add support of building Polybench/GPU.
+1. `[ ]` Perform experiments on GPU.
 
 ## Ideas ##
 
