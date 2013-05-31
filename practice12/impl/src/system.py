@@ -46,7 +46,7 @@ from context import *
 
 def set_benchmark_root_nested(settings, path):
     settings.benchmark_root_dir = os.path.realpath(os.path.join(
-        settings.framework_root_dir, path))    
+        settings.framework_root_dir, path))
 
 
 def perform_experiment1(settings, context):
@@ -72,13 +72,13 @@ def perform_experiment3(settings_context):
             settings.program_name = os.path.basename(path)
             context.settings = settings
 
-            define_build_settings(settings, 
+            define_build_settings(settings,
                 path,
                 '-I utilities -I {0} utilities/polybench.c'.format(path))
             b = settings.build_settings
             b.compiler = 'gcc'
             b.base_opt = '-O2'
-    
+
             define_run_settings(settings)
 
             nest_path_absolute(context, settings.framework_root_dir)
@@ -157,14 +157,13 @@ def perform_plot_error(context):
 
 
 def plot_vs():
-    v = ExperimentDocument.view('adaptor/experiment-all')
+    v = ExperimentDocument.view('adaptor/experiment-gcc-vs-clang')
     l = []
     for doc in v:
-        if doc.datetime > dt.datetime(2012,12,30,22,01,00):
-            l.append((doc.settings.build_settings.compiler, 
-                      doc.settings.program, 
-                      doc.calibration_result.time))
-    clang_es = filter(lambda e: e[0] == u'gcc', l)
+        l.append((doc.settings.build_settings.compiler,
+                  doc.settings.program,
+                  doc.calibration_result.time))
+    clang_es = filter(lambda e: e[0] == u'clang', l)
     gcc_es = filter(lambda e: e[0] == u'gcc', l)
     clang_x_ticklabels = map(lambda e: e[1], clang_es)
     gcc_x_ticklabels = map(lambda e: e[1], gcc_es)
@@ -173,8 +172,8 @@ def plot_vs():
     indices = map(lambda e: e[1], clang_scurve)
     gcc_scurve = sorted(gcc_es, key=lambda e: indices.index(e[1]))
     gcc_y = [e[2] for e in gcc_scurve]
-    points_clang = plt.scatter(range(len(clang_y)), clang_y, label='gcc')
-    points_gcc = plt.scatter(range(len(gcc_y)), gcc_y, c='r', label='gcc')
+    points_clang = plt.scatter(range(len(clang_y)), clang_y, label='clang', s=60)
+    points_gcc = plt.scatter(range(len(gcc_y)), gcc_y, c='r', label='gcc', s=60)
     f = plt.gcf()
     plt.axes().set_yscale('log')
     plt.axes().set_xticks(range(len(clang_y)))
@@ -202,7 +201,7 @@ def plot_predictions(filename):
     fig = plt.figure()
     ax3d = fig.add_subplot(111, projection='3d')
     ax3d.scatter(hs, ws, times, label=u'Экспериментальные данные')
-    ax3d.scatter(hs, ws, preds, color='r', 
+    ax3d.scatter(hs, ws, preds, color='r',
         label=u'Значения, предсказанные моделью')
     ax3d.xaxis.set_label_text(u'Число строк матрицы')
     ax3d.yaxis.set_label_text(u'Число столбцов матрицы')
@@ -224,7 +223,7 @@ def plot_predictions_distinct(filename, predictor):
     freqs = list(set(freqs))
     cmaps = [plt.cm.Reds, plt.cm.Blues, plt.cm.Greens]
     colors = [('black', 'black'), ('black', 'black'), ('black', 'black')]
-    
+
     for freq, cmap, cs in zip(freqs, cmaps, colors):
         for i, view in enumerate((None, (10, 10), (10, 170))):
             fig = plt.figure()
@@ -237,13 +236,13 @@ def plot_predictions_distinct(filename, predictor):
             preds_freq = [float(d[predictor]) for d in dicts if filter_func(d)]
             if view is not None:
                 ax3d.view_init(*view)
-            ax3d.scatter(hs_freq, ws_freq, times_freq, 
+            ax3d.scatter(hs_freq, ws_freq, times_freq,
                 c=cs[0], marker='o',
                 cmap=cmap)
             ax3d.plot([], [], [], c=cs[0], marker='o',
                 label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq))
 
-            ax3d.scatter(hs_freq, ws_freq, preds_freq, 
+            ax3d.scatter(hs_freq, ws_freq, preds_freq,
                 label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
                 c=cs[1], marker='x',
                 cmap=cmap)
@@ -257,7 +256,7 @@ def plot_predictions_distinct(filename, predictor):
             ax3d.zaxis.set_label_text(u'Время исполнения, с')
 
             plt.legend()
-            
+
             plt.savefig('../an/{2}-{0}-{1}.png'.format(freq, i, expname))
 
 
@@ -270,7 +269,7 @@ def plot_predictions_all(basename):
 
 def convert_input_to_settings(input):
     """Process user input (command line arguments) and return settings."""
-    
+
     program_name, benchmark_root_dir = \
         os.path.split(os.path.realpath(Input[benchmark_source_dir]))
     framework_root_dir, _ = os.path.split(os.path.realpath(__file__))
@@ -285,7 +284,7 @@ def convert_input_to_settings(input):
 
     benchmark_bin_dir = os.path.join(framework_root_dir, 'data/bin/')
     run_settings = RunSettings(benchmark_bin_dir=benchmark_bin_dir)
-    
+
     return settings, build_settings, run_settings
 
 
