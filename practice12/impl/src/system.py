@@ -275,6 +275,9 @@ def plot_predictions_distinct_2d(filename, predictor):
     cmaps = [plt.cm.Reds, plt.cm.Blues, plt.cm.Greens]
     colors = [('red', 'blue'), ('red', 'blue'), ('red', 'blue')]
 
+    plt.rcParams.update({'font.size': 28})
+    plt.rc('legend',**{'fontsize':14})
+
     for freq, cmap, cs in zip(freqs, cmaps, colors):
         fig = plt.figure()
         fig.set_size_inches(15, 10)
