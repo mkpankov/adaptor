@@ -276,7 +276,7 @@ def plot_predictions_distinct_2d(filename, predictor):
     colors = [('red', 'blue'), ('red', 'blue'), ('red', 'blue')]
 
     plt.rcParams.update({'font.size': 28})
-    plt.rc('legend',**{'fontsize':14})
+    plt.rc('legend',**{'fontsize':18})
 
     for freq, cmap, cs in zip(freqs, cmaps, colors):
         fig = plt.figure()
@@ -288,18 +288,18 @@ def plot_predictions_distinct_2d(filename, predictor):
         preds_freq = [float(d[predictor]) for d in dicts if filter_func(d)]
         ax3d.scatter(ws_freq, times_freq,
             label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq),
-            c=cs[0], marker='o', s=60,
+            c=cs[0], marker='o', s=80,
             cmap=cmap)
 
         ax3d.scatter(ws_freq, preds_freq,
             label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
-            c=cs[1], marker='x', s=60,
+            c=cs[1], marker='x', s=80,
             cmap=cmap)
 
         ax3d.set_ylim([0, 15])
-        plt.grid(b=True, which='major', color='k', linestyle='-')
+        plt.grid(b=True, which='major', color='k', linestyle='-', linewidth=2)
 
-        ax3d.xaxis.set_label_text(u'Число строк матрицы')
+        ax3d.xaxis.set_label_text(u'Размер матрицы')
         ax3d.yaxis.set_label_text(u'Время исполнения, с')
 
         plt.legend()
