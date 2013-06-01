@@ -296,7 +296,7 @@ def plot_predictions_distinct_2d(filename, predictor):
             c=cs[1], marker='x', s=60,
             cmap=cmap)
 
-        ax3d.set_ylim([0, 65])
+        ax3d.set_ylim([0, 15])
         plt.grid(b=True, which='major', color='k', linestyle='-')
 
         ax3d.xaxis.set_label_text(u'Число строк матрицы')
