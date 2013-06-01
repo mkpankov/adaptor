@@ -297,6 +297,7 @@ def plot_predictions_distinct_2d(filename, predictor):
             cmap=cmap)
 
         ax3d.set_ylim([0, 65])
+        plt.grid(b=True, which='major', color='k', linestyle='-')
 
         ax3d.xaxis.set_label_text(u'Число строк матрицы')
         ax3d.yaxis.set_label_text(u'Время исполнения, с')
