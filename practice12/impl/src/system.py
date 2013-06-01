@@ -260,6 +260,52 @@ def plot_predictions_distinct(filename, predictor):
             plt.savefig('../an/{2}-{0}-{1}.png'.format(freq, i, expname))
 
 
+def plot_predictions_distinct_2d(filename, predictor):
+    expname = os.path.splitext(filename)[0]
+    f = open(filename)
+    dr = csv.DictReader(f)
+    dicts = [d for d in dr]
+    dicts.sort(key=lambda d: d['size'])
+    # Get list of CPU frequencies.
+    # For now we have to distinguish only by frequency or cache size,
+    # since they change simultaneously.
+    freqs = [d['cpu_mhz'] for d in dicts]
+    # Make list of uniques frequency values
+    freqs = list(set(freqs))
+    cmaps = [plt.cm.Reds, plt.cm.Blues, plt.cm.Greens]
+    colors = [('red', 'blue'), ('red', 'blue'), ('red', 'blue')]
+
+    for freq, cmap, cs in zip(freqs, cmaps, colors):
+        fig = plt.figure()
+        fig.set_size_inches(15, 10)
+        ax3d = fig.add_subplot(111)
+        filter_func = lambda d: True if d['cpu_mhz'] == freq else False
+        ws_freq = [int(d['width']) for d in dicts if filter_func(d)]
+        times_freq = [float(d['c#time']) for d in dicts if filter_func(d)]
+        preds_freq = [float(d[predictor]) for d in dicts if filter_func(d)]
+        ax3d.scatter(ws_freq, times_freq,
+            c=cs[0], marker='o', s=15,
+            cmap=cmap)
+        ax3d.plot([], [], c=cs[0], marker='o',
+            label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq))
+
+        ax3d.scatter(ws_freq, preds_freq,
+            label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
+            c=cs[1], marker='x', s=15,
+            cmap=cmap)
+        ax3d.plot([], [], c=cs[1], marker='x',
+            label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq))
+
+        ax3d.set_ylim([0, 65])
+
+        ax3d.xaxis.set_label_text(u'Число строк матрицы')
+        ax3d.yaxis.set_label_text(u'Время исполнения, с')
+
+        plt.legend()
+
+        plt.savefig('../an/{2}-{0}-2d.png'.format(freq, expname))
+
+
 def plot_predictions_all(basename):
     for predictor in [
      ('knn', 'm#kNN'), ('rf', 'm#Random Forest'), ('earth', 'm#Earth Learner')]:
