@@ -284,17 +284,14 @@ def plot_predictions_distinct_2d(filename, predictor):
         times_freq = [float(d['c#time']) for d in dicts if filter_func(d)]
         preds_freq = [float(d[predictor]) for d in dicts if filter_func(d)]
         ax3d.scatter(ws_freq, times_freq,
-            c=cs[0], marker='o', s=15,
+            label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq),
+            c=cs[0], marker='o', s=60,
             cmap=cmap)
-        ax3d.plot([], [], c=cs[0], marker='o',
-            label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq))
 
         ax3d.scatter(ws_freq, preds_freq,
             label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
-            c=cs[1], marker='x', s=15,
+            c=cs[1], marker='x', s=60,
             cmap=cmap)
-        ax3d.plot([], [], c=cs[1], marker='x',
-            label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq))
 
         ax3d.set_ylim([0, 65])
 
@@ -303,14 +300,14 @@ def plot_predictions_distinct_2d(filename, predictor):
 
         plt.legend()
 
-        plt.savefig('../an/{2}-{0}-2d.png'.format(freq, expname))
+        plt.savefig('../an/{1}-{0}-2d.png'.format(freq, expname))
 
 
 def plot_predictions_all(basename):
     for predictor in [
      ('knn', 'm#kNN'), ('rf', 'm#Random Forest'), ('earth', 'm#Earth Learner')]:
         filename = basename.format(predictor[0])
-        plot_predictions_distinct(filename, predictor[1])
+        plot_predictions_distinct_2d(filename, predictor[1])
 
 
 def convert_input_to_settings(input):
