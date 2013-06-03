@@ -14,6 +14,13 @@
 \usepackage{longtable}
 % Поворот verbatim
 \usepackage[graphicx]{realboxes}
+% Изменение форматов заголовков
+\usepackage{titlesec}
+\titleformat{\paragraph}[runin]
+    {\normalfont\bfseries}
+    {\S\ \theparagraph.}{2cm}{}[.]
+\titlespacing{\paragraph}
+    {\parindent}{1.5ex plus .1ex minus .2ex}{14pt}
 % Изменение формата подрисуночной надписи
 \usepackage{savesym}
 \savesymbol{l@addto@macro}
