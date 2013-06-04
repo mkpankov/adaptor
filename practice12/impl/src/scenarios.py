@@ -88,19 +88,3 @@ def cpdh_main(trials, series):
     context = set_up('symm', False, series)
     cpdh_explore_non_uniform(context, trials=trials, dataset_min=2, dataset_max=1024)
     tear_down(context)
-
-
-def mpdh_main():
-    """Run initialization and scenario."""
-    context = set_up('symm', False, 'series2')
-    plot()
-    tear_down(context)
-
-
-def plot():
-    v = ExperimentDocument.view('adaptor/experiment-all')
-    l = []
-    for doc in v:
-        if doc.series == 'series2':
-            l.append(doc)
-    print l
