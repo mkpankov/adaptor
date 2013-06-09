@@ -24,11 +24,12 @@
 \titlespacing{\paragraph}
     {\parindent}{1.5ex plus .1ex minus .2ex}{14pt}
 % Изменение формата подрисуночной надписи
+\addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
 \usepackage{savesym}
 \savesymbol{l@addto@macro}
 % Выравнивание заголовков рисунков по центру
 \RequirePackage[justification=centering]{caption}
-\DeclareCaptionLabelFormat{plain}{Рисунок #2}
+\DeclareCaptionLabelFormat{plain}{#1 #2}
 \captionsetup{labelformat=plain,labelsep=endash}
 \restoresymbol{CAPTION}{l@addto@macro}
 
