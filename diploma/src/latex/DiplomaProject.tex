@@ -33,6 +33,10 @@
 \captionsetup{labelformat=plain,labelsep=endash}
 \restoresymbol{CAPTION}{l@addto@macro}
 
+% Нумерация рисунков по разделам
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
 % Кириллица в математическом режиме{
 \DeclareSymbolFont{cyrillic}{T2A}{cmr}{m}{n}
 \def\makecyrsymbol#1#2{%
