@@ -1,0 +1,706 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"di",
+				"display"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bac",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "diploma/src/latex/DiplomaProject-Introduction.tex",
+			"settings":
+			{
+				"buffer_size": 13375,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diploma/src/latex/DiplomaProject-Theory.tex",
+			"settings":
+			{
+				"buffer_size": 9416,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diploma/src/latex/DiplomaProject-Adaptor.tex",
+			"settings":
+			{
+				"buffer_size": 38310,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diploma/src/latex/DiplomaProject-Evaluation.tex",
+			"settings":
+			{
+				"buffer_size": 22607,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diploma/src/latex/DiplomaProject-Economics.tex",
+			"settings":
+			{
+				"buffer_size": 20058,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Constantius9/Dropbox/sublime-text-2-settings/Default/Startup.cache",
+			"settings":
+			{
+				"buffer_size": 299900,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diploma/src/latex/DiplomaProject-Ecology.tex",
+			"settings":
+			{
+				"buffer_size": 32023,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"markd",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Appendix.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Evaluation.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Adaptor.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/context.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/documents.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/paths.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/scenarios.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/data_retrieval.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/commands.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/data_types.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/printable_structure.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/database.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/probe.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/settings.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/system.py",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/src/test_system.py",
+		"/C/Users/Constantius9/Documents/diploma/diploma/defense/keynote.fodp",
+		"/C/Users/Constantius9/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Constantius9/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Constantius9/Documents/site/home.html",
+		"/C/Users/Constantius9/Documents/site/style.css",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/an/series30_condensed.csv",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Ecology.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/an/series30.csv",
+		"/C/Users/Constantius9/Documents/diploma/latex_test/DiplomaProject.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Goal.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Tasks.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Overview.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Motivation.tex",
+		"/C/Users/Constantius9/Documents/diploma/course11/descr/src/latex/CourseReport-Experiment.tex",
+		"/C/Users/Constantius9/Documents/diploma/course11/descr/src/latex/CourseReport-Adaptor.tex",
+		"/C/Users/Constantius9/Documents/diploma/diploma/src/latex/DiplomaProject-Economics.tex",
+		"/C/Users/Constantius9/Documents/diploma/README.md",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Research.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Theory.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Experiment.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Adaptor.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Introduction.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/biblio/course.bib",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/1a7d86874f911cb7af572dbcf6c0950592350762",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/3b81526b078f31da872bdcf4d439ce5547de7d62",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/3f4134a45f4e5b240f29c4eca2ca61dd96ef21ef",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/17e9cd9317594f832a7f59cfce500994bbe0e6e3",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/593c648a5015c3407be4ec5adf7c84f450fed68b",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/14381a560eb3ebd60f2c3758595ffa7a9bb60e2e",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/aa0aea6ec618e2f68030e0f7a289a682553cadf8",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/adb1c78dcfb1af014350c9b7a5ddeb416e887e16",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/b5d94451cc69d975f1d76b1c9743ca164b0bfb21",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/c2397ef44ef13762379ceeb1683c77501f7bc7c8",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/cd616b38e2bfbfa9b97cb096c8096727975faa0b",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/d77d2cfc87147cfbd11fadd44d525b17c0db70dd",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/daa7ae73d87f4d189d0874e345605b3d48e3ab65",
+		"/C/Users/Constantius9/Documents/diploma/.git/lost-found/commit/ed4d1aad06e40e8a4be3018499af6fc4807745e5",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/data/sources/polybench-c-3.2/linear-algebra/kernels/symm/symm.h",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/data/sources/polybench-c-3.2/linear-algebra/kernels/symm/symm.c",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-FurtherWork.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Task.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/impl/couch/adaptor/_attachments/script/app.js",
+		"/C/Users/Constantius9/Desktop/test.tex",
+		"/C/Users/Constantius9/Documents/diploma/practice12/descr/src/latex/PracticeReport-Title.tex",
+		"/C/Users/Constantius9/Desktop/series2.csv",
+		"/C/Users/Constantius9/Documents/diploma/sci11/src/latex/RefReport-TranslationValidation.tex",
+		"/C/Users/Constantius9/Documents/diploma/sci11/src/latex/RefReport-Introduction.tex",
+		"/C/Users/Constantius9/Documents/diploma/course11/descr/src/latex/CourseReport-FurtherWork.tex",
+		"/C/Users/Constantius9/Documents/diploma/course11/descr/src/latex/CourseReport-Introduction.tex",
+		"/C/Users/Constantius9/Documents/diploma/course11/descr/src/latex/CourseReport-Task.tex",
+		"/C/Users/Constantius9/Documents/diploma/course11/descr/src/latex/biblio/course.bib",
+		"/C/Users/Constantius9/Dropbox/roaches/easy2/tasks.json",
+		"/C/Users/Constantius9/Desktop/mpdh.txt",
+		"/C/Python27/Lib/site-packages/Orange/datasets/iris.tab",
+		"/C/Python27/Lib/site-packages/Orange/datasets/iris.htm",
+		"/C/Users/Constantius9/Desktop/mpdh.dat",
+		"/C/Users/Constantius9/Dropbox/roaches/easy2/upgrades.json",
+		"/C/Users/Constantius9/Dropbox/pers/apps/hourdown/projects.json",
+		"/C/Users/Constantius9/Dropbox/roaches/easy2/waves.json",
+		"/C/Users/Constantius9/Dropbox/roaches/easy/waves.json",
+		"/C/Users/Constantius9/Dropbox/roaches/easy/upgrades.json",
+		"/C/Users/Constantius9/Dropbox/roaches/easy/tasks.json",
+		"/C/Users/Constantius9/Dropbox/roaches/cut/waves.json",
+		"/C/Users/Constantius9/Dropbox/roaches/cut/tasks.json",
+		"/C/Users/Constantius9/Dropbox/roaches/cut/upgrades.json",
+		"/C/Users/Constantius9/Dropbox/roaches/fixed/upgrades.json",
+		"/C/Users/Constantius9/Dropbox/roaches/fixed/tasks.json",
+		"/C/Users/Constantius9/Dropbox/roaches/fixed/waves.json",
+		"/C/Users/Constantius9/Dropbox/roaches/new/tasks.json",
+		"/C/Users/Constantius9/Dropbox/roaches/new/upgrades.json",
+		"/C/Users/Constantius9/Dropbox/roaches/new/waves.json",
+		"/C/Users/Constantius9/Documents/Python-2.7.3/Lib/decimal.py",
+		"/C/Users/Constantius9/Dropbox/roaches/second/waves.json",
+		"/C/Users/Constantius9/Dropbox/roaches/second/upgrades.json",
+		"/C/Users/Constantius9/Dropbox/roaches/second/tasks.json",
+		"/C/Users/Constantius9/Dropbox/roaches/first/tasks.json",
+		"/C/Users/Constantius9/Documents/diploma/sci11/src/latex/biblio/ref.bib",
+		"/C/Users/Constantius9/Documents/diploma/sci11/src/latex/RefReport.aux",
+		"/C/Users/Constantius9/Documents/diploma/sci11/src/latex/RefReport.log",
+		"/C/Users/Constantius9/Documents/diploma/sci11/src/latex/RefReport.bbl",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/sci11/src/latex/RefReport-Introduction.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/sci11/src/latex/RefReport-TranslationValidation.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/sci11/src/latex/biblio/ref.bib",
+		"/C/Program Files/MiKTeX 2.9/bibtex/bst/gost/ugost2008.bst",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/CourseReport-FurtherWork.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/CourseReport-Task.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/biblio/course.bib",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/TODO.md",
+		"/C/Users/Constantius9/Downloads/doc/10.1007%2F978-3-642-13374-9_28.bib",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/diploma/src/latex/DiplomaProject-Goal.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/diploma/src/latex/DiplomaProject-Motivation.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/diploma/src/latex/DiplomaProject-Tasks.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/latex_test/DiplomaProject.tex",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/CourseReport.log",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/CourseReport.aux",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/biblio/texput.log",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/latex/CourseReport.toc",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/.gitignore",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/course11/descr/src/drawings/.gitignore",
+		"/C/Users/Constantius9/Dropbox/pers/goals/2012/tasks2012.txt",
+		"/C/Users/Constantius9/Dropbox/pers/goals/2012/Tasks2012.md",
+		"/C/Users/Constantius9/Dropbox/pers/goals/2012/Nov/Nov_2012.md",
+		"/C/Users/Constantius9/AppData/Roaming/Sublime Text 2/Packages/User/Markdown.sublime-settings",
+		"/C/Users/Constantius9/Dropbox/pers/goals/2012/End_2012.md",
+		"/C/Users/Constantius9/Dropbox/roaches/first/waves.json",
+		"/C/Users/Constantius9/Dropbox/Apps/scriptogram/posts/wishlist.md",
+		"/C/Users/Constantius9/Dropbox/Apps/scriptogram/posts/Вишлист.md",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/sci11/src/latex/RefReport.aux",
+		"/C/Users/Constantius9/Dropbox/botting/diploma/sci11/src/latex/RefReport.log",
+		"/C/Users/Constantius9/Dropbox/roaches/Waves.Raw.csv"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open files>",
+			"<open folders>",
+			"C:\\Users\\Constantius9\\Documents\\diploma\\practice12\\impl\\srс\\",
+			"C:\\Users\\Constantius9\\Documents\\diploma\\practice12\\impl\\srс\\*",
+			"C:\\Users\\Constantius9\\Documents\\diploma\\practice12\\impl\\srс",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\\subsubsection",
+			"\\subsection",
+			"subsubsection",
+			"CPU",
+			"parbox",
+			"  ",
+			"section",
+			"line",
+			"ref{cross",
+			"\\ya",
+			"cyrdash",
+			"earth",
+			"\\includegraphics",
+			"figure",
+			"1",
+			"1340",
+			"санпин",
+			"1390",
+			"санпин",
+			"  ",
+			"поворот",
+			"tabular",
+			"em",
+			"sh",
+			"  ",
+			"equation",
+			"  ",
+			"c",
+			"—",
+			"frac",
+			"fraq",
+			"—",
+			".",
+			"•",
+			"$ ",
+			"ПП",
+			"en",
+			"de",
+			"part",
+			"section",
+			"subsection",
+			"section",
+			"subsection",
+			"выполнения",
+			"Задаётся",
+			"linker_options",
+			"program_source",
+			"Settings",
+			"  ",
+			"   ",
+			"    ",
+			"Thomson2009RTT",
+			"Dubach2009PCO",
+			" ",
+			"1.75",
+			"2.00",
+			"2.25",
+			"2.50",
+			"2.75",
+			"3.00",
+			"3.25",
+			"3.50",
+			"3.75",
+			"4.00",
+			"4.25",
+			"4.50",
+			"4.25",
+			"4.50",
+			"6.",
+			"5.",
+			"4.",
+			"3.",
+			"_WorkRep",
+			"divisi",
+			"div",
+			"tabular",
+			"error",
+			"dynamic",
+			"Bacon",
+			"Validate",
+			"-",
+			"BibEm",
+			"line_",
+			"url",
+			"month",
+			"dec",
+			"1993",
+			"2002",
+			"ref",
+			"\\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			" ",
+			"equation*",
+			" ",
+			"--",
+			",",
+			"\\\\cdot",
+			"\\cdot",
+			"ПС",
+			"section",
+			"subsection",
+			"subsubsection",
+			"subsection",
+			"subsubsection",
+			"	",
+			"3.00",
+			"3.25",
+			"3.50",
+			"3.75",
+			"4.00",
+			"4.25",
+			"4.50",
+			"4.75",
+			"5.00",
+			"5.25",
+			"5.50",
+			"5.75",
+			"6.00",
+			"4.",
+			"3.",
+			"2.",
+			"1.",
+			" "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "diploma/src/latex/DiplomaProject-Introduction.tex",
+					"settings":
+					{
+						"buffer_size": 13375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "diploma/src/latex/DiplomaProject-Theory.tex",
+					"settings":
+					{
+						"buffer_size": 9416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "diploma/src/latex/DiplomaProject-Adaptor.tex",
+					"settings":
+					{
+						"buffer_size": 38310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "diploma/src/latex/DiplomaProject-Evaluation.tex",
+					"settings":
+					{
+						"buffer_size": 22607,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "diploma/src/latex/DiplomaProject-Economics.tex",
+					"settings":
+					{
+						"buffer_size": 20058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Constantius9/Dropbox/sublime-text-2-settings/Default/Startup.cache",
+					"settings":
+					{
+						"buffer_size": 299900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "diploma/src/latex/DiplomaProject-Ecology.tex",
+					"settings":
+					{
+						"buffer_size": 32023,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"theor",
+				"descr/src/latex/PracticeReport-Theory.tex"
+			],
+			[
+				"exp",
+				"descr/src/latex/PracticeReport-Experiment.tex"
+			],
+			[
+				"the",
+				"descr/src/latex/PracticeReport-Theory.tex"
+			],
+			[
+				"adaptor",
+				"descr/src/latex/PracticeReport-Adaptor.tex"
+			],
+			[
+				"theo",
+				"descr/src/latex/PracticeReport-Theory.tex"
+			],
+			[
+				"prac",
+				"descr/src/latex/PracticeReport.tex"
+			],
+			[
+				"intro",
+				"descr/src/latex/PracticeReport-Introduction.tex"
+			],
+			[
+				"fur",
+				"descr/src/latex/PracticeReport-FurtherWork.tex"
+			],
+			[
+				"adap",
+				"impl/couch/adaptor/_attachments/script/app.js"
+			],
+			[
+				"ada",
+				"PracticeReport-Adaptor.tex"
+			],
+			[
+				"task",
+				"PracticeReport-Task.tex"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 223.0,
+	"status_bar_visible": true
+}
