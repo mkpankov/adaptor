@@ -1,0 +1,107 @@
+<html>
+<head>
+	<title>Orange viewer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+html, body, table {
+	font:normal 10px verdana;
+	margin:0px;
+	padding:0;
+	border:0 none;	
+}
+p {
+	margin:5px;
+}
+
+h1, h2 , h3, h4, h5 {
+   font-family: verdana;
+   width: 100%;
+   padding: 1px;
+   margin: 2px;
+   font-size:100%;
+}
+
+h1 {
+   color: white;
+   background-color: black;
+   padding-left: 2px;
+   margin-top: 12px;
+}
+
+h2 {
+   background-color: #fdffd5;
+   border-bottom: 1px solid black;
+   padding-left: 2px;
+}
+
+ul {
+   margin-left: 10px;
+}
+
+div.insideh1 {
+   padding-left: 4px;
+}
+
+.settings {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_wrench.png);
+}
+.nav {
+	background-image:url(ext-2.0-rc1/examples/shared/icons/fam/folder_go.png);
+}
+
+span.timestamp {
+    position: absolute;
+	right: 40px;
+	color:#dddddd;
+}
+
+div.selected {
+	border: 1px solid black;
+	padding: 3px;
+	/* background-color: #FDFFA5; */
+	margin: 4px;
+}
+
+div.normal {
+	border: 0px;
+	padding: 3px;
+	/* background-color: #FDFFD5;*/
+	margin: 5px;
+}
+
+</style>
+
+<body><table width="100%"><tr><td valign="top"><p style="padding-top:25px;">Index</p><a href="#N002">Test Learners</a><br/><a href="#N003">Test Learners</a></td><td><div id="N002" onClick="myself.changeItem(this.id);">    <a name="N002">    <h1>Test Learners<span class="timestamp">Wed May 22 13, 06:48:49</span></h1>    <div class="insideh1">        
+
+<h2>Validation method</h2>
+
+    <ul><b>Method: </b>Test on test data<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>468<br/><b>Attributes: </b>1 (width)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+
+
+<h2>Results</h2>
+
+<table><tr><th></th><th><b>RMSE</b></th><th><b>RRSE</b></th><th><b>R2</b></th></tr><tr><th><b>kNN</b></th><td>1.9609</td><td>0.0764</td><td>0.9942</td></tr><tr><th><b>Random Forest</b></th><td>1.9986</td><td>0.0779</td><td>0.9939</td></tr><tr><th><b>Linear Regression</b></th><td>10.1897</td><td>0.3971</td><td>0.8423</td></tr><tr><th><b>Earth Learner</b></th></tr></table>    </div></div>
+<div id="N003" onClick="myself.changeItem(this.id);">    <a name="N003">    <h1>Test Learners<span class="timestamp">Wed May 22 13, 06:50:26</span></h1>    <div class="insideh1">        
+
+<h2>Validation method</h2>
+
+    <ul><b>Method: </b>Test on test data<br/></ul>
+
+
+<h2>Data</h2>
+
+    <ul><b>Examples: </b>468<br/><b>Attributes: </b>2 (width, cpu_mhz)<br/><b>Meta attributes: </b>2 (datetime, id)<br/><b>Class: </b>time<br/></ul>
+
+
+<h2>Results</h2>
+
+<table><tr><th></th><th><b>RMSE</b></th><th><b>RRSE</b></th><th><b>R2</b></th></tr><tr><th><b>Linear Regression</b></th><td>9.0665</td><td>0.3939</td><td>0.8448</td></tr><tr><th><b>Earth Learner</b></th></tr><tr><th><b>kNN</b></th><td>1.0932</td><td>0.0475</td><td>0.9977</td></tr></table>    </div></div></td></tr></table>
+
+ </body>
+</html>
