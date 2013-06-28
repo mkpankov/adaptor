@@ -1,0 +1,65 @@
+-falign-functions[=n] -falign-jumps[=n] -falign-labels[=n]
+-falign-loops[=n] -fassociative-math -fauto-inc-dec
+-fbranch-probabilities -fbranch-target-load-optimize
+-fbranch-target-load-optimize2 -fbtr-bb-exclusive -fcaller-saves
+-fcheck-data-deps -fcombine-stack-adjustments -fconserve-stack
+-fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
+-fcse-skip-blocks -fcx-fortran-rules -fcx-limited-range
+-fdata-sections -fdce -fdce -fdelayed-branch
+-fdelete-null-pointer-checks -fdse -fdevirtualize -fdse
+-fearly-inlining -fipa-sra -fexpensive-optimizations -ffast-math
+-ffinite-math-only -ffloat-store -fexcess-precision={fast, standard}
+-fforward-propagate -ffp-contract={off, fast, on} -ffunction-sections -fgcse
+-fgcse-after-reload -fgcse-las -fgcse-lm -fgraphite-identity
+-fgcse-sm -fif-conversion -fif-conversion2 -findirect-inlining
+-finline-functions -finline-functions-called-once -finline-limit=n
+-finline-small-functions -fipa-cp -fipa-cp-clone -fipa-matrix-reorg
+-fipa-pta -fipa-profile -fipa-pure-const -fipa-reference
+-fipa-struct-reorg -fira-algorithm={priority, CB} -fira-region={all, mixed, one}
+-fira-loop-pressure -fno-ira-share-save-slots
+-fno-ira-share-spill-slots -fira-verbose=n -fivopts
+-fkeep-inline-functions -fkeep-static-consts -floop-block
+-floop-flatten -floop-interchange -floop-strip-mine
+-floop-parallelize-all -flto -flto-compression-level
+-flto-partition={1to1, balanced, none} -flto-report -fmerge-all-constants
+-fmerge-constants -fmodulo-sched -fmodulo-sched-allow-regmoves
+-fmove-loop-invariants fmudflap -fmudflapir -fmudflapth
+-fno-branch-count-reg -fno-default-inline -fno-defer-pop
+-fno-function-cse -fno-guess-branch-probability -fno-inline
+-fno-math-errno -fno-peephole -fno-peephole2 -fno-sched-interblock
+-fno-sched-spec -fno-signed-zeros -fno-toplevel-reorder
+-fno-trapping-math -fno-zero-initialized-in-bss
+-fomit-frame-pointer -foptimize-register-move
+-foptimize-sibling-calls -fpartial-inlining -fpeel-loops
+-fpredictive-commoning -fprefetch-loop-arrays -fprofile-correction
+-fprofile-dir=path -fprofile-generate -fprofile-generate=path
+-fprofile-use -fprofile-use=path -fprofile-values -freciprocal-math
+-fregmove -frename-registers -freorder-blocks
+-freorder-blocks-and-partition -freorder-functions
+-frerun-cse-after-loop -freschedule-modulo-scheduled-loops
+-frounding-math -fsched2-use-superblocks -fsched-pressure
+-fsched-spec-load -fsched-spec-load-dangerous
+-fsched-stalled-insns-dep[=n] -fsched-stalled-insns[=n]
+-fsched-group-heuristic -fsched-critical-path-heuristic
+-fsched-spec-insn-heuristic -fsched-rank-heuristic
+-fsched-last-insn-heuristic -fsched-dep-count-heuristic
+-fschedule-insns -fschedule-insns2 -fsection-anchors
+-fselective-scheduling -fselective-scheduling2
+-fsel-sched-pipelining -fsel-sched-pipelining-outer-loops
+-fsignaling-nans -fsingle-precision-constant
+-fsplit-ivs-in-unroller -fsplit-wide-types -fstack-protector
+-fstack-protector-all -fstrict-aliasing -fstrict-overflow
+-fthread-jumps -ftracer -ftree-bit-ccp -ftree-builtin-call-dce
+-ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-dce
+-ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+-ftree-loop-if-convert -ftree-loop-if-convert-stores -ftree-loop-im
+-ftree-phiprop -ftree-loop-distribution
+-ftree-loop-distribute-patterns -ftree-loop-ivcanon
+-ftree-loop-linear -ftree-loop-optimize -ftree-parallelize-loops=n
+-ftree-pre -ftree-pta -ftree-reassoc -ftree-sink -ftree-sra
+-ftree-switch-conversion -ftree-ter -ftree-vect-loop-version
+-ftree-vectorize -ftree-vrp -funit-at-a-time -funroll-all-loops
+-funroll-loops -funsafe-loop-optimizations
+-funsafe-math-optimizations -funswitch-loops
+-fvariable-expansion-in-unroller -fvect-cost-model -fvpt -fweb
+-fwhole-program -fwpa -fuse-linker-plugin --param {struct-reorg-cold-struct-ratio: 10, predictable-branch-outcome: 10, max-inline-insns-single: 400, max-inline-insns-auto: 40, max-inline-insns-auto: 30, large-stack-frame-growth: 1000, max-inline-insns-recursive: 450, max-inline-recursive-depth: 8, min-inline-recursive-probability: 10, early-inlining-insns: 10, max-unrolled-insns, max-average-unrolled-insns, max-unroll-times, max-peeled-insns, max-peel-times, max-completely-peeled-insns, max-completely-peeled-insns, max-completely-peel-loop-nest-depth}

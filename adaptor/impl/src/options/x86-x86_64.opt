@@ -1,0 +1,3 @@
+-mconsole -mcygwin -mno-cygwin
+-mdll -mnop-fun-dllimport -mthread -municode -mwin32 -mwindows
+-fno-set-stack-executable
