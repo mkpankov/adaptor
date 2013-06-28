@@ -1,7 +1,8 @@
 # Adaptor #
 
 Contains 'Adaptor' self-tuning computing framework.
-Author: Michael Pankov, former student of Bauman Moscow State Technical University.
+
+Author: Michael K. Pankov, graduate of Bauman Moscow State Technical University.
 
 ## Useful links ##
 
