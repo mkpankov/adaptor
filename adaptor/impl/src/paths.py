@@ -14,11 +14,15 @@ import os
 import ipdb
 
 
+
 class NonAbsolutePathError(RuntimeError):
     pass
 
+
+
 class NoSuchNestedPathError(RuntimeError):
     pass
+
 
 
 class PathsManager():
@@ -32,6 +36,7 @@ class PathsManager():
         self.benchmark_bin_dir = benchmark_bin_dir
         self.paths_stack = []
 
+
     def push_path(self, path):
         """
         Push path to stack in self.
@@ -43,6 +48,7 @@ class PathsManager():
         else:
             raise NonAbsolutePathError
 
+
     def pop_path(self):
         """
         Pop path from stack in self.
@@ -52,15 +58,17 @@ class PathsManager():
         path = self.paths_stack.pop()
         return path
 
+
     def get_path(self):
         """
         Return the path on top of stack in self.
         """
         return self.paths_stack[-1]
 
+
     def ensure_path(self, path=None):
         """
-        Get the correct current path from stack in self and 
+        Get the correct current path from stack in self and
         change current directory to there.
         """
         if path is None:
@@ -68,9 +76,10 @@ class PathsManager():
         else:
             os.chdir(path)
 
+
     def nest_path_absolute(self, path):
         """
-        Receive path, push the real path of it to stack in self and 
+        Receive path, push the real path of it to stack in self and
         change current directory to there.
         """
         try:
@@ -81,29 +90,33 @@ class PathsManager():
         self.push_path(path)
         self.ensure_path()
 
+
     def nest_path_from_root(self, path):
         """
-        Receive path, relative to the root of framework, 
+        Receive path, relative to the root of framework,
         push it to stack in self and change current directory to there.
         """
         new_path = os.path.join(self.framework_root_dir, path)
         self.nest_path_absolute(new_path)
 
+
     def nest_path_from_benchmark_root(self, path):
         """
-        Receive path, relative to the root of benchmark directory, 
+        Receive path, relative to the root of benchmark directory,
         push it to stack in self and change current directory to there.
         """
         new_path = os.path.join(self.benchmark_root_dir, path)
         self.nest_path_absolute(new_path)
 
+
     def nest_path(self, path):
         """
-        Receive relative path, push the real path of it to stack in self and 
+        Receive relative path, push the real path of it to stack in self and
         change current directory to there.
         """
         new_path = os.path.join(self.get_path(), path)
         self.nest_path_absolute(new_path)
+
 
     def unnest_path(self):
         """
