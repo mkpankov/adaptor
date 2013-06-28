@@ -1,5 +1,8 @@
+# Windows stuff
 .picasa.ini
 Thumbs.db
+
+# LaTeX stuff
 *.synctex.gz
 *.4tc
 *.4ct
@@ -7,13 +10,11 @@ Thumbs.db
 *.bbl
 *.blg
 *.dvi
+*.toc
+
+# Various
 *.log
+
+# Output
 *.pdf
 *.ps
-*.toc
-*.log
-/latex_test/images/*
-/samples/*
-/diploma/literature/docs/*
-*.synctex.gz
-Thumbs.db
