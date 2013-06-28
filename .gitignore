@@ -12,6 +12,9 @@ Thumbs.db
 *.dvi
 *.toc
 
+# SublimeText 2 stuff
+*.sublime-project
+
 # Various
 *.log
 
