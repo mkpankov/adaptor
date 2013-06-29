@@ -34,6 +34,8 @@ class TestPathsManagerInitFini(unittest.TestCase):
             os.path.join(self.base_path, '..', 'data'))
         self.assertEquals(paths_manager.benchmark_bin_dir,
             os.path.join(self.base_path, '..', 'data', 'sources'))
+        self.assertEquals(paths_manager.previous_dir,
+            os.getcwd())
 
 
     def test_init_exception(self):

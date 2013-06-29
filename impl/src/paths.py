@@ -29,6 +29,13 @@ class PathsManager():
                  framework_root_dir,
                  benchmark_root_dir,
                  benchmark_bin_dir):
+        self.previous_dir = os.getcwd()
+
+        # Pay attention to the ordering:
+        # in case we don't define previous_dir before possible
+        # exception raise, __del__ is going to complain that
+        # previous_dir is not defined.
+        # __del__ is called even though the __init__ raises an exception.
         for path in [framework_root_dir,
                      benchmark_root_dir,
                      benchmark_bin_dir]:
@@ -39,6 +46,10 @@ class PathsManager():
         self.benchmark_root_dir = benchmark_root_dir
         self.benchmark_bin_dir = benchmark_bin_dir
         self.paths_stack = []
+
+
+    def __del__(self):
+        os.chdir(self.previous_dir)
 
 
     def push_path(self, path):
