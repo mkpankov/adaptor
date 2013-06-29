@@ -17,7 +17,7 @@ from paths import *
 
 class Context(PrintableStructure):
     """Context of the system."""
-    
+
     def __init__(self,
                  settings,
                  series,
@@ -35,6 +35,7 @@ class Context(PrintableStructure):
                                           settings.benchmark_bin_dir)
         # The directory of where the import was
         self.paths_manager.nest_path_absolute(os.getcwd())
+        # The root of the framework
         self.paths_manager.nest_path_absolute(settings.framework_root_dir)
         self.settings = settings
 
@@ -48,7 +49,7 @@ class Context(PrintableStructure):
     def __del__(self):
         """Take care of paths stack and current directory."""
 
-        # The directory of where the import was
-        self.paths_manager.unnest_path()
         # The root of framework
+        self.paths_manager.unnest_path()
+        # The directory of where the import was
         self.paths_manager.unnest_path()

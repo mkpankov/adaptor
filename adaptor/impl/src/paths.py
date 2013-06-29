@@ -11,8 +11,6 @@ Please do not redistribute.
 
 import os
 
-import ipdb
-
 
 
 class NonAbsolutePathError(RuntimeError):
@@ -66,15 +64,13 @@ class PathsManager():
         return self.paths_stack[-1]
 
 
-    def ensure_path(self, path=None):
+    def ensure_path(self):
         """
         Get the correct current path from stack in self and
         change current directory to there.
         """
-        if path is None:
-            os.chdir(self.get_path())
-        else:
-            os.chdir(path)
+        print self.get_path()
+        os.chdir(self.get_path())
 
 
     def nest_path_absolute(self, path):
@@ -121,7 +117,7 @@ class PathsManager():
     def unnest_path(self):
         """
         Pop the path from stack in self and
-        change current directory to current top path of stack.
+        change current directory to there.
         """
-        top_path = self.pop_path()
-        self.ensure_path(top_path)
+        self.ensure_path()
+        self.pop_path()
