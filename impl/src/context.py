@@ -33,10 +33,6 @@ class Context(PrintableStructure):
         self.paths_manager = PathsManager(settings.framework_root_dir,
                                           settings.benchmark_root_dir,
                                           settings.benchmark_bin_dir)
-        # The directory of where the import was
-        self.paths_manager.nest_path_absolute(os.getcwd())
-        # The root of the framework
-        self.paths_manager.nest_path_absolute(settings.framework_root_dir)
         self.settings = settings
 
         if server is None:
@@ -44,12 +40,3 @@ class Context(PrintableStructure):
 
         self.server = server
         self.series = series
-
-
-    def __del__(self):
-        """Take care of paths stack and current directory."""
-
-        # The root of framework
-        self.paths_manager.unnest_path()
-        # The directory of where the import was
-        self.paths_manager.unnest_path()

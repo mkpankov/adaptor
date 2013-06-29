@@ -50,7 +50,8 @@ class TestPathsManagerInitFini(unittest.TestCase):
 class TestPathsManagement(unittest.TestCase):
     def setUp(self):
         self.base_path = os.getcwd()
-        self.paths_manager = paths.PathsManager(self.base_path,
+        self.paths_manager = paths.PathsManager(
+            os.path.join(self.base_path, '..'),
             os.path.join(self.base_path, '..', 'data'),
             os.path.join(self.base_path, '..', 'data', 'sources'))
 
@@ -107,7 +108,7 @@ class TestPathsManagement(unittest.TestCase):
 
     def test_nest_from_root(self):
         self.paths_manager.nest_path_from_root('..')
-        path = os.path.abspath(os.path.join(self.base_path, '..'))
+        path = os.path.abspath(os.path.join(self.base_path, '..', '..'))
         self.assertEquals(self.paths_manager.paths_stack, [path])
         self.assertEquals(os.getcwd(), path)
 
@@ -121,9 +122,19 @@ class TestPathsManagement(unittest.TestCase):
 
     def test_nest(self):
         self.paths_manager.nest_path('..')
-        path = os.path.abspath(os.path.join(self.base_path, '..'))
+        path = os.path.abspath(os.path.join(self.base_path, '..', '..'))
         self.assertEquals(self.paths_manager.paths_stack, [path])
         self.assertEquals(os.getcwd(), path)
+
+
+    def test_database_setup(self):
+        pm = self.paths_manager
+        pm.nest_path_from_root('src')
+        pm.unnest_path()
+        pm.nest_path_from_root(os.path.join(
+            'couch','adaptor'))
+        pm.unnest_path()
+        self.assertEquals(os.getcwd(), self.base_path)
 
 
     def test_del(self):
