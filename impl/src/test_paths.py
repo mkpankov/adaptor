@@ -46,6 +46,7 @@ class TestPathsManagerInitFini(unittest.TestCase):
                           '..')
 
 
+
 class TestPathsManagement(unittest.TestCase):
     def setUp(self):
         self.base_path = os.getcwd()
@@ -126,10 +127,11 @@ class TestPathsManagement(unittest.TestCase):
 
 
     def test_del(self):
-        # FIXME: It should nest a path and then delete
+        self.paths_manager.nest_path('..')
         path = self.base_path
         del self.paths_manager
         self.assertEquals(os.getcwd(), path)
+
 
 
 if __name__ == '__main__':
