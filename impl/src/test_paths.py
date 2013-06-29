@@ -24,16 +24,17 @@ class TestPathsManagerInitFini(unittest.TestCase):
 
 
     def test_init(self):
-        paths_manager = paths.PathsManager(self.base_path,
+        paths_manager = paths.PathsManager(
+            os.path.join(self.base_path, '..'),
             os.path.join(self.base_path, '..', 'data'),
             os.path.join(self.base_path, '..', 'data', 'sources'))
 
         self.assertEquals(paths_manager.framework_root_dir,
-            self.base_path)
+            os.path.abspath(os.path.join(self.base_path, '..')))
         self.assertEquals(paths_manager.benchmark_root_dir,
-            os.path.join(self.base_path, '..', 'data'))
+            os.path.abspath(os.path.join(self.base_path, '..', 'data')))
         self.assertEquals(paths_manager.benchmark_bin_dir,
-            os.path.join(self.base_path, '..', 'data', 'sources'))
+            os.path.abspath(os.path.join(self.base_path, '..', 'data', 'sources')))
         self.assertEquals(paths_manager.previous_dir,
             os.getcwd())
 
@@ -115,7 +116,8 @@ class TestPathsManagement(unittest.TestCase):
 
     def test_nest_from_benchmark_root(self):
         self.paths_manager.nest_path_from_benchmark_root('sources')
-        path = os.path.abspath(os.path.join(self.base_path, '../data/sources'))
+        path = os.path.abspath(os.path.join(
+            self.base_path, '..', 'data', 'sources'))
         self.assertEquals(self.paths_manager.paths_stack, [path])
         self.assertEquals(os.getcwd(), path)
 
@@ -127,14 +129,21 @@ class TestPathsManagement(unittest.TestCase):
         self.assertEquals(os.getcwd(), path)
 
 
+    def test_unnest(self):
+        self.paths_manager.paths_stack = ['/', os.path.devnull]
+        self.paths_manager.unnest_path()
+        self.assertEquals(os.getcwd(), '/')
+
+
     def test_database_setup(self):
         pm = self.paths_manager
         pm.nest_path_from_root('src')
         pm.unnest_path()
+        self.assertEquals(os.getcwd(), self.paths_manager.framework_root_dir)
         pm.nest_path_from_root(os.path.join(
-            'couch','adaptor'))
+            'couch', 'adaptor'))
         pm.unnest_path()
-        self.assertEquals(os.getcwd(), self.base_path)
+        self.assertEquals(os.getcwd(), self.paths_manager.framework_root_dir)
 
 
     def test_del(self):

@@ -36,15 +36,17 @@ class PathsManager():
         # exception raise, __del__ is going to complain that
         # previous_dir is not defined.
         # __del__ is called even though the __init__ raises an exception.
-        for path in [framework_root_dir,
-                     benchmark_root_dir,
-                     benchmark_bin_dir]:
+        paths = [framework_root_dir,
+                 benchmark_root_dir,
+                 benchmark_bin_dir]
+
+        for path in paths:
             if not os.path.isabs(path):
                 raise NonAbsolutePathError
 
-        self.framework_root_dir = framework_root_dir
-        self.benchmark_root_dir = benchmark_root_dir
-        self.benchmark_bin_dir = benchmark_bin_dir
+        self.framework_root_dir = os.path.abspath(framework_root_dir)
+        self.benchmark_root_dir = os.path.abspath(benchmark_root_dir)
+        self.benchmark_bin_dir = os.path.abspath(benchmark_bin_dir)
         self.paths_stack = []
 
 
@@ -141,5 +143,5 @@ class PathsManager():
         Pop the path from stack in self and
         change current directory to there.
         """
-        self.ensure_path()
         self.pop_path()
+        self.ensure_path()
