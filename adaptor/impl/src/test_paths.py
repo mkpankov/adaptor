@@ -18,12 +18,38 @@ import os
 
 
 
+class TestPathsManagerInitFini(unittest.TestCase):
+    def setUp(self):
+        self.base_path = os.getcwd()
+
+
+    def test_init(self):
+        paths_manager = paths.PathsManager(self.base_path,
+            os.path.join(self.base_path, '..', 'data'),
+            os.path.join(self.base_path, '..', 'data', 'bin'))
+
+        self.assertEquals(paths_manager.framework_root_dir,
+            self.base_path)
+        self.assertEquals(paths_manager.benchmark_root_dir,
+            os.path.join(self.base_path, '..', 'data'))
+        self.assertEquals(paths_manager.benchmark_bin_dir,
+            os.path.join(self.base_path, '..', 'data', 'bin'))
+
+
+    def test_init_exception(self):
+        self.assertRaises(paths.NonAbsolutePathError,
+                          paths.PathsManager,
+                          '..',
+                          '..',
+                          '..')
+
+
 class TestPathsManagement(unittest.TestCase):
     def setUp(self):
         self.base_path = os.getcwd()
         self.paths_manager = paths.PathsManager(self.base_path,
-                                                '../data',
-                                                '../data/bin')
+            os.path.join(self.base_path, '..', 'data'),
+            os.path.join(self.base_path, '..', 'data', 'bin'))
 
 
     def tearDown(self):
@@ -70,11 +96,24 @@ class TestPathsManagement(unittest.TestCase):
         self.assertEquals(os.getcwd(), '/')
 
 
+    def test_nest_absolute_exception(self):
+        self.assertRaises(paths.NoSuchNestedPathError,
+                          self.paths_manager.nest_path_absolute,
+                          'none')
+
+
     def test_nest_from_root(self):
         self.paths_manager.nest_path_from_root('..')
         path = os.path.abspath(os.path.join(self.base_path, '..'))
-        self.assertEquals([path], self.paths_manager.paths_stack)
-        self.assertEquals(path, os.getcwd())
+        self.assertEquals(self.paths_manager.paths_stack, [path])
+        self.assertEquals(os.getcwd(), path)
+
+
+    def test_nest_from_benchmark_root(self):
+        self.paths_manager.nest_path_from_benchmark_root('bin')
+        path = os.path.abspath(os.path.join(self.base_path, '../data/bin'))
+        self.assertEquals(self.paths_manager.paths_stack, [path])
+        self.assertEquals(os.getcwd(), path)
 
 
     def test_del(self):

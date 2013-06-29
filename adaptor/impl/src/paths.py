@@ -29,6 +29,12 @@ class PathsManager():
                  framework_root_dir,
                  benchmark_root_dir,
                  benchmark_bin_dir):
+        for path in [framework_root_dir,
+                     benchmark_root_dir,
+                     benchmark_bin_dir]:
+            if not os.path.isabs(path):
+                raise NonAbsolutePathError
+
         self.framework_root_dir = framework_root_dir
         self.benchmark_root_dir = benchmark_root_dir
         self.benchmark_bin_dir = benchmark_bin_dir
