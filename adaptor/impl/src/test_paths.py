@@ -116,6 +116,13 @@ class TestPathsManagement(unittest.TestCase):
         self.assertEquals(os.getcwd(), path)
 
 
+    def test_nest(self):
+        self.paths_manager.nest_path('..')
+        path = os.path.abspath(os.path.join(self.base_path, '..'))
+        self.assertEquals(self.paths_manager.paths_stack, [path])
+        self.assertEquals(os.getcwd(), path)
+
+
     def test_del(self):
         # FIXME: It should nest a path and then delete
         path = self.base_path

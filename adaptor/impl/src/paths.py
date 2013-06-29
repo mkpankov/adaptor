@@ -68,7 +68,12 @@ class PathsManager():
         """
         Return the path on top of stack in self.
         """
-        return self.paths_stack[-1]
+        try:
+            path = self.paths_stack[-1]
+        except IndexError:
+            path = self.framework_root_dir
+
+        return path
 
 
     def ensure_path(self):
