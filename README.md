@@ -1,4 +1,4 @@
-![logo](/adaptor/doc/pictures/logo.png?raw=true)
+![logo](/doc/pictures/logo.png?raw=true)
 
 Contains 'Adaptor' computer performance modeling framework.
 
