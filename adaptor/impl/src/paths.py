@@ -42,7 +42,8 @@ class PathsManager():
         Path must be absolute.
         """
         if os.path.isabs(path):
-            self.paths_stack.append(path)
+            abspath = os.path.abspath(path)
+            self.paths_stack.append(abspath)
         else:
             raise NonAbsolutePathError
 
@@ -69,7 +70,6 @@ class PathsManager():
         Get the correct current path from stack in self and
         change current directory to there.
         """
-        print self.get_path()
         os.chdir(self.get_path())
 
 

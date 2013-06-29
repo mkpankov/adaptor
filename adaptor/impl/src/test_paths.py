@@ -20,10 +20,14 @@ import os
 
 class TestPathsManagement(unittest.TestCase):
     def setUp(self):
-        self.paths_manager = paths.PathsManager('..',
+        self.base_path = os.getcwd()
+        self.paths_manager = paths.PathsManager(self.base_path,
                                                 '../data',
                                                 '../data/bin')
-        self.base_path = os.getcwd()
+
+
+    def tearDown(self):
+        os.chdir(self.base_path)
 
 
     def test_push(self):
@@ -39,6 +43,45 @@ class TestPathsManagement(unittest.TestCase):
                           '..')
 
 
+    def test_pop(self):
+        self.paths_manager.paths_stack = [os.path.devnull]
+        path = self.paths_manager.pop_path()
+        self.assertEquals(path, os.path.devnull)
+        self.assertEquals(self.paths_manager.paths_stack, [])
+
+
+    def test_get(self):
+        self.paths_manager.paths_stack = [os.path.devnull]
+        path = self.paths_manager.get_path()
+        self.assertEquals(path, os.path.devnull)
+        self.assertEquals(self.paths_manager.paths_stack, [os.path.devnull])
+
+
+    def test_ensure(self):
+        self.paths_manager.paths_stack = ['/']
+        self.paths_manager.ensure_path()
+        self.assertEquals(self.paths_manager.paths_stack, ['/'])
+        self.assertEquals(os.getcwd(), '/')
+
+
+    def test_nest_absolute(self):
+        self.paths_manager.nest_path_absolute('/')
+        self.assertEquals(self.paths_manager.paths_stack, ['/'])
+        self.assertEquals(os.getcwd(), '/')
+
+
+    def test_nest_from_root(self):
+        self.paths_manager.nest_path_from_root('..')
+        path = os.path.abspath(os.path.join(self.base_path, '..'))
+        self.assertEquals([path], self.paths_manager.paths_stack)
+        self.assertEquals(path, os.getcwd())
+
+
+    def test_del(self):
+        # FIXME: It should nest a path and then delete
+        path = self.base_path
+        del self.paths_manager
+        self.assertEquals(os.getcwd(), path)
 
 
 if __name__ == '__main__':
