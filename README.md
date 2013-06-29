@@ -4,7 +4,7 @@ Contains 'Adaptor' self-tuning computing framework.
 
 Author: Michael K. Pankov, graduate of Bauman Moscow State Technical University.
 
-![logo](/doc/pictures/logo.png?raw=true)
+![logo](/adaptor/doc/pictures/logo.png?raw=true)
 
 ## Useful links ##
 
