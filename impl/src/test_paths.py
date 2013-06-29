@@ -26,14 +26,14 @@ class TestPathsManagerInitFini(unittest.TestCase):
     def test_init(self):
         paths_manager = paths.PathsManager(self.base_path,
             os.path.join(self.base_path, '..', 'data'),
-            os.path.join(self.base_path, '..', 'data', 'bin'))
+            os.path.join(self.base_path, '..', 'data', 'sources'))
 
         self.assertEquals(paths_manager.framework_root_dir,
             self.base_path)
         self.assertEquals(paths_manager.benchmark_root_dir,
             os.path.join(self.base_path, '..', 'data'))
         self.assertEquals(paths_manager.benchmark_bin_dir,
-            os.path.join(self.base_path, '..', 'data', 'bin'))
+            os.path.join(self.base_path, '..', 'data', 'sources'))
 
 
     def test_init_exception(self):
@@ -49,7 +49,7 @@ class TestPathsManagement(unittest.TestCase):
         self.base_path = os.getcwd()
         self.paths_manager = paths.PathsManager(self.base_path,
             os.path.join(self.base_path, '..', 'data'),
-            os.path.join(self.base_path, '..', 'data', 'bin'))
+            os.path.join(self.base_path, '..', 'data', 'sources'))
 
 
     def tearDown(self):
@@ -110,8 +110,8 @@ class TestPathsManagement(unittest.TestCase):
 
 
     def test_nest_from_benchmark_root(self):
-        self.paths_manager.nest_path_from_benchmark_root('bin')
-        path = os.path.abspath(os.path.join(self.base_path, '../data/bin'))
+        self.paths_manager.nest_path_from_benchmark_root('sources')
+        path = os.path.abspath(os.path.join(self.base_path, '../data/sources'))
         self.assertEquals(self.paths_manager.paths_stack, [path])
         self.assertEquals(os.getcwd(), path)
 
