@@ -139,7 +139,8 @@ def perform_plot_error(context):
     x = range(len(y1))
     plt.figure()
     plt.axes().set_yscale('log')
-    plt2 = plt.scatter(x, y2, marker='+', s=160, c='r', label=u'измеренное время')
+    plt2 = plt.scatter(
+        x, y2, marker='+', s=160, c='r', label=u'измеренное время')
     plt1 = plt.scatter(x, y1, label=u'реальное время')
     plt.axes().set_xticks(range(len(y1)))
     default_xticklabels = ['usleep_{0}'.format(10**i) for i in range(7)]
@@ -150,8 +151,11 @@ def perform_plot_error(context):
     plt.axes().grid(axis='both')
     p1 = plt.Rectangle((0, 0), 1, 1, fc='b')
     p2 = plt.Rectangle((0, 0), 1, 1, fc='r')
-    plt.axes().legend((p1, p2), (plt1.get_label(), plt2.get_label()), loc='best')
-    plt.title(u'Математическое ожидание времени исполнения калибровочных программ и реальное время их исполнения')
+    plt.axes().legend(
+        (p1, p2), (plt1.get_label(), plt2.get_label()), loc='best')
+    plt.title(
+        u'Математическое ожидание времени исполнения калибровочных программ\
+ и реальное время их исполнения')
     plt.show()
     unnest_path(context)
 
@@ -172,8 +176,10 @@ def plot_vs():
     indices = map(lambda e: e[1], clang_scurve)
     gcc_scurve = sorted(gcc_es, key=lambda e: indices.index(e[1]))
     gcc_y = [e[2] for e in gcc_scurve]
-    points_clang = plt.scatter(range(len(clang_y)), clang_y, label='clang', s=60)
-    points_gcc = plt.scatter(range(len(gcc_y)), gcc_y, c='r', label='gcc', s=60)
+    points_clang = plt.scatter(
+        range(len(clang_y)), clang_y, label='clang', s=60)
+    points_gcc = plt.scatter(
+        range(len(gcc_y)), gcc_y, c='r', label='gcc', s=60)
     f = plt.gcf()
     plt.axes().set_yscale('log')
     plt.axes().set_xticks(range(len(clang_y)))
@@ -184,8 +190,11 @@ def plot_vs():
     plt.axes().grid(axis='both')
     p1 = plt.Rectangle((0, 0), 1, 1, fc='b')
     p2 = plt.Rectangle((0, 0), 1, 1, fc='r')
-    plt.axes().legend((p1, p2), (points_clang.get_label(), points_gcc.get_label()), loc='best')
-    plt.title(u"Время исполнения программ, скомпилированных двумя компиляторами на уровне оптимизации '-O2'")
+    plt.axes().legend(
+        (p1, p2), (points_clang.get_label(), points_gcc.get_label()),
+        loc='best')
+    plt.title(u"Время исполнения программ, скомпилированных двумя\
+ компиляторами на уровне оптимизации '-O2'")
     plt.show()
 
 
@@ -240,14 +249,15 @@ def plot_predictions_distinct(filename, predictor):
                 c=cs[0], marker='o',
                 cmap=cmap)
             ax3d.plot([], [], [], c=cs[0], marker='o',
-                label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq))
+                label=u'Экспериментальные данные для процессора с частотой\
+ {0} МГц'.format(freq))
 
             ax3d.scatter(hs_freq, ws_freq, preds_freq,
-                label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
-                c=cs[1], marker='x',
-                cmap=cmap)
+                label=u'Значения, предсказанные моделью, для процессора с\
+ частотой {0} МГц'.format(freq), c=cs[1], marker='x', cmap=cmap)
             ax3d.plot([], [], [], c=cs[1], marker='x',
-                label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq))
+                label=u'Значения, предсказанные моделью, для процессора с\
+ частотой {0} МГц'.format(freq))
 
             ax3d.set_zlim([0, 65])
 
@@ -276,7 +286,7 @@ def plot_predictions_distinct_2d(filename, predictor):
     colors = [('red', 'blue'), ('red', 'blue'), ('red', 'blue')]
 
     plt.rcParams.update({'font.size': 28})
-    plt.rc('legend',**{'fontsize':18})
+    plt.rc('legend', **{'fontsize': 18})
 
     for freq, cmap, cs in zip(freqs, cmaps, colors):
         fig = plt.figure()
@@ -287,14 +297,12 @@ def plot_predictions_distinct_2d(filename, predictor):
         times_freq = [float(d['c#time']) for d in dicts if filter_func(d)]
         preds_freq = [float(d[predictor]) for d in dicts if filter_func(d)]
         ax3d.scatter(ws_freq, times_freq,
-            label=u'Экспериментальные данные для процессора с частотой {0} МГц'.format(freq),
-            c=cs[0], marker='o', s=80,
-            cmap=cmap)
+            label=u'Экспериментальные данные для процессора с\
+ частотой {0} МГц'.format(freq), c=cs[0], marker='o', s=80, cmap=cmap)
 
         ax3d.scatter(ws_freq, preds_freq,
-            label=u'Значения, предсказанные моделью, для процессора с частотой {0} МГц'.format(freq),
-            c=cs[1], marker='x', s=80,
-            cmap=cmap)
+            label=u'Значения, предсказанные моделью, для процессора с\
+ частотой {0} МГц'.format(freq), c=cs[1], marker='x', s=80, cmap=cmap)
 
         ax3d.set_ylim([0, 15])
         plt.grid(b=True, which='major', color='k', linestyle='-', linewidth=2)
@@ -309,7 +317,8 @@ def plot_predictions_distinct_2d(filename, predictor):
 
 def plot_predictions_all(basename):
     for predictor in [
-     ('knn', 'm#kNN'), ('rf', 'm#Random Forest'), ('earth', 'm#Earth Learner')]:
+     ('knn', 'm#kNN'), ('rf', 'm#Random Forest'),
+     ('earth', 'm#Earth Learner')]:
         filename = basename.format(predictor[0])
         plot_predictions_distinct_2d(filename, predictor[1])
 

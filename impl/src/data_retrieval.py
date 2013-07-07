@@ -23,7 +23,7 @@ def collect_flags(l):
         # Add all items of list i_flags
         s = s.union(set(i_flags))
 
-    return s    
+    return s
 
 
 def make_flags_truthness_dict(flags_set, l):
@@ -57,12 +57,12 @@ def prepare(context, series):
         flags_list = [d[k] for k in keys]
 
         new_row = [
-            doc._id, doc.datetime, doc.validation_result.measured_time, 
-            doc.settings.program, doc.settings.build_settings.compiler, 
-            doc.settings.build_settings.base_opt, 
-            doc.settings.build_settings.optimization_flags, 
-            r[0], r[1], 
-            doc.hardware_info.cpu.cpu_name, doc.hardware_info.cpu.cpu_mhz, 
+            doc._id, doc.datetime, doc.validation_result.measured_time,
+            doc.settings.program, doc.settings.build_settings.compiler,
+            doc.settings.build_settings.base_opt,
+            doc.settings.build_settings.optimization_flags,
+            r[0], r[1],
+            doc.hardware_info.cpu.cpu_name, doc.hardware_info.cpu.cpu_mhz,
             doc.hardware_info.cpu.cache_size]
         new_row.extend(flags_list)
 
@@ -79,7 +79,7 @@ def prepare(context, series):
         'cpu_mhz\tcpu_cache\t'
     full_headers = headers + '\t'.join(flags_headers_list) + '\n'
 
-    f = open(os.path.join(context.paths_manager.framework_root_dir, 
+    f = open(os.path.join(context.paths_manager.framework_root_dir,
         'an/{0}.csv'.format(series)), 'w')
     f.write(full_headers)
     f.writelines(r)

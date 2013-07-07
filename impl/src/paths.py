@@ -12,15 +12,12 @@ Please do not redistribute.
 import os
 
 
-
 class NonAbsolutePathError(RuntimeError):
     pass
 
 
-
 class NoSuchNestedPathError(RuntimeError):
     pass
-
 
 
 class PathsManager():
@@ -49,10 +46,8 @@ class PathsManager():
         self.benchmark_bin_dir = os.path.abspath(benchmark_bin_dir)
         self.paths_stack = []
 
-
     def __del__(self):
         os.chdir(self.previous_dir)
-
 
     def push_path(self, path):
         """
@@ -66,7 +61,6 @@ class PathsManager():
         else:
             raise NonAbsolutePathError
 
-
     def pop_path(self):
         """
         Pop path from stack in self.
@@ -75,7 +69,6 @@ class PathsManager():
         """
         path = self.paths_stack.pop()
         return path
-
 
     def get_path(self):
         """
@@ -88,14 +81,12 @@ class PathsManager():
 
         return path
 
-
     def ensure_path(self):
         """
         Get the correct current path from stack in self and
         change current directory to there.
         """
         os.chdir(self.get_path())
-
 
     def nest_path_absolute(self, path):
         """
@@ -110,7 +101,6 @@ class PathsManager():
         self.push_path(path)
         self.ensure_path()
 
-
     def nest_path_from_root(self, path):
         """
         Receive path, relative to the root of framework,
@@ -118,7 +108,6 @@ class PathsManager():
         """
         new_path = os.path.join(self.framework_root_dir, path)
         self.nest_path_absolute(new_path)
-
 
     def nest_path_from_benchmark_root(self, path):
         """
@@ -128,7 +117,6 @@ class PathsManager():
         new_path = os.path.join(self.benchmark_root_dir, path)
         self.nest_path_absolute(new_path)
 
-
     def nest_path(self, path):
         """
         Receive relative path, push the real path of it to stack in self and
@@ -136,7 +124,6 @@ class PathsManager():
         """
         new_path = os.path.join(self.get_path(), path)
         self.nest_path_absolute(new_path)
-
 
     def unnest_path(self):
         """

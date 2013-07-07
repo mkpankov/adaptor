@@ -31,8 +31,8 @@ definition = \
 """
 from subprocess import Popen, PIPE
 def run():
-    p = Popen("{command}".split(), 
-              stdout=PIPE, 
+    p = Popen("{command}".split(),
+              stdout=PIPE,
               stderr=PIPE)
     return p.communicate()
 """
@@ -48,9 +48,10 @@ def prepare_command_build(settings):
         "{benchmark_bin_dir}".format(**settings._asdict()),
         "{program_name}".format(**settings._asdict()))
     command = tw.dedent("""
-        {build_settings.compiler} {build_settings.base_opt} 
-        {build_settings.other_flags} {0} 
-        -o {1} {build_settings.linker_options}""").translate(None, '\n').format(
+        {build_settings.compiler} {build_settings.base_opt}
+        {build_settings.other_flags} {0}
+        -o {1} {build_settings.linker_options}""").translate(
+        None, '\n').format(
         full_path_source, full_path_binary, **settings._asdict())
     return command
 
@@ -80,7 +81,7 @@ def prepare_command_run(settings):
 
 def run(context):
     """Run the generic version of program."""
-    
+
     command = prepare_command_run(context.settings)
     context.paths_manager.nest_path_from_root('data/bin')
     print command
@@ -163,7 +164,8 @@ def validate_default(context):
     Perform validation on set of time-measurement programs and report errors.
     """
 
-    context.paths_manager.nest_path_absolute(context, context.settings.framework_root_dir)
+    context.paths_manager.nest_path_absolute(
+        context, context.settings.framework_root_dir)
     vs = []
     cs = []
     c, overhead_time = calculate_overhead_time(context)
@@ -225,10 +227,10 @@ def calibrate(context, command):
     while (t < 1) and (d_rel > 0.05):
         sys.stderr.write('.')
         n += 1
-        number = 10**(n)
-        result = timeit.repeat(stmt='run()', 
+        number = 10**n
+        result = timeit.repeat(stmt='run()',
                                setup=definition.format(
-                                   command=command), 
+                                   command=command),
                                number=number,
                                repeat=3)
         t = min(result)
@@ -245,7 +247,7 @@ def calculate_overhead_time(context):
 
     settings = context.settings
     context.paths_manager.nest_path_from_root('data/sources/time-test')
-    saved_name = settings.program_name 
+    saved_name = settings.program_name
     settings.program_name = 'do_nothing'
     saved_path = settings.benchmark_root_dir
     settings.benchmark_root_dir = context.paths_manager.get_path()

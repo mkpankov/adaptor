@@ -11,9 +11,8 @@ Please do not redistribute.
 """
 
 
-"""This module is printable structure."""
-
 import textwrap as tw
+
 
 class PrintableStructure():
     """Pretty printing of namedtuple and recordtype."""

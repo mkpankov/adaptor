@@ -11,10 +11,11 @@ Please do not redistribute.
 import couchdbkit as ck
 
 # The documents below sometimes correspond to plain records used
-# to aggregate data during the work of framework 
+# to aggregate data during the work of framework
 # (which are defined above).
 # However, they only save the information relevant to experiment
 # reproduction and meaningful to analytics.
+
 
 class CalibrationResultDocument(ck.Document):
     """CouchDB document, describing the result of multiple measurements."""
@@ -36,7 +37,7 @@ class ValidationResultDocument(ck.Document):
 
 class BuildSettingsDocument(ck.Document):
     """
-    CouchDB document, describing the settings with which 
+    CouchDB document, describing the settings with which
     the program was built.
     """
     compiler = ck.StringProperty()
@@ -47,7 +48,7 @@ class BuildSettingsDocument(ck.Document):
 
 class RunSettingsDocument(ck.Document):
     """
-    CouchDB document, describing the settings with which 
+    CouchDB document, describing the settings with which
     the program was run.
     """
     pass

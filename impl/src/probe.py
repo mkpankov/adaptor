@@ -10,12 +10,15 @@ Author: Michael Pankov, 2012-2013.
 Please do not redistribute.
 """
 
+
 import parse
 import os
 import re
 
+
 if os.name != 'posix':
     raise NotImplementedError
+
 
 class CPUProbe():
     """Probe, parse and store the information about processor."""

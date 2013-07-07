@@ -1,7 +1,7 @@
 """
 This module handles database.
 
-Database is currently CouchDB. 
+Database is currently CouchDB.
 In principle, it works on either local installation, or on CouchDB hosting,
 such as Cloudant. Still not tested.
 

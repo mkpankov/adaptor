@@ -28,14 +28,15 @@ from settings import *
 from context import *
 from system import *
 
+
 def cpdh_run(context, trials=10, power_min=1, power_max=12):
     """Run scenario cpdh (see module docstring for description)."""
-    dataset_sizes = [2**x for x in range(power_min,power_max)]
+    dataset_sizes = [2**x for x in range(power_min, power_max)]
 
     settings = context.settings
     for i in range(trials):
         size = dataset_sizes[random.randint(0, len(dataset_sizes) - 1)]
-        settings.define_build_settings('src','-D{0}'.format(size))
+        settings.define_build_settings('src', '-D{0}'.format(size))
         settings.build_settings.compiler = 'gcc'
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{1}'\
@@ -52,7 +53,7 @@ def cpdh_explore(context, trials=10, dataset_min=2, dataset_max=1024):
 
     for i in range(trials):
         size = random.randint(dataset_min, dataset_max)
-        settings.define_build_settings('src','')
+        settings.define_build_settings('src', '')
         settings.build_settings.compiler = 'gcc'
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{1}'\
@@ -72,7 +73,7 @@ def cpdh_explore_non_uniform(
     for i in range(trials):
         w = random.randint(dataset_min, dataset_max)
         h = random.randint(dataset_min, dataset_max)
-        settings.define_build_settings('src','')
+        settings.define_build_settings('src', '')
         settings.build_settings.compiler = 'gcc'
         settings.build_settings.base_opt = '-O2'
         settings.build_settings.other_flags = '-I{0}'\
@@ -86,5 +87,6 @@ def cpdh_explore_non_uniform(
 def cpdh_main(trials, series):
     """Run initialization and scenario."""
     context = set_up('symm', False, series)
-    cpdh_explore_non_uniform(context, trials=trials, dataset_min=2, dataset_max=1024)
+    cpdh_explore_non_uniform(
+        context, trials=trials, dataset_min=2, dataset_max=1024)
     tear_down(context)
