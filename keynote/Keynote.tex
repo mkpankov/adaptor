@@ -1,0 +1,61 @@
+\documentclass{beamer}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8x]{inputenc}
+
+\usetheme{Copenhagen}
+
+\title{Инструментарий моделирования быстродействия программ}
+\author{Михаил Панков}
+\institute{МГТУ им Н.Э.Баумана}
+\date{19 июня 2013 года}
+
+\makeatletter
+%\definecolor{beamer@blendedblue}{rgb}{0.5,0.5,0.3} % changed this
+\definecolor{beamer@darkgreen}{RGB}{35,150,35}
+
+%\setbeamercolor{normal text}{fg=black,bg=white}
+%\setbeamercolor{alerted text}{fg=red}
+%\setbeamercolor{example text}{fg=green!50!black}
+
+\setbeamercolor{structure}{fg=beamer@darkgreen}
+
+%\setbeamercolor{background canvas}{parent=normal text}
+%\setbeamercolor{background}{parent=background canvas}
+
+\setbeamercolor{palette primary}{bg=beamer@darkgreen} % changed this
+\setbeamercolor{palette secondary}{use=structure,fg=structure.fg!100!green} % changed this
+\setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!100!green} % changed this
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Цель, задачи, и актуальность темы работы}
+
+\begin{block}{Цель}
+	\begin{itemize}
+		\item Разработать метод и ПО (инструментарий) моделирования быстродействия программ на компьютерах общего назначения
+	\end{itemize}
+\end{block}
+
+\begin{block}{Задачи}
+	\begin{enumerate}
+		\item Разработать метод моделирования быстродействия программ
+		\item Выполнить программную реализацию инструментария, позволяющего оценивать быстродействие программ и осуществлять его моделирование
+		\item Исследовать эффективность инструментария моделирования быстродействия программ на тестовом наборе программ
+	\end{enumerate}
+\end{block}
+
+\begin{block}{Актуальность}
+	\begin{enumerate}
+		\item Оценка эффективности компьютера на этапе его проектирования или приобретения
+		\item Поиск оптимальных настроек компилятора при итеративной
+	\end{enumerate}
+\end{block}
+
+\end{frame}
+
+\end{document}
