@@ -94,21 +94,6 @@
 Таким образом, инструментарий позволяет производить достаточно точное измерение времени (ошибка в пределах 10\%) для программ, исполняющихся 10 мс и более.
 
 
-\subsection{Сравнение компиляторов GCC и LLVM на тестовом наборе Polybench}
-\label{series-llvm-vs-gcc}
-На рисунке~\ref{img:gcc-vs-clang} сравнивается время исполнения программ, собранных компиляторами \textit{GCC} и \textit{LLVM} соответственно на уровне оптимизации \texttt{-O2}. Компилятор на этом уровне оптимизации в подавляющем большинстве случаев генерирует наиболее быстрый код (относительно уровней \texttt{-O0} и \texttt{-O1}).
-
-\begin{figure}
-    \begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-        График времени исполнения программ из набора \textit{Polybench} для двух компиляторов
-        \label{img:gcc-vs-clang}
-        }\end{minipage}},rotate=90,center}
-        \includegraphics[width=22cm]{gcc-vs-clang}
-    \end{adjustbox}
-\end{figure}
-
-Как мы видим из графика, на большинстве программ оба компилятора показывают примерно одинаковую производительность. Однако на шести программах компилятор \textit{LLVM} серьёзно превосходит \textit{GCC} -- это программы \textit{cholesky, trmm, trisolv, lu, jacobi-1d-imper, fdtd-2d}. Вероятно, \textit{LLVM} использует лучший векторизатор кода, что оказывает большое влияние в этих специфических случаях. В целом, указанные программы относятся к различным классам "--- это программы решения СЛАУ и СДУ. Выяснение конкретных причин этого превосходства выходит за рамки данной работы.
-
 \subsection{Моделирование и предсказание производительности программы из набора Polybench на различном аппаратном обеспечении}
 
 Одной из возможностей, предоставляемых инструментарием, является статистический анализ данных серии экспериментов с целью предсказания производительности программ на различном аппаратном обеспечении при различном размере и форме входных данных.
@@ -163,7 +148,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{powers-predictions-5f-earth-2333-0}
+        \includegraphics[scale=0.375]{powers-predictions-5f-earth-2333-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2333~МГц. Серия~1. Предсказатель \textit{Earth}}
         \label{img:powers-predictions-5f-earth-2333-0}
     \end{center}
@@ -173,7 +158,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{powers-predictions-5f-earth-2527-0}
+        \includegraphics[scale=0.375]{powers-predictions-5f-earth-2527-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2527~МГц. Серия~1. Предсказатель \textit{Earth}}
         \label{img:powers-predictions-5f-earth-2527-0}
     \end{center}
@@ -183,7 +168,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{powers-predictions-5f-earth-2666-0}
+        \includegraphics[scale=0.375]{powers-predictions-5f-earth-2666-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2667~МГц. Серия~1. Предсказатель \textit{Earth}}
         \label{img:powers-predictions-5f-earth-2666-0}
     \end{center}
@@ -218,7 +203,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{uniform-predictions-5f-knn-2333-0}
+        \includegraphics[scale=0.375]{uniform-predictions-5f-knn-2333-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2333~МГц. Серия~2. Предсказатель \textit{kNN}}
         \label{img:uniform-predictions-5f-knn-2333-0}
     \end{center}
@@ -228,7 +213,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{uniform-predictions-5f-knn-2527-0}
+        \includegraphics[scale=0.375]{uniform-predictions-5f-knn-2527-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2527~МГц. Серия~2. Предсказатель \textit{kNN}}
         \label{img:uniform-predictions-5f-knn-2527-0}
     \end{center}
@@ -238,7 +223,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{uniform-predictions-5f-knn-2666-0}
+        \includegraphics[scale=0.375]{uniform-predictions-5f-knn-2666-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2667~МГц. Серия~2. Предсказатель \textit{kNN}}
         \label{img:uniform-predictions-5f-knn-2666-0}
     \end{center}
@@ -277,7 +262,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{predictions-5f-knn-2333-0}
+        \includegraphics[scale=0.375]{predictions-5f-knn-2333-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2333~МГц. Серия~3. Предсказатель \textit{kNN}}
         \label{img:predictions-5f-knn-2333-0}
     \end{center}
@@ -287,7 +272,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{predictions-5f-knn-2527-0}
+        \includegraphics[scale=0.375]{predictions-5f-knn-2527-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2527~МГц. Серия~3. Предсказатель \textit{kNN}}
         \label{img:predictions-5f-knn-2527-0}
     \end{center}
@@ -297,7 +282,7 @@
 
 \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.5]{predictions-5f-knn-2666-0}
+        \includegraphics[scale=0.375]{predictions-5f-knn-2666-0}
         \caption{Экспериментальные и предсказанные данные для процессора с частотой 2667~МГц. Серия~3. Предсказатель \textit{kNN}}
         \label{img:predictions-5f-knn-2666-0}
     \end{center}
