@@ -83,7 +83,7 @@
 			\begin{equation*}
 				U = \{ ( X_i, y_i ) \}, X_i = (x_{ij}, i \in [1;m], j \in [1;n])
 			\end{equation*}
-		$X_i$ --- features vector (CPU frequency, number of rows of processed matrix, etc.), $y_i$ --- response (execution time), $m$ --- number of experiments, $n$ --- number of features
+		$X_i$ --- features vector (CPU frequency, number of rows of processed matrix, etc.), $y_i$ --- response (execution time), $m$~---~number of experiments, $n$~---~number of features
 		\seti
 	\end{enumerate}
 
@@ -93,13 +93,13 @@
 	\begin{enumerate}
 		\conti
 		\item Split the $U$ set into training sample $D$ and test sample $C$ by randomly assigning of 70\% of experiments to $D$
-			\begin{eqnarray*}
+			\begin{eqnarray}
 				D &=& \{d_i \mid f_{rand}^I(d_i) > 0.3\}, \\
 				d_i &=& (X_i, y_i), \\
 				f_{rand}^I(d) &\in & [0:1], \\
 				i &\in & [1;m], \\
 				C &=& U \setminus D
-			\end{eqnarray*}
+			\end{eqnarray}
 		\seti
 	\end{enumerate}
 \end{frame}
@@ -109,14 +109,14 @@
 	\begin{enumerate}
 		\conti
 		\item Extract features $x_{ik}$
-			\begin{eqnarray*}
+			\begin{eqnarray}
 				x_{ik} &=& f(X_i), \\
 				X_i' &=& (x_{ij}) , \\
 				D' &=& \{ (X_i' , y_i) \}, \\
 				i &\in & [1;m], \\
 				j &\in & [1;n+r], \\
 				k &\in & [n+1;r]
-			\end{eqnarray*}
+			\end{eqnarray}
 			$r$ --- number of additional features (i.e. ''size of input data'')
 		\seti
 	\end{enumerate}
@@ -131,6 +131,55 @@
 				D'' = D' \setminus \{ (X_i', y_i) \mid P(X_i', y_i) \}
 			\end{equation*}
 			$P$ --- experiment selection predicate (we remove all experiments where the measured execution time is less than $t_{min}$)
+		\seti
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+	\begin{enumerate}
+		\conti
+		\item Rank the features and select only ones with non-zero importance
+			\begin{eqnarray}
+				s_j &=& f_{rank}(D''), \\
+				j &\in & [1;n], \\
+				D''' &=& \{ (X_i', y_i) \mid S_j > 0 \}
+			\end{eqnarray}
+			$s_j$ --- scalar value of importance of particular feature, $f_{rank}$~---~feature ranking function (we used \textit{MSE}, \textit{Relief F}, \textit{Earth Importance})
+		\seti
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+	\begin{enumerate}
+		\conti
+		\item Fit the regression model of 1 of 4 kinds (linear, random forest, Earth, k nearest neighbors)
+			\begin{eqnarray}
+				M_p &=& \{ f_{pred}, B\} \\
+				B &=& f_{fit}(D''), p \in [1;4]
+			\end{eqnarray}
+			$B$ --- vector of model parameters, $f_{fit}$~---~learning function, $f_{pref}$~---~prediction function (they're defined for each model separately)
+		\seti
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+	\begin{enumerate}
+		\conti
+		\item Test the model by \textit{RRSE} metric
+			\begin{eqnarray}
+				C &=& U \setminus D \\
+				  &=& \{ (X_i', y_i) \}, \\
+				i &\in & [1;m], \\
+				X_i' &=& (x_{ik}), \\
+				k &\in & [1;n+r] \\
+				\tilde{Y} &=& f_{pred} (\vec{X}, B), \\
+				RRSE &=& \sqrt{ \frac{ \sum\limits_{i=1}^m { ( \tilde{y_i}-y_i )^2 } }
+				                     { \sum\limits_{i=1}^m { ( y_i - \bar{y} )^2 } } }
+			\end{eqnarray}
+		$\tilde{y_i}$ --- predicted value of response, $\bar{y}$~---~average value of response in testing sample
 		\seti
 	\end{enumerate}
 \end{frame}
