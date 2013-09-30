@@ -10,6 +10,9 @@ Thumbs.db
 *.bbl
 *.blg
 *.dvi
+*.nav
+*.out
+*.snm
 *.toc
 
 # SublimeText 2 stuff
