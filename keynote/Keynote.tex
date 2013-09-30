@@ -94,7 +94,7 @@
 		\conti
 		\item Split the $U$ set into training sample $D$ and test sample $C$ by randomly assigning of 70\% of experiments to $D$
 			\begin{eqnarray*}
-				D &=& \{d_i | f_{rand}^I(d_i) > 0.3\}, \\
+				D &=& \{d_i \mid f_{rand}^I(d_i) > 0.3\}, \\
 				d_i &=& (X_i, y_i), \\
 				f_{rand}^I(d) &\in & [0:1], \\
 				i &\in & [1;m], \\
@@ -103,5 +103,37 @@
 		\seti
 	\end{enumerate}
 \end{frame}
+
+
+\begin{frame}
+	\begin{enumerate}
+		\conti
+		\item Extract features $x_{ik}$
+			\begin{eqnarray*}
+				x_{ik} &=& f(X_i), \\
+				X_i' &=& (x_{ij}) , \\
+				D' &=& \{ (X_i' , y_i) \}, \\
+				i &\in & [1;m], \\
+				j &\in & [1;n+r], \\
+				k &\in & [n+1;r]
+			\end{eqnarray*}
+			$r$ --- number of additional features (i.e. ''size of input data'')
+		\seti
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+	\begin{enumerate}
+		\conti
+		\item Filter the training set $D'$ to remove noise and incorrect measurements
+			\begin{equation*}
+				D'' = D' \setminus \{ (X_i', y_i) \mid P(X_i', y_i) \}
+			\end{equation*}
+			$P$ --- experiment selection predicate (we remove all experiments where the measured execution time is less than $t_{min}$)
+		\seti
+	\end{enumerate}
+\end{frame}
+
 
 \end{document}
