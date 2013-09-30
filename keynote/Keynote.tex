@@ -27,6 +27,14 @@
 \setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!100!green} % changed this
 \makeatother
 
+% Multi-slide enumeration
+% http://tex.stackexchange.com/questions/55000/continuing-enumerate-counters-in-beamer
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\resetcounteronoverlays{saveenumi}
+
 \begin{document}
 
 \maketitle
@@ -65,6 +73,35 @@
 		\item In particular, there's \textit{cTuning} public repository for research and corresponding program \textit{Collective Mind} run by G.\,Fursin
 		\item This work is about modeling of performance of general-purpose computer programs with feature ranking by means of \textit{Earth Importance} and regression by means of \textit{k-Nearest Neighbors} and \textit{Earth Regression}. We try to accomplish automatic detection of relevant features.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Method of statistical programs performance analysis ''Velocitas''}
+
+	\begin{enumerate}
+		\item Perform a series of experiments on measuring time of program execution and form a set, $U$:
+			\begin{equation*}
+				U = \{ ( X_i, y_i ) \}, X_i = (x_{ij}, i \in [1;m], j \in [1;n])
+			\end{equation*}
+		$X_i$ --- features vector (CPU frequency, number of rows of processed matrix, etc.), $y_i$ --- response (execution time), $m$ --- number of experiments, $n$ --- number of features
+		\seti
+	\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+	\begin{enumerate}
+		\conti
+		\item Split the $U$ set into training sample $D$ and test sample $C$ by randomly assigning of 70\% of experiments to $D$
+			\begin{eqnarray*}
+				D &=& \{d_i | f_{rand}^I(d_i) > 0.3\}, \\
+				d_i &=& (X_i, y_i), \\
+				f_{rand}^I(d) &\in & [0:1], \\
+				i &\in & [1;m], \\
+				C &=& U \setminus D
+			\end{eqnarray*}
+		\seti
+	\end{enumerate}
 \end{frame}
 
 \end{document}
