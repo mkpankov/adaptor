@@ -2,6 +2,8 @@
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 
+\usepackage{asymptote}
+
 \usetheme{Copenhagen}
 
 \title{Programs Performance Analysis Toolkit}
@@ -39,6 +41,8 @@
 
 \maketitle
 
+\section{Introduction}
+
 \begin{frame}
 \frametitle{Goal, tasks, and importance of the work}
 
@@ -74,6 +78,8 @@
 		\item This work is about modeling of performance of general-purpose computer programs with feature ranking by means of \textit{Earth Importance} and regression by means of \textit{k-Nearest Neighbors} and \textit{Earth Regression}. We try to accomplish automatic detection of relevant features.
 	\end{itemize}
 \end{frame}
+
+\section{Methodology}
 
 \begin{frame}
 \frametitle{Method of statistical programs performance analysis ''Velocitas''}
@@ -184,5 +190,15 @@
 	\end{enumerate}
 \end{frame}
 
+\begin{frame}[fragile]
+\begin{center}
+\begin{asy}
+import flowchart;
+
+block db_server=roundrectangle(Label("Database Server"));
+draw(db_server);
+\end{asy}
+\end{center}
+\end{frame}
 
 \end{document}
