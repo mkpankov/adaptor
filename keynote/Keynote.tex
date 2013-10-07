@@ -190,13 +190,60 @@
 	\end{enumerate}
 \end{frame}
 
+\section{Implementation}
+
 \begin{frame}[fragile]
 \begin{center}
 \begin{asy}
-import flowchart;
+	unitsize(1mm);
 
-block db_server=roundrectangle(Label("Database Server"));
-draw(db_server);
+	struct Rectangle {
+		pair lb;
+		pair rt;
+		Label l;
+		pen border;
+		pen fill;
+		
+		void operator init(pair lb, pair rt, Label l="", pen border = black, pen fill = white)
+		{
+			this.lb = lb;
+			this.rt = rt;
+			this.l = l;
+			this.border = border;
+			this.fill = fill;
+		}
+	}
+
+	struct Block {
+		Rectangle rect;
+		Rectangle[] childs;
+		
+		void operator init(pair lb, pair rt, Label l="", pen border = black, pen fill = white, Rectangle[] childs)
+		{
+			rect.operator init(lb, rt, l, border, fill);
+			this.childs = childs;
+		}
+	}
+
+	void draw(Rectangle r)
+	{
+		path p = r.lb--(r.lb.x, r.rt.y)--r.rt--(r.rt.x, r.lb.y)--cycle;
+		fill(p, r.fill);
+		label(r.l, ( (r.rt.x - r.lb.x) / 2 , (r.rt.y - r.lb.y) / 2 ));
+		draw	(p, r.border);
+	}
+	
+	void draw(Block s)
+	{
+		draw(s.rect);
+		for (Rectangle r : s.childs) {
+			draw(r);
+		}
+	}
+	
+	Rectangle[] rects = {Rectangle((0,0), (40,10), Label("Nested stuff"), black, lightblue)};
+	draw(Block((0,0), (50,20), Label("Database server"), black, lightgreen, rects));
+
 \end{asy}
 \end{center}
 \end{frame}
