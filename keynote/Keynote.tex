@@ -37,6 +37,8 @@
 
 \resetcounteronoverlays{saveenumi}
 
+\graphicspath{{../doc/pictures/}}
+
 \begin{document}
 
 \maketitle
@@ -190,7 +192,7 @@
 	\end{enumerate}
 \end{frame}
 
-\section{Implementation}
+\section{Implementation (general info)}
 
 \begin{frame}[fragile]
 \frametitle{Architecture of \textit{Adaptor} Framework}
@@ -264,6 +266,123 @@
 	
 \end{asy}
 \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Technology stack}
+
+	\begin{itemize}
+		\item Database server
+		\begin{itemize}
+			\item Distributed client-server document-oriented storage \textit{CouchDB}
+			\item Cloud platform \textit{Cloudant}
+		\end{itemize}
+		\item Client
+		\begin{itemize}
+			\item \textit{Python}
+			\item Statistical framework \textit{Orange}
+			\item \textit{GNU/Linux} on \textit{x86} platform
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+\section{Implementation (client)}
+
+\begin{frame}
+\frametitle{Database interaction module}
+
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Provides high-level API for storage of \textit{Python} objects to database documents
+				\item Uses local \textit{CouchDB} server as a fall-back if the remote isn't available
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{database-interaction}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Program building module}
+
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Manages paths to source files of experimental programs
+				\begin{itemize}
+					\item Sources are in hierarchical structure of directories
+					\item Module enables that only specifying the name of program to build is enough for sources to be found
+				\end{itemize}
+				\item Manages build tools and their settings
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{source-tree}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Experimentation module}
+
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Calibrates the program execution time measurement before every series of runs
+				\begin{itemize}
+					\item Subtracts the execution time of ''simplest'' program to avoid systematical error
+					\item Runs the program being studied until relative  dispersion of time measurement becomes pretty low ($d_{rel} < 5\%$)
+				\end{itemize}
+				\item Passes the experiment data to the database interaction module
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{console}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Information retrieval module}
+
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Collects the information on used platform and experiment being carried out
+				\item CPU
+				\begin{itemize}
+					\item Frequency
+					\item Cache size
+					\item Instruction set extensions
+					\item etc.
+				\end{itemize}
+
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Compiler
+				\item Experiment
+				\begin{itemize}
+					\item Studied program
+					\item Size of input data
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	
 \end{frame}
 
 \end{document}
