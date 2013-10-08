@@ -193,9 +193,11 @@
 \section{Implementation}
 
 \begin{frame}[fragile]
+\frametitle{Architecture of \textit{Adaptor} Framework}
+
 \begin{center}
 \begin{asy}
-	unitsize(1mm);
+	unitsize(0.5mm);
 
 	struct Rectangle {
 		pair lb;
@@ -217,11 +219,13 @@
 	struct Block {
 		Rectangle rect;
 		Rectangle[] childs;
+		Label label;
 		
 		void operator init(pair lb, pair rt, Label l="", pen border = black, pen fill = white, Rectangle[] childs)
 		{
-			rect.operator init(lb, rt, l, border, fill);
+			rect.operator init(lb, rt, "", border, fill);
 			this.childs = childs;
+			this.label = l;
 		}
 	}
 
@@ -229,21 +233,35 @@
 	{
 		path p = r.lb--(r.lb.x, r.rt.y)--r.rt--(r.rt.x, r.lb.y)--cycle;
 		fill(p, r.fill);
-		label(r.l, ( (r.rt.x - r.lb.x) / 2 , (r.rt.y - r.lb.y) / 2 ));
+		label(r.l, ( r.lb.x + (r.rt.x - r.lb.x) / 2 , 
+		             r.lb.y + (r.rt.y - r.lb.y) / 2 ));
 		draw	(p, r.border);
 	}
 	
 	void draw(Block s)
 	{
 		draw(s.rect);
+		label(s.label, ( s.rect.lb.x + (s.rect.rt.x - s.rect.lb.x) / 2 , 
+		                 s.rect.rt.y - 5 ));
 		for (Rectangle r : s.childs) {
 			draw(r);
 		}
 	}
 	
-	Rectangle[] rects = {Rectangle((0,0), (40,10), Label("Nested stuff"), black, lightblue)};
-	draw(Block((0,0), (50,20), Label("Database server"), black, lightgreen, rects));
-
+	Rectangle[] rects1 = {
+		Rectangle((5,5), (145,15), Label("Data views"), black, lightblue)
+	};
+	draw(Block((0,0), (150,30), Label("Database server"), black, lightgreen, rects1));
+	
+	Rectangle[] rects2 = {
+		Rectangle((5,-35), (145,-25), Label("Database interaction module"), black, lightblue),
+		Rectangle((5,-50), (145,-40), Label("Program building module"), black, lightblue),
+		Rectangle((5,-65), (145,-55), Label("Experimentation module"), black, lightblue),
+		Rectangle((5,-80), (145,-70), Label("Information retrieval module"), black, lightblue),
+		Rectangle((5,-95), (145,-85), Label("Information processing module"), black, lightblue)
+	};
+	draw(Block((0,-100), (150,-10), Label("Client"), black, lightgreen, rects2));
+	
 \end{asy}
 \end{center}
 \end{frame}
