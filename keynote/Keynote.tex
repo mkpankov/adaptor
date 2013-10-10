@@ -6,10 +6,10 @@
 
 \usetheme{Copenhagen}
 
-\title{Programs Performance Analysis Toolkit}
-\author{Michael Pankov}
+\title{Programs Performance Analysis Toolkit \textit{Adaptor}}
+\author{Michael K. Pankov\\Advisor: Anatoly P. Karpenko}
 \institute{Bauman Moscow State Technical University}
-\date{June 19, 2013}
+\date{\today}
 
 \makeatletter
 %\definecolor{beamer@blendedblue}{rgb}{0.5,0.5,0.3} % changed this
@@ -57,14 +57,14 @@
 \begin{block}{Tasks}
 	\begin{enumerate}
 		\item Develop method of programs performance modeling 
-		\item Implement the programs performance analysis \& modeling toolkit
-		\item Study the efficiency of programs performance modeling toolkit on a set of benchmarks
+		\item Implement the performance analysis \& modeling toolkit
+		\item Study the efficiency of toolkit on a set of benchmarks
 	\end{enumerate}
 \end{block}
 
 \begin{block}{Importance}
 	\begin{enumerate}
-		\item Estimation of computer performance during its design (see co-design)
+		\item Estimation of computer performance during its design
 		\item Search of optimal compiler settings by methods of iterative compilation and machine learning-driven techniques
 	\end{enumerate}
 \end{block}
@@ -84,7 +84,7 @@
 \section{Methodology}
 
 \begin{frame}
-\frametitle{Method of statistical programs performance analysis ''Velocitas''}
+\frametitle{Method of statistical programs performance analysis \textit{Velocitas}}
 
 	\begin{enumerate}
 		\item Perform a series of experiments on measuring time of program execution and form a set, $U$:
@@ -342,7 +342,7 @@
 					\item Subtracts the execution time of ''simplest'' program to avoid systematical error
 					\item Runs the program being studied until relative  dispersion of time measurement becomes pretty low ($d_{rel} < 5\%$)
 				\end{itemize}
-				\item Passes the experiment data to the database interaction module
+				\item Passes experiment data to database interaction module
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
@@ -507,10 +507,76 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{k Nearest Neighbors model of performance of \textit{symm} program on \textit{Q8200} CPU}
-\begin{center}
-\includegraphics[scale=0.2]{symm-knn-q8200}
-\end{center}
+\frametitle{Resulting model of performance}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\textit{k Nearest Neighbors} model of~performance of~\textit{symm} program on~\textit{Intel Core~2~Quad Q8200} CPU
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			\includegraphics[scale=0.2]{symm-knn-q8200}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resulting model of performance}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Comparison of models of performance of \textit{ludcmp} program
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\includegraphics[scale=0.5]{ludcmp-learners-2}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Where models fail}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{itemize}
+				\item \textit{Amazon} throttles its micro servers: data is split into two ''curves''
+				\item \textit{Earth Regression} at least tries to follow the ''main curve''
+				\item \textit{k Nearest Neighbors} is much worse in this situation
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\includegraphics[scale=0.175]{failure-zeon}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results of evaluation}
+	\begin{itemize}
+		\item Most suitable Feature Ranking method --- \textit{Earth Importance}
+		\item Most suitable Regression method --- \textit{k Nearest Neighbors}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Further work}
+
+	\begin{itemize}
+		\item \textit{Velocitas} method is promising, scales for larger feature sets
+		\item Data filtering to reduce noise can help it to get even better
+		\item \textit{Orange} is decent statistical framework, but interactive work with it limits batch processing
+		\item For larger data sets and increased automation of \textit{Adaptor} framework, either its API, or other libraries (e.g. \textit{sklearn}) should be used
+		\item Custom research scenario support is required
+		\item It would be interesting to perform experiments on GPU to study effects of massive parallel execution
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Thank you!}
+
+	\begin{itemize}
+		\item Contact information: Michael K. Pankov
+		\begin{itemize}
+			\item michaelpankov.com
+		\end{itemize}
+		\item This is an extended and edited version of my diploma defense keynote, given on June 19, 2013
+	\end{itemize}
 \end{frame}
 
 \end{document}
