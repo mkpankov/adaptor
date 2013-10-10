@@ -477,32 +477,49 @@
 \begin{frame}
 \frametitle{Feature ranking. \textit{symm} program}
 
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item \textit{Earth Importance} selected only relevant features
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\includegraphics[scale=0.375]{feature-ranking}
-		\end{column}	
-	\end{columns}
+	\begin{center}
+	\begin{tabular}{|c|r|r|r|}
+	\hline 
+	Attribute & Relief F & Mean Square Error & Earth Importance \\ 
+	\hline 
+	size & 0.268 & 0.573 & 4.9 \\
+	cpu\_mhz & 0.000 & 0.006 & 3.3 \\
+	width & 0.130 & 0.573 & 0.7 \\
+	cpu\_cache & 0.000 & 0.006 & 0.5 \\
+	height & 0.130 & 0.573 & 0.0 \\
+	\hline 
+	\end{tabular} 
+	\end{center}
+
+	\begin{itemize}
+		\item \textit{Earth Importance} selected only relevant features
+	\end{itemize}
 	
 \end{frame}
 
 \begin{frame}
 \frametitle{Feature ranking. \textit{symm} program (cont.)}
 
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item Root Relative Square Error of k Nearest Neighbors --- approx. 5\%
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\includegraphics[scale=0.5]{evaluation-error}
-		\end{column}	
-	\end{columns}
+	\begin{itemize}
+		\item 428 experiments
+		\item 1 feature: matrix dimensionality
+	\end{itemize}
+
+	\begin{center}
+	\begin{tabular}{|c|r|r|r|}
+	\hline 
+	 & RMSE & RRSE & R2 \\ 
+	\hline 
+	k Nearest Neighbors & 5.761 & 0.051 & 0.997 \\ 
+	Random Forest & 5.961 & 0.052 & 0.997 \\ 
+	Linear Regression & 15.869 & 0.139 & 0.981 \\ 
+	\hline 
+	\end{tabular} 
+	\end{center}
+
+	\begin{itemize}
+		\item Root Relative Square Error of k Nearest Neighbors --- approx.~5\%
+	\end{itemize}
 	
 \end{frame}
 
@@ -520,14 +537,24 @@
 
 \begin{frame}
 \frametitle{Resulting model of performance}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			Comparison of models of performance of \textit{ludcmp} program
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\includegraphics[scale=0.5]{ludcmp-learners-2}
-		\end{column}
-	\end{columns}
+
+	\begin{itemize}
+		\item Comparison of models of performance of \textit{ludcmp} program	
+		\item 468 experiments
+		\item 2 features: width of matrix, CPU frequency
+	\end{itemize}
+	
+	\begin{center}
+	\begin{tabular}{|c|r|r|r|}
+	\hline 
+	 & RMSE & RRSE & R2 \\ 
+	\hline 
+	k Nearest Neigbors & 1.093 & 0.048 & 0.998 \\ 
+	Linear Regression & 9.067 & 0.394 & 0.845 \\ 
+	\hline
+	\end{tabular}
+	\end{center}
+
 \end{frame}
 
 \begin{frame}
@@ -573,6 +600,7 @@
 	\begin{itemize}
 		\item Contact information: Michael K. Pankov
 		\begin{itemize}
+			\item mkpankov@gmail.com
 			\item michaelpankov.com
 		\end{itemize}
 		\item This is an extended and edited version of my diploma defense keynote, given on June 19, 2013
