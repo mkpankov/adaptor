@@ -1,0 +1,779 @@
+% This file was created with JabRef 2.8.1.
+% Encoding: UTF8
+
+%% inria-00436034, version 1
+%% http://hal.inria.fr/inria-00436034
+@inproceedings{luo:inria-00436034,
+    hal_id = {inria-00436034},
+    url = {http://hal.inria.fr/inria-00436034},
+    title = {{Finding representative sets of optimizations for adaptive multiversioning applications}},
+    author = {Luo, Lianjie and Chen, Yang and Wu, Chengyong and Long, Shun and Fursin, Grigori},
+    abstract = {{Iterative compilation is a widely adopted technique to optimize programs for different constraints such as performance, code size and power consumption in rapidly evolving hardware and software environments. However, in case of statically compiled programs, it is often restricted to optimizations for a specific dataset and may not be applicable to applications that exhibit different run-time behavior across program phases, multiple datasets or when executed in heterogeneous, reconfigurable and virtual environments. Several frameworks have been recently introduced to tackle these problems and enable run-time optimization and adaptation for statically compiled programs based on static function multiversioning and monitoring of online program behavior. In this article, we present a novel technique to select a minimal set of representative optimization variants (function versions) for such frameworks while avoiding performance loss across available datasets and code-size explosion. We developed a novel mapping mechanism using popular decision tree or rule induction based machine learning techniques to rapidly select best code versions at run-time based on dataset features and minimize selection overhead. These techniques enable creation of self-tuning static binaries or libraries adaptable to changing behavior and environments at run-time using staged compilation that do not require complex recompilation frameworks while effectively outperforming traditional single-version non-adaptable code.}},
+    language = {Anglais},
+    affiliation = {Institute of Computing Technology - Chinese Academy of Science - ICT , Graduate School of the Chinese Academy of Sciences - GSCAS , Department of Computer Science [Jinan] , ALCHEMY - INRIA Saclay - Ile de France},
+    booktitle = {{International Workshop on Statistical and Machine learning approaches to ARchitectures and compilaTion}},
+    address = {Paphos, Chypre},
+    audience = {internationale },
+    year = {2009},
+    month = Jan,
+    pdf = {http://hal.inria.fr/inria-00436034/PDF/smart\_paper.pdf},
+}
+
+@inproceedings{Jimenez:2008:PRC:1505816.1505822,
+    author = {Jim{\'e}nez, V\'{\i}ctor J. and Vilanova, Llu\'{\i}s and Gelado, Isaac and Gil, Marisa and Fursin, Grigori and Navarro, Nacho},
+    title = {Predictive Runtime Code Scheduling for Heterogeneous Architectures},
+    booktitle = {Proceedings of the 4th International Conference on High Performance Embedded Architectures and Compilers},
+    series = {HiPEAC '09},
+    year = {2009},
+    isbn = {978-3-540-92989-5},
+    location = {Paphos, Cyprus},
+    pages = {19--33},
+    numpages = {15},
+    url = {http://dx.doi.org/10.1007/978-3-540-92990-1_4},
+    doi = {10.1007/978-3-540-92990-1_4},
+    acmid = {1505822},
+    publisher = {Springer-Verlag},
+    address = {Berlin, Heidelberg},
+}
+
+@INPROCEEDINGS{Fursin05apractical,
+  author = {Grigori Fursin and Albert Cohen and Michael O'Boyle and Olivier Temam},
+  title = {A Practical Method for Quickly Evaluating Program Optimizations},
+  booktitle = {Proceedings of the International Conference on High Performance Embedded
+	Architectures \& Compilers (HiPEAC 2005)},
+  year = {2005},
+  pages = {29--46},
+  publisher = {Springer Verlag}
+}
+
+@ELECTRONIC{ESTO,
+  title = {ESTO: Expert System for Tuning Optimizations},
+  owner = {M.Pankov},
+  timestamp = {2012.09.25}
+}
+
+@inproceedings{Agakov:2006:UML:1121992.1122412,
+ author = {Agakov, F. and Bonilla, E. and Cavazos, J. and Franke, B. and Fursin, G. and O'Boyle, M. F. P. and Thomson, J. and Toussaint, M. and Williams, C. K. I.},
+ title = {Using Machine Learning to Focus Iterative Optimization},
+ booktitle = {Proceedings of the International Symposium on Code Generation and Optimization},
+ series = {CGO '06},
+ year = {2006},
+ isbn = {0-7695-2499-0},
+ pages = {295--305},
+ numpages = {11},
+ url = {http://dx.doi.org/10.1109/CGO.2006.37},
+ doi = {10.1109/CGO.2006.37},
+ acmid = {1122412},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+}
+
+@MISC{Bodin98iterativecompilation,
+    author = {F. Bodin and T. Kisuki and P. M. W. Knijnenburg and M.F.P. O'Boyle and E. Rohou},
+    title = {Iterative Compilation in a Non-Linear Optimisation Space},
+    year = {1998}
+}
+
+@InProceedings{FCA2007,
+author = {J. Cavazos and G. Fursin and F. Agakov and E. Bonilla and M. O'Boyle and Olivier Temam},
+title = {Rapidly Selecting Good Compiler Optimizations using Performance Counters},
+booktitle = {ACM International Conference on Code Generation and Optimization (CGO'07)},
+year = 2007,
+address = {San Jose, California},
+month = mar,
+pages = {185--197}
+}
+
+@inproceedings{Cooper:2005:AAC:1065910.1065921,
+ author = {Cooper, Keith D. and Grosul, Alexander and Harvey, Timothy J. and Reeves, Steven and Subramanian, Devika and Torczon, Linda and Waterman, Todd},
+ title = {ACME: adaptive compilation made efficient},
+ booktitle = {Proceedings of the 2005 ACM SIGPLAN/SIGBED conference on Languages, compilers, and tools for embedded systems},
+ series = {LCTES '05},
+ year = {2005},
+ isbn = {1-59593-018-3},
+ location = {Chicago, Illinois, USA},
+ pages = {69--77},
+ numpages = {9},
+ url = {http://doi.acm.org/10.1145/1065910.1065921},
+ doi = {10.1145/1065910.1065921},
+ acmid = {1065921},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {adaptive compilation},
+}
+
+@inproceedings{Kulkarni:2003:FEO:780732.780735,
+ author = {Kulkarni, Prasad and Zhao, Wankang and Moon, Hwashin and Cho, Kyunghwan and Whalley, David and Davidson, Jack and Bailey, Mark and Paek, Yunheung and Gallivan, Kyle},
+ title = {Finding effective optimization phase sequences},
+ booktitle = {Proceedings of the 2003 ACM SIGPLAN conference on Language, compiler, and tool for embedded systems},
+ series = {LCTES '03},
+ year = {2003},
+ isbn = {1-58113-647-1},
+ location = {San Diego, California, USA},
+ pages = {12--23},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/780732.780735},
+ doi = {10.1145/780732.780735},
+ acmid = {780735},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {genetic algorithms, interactive compilation, phase ordering},
+}
+
+@inproceedings{Dubach:2009:PCO:1669112.1669124,
+ author = {Dubach, Christophe and Jones, Timothy M. and Bonilla, Edwin V. and Fursin, Grigori and O'Boyle, Michael F. P.},
+ title = {Portable compiler optimisation across embedded programs and microarchitectures using machine learning},
+ booktitle = {Proceedings of the 42nd Annual IEEE/ACM International Symposium on Microarchitecture},
+ series = {MICRO 42},
+ year = {2009},
+ isbn = {978-1-60558-798-1},
+ location = {New York, New York},
+ pages = {78--88},
+ numpages = {11},
+ url = {http://doi.acm.org/10.1145/1669112.1669124},
+ doi = {10.1145/1669112.1669124},
+ acmid = {1669124},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {architecture/compiler co-design, design-space exploration, machine learning},
+}
+
+@inproceedings{Dubach:2008:EPA:1450095.1450103,
+ author = {Dubach, Christophe and Jones, Timothy M. and O'Boyle, Michael F.P.},
+ title = {Exploring and predicting the architecture/optimising compiler co-design space},
+ booktitle = {Proceedings of the 2008 international conference on Compilers, architectures and synthesis for embedded systems},
+ series = {CASES '08},
+ year = {2008},
+ isbn = {978-1-60558-469-0},
+ location = {Atlanta, GA, USA},
+ pages = {31--40},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1450095.1450103},
+ doi = {10.1145/1450095.1450103},
+ acmid = {1450103},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {architecture/compiler co-design, design-space exploration, performance prediction},
+}
+
+
+@INPROCEEDINGS{Fur2009,
+  author = {Grigori Fursin},
+  title = {Collective Tuning Initiative: automating and accelerating development
+	and optimization of computing systems},
+  booktitle = {Proceedings of the GCC Developers' Summit},
+  year = {2009},
+  series = {MICRO 42},
+  pages = {78--88},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1669124},
+  doi = {10.1145/1669112.1669124},
+  isbn = {978-1-60558-798-1},
+  keywords = {architecture/compiler co-design, design-space exploration, machine
+	learning},
+  location = {New York, New York},
+  numpages = {11},
+  url = {http://doi.acm.org/10.1145/1669112.1669124}
+}
+
+@ARTICLE{Fursin2010COP,
+  author = {Fursin, Grigori and Temam, Olivier},
+  title = {Collective optimization: A practical collaborative approach},
+  journal = {ACM Trans. Archit. Code Optim.},
+  year = {2010},
+  volume = {7},
+  pages = {20:1--20:29},
+  number = {4},
+  month = dec,
+  acmid = {1880047},
+  address = {New York, NY, USA},
+  articleno = {20},
+  doi = {10.1145/1880043.1880047},
+  issn = {1544-3566},
+  issue_date = {December 2010},
+  keywords = {Collective optimization, adaptive compiler, collective optimization
+	database, continuous optimization, function cloning, iterative compilation,
+	multiple datasets, program characterization, program reaction to
+	optimization, runtime adaptation, self-tuning computing systems,
+	statistical optimization},
+  numpages = {29},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1880043.1880047}
+}
+
+@ARTICLE{Stephenson2003MOI,
+  author = {Stephenson, Mark and Amarasinghe, Saman and Martin, Martin and O'Reilly,
+	Una-May},
+  title = {Meta optimization: improving compiler heuristics with machine learning},
+  journal = {SIGPLAN Not.},
+  year = {2003},
+  series = {LCTES '03},
+  pages = {12--23},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {780735},
+  doi = {10.1145/780732.780735},
+  isbn = {1-58113-647-1},
+  keywords = {genetic algorithms, interactive compilation, phase ordering},
+  location = {San Diego, California, USA},
+  numpages = {12},
+  url = {http://doi.acm.org/10.1145/780732.780735}
+}
+
+@ELECTRONIC{ESTO,
+  title = {ESTO: Expert System for Tuning Optimizations},
+  owner = {M.Pankov},
+  timestamp = {2012.09.25}
+}
+
+@ELECTRONIC{llvm,
+  title = {The LLVM Compiler Infrastructure},
+  howpublished = "\url{http://llvm.org/}",
+  owner = {CONSTantius9},
+  timestamp = {2012.10.02}
+}
+
+@inproceedings{Kisuki:1999:FSI:646347.690219,
+ author = {Kisuki, Toru and Knijnenburg, Peter M. W. and O'Boyle, Michael F. P. and Bodin, Fran\c{c}ois and Wijshoff, Harry A. G.},
+ title = {A Feasibility Study in Iterative Compilation},
+ booktitle = {Proceedings of the Second International Symposium on High Performance Computing},
+ series = {ISHPC '99},
+ year = {1999},
+ isbn = {3-540-65969-2},
+ pages = {121--132},
+ numpages = {12},
+ url = {http://dl.acm.org/citation.cfm?id=646347.690219},
+ acmid = {690219},
+ publisher = {Springer-Verlag},
+ address = {London, UK, UK},
+}
+
+@incollection {springerlink:10.1007/11596110:24,
+   author = {Fursin, G. and O'Boyle, M. and Knijnenburg, P.},
+   affiliation = {ICSA, School of Informatics, University of Edinburgh, UK},
+   title = {Evaluating Iterative Compilation},
+   booktitle = {Languages and Compilers for Parallel Computing},
+   series = {Lecture Notes in Computer Science},
+   editor = {Pugh, Bill and Tseng, Chau-Wen},
+   publisher = {Springer Berlin / Heidelberg},
+   isbn = {978-3-540-30781-5},
+   keyword = {Computer Science},
+   pages = {362-376},
+   volume = {2481},
+   url = "http://dx.doi.org/10.1007/11596110:24",
+   note = {10.1007/11596110:24},
+   year = {2005}
+}
+
+@article{Lavery:1995:IPC:626512.626987,
+ author = {Lavery, Daniel M. and Chang, Pohua P. and Mahlke, Scott A. and Chen, William Y. and Hwu, Wen-mei W.},
+ title = {The Importance of Prepass Code Scheduling for Superscalar and Superpipelined Processors},
+ journal = {IEEE Trans. Comput.},
+ issue_date = {March 1995},
+ volume = {44},
+ number = {3},
+ month = mar,
+ year = {1995},
+ issn = {0018-9340},
+ pages = {353--370},
+ numpages = {18},
+ url = {http://dx.doi.org/10.1109/12.372029},
+ doi = {10.1109/12.372029},
+ acmid = {626987},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+ keywords = {Code scheduling, control-intensive programs, optimizing compiler, register allocation, superpipelined processors, superscalar processors.},
+}
+
+@inproceedings{Abraham:1996:MSR:243846.243903,
+ author = {Abraham, Santosh G. and Kathail, Vinod and Deitrich, Brian L.},
+ title = {Meld scheduling: relaxing scheduling constraints across region boundaries},
+ booktitle = {Proceedings of the 29th annual ACM/IEEE international symposium on Microarchitecture},
+ series = {MICRO 29},
+ year = {1996},
+ isbn = {0-8186-7641-8},
+ location = {Paris, France},
+ pages = {308--321},
+ numpages = {14},
+ url = {http://dl.acm.org/citation.cfm?id=243846.243903},
+ acmid = {243903},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+ keywords = {compiler optimization, global scheduling, instruction scheduling, instruction-level parallel processors, latency constraint propagation},
+}
+
+@book{Aho:2006:CPT:1177220,
+ author = {Aho, Alfred V. and Lam, Monica S. and Sethi, Ravi and Ullman, Jeffrey D.},
+ title = {Compilers: Principles, Techniques, and Tools (2nd Edition)},
+ year = {2006},
+ isbn = {0321486811},
+ publisher = {Addison-Wesley Longman Publishing Co., Inc.},
+ address = {Boston, MA, USA},
+}
+
+@article{Muchnick:2004:EIS:989393.989413,
+ author = {Muchnick, Steven S. and Gibbons, Phillip B.},
+ title = {Efficient instruction scheduling for a pipelined architecture},
+ journal = {SIGPLAN Not.},
+ issue_date = {April 2004},
+ volume = {39},
+ number = {4},
+ month = apr,
+ year = {2004},
+ issn = {0362-1340},
+ pages = {167--174},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/989393.989413},
+ doi = {10.1145/989393.989413},
+ acmid = {989413},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+
+@phdthesis{Stephenson:2006:ACC:1269626,
+ author = {Stephenson, Mark W.},
+ advisor = {Amarasinghe, Saman},
+ title = {Automating the construction of compiler heuristics using machine learning},
+ year = {2006},
+ note = {AAI0810106},
+ publisher = {Massachusetts Institute of Technology},
+ address = {Cambridge, MA, USA},
+}
+
+@article{Stephenson:2003:MOI:780822.781141,
+ author = {Stephenson, Mark and Amarasinghe, Saman and Martin, Martin and O'Reilly, Una-May},
+ title = {Meta optimization: improving compiler heuristics with machine learning},
+ journal = {SIGPLAN Not.},
+ issue_date = {May 2003},
+ volume = {38},
+ number = {5},
+ month = may,
+ year = {2003},
+ issn = {0362-1340},
+ pages = {77--90},
+ numpages = {14},
+ url = {http://doi.acm.org/10.1145/780822.781141},
+ doi = {10.1145/780822.781141},
+ acmid = {781141},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {compiler heuristics, genetic programming, machine learning, priority functions},
+}
+
+
+@misc{adaptor,
+  title = {Пояснительная записка к курсовому проекту на тему «Инструментарий коллективной оптимизации программ»},
+  author = {Панков М.К.},
+  year = {2013},
+  language = {russian}
+}
+
+@misc{cross-validation,
+  title = {Перекрестная проверка. Статья в словаре BaseGroup Labs (электронный ресурс)},
+  note = {(Дата обращения: 17 марта 2013)},
+  url = {http://www.basegroup.ru/glossary/definitions/cross_validation/},
+  language = {russian}
+}
+
+@misc{sklearn,
+  title = {scikit-learn: machine learning in Python (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://scikit-learn.org/stable/},
+  language = {russian}
+}
+
+@misc{grid-search,
+  title = {Grid Search: setting estimator parameters (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://scikit-learn.org/0.13/modules/grid\_search.html},
+  language = {russian}
+}
+
+@misc{couchdb,
+  title = {A Database for the Web (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://couchdb.apache.org/},
+  language = {russian}
+}
+
+@misc{iriscouch,
+  title = {Iris Couch is Easy CouchDB (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://www.iriscouch.com/},
+  language = {russian}
+}
+
+@misc{restful-api,
+  title = {Representational state transfer (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://en.wikipedia.org/wiki/Representational_state_transfer},
+  language = {russian}
+}
+
+@misc{futon,
+  title = {Getting_started_with_Futon (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://wiki.apache.org/couchdb/Getting_started_with_Futon},
+  language = {russian}
+}
+
+@misc{cloudant,
+  title = {Cloudant. The do more data layer (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {https://cloudant.com/},
+  language = {russian}
+}
+
+@misc{amazon-ec2,
+  title = {Amazon Elastic Compute Cloud (Amazon EC2) (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://aws.amazon.com/ec2/},
+  language = {russian}
+}
+
+@misc{cloud-computing,
+  title = {Облачные вычисления. Материал из Википедии --- свободной энциклопедии (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F},
+  language = {russian}
+}
+
+@misc{amazon-billing,
+  title = {Amazon EC2 Pricing (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://aws.amazon.com/ec2/pricing/},
+  language = {russian}
+}
+
+@misc{feature-ranking,
+  title = {Feature selection. Материал из Википедии --- свободной энциклопедии (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://en.wikipedia.org/wiki/Feature_selection},
+  language = {russian}
+}
+
+@misc{orange,
+  title = {Orange. Open source data visualization and analysis for novice and experts (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://orange.biolab.si/},
+  language = {russian}
+}
+
+@misc{api,
+  title = {Application Programming Interface (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://en.wikipedia.org/wiki/Application_programming_interface},
+  language = {russian}
+}
+
+@misc{sse,
+  title = {Streaming SIMD Extensions (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://en.wikipedia.org/wiki/Streaming_SIMD_Extensions},
+  language = {russian}
+}
+
+@misc{sse,
+  title = {CouchDB Framework In Python (электронный ресурс)},
+  note = {(Дата обращения: 19 марта 2013)},
+  url = {http://couchdbkit.org/},
+  language = {russian}
+}
+
+@book{applregr,
+  author = {Норман Дрейпер, Гарри Смит},
+  title = {Прикладной регрессионный анализ — 3-е изд.},
+  publisher = {М.: «Диалектика»},
+  year = {2007},
+  note = {912 c.},
+  language = {russian}
+}
+
+@book{statseval,
+  author = {Радченко Станислав},
+  title = {Устойчивые методы оценивания статистических моделей: Монография.},
+  publisher = {К.: ПП «Санспарель»},
+  year = {2005},
+  note = {504 с.},
+  language = {russian}
+}
+
+@book{regrmeth,
+  author = {Радченко Станислав},
+  title = {Методология регрессионного анализа: Монография.},
+  publisher = {К.: «Корнийчук»},
+  year = {2011},
+  note = {376 с.},
+  language = {russian}
+}
+
+@MISC{scheduling,
+  author = {Jerry Breecher},
+  title = {Operating Systems Scheduling (электронный ресурс)},
+  note = {Лекция №5 из курса Operating Systems. (Дата обращения: 04 января
+  2013)},
+  url = {http://web.cs.wpi.edu/~cs3013/c07/lectures/Section05-Scheduling.pdf},
+  language = {russian}
+}
+
+@INPROCEEDINGS{Dubach:2009:PCO:1669112.1669124,
+  author = {Dubach, Christophe and Jones, Timothy M. and Bonilla, Edwin V. and
+  Fursin, Grigori and O'Boyle, Michael F. P.},
+  title = {Portable compiler optimisation across embedded programs and microarchitectures
+  using machine learning},
+  booktitle = {Proceedings of the 42nd Annual IEEE/ACM International Symposium on
+  Microarchitecture},
+  year = {2009},
+  series = {MICRO 42},
+  pages = {78--88},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1669124},
+  doi = {10.1145/1669112.1669124},
+  isbn = {978-1-60558-798-1},
+  keywords = {architecture/compiler co-design, design-space exploration, machine
+  learning},
+  location = {New York, New York},
+  numpages = {11},
+  url = {http://doi.acm.org/10.1145/1669112.1669124}
+}
+
+@ARTICLE{Fursin2010COP,
+  author = {Fursin, Grigori and Temam, Olivier},
+  title = {Collective optimization: A practical collaborative approach},
+  journal = {ACM Trans. Archit. Code Optim.},
+  year = {2010},
+  volume = {7},
+  pages = {20:1--20:29},
+  number = {4},
+  month = dec,
+  acmid = {1880047},
+  address = {New York, NY, USA},
+  articleno = {20},
+  doi = {10.1145/1880043.1880047},
+  issn = {1544-3566},
+  issue_date = {December 2010},
+  keywords = {Collective optimization, adaptive compiler, collective optimization
+  database, continuous optimization, function cloning, iterative compilation,
+  multiple datasets, program characterization, program reaction to
+  optimization, runtime adaptation, self-tuning computing systems,
+  statistical optimization},
+  numpages = {29},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1880043.1880047}
+}
+
+@ARTICLE{Stephenson2003MOI,
+  author = {Stephenson, Mark and Amarasinghe, Saman and Martin, Martin and O'Reilly,
+  Una-May},
+  title = {Meta optimization: improving compiler heuristics with machine learning},
+  journal = {SIGPLAN Not.},
+  year = {2003},
+  volume = {38},
+  pages = {77--90},
+  number = {5},
+  month = may,
+  acmid = {781141},
+  address = {New York, NY, USA},
+  doi = {10.1145/780822.781141},
+  issn = {0362-1340},
+  issue_date = {May 2003},
+  keywords = {compiler heuristics, genetic programming, machine learning, priority
+  functions},
+  numpages = {14},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/780822.781141}
+}
+
+@INCOLLECTION{Thomson,
+  author = {Thomson, John and O’Boyle, Michael and Fursin, Grigori and Franke,
+  Björn},
+  title = {Reducing Training Time in a One-Shot Machine Learning-Based Compiler},
+  booktitle = {Languages and Compilers for Parallel Computing},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2010},
+  editor = {Gao, GuangR. and Pollock, LoriL. and Cavazos, John and Li, Xiaoming},
+  volume = {5898},
+  series = {Lecture Notes in Computer Science},
+  pages = {399-407},
+  doi = {10.1007/978-3-642-13374-9_28},
+  isbn = {978-3-642-13373-2},
+  url = {http://dx.doi.org/10.1007/978-3-642-13374-9_28}
+}
+
+@BOOK{lag,
+  title = {Наглядная математическая статистика : учебное пособие — 2-е изд.,
+  испр.},
+  publisher = {М.: БИНОМ. Лаборатория знаний},
+  year = {2012},
+  author = {М.Б.Лагутин},
+  note = {472 с. : ил.},
+  owner = {M.Pankov},
+  timestamp = {2013.03.12},
+  language = {russian}
+}
+
+@MISC{bitbucket,
+  title = {Bitbucket --- Unlimited private repositories to collaborate on your
+  code – Git or Mercurial (электронный ресурс)},
+  note = {Веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {https://bitbucket.org/},
+  language = {russian}
+}
+
+@MISC{couchapp,
+  title = {CouchApp.org: Simple JavaScript Applications with CouchDB (электронный
+  ресурс)},
+  note = {Официальный сайт. (Дата обращения: 04 января 2013)},
+  url = {http://couchapp.org/page/index},
+  language = {russian}
+}
+
+@MISC{distributed-vcs,
+  title = {Distributed revision control (электронный ресурс)},
+  note = {Материал из Википедии -- Свободной Энциклопедии. (Дата обращения:
+  03 января 2013)},
+  url = {http://en.wikipedia.org/wiki/Distributed_revision_control},
+  language = {russian}
+}
+
+@MISC{gcc-options,
+  title = {GCC --- Option Summary (электронный ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {http://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html},
+  language = {russian}
+}
+
+@MISC{github,
+  title = {Github --- Powerful collaboration, review, and code management for
+  open source and private development projects (электронный ресурс)},
+  note = {Веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {https://github.com/},
+  language = {russian}
+}
+
+@MISC{git-vs-hg,
+  title = {Analysis of Git and Mercurial (электронный ресурс)},
+  note = {Веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {http://code.google.com/p/support/wiki/DVCSAnalysis},
+  language = {russian}
+}
+
+@MISC{IntelExascale,
+  title = {{Intel --- Exascale Computing Research Lab (электронный ресурс)}},
+  note = {Новостной ресурс. (Дата обращения: 03 января 2013)},
+  url = {http://www.innovation-prime.com/paris-region/success-stories/intel-exascale-computing-research-lab/},
+  language = {russian}
+}
+
+@MISC{ipython,
+  title = {IPython (электронный ресурс)},
+  note = {Официальный сайт. (Дата обращения: 04 января 2013)},
+  url = {http://ipython.org/},
+  language = {russian}
+}
+
+@MISC{json,
+  title = {JSON (электронный ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {http://www.json.org/},
+  language = {russian}
+}
+
+@MISC{langpop,
+  title = {TIOBE Programming Community Index for December 2012 (электронный
+  ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html},
+  language = {russian}
+}
+
+@MISC{map-reduce,
+  title = {MapReduce (электронный ресурс)},
+  note = {Материал из Википедии — свободной энциклопедии. (Дата обращения:
+  04 января 2013)},
+  url = {http://ru.wikipedia.org/wiki/MapReduce},
+  language = {russian}
+}
+
+@MISC{matplotlib,
+  title = {Matplotlib (электронный ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 03 января 2013)},
+  url = {http://matplotlib.org/},
+  language = {russian}
+}
+
+@MISC{nosql-comparison,
+  title = {Cassandra vs MongoDB vs CouchDB vs Redis vs Riak vs HBase vs Couchbase
+  vs Neo4j vs Hypertable vs ElasticSearch vs Accumulo vs VoltDB vs
+  Scalaris comparison (электронный ресурс)},
+  note = {Статья. (Дата обращения: 04 января 2013)},
+  url = {http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis},
+  language = {russian}
+}
+
+@MISC{polybench,
+  title = {PolyBench/C the Polyhedral Benchmark suite (электронный ресурс)},
+  note = {Официальный сайт. (Дата обращения: 04 января 2013)},
+  url = {http://www.cse.ohio-state.edu/~pouchet/software/polybench/},
+  language = {russian}
+}
+
+@MISC{pypy,
+  title = {PyPy (электронный ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 03 января 2013)},
+  url = {http://pypy.org/},
+  language = {russian}
+}
+
+@MISC{python,
+  title = {Python Programming Language (электронный ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 03 января 2013)},
+  url = {http://www.python.org/},
+  language = {russian}
+}
+
+@MISC{scipy,
+  title = {Scientific Tools for Python (электронный ресурс)},
+  note = {Официальный веб-сайт. (Дата обращения: 04 января 2013)},
+  url = {http://www.scipy.org/},
+  language = {russian}
+}
+
+@MISC{tdd,
+  title = {Test-driven development (электронный ресурс)},
+  note = {Материал из Википедии -- Свободной Энциклопедии. (Дата обращения:
+  03 января 2013)},
+  url = {http://en.wikipedia.org/wiki/Test-driven_development}
+}
+
+@book{economics,
+    author = {Ю.Б.Сажин, С.В.Самохин},
+    title = {Методическое пособие по выполнению организационно-экономической части дипломных проектов по разработке и использованию программных продуктов},
+    year = {2004},
+    publisher = {Издательство МГТУ},
+    address = {Москва}
+}
+
+@MISC{earth-importance,
+    title = {Variable importance (электронный ресурс)},
+    note = {(Дата обращения:
+    03 июня 2013)},
+    url = {http://caret.r-forge.r-project.org/varimp.html}
+}
+
+@MISC{hyperparameter-optimization,
+    title = {Hyperparameter optimization (электронный ресурс)},
+    note = {Материал из Википедии "--- свободной энциклопедии. (Дата обращения:
+    03 июня 2013)},
+    url = {http://en.wikipedia.org/wiki/Hyperparameter\_optimization\#Grid\_search}
+}
+
+@book{emulation,
+ author = {Victor Moya del Barrio},
+ title = {Study of the techniques for emulation programming},
+ year = 2001,
+ publisher = {Computer Science Engenieering},
+ address = {Boston, MA, USA}
+}
