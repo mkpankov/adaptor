@@ -10,7 +10,15 @@ Thumbs.db
 *.bbl
 *.blg
 *.dvi
+*.nav
+*.out
+*.snm
 *.toc
+
+# Asymptote
+*.asy
+*.pre
+*.vrb
 
 # SublimeText 2 stuff
 *.sublime-project
