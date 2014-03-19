@@ -5,6 +5,67 @@ Contains 'Adaptor' computer performance modeling framework.
 Author: Michael K. Pankov, graduate of Bauman Moscow State Technical University.
 
 
+# Installation
+
+`$` means super-user console (use `sudo` on Ubuntu). `#` means usual user console.
+
+* Python 2.7.*
+
+  `$ apt-get install python2.7`
+
+    * easy_install
+
+      `# wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python`
+
+    * pip
+
+      `$ easy_install pip`
+
+    * ipython
+
+      `$ apt-get install ipython`
+
+    * recordtype
+
+      `$ pip install recordtype`
+
+    * matplotlib
+
+      `$ pip install matplotlib`
+
+    * numpy
+
+      `$ pip install numpy`
+
+* CouchDB
+
+  `$ apt-get install couchdb`
+
+    * CouchApp
+
+      `$ pip install couchapp`
+
+    * CouchDB Kit
+
+      `$ pip install couchdbkit`
+
+* Tools
+
+  `$ pip install ipdb`
+
+* Orange
+
+  Refer to [Orange Download page](http://orange.biolab.si/download/). Section "Building from source", subsection "setup.py".
+
+# Running
+
+* `ipython`
+
+    * `import system`
+    * `import scenarios`
+    * `cpdh_main(...)`
+
+
 ## Useful links ##
 
 1. [Orange tutorial](http://wiki.sdakak.com/ml:getting-started-with-orange).
