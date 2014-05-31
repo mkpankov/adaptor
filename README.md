@@ -29,6 +29,10 @@ Author: Michael K. Pankov, graduate of Bauman Moscow State Technical University.
 
       `$ pip install recordtype`
 
+    * parse
+
+      `$ pip install parse`
+
     * matplotlib
 
       `$ pip install matplotlib`
