@@ -49,8 +49,8 @@ def prepare_command_build(settings):
         "{program_name}".format(**settings._asdict()))
     command = tw.dedent("""
         {build_settings.compiler} {build_settings.base_opt}
-        {build_settings.other_flags} {0}
-        -o {1} {build_settings.linker_options}""").translate(
+         {build_settings.other_flags} {0}
+         -o {1} {build_settings.linker_options}""").translate(
         None, '\n').format(
         full_path_source, full_path_binary, **settings._asdict())
     return command
